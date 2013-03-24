@@ -1,0 +1,42 @@
+treechildren::-moz-tree-cell-text(defaultFormat) {
+	font-weight: bold;
+}
+
+#copyurlsexpert-treeformats {
+	margin-top:0.6em;
+	margin-bottom:0.6em;
+}
+
+#copyurlsexpert-treeformats>treecols {
+	border: 0; padding: 0;
+	-moz-appearance: none;
+}
+
+prefpane > groupbox > vbox {
+	padding-top:0.2em;
+}
+
+grid > rows > row {
+	padding-top:0.2em;
+}
+
+#copyurlsexpert-generaloptionstabpanel grid>rows>row>label {
+	padding-top:0.3em;
+}
+
+.topgap {
+	padding-top:1em;
+	text-transform:uppercase;
+	font-size:1.0em;
+	font-weight:bold;
+	letter-spacing: 0.1em;
+}
+
+#copyurlsexpert-optionsbottompanel hbox {
+	padding-right: 0.3em;
+	padding-bottom: 0.3em;
+}
+
+.helplabel {
+	vertical-align: text-bottom;
+}

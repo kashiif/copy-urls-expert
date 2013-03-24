@@ -1,0 +1,85 @@
+<!--
+
+The text in this file does not appear anywhere in the addon. This will be used on extension's localized page
+
+Following are the available locales on MDN:
+
+Afrikaans · af
+عربي · ar
+Български · bg
+català · ca
+Čeština · cs
+Dansk · da
+Deutsch · de
+Ελληνικά · el
+Español · es
+Euskara · eu
+فارسی · fa
+suomi · fi
+Français · fr
+Gaeilge (Éire) · ga-ie
+עברית · he
+magyar · hu
+Bahasa Indonesia · id
+Italiano · it
+日本語 · ja
+한국어 · ko
+Монгол · mn
+Nederlands · nl
+Polski · pl
+Português (do Brasil) · pt-br
+Português (Europeu) · pt-pt
+română · ro
+Русский · ru
+slovenčina · sk
+Slovenščina · sl
+Shqip · sq
+Svenska · sv-se
+Українська · uk
+Tiếng Việt · vi
+中文 (简体) · zh-cn
+正體中文 (繁體) · zh-tw
+
+
+-->
+<!--
+
+<strong>Übersicht</strong>
+
+Copy Urls Expert stellt sich als nützlich heraus, wenn man mehrere Adressen kopieren möchte. Es bietet die folgenden Möglichkeiten:
+<ol>
+ <li> Adressen der Tabs aller Fenstern kopieren
+ <li> Adressen der Tabs des aktiven Fensters kopieren
+ <li> Adressen aller Links in einer Auswahl kopieren
+ <li> Adressen aller Grafiken in einer Auswahl kopieren
+</ol>
+
+Es können auch die Adressen in der Zwischenablage geöffnet werden.
+
+Diese Funktionen befinden sich in dem Menü 'Copy Urls Expert', welches an folgenden Stellen verfügbar ist:
+<ul>
+<li> Menüleiste -&gt; Menü &quot;Bearbeiten&quot;
+<li> Firefox-Schaltfläche -&gt; Menü &quot;Bearbeiten&quot;
+<li> Kontextmenü des Tabs
+<li> Auswahlkontextmenü
+<li> Copy Urls Expert Toolbar button (You will have to add button manually. <a href="https://support.mozilla.org/en-US/kb/customize-firefox-controls-buttons-and-toolbars#w_how-do-i-customize-or-rearrange-toolbar-items">How to add button</a>?)
+</ul>
+<strong>Anpassung</strong>
+
+Die Formatierung, in der die Adressen in die Zwischenablage kopiert werden, ist sehr anpassungsfähig. Sie kann im Einstellungsdialog der Erweiterung angepasst werden. Die folgenden Parameter sind verfügbar:
+
+$url - Adresse, z.B. http://google.com/
+$title - Seitentitel, z.B. Google
+$n - Zeilenumbruch
+$index - Fortlaufende Nummerierung der Adresse
+$date - Heutiges Datum
+
+Adressen werden nicht automatisch in neue Zeilen geschrieben, deshalb muss $n immer benutzt werden.
+
+<strong>Fehler, Hilfe</strong>
+
+<em>Rückmeldungen sind herzlichen Willkommen. Vorschläge, Rückmeldungen und Fehlermeldungen bitte hierhin:
+http://www.kashiif.com/firefox-extensions/copy-urls-expert/copy-urls-expert-feedback/
+</em>
+
+-->

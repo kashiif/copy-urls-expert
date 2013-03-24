@@ -1,0 +1,44 @@
+<!ENTITY copyurlsexpert.options.windowtitle "Copy Urls Expert - Einstellungen">
+<!ENTITY copyurlsexpert.options.btacceptlabel "Speichern">
+<!ENTITY copyurlsexpert.options.btacceptaccesskey "S">
+<!ENTITY copyurlsexpert.options.generaltab "Allgemein">
+<!ENTITY copyurlsexpert.options.formattab "Formatierung">
+<!ENTITY copyurlsexpert.options.helptab "Hilfe">
+<!ENTITY copyurlsexpert.options.lblsortby "Sortieren nach">
+<!ENTITY copyurlsexpert.options.itmsortbytab "Tab-Reihenfolge">
+<!ENTITY copyurlsexpert.options.itmsortbydomain "Domain">
+<!ENTITY copyurlsexpert.options.itmsortbytitle "Seitentitel">
+<!ENTITY copyurlsexpert.options.formattablabelsize "5">
+<!ENTITY copyurlsexpert.options.lblname "Name">
+<!ENTITY copyurlsexpert.options.lblmarkup "Formatierung">
+<!ENTITY copyurlsexpert.options.lblprefix "Text davor">
+<!ENTITY copyurlsexpert.options.lblpostfix "Text danach">
+<!ENTITY copyurlsexpert.options.lbltoolbaraction "Standardaktion der Symbolleistenschaltfläche">
+<!ENTITY copyurlsexpert.common.activewinmenulabel "Adressen der Tabs des aktiven Fensters kopieren">
+<!ENTITY copyurlsexpert.common.activetabmenulabel "Adresse des aktiven Tabs kopieren">
+<!ENTITY copyurlsexpert.common.allwinmenulabel "Adressen der Tabs aller Fenstern kopieren">
+<!ENTITY copyurlsexpert.common.opentabsmenulabel "Adressen aus Zwischenablage öffnen">
+<!ENTITY copyurlsexpert.common.optionsmenulabel "Einstellungen öffnen">
+<!ENTITY copyurlsexpert.options.btnaddnew "Neu">
+<!ENTITY copyurlsexpert.options.btnupdate "Aktualisieren">
+<!ENTITY copyurlsexpert.options.btnsave "Speichern">
+<!ENTITY copyurlsexpert.options.btncancelsave "Verwerfen">
+<!ENTITY copyurlsexpert.options.btnedit "Bearbeiten">
+<!ENTITY copyurlsexpert.options.btndefault "Als Standard setzen">
+<!ENTITY copyurlsexpert.options.btndelete "Löschen">
+<!ENTITY copyurlsexpert.options.lblhelphint "Die Möglichkeiten der Benutzeranpassung, wie der Text in der Zwischenablage formatiert sein soll, werden im Tab &quot;Hilfe&quot; erklärt.">
+<!ENTITY copyurlsexpert.options.lblhelphint2 "Es ist möglich, den in die Zwischenablage zu kopierenden Text zu formatieren.">
+<!ENTITY copyurlsexpert.options.lblhelphint3 "Der Inhalt kann aus bis zu drei Teilen bestehen:">
+<!ENTITY copyurlsexpert.options.lblprefixheading "Text davor">
+<!ENTITY copyurlsexpert.options.lblprefixdesc "Dieser Text wird vor der Liste mit den Adressen eingefügt. (Optional)">
+<!ENTITY copyurlsexpert.options.lbllinkslistheading "Adressliste">
+<!ENTITY copyurlsexpert.options.lbllinkslistdesc "Dieser Text erscheint für jede Adresse. Der Standardwert ist $url$n.">
+<!ENTITY copyurlsexpert.options.lblpostfixheading "Text danach">
+<!ENTITY copyurlsexpert.options.lblpostfixdesc "Dieser Text wird nach der Liste mit den Adressen eingefügt. (Optional)">
+<!ENTITY copyurlsexpert.options.lblvariablesheading "Formatierungsvariablen">
+<!ENTITY copyurlsexpert.options.lbltagurl "Die (Link-)Adresse selbst, z.B. http://www.google.com">
+<!ENTITY copyurlsexpert.options.lbltagtitle "Titel der Seite oder der Grafik">
+<!ENTITY copyurlsexpert.options.lbltagnewline "Zeilenumbruch. Adressen werden nicht automatisch in neue Zeilen geschrieben, deshalb muss $n immer benutzt werden.">
+<!ENTITY copyurlsexpert.options.lbltagindex "Fortlaufende Nummerierung für die jeweils aktuelle Adresse in der Adressliste">
+<!ENTITY copyurlsexpert.options.lbltagdate "Heutiges Datum">
+<!ENTITY copyurlsexpert.options.lbltagtime "Aktuelle Zeit im Unix-Format">

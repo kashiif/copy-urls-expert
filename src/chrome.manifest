@@ -1,0 +1,19 @@
+content copy-urls-expert chrome/content/
+
+resource copy-urls-expert lib/
+
+skin	  copy-urls-expert	copy-urls-expert-skin	chrome/skin/
+
+locale	copy-urls-expert 	en-US	chrome/locale/en-US/
+locale	copy-urls-expert 	ko-KR	chrome/locale/ko-KR/
+locale	copy-urls-expert 	de	chrome/locale/de/
+locale	copy-urls-expert 	zh-CN	chrome/locale/zh-CN/
+locale	copy-urls-expert 	fr-FR	chrome/locale/fr-FR/
+
+overlay	chrome://browser/content/browser.xul	chrome://copy-urls-expert/content/cue_browser_overlay.xul
+overlay chrome://browser/content/browser.xul    chrome://copy-urls-expert/content/cue_ff_overlay.xul
+
+overlay chrome://global/content/customizeToolbar.xul chrome://copy-urls-expert/content/customizeToolbar.xul
+
+overlay	chrome://navigator/content/navigator.xul	chrome://copy-urls-expert/content/cue_browser_overlay.xul
+overlay chrome://navigator/content/navigator.xul    chrome://copy-urls-expert/content/cue_sm_overlay.xul

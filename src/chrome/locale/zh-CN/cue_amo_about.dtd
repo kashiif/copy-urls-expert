@@ -1,0 +1,85 @@
+<!--
+
+The text in this file does not appear anywhere in the addon. This will be used on extension's localized page
+
+Following are the available locales on MDN:
+
+Afrikaans · af
+عربي · ar
+Български · bg
+català · ca
+Čeština · cs
+Dansk · da
+Deutsch · de
+Ελληνικά · el
+Español · es
+Euskara · eu
+فارسی · fa
+suomi · fi
+Français · fr
+Gaeilge (Éire) · ga-ie
+עברית · he
+magyar · hu
+Bahasa Indonesia · id
+Italiano · it
+日本語 · ja
+한국어 · ko
+Монгол · mn
+Nederlands · nl
+Polski · pl
+Português (do Brasil) · pt-br
+Português (Europeu) · pt-pt
+română · ro
+Русский · ru
+slovenčina · sk
+Slovenščina · sl
+Shqip · sq
+Svenska · sv-se
+Українська · uk
+Tiếng Việt · vi
+中文 (简体) · zh-cn
+正體中文 (繁體) · zh-tw
+
+-->
+
+
+<!--
+
+<strong>概述</strong>
+
+Copy Urls Expert 为你提供直接复制一组 URL 的功能。它提供了以下功能：
+<ol>
+ <li> 复制当前窗口中标签的 URL。
+ <li> 复制所有窗口中标签的 URL。
+ <li> 复制选中所有链接的 URL。
+ <li> 复制选中所有图像 URL。
+</ol>
+
+你也可以使用'打开标签'菜单一次打开多个链接。
+
+要使用这些功能，请在使用下列位置的'Copy Urls Expert' 菜单：
+<ul>
+<li> 菜单栏 -&gt; 编辑菜单
+<li> Firefox 应用程序菜单 -&gt; 编辑菜单
+<li> 标签上下文菜单
+<li> 选中区域上下文菜单
+<li> Copy Urls Expert 工具按钮 (需要手动添加按钮。 <a href="https://support.mozilla.org/en-US/kb/customize-firefox-controls-buttons-and-toolbars#w_how-do-i-customize-or-rearrange-toolbar-items">怎样添加按钮</a>？)
+</ul>
+<strong>自定义</strong>
+
+复制到剪贴板的链接是高度可定制的。请查看扩展的选项对话。你可以使用下列参数自定义每个 URL：
+
+$url - 实际链接，例如 http://google.com/
+$title - 标签的标题，例如 Google
+$n - 换行。
+$index - 链接序号。
+$date - 今天的日期。
+
+注意默认情况下 URL 后不会换行，必须使用 $n 换行。
+
+<strong>错误和支持</strong>
+
+<em>我们期待您的反馈。请提出建议、反馈或者报告错误到
+http://www.kashiif.com/firefox-extensions/copy-urls-expert/copy-urls-expert-feedback/
+</em>
+-->

@@ -1,0 +1,53 @@
+﻿<!ENTITY copyurlsexpert.options.windowtitle	"Copy Urls Expert Options">
+<!ENTITY copyurlsexpert.options.btacceptlabel	"Save">
+<!ENTITY copyurlsexpert.options.btacceptaccesskey	"S">
+
+<!ENTITY copyurlsexpert.options.generaltab	"General">
+<!ENTITY copyurlsexpert.options.formattab	"Format">
+<!ENTITY copyurlsexpert.options.helptab	"Help">
+
+<!ENTITY copyurlsexpert.options.lblsortby	"Sort By">
+<!ENTITY copyurlsexpert.options.itmsortbytab	"Tab Order">
+<!ENTITY copyurlsexpert.options.itmsortbydomain	"Domain">
+<!ENTITY copyurlsexpert.options.itmsortbytitle	"Title">
+
+<!ENTITY copyurlsexpert.options.formattablabelsize "5">
+<!ENTITY copyurlsexpert.options.lblname	"Name">
+<!ENTITY copyurlsexpert.options.lblmarkup	"Markup">
+<!ENTITY copyurlsexpert.options.lblprefix	"Prefix">
+<!ENTITY copyurlsexpert.options.lblpostfix	"Postfix">
+
+<!ENTITY copyurlsexpert.options.lbltoolbaraction	"Toolbar Button Default Action">
+<!ENTITY copyurlsexpert.common.activewinmenulabel	"This Window">
+<!ENTITY copyurlsexpert.common.activetabmenulabel	"This Tab">
+<!ENTITY copyurlsexpert.common.allwinmenulabel	"All Windows">
+<!ENTITY copyurlsexpert.common.opentabsmenulabel	"Open Urls From Clipboard">
+<!ENTITY copyurlsexpert.common.optionsmenulabel	"Options">
+
+
+<!ENTITY copyurlsexpert.options.btnaddnew "New">
+<!ENTITY copyurlsexpert.options.btnupdate "Update">
+<!ENTITY copyurlsexpert.options.btnsave "Save">
+<!ENTITY copyurlsexpert.options.btncancelsave "Discard">
+<!ENTITY copyurlsexpert.options.btnedit "Edit">
+<!ENTITY copyurlsexpert.options.btndefault "Set As Default">
+<!ENTITY copyurlsexpert.options.btndelete "Delete">
+
+<!ENTITY copyurlsexpert.options.lblhelphint "See Help Tab to understand how the text for clipboard can be customized.">
+
+<!ENTITY copyurlsexpert.options.lblhelphint2 "It is possible to customize the text which is copied to clipboard.">
+<!ENTITY copyurlsexpert.options.lblhelphint3 "Three pieces of content are possible: .">
+<!ENTITY copyurlsexpert.options.lblprefixheading "Prefix">
+<!ENTITY copyurlsexpert.options.lblprefixdesc "This is the text that will appear before the list of Urls. (Optional)">
+<!ENTITY copyurlsexpert.options.lbllinkslistheading "List of Urls">
+<!ENTITY copyurlsexpert.options.lbllinkslistdesc "This is the text that will appear for every Url. Default value is $url$n.">
+<!ENTITY copyurlsexpert.options.lblpostfixheading "Postfix">
+<!ENTITY copyurlsexpert.options.lblpostfixdesc "This is the text that will appear after the list of Urls. (Optional)">
+<!ENTITY copyurlsexpert.options.lblvariablesheading "Markup Variables">
+
+<!ENTITY copyurlsexpert.options.lbltagurl "The link/url itself e.g. http://www.google.com">
+<!ENTITY copyurlsexpert.options.lbltagtitle "Title of the page or image.">
+<!ENTITY copyurlsexpert.options.lbltagnewline "A new line charcater. Note that urls are not placed on new lines so $n must be used anyways.">
+<!ENTITY copyurlsexpert.options.lbltagindex "Serial number of current url in the list of urls.">
+<!ENTITY copyurlsexpert.options.lbltagdate "Today's date">
+<!ENTITY copyurlsexpert.options.lbltagtime "Current time in unix format">

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://copy-urls-expert/locale/cue_browser_overlay.dtd">
+
+<?xml-stylesheet href="chrome://copy-urls-expert/skin/copyurlsexpert-sm.css" type="text/css"?>
+
+<overlay id="copy-urls-expert"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		
+</overlay>

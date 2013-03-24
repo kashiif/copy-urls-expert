@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<!DOCTYPE overlay SYSTEM "chrome://copy-urls-expert/locale/cue_browser_overlay.dtd">
+
+<overlay id="copy-urls-expert-common"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	
+	<commandset id="mainCommandSet">
+		<command id="copyurlsexpert-command-opentabs" oncommand="copyUrlsExpert.openTabs();" />
+	</commandset>
+	
+	<!-- Tab Context Menu -->
+	<popupset id="mainPopupSet">
+		<menupopup id="tabContextMenu" >
+			<menuseparator id="copyurlsexpert-tabcontext-separator" insertafter="context_reloadTab"/>
+			<menu id="copyurlsexpert-tabcontext-mainmenu" label="&copyurlsexpert.common.menupopuplabel;" 
+					class="menuitem-iconic" insertafter="copyurlsexpert-tabcontext-separator"
+					accesskey="&copyurlsexpert.common.menupopupaccesskey;">
+				<menupopup>
+					<menuitem label="&copyurlsexpert.common.activewinmenulabel;"
+							  accesskey="&copyurlsexpert.common.activewinaccesskey;"
+							  oncommand="copyUrlsExpert.performCopyTabsUrl(true);"/>
+					<menuitem label="&copyurlsexpert.common.allwinmenulabel;"
+							  accesskey="&copyurlsexpert.common.allwinaccesskey;"
+							  oncommand="copyUrlsExpert.performCopyTabsUrl(false);" />
+					<menuitem label="&copyurlsexpert.common.activetabmenulabel;"
+							  oncommand="copyUrlsExpert.performCopyActiveTabUrl();"/>
+					<menuseparator />
+					<menuitem id="copyurlsexpert-toolbar-btnopentabs" 
+							  label="&copyurlsexpert.common.opentabsmenulabel;"
+							  command="copyurlsexpert-command-opentabs"
+							  class="menuitem-iconic"
+							  accesskey="&copyurlsexpert.common.opentabsaccesskey;" />
+							  
+				</menupopup>
+			</menu>
+		</menupopup>
+	</popupset>
+
+	<!-- Toolbar Icon -->
+	<toolbarpalette id="BrowserToolbarPalette">
+		<toolbarbutton id="copyurlsexpert-toolbar-btnmain" type="menu-button" 
+			label="&copyurlsexpert.common.menupopuplabel;" tooltiptext="&copyurlsexpert.common.menupopuplabel;"
+			oncommand="copyUrlsExpert.handleToolbarButtonClick(event);"
+			class="toolbarbutton-1 chromeclass-toolbar-additional"
+			image1="chrome://copy-urls-expert/skin/cue-icon16.png" >
+			<menupopup>
+				<menuitem id="copyurlsexpert-toolbar-btnactivewin" 
+						  label="&copyurlsexpert.common.activewinmenulabel;"
+						  accesskey="&copyurlsexpert.common.activewinaccesskey;"
+						  tooltiptext="&copyurlsexpert.common.activewintooltip;" />
+				<menuitem id="copyurlsexpert-toolbar-btnallwin" 
+						  label="&copyurlsexpert.common.allwinmenulabel;"
+						  accesskey="&copyurlsexpert.common.allwinaccesskey;"
+						  tooltiptext="&copyurlsexpert.common.allwintooltip;" />
+				<menuitem id="copyurlsexpert-toolbar-btnactivetab"
+						  label="&copyurlsexpert.common.activetabmenulabel;"
+						  accesskey="&copyurlsexpert.common.activetabaccesskey;"
+						  tooltiptext="&copyurlsexpert.common.activetabtooltip;" />
+				<menuseparator />
+				<menuitem id="copyurlsexpert-toolbar-btnopentabs" 
+						  label="&copyurlsexpert.common.opentabsmenulabel;"
+						  command="copyurlsexpert-command-opentabs"
+						  class="menuitem-iconic"
+						  accesskey="&copyurlsexpert.common.opentabsaccesskey;" />
+				<menuseparator />
+				<menuitem id="copyurlsexpert-toolbar-btnoptions" 
+						  label="&copyurlsexpert.common.optionsmenulabel;"
+						  accesskey="&copyurlsexpert.common.optionsaccesskey;"
+						  tooltiptext="&copyurlsexpert.common.optionstooltip;" />
+			</menupopup>
+		</toolbarbutton>
+	</toolbarpalette>
+
+
+	<!-- Edit Menu -->
+	<menupopup id="menu_EditPopup">
+		<menu id="copyurlsexpert-menubar-edit" label="&copyurlsexpert.common.menupopuplabel;" 
+				accesskey="&copyurlsexpert.common.menupopupaccesskey;" class="menuitem-iconic" insertafter="menu_copy">
+			<menupopup >
+				<menuitem label="&copyurlsexpert.common.activewinmenulabel;"
+						  accesskey="&copyurlsexpert.common.activewinaccesskey;"
+						  tooltiptext="&copyurlsexpert.common.activewintooltip;"
+						  oncommand="copyUrlsExpert.performCopyTabsUrl(true);" />
+				<menuitem label="&copyurlsexpert.common.allwinmenulabel;"
+						  accesskey="&copyurlsexpert.common.allwinaccesskey;"
+						  tooltiptext="&copyurlsexpert.common.allwintooltip;"
+						  oncommand="copyUrlsExpert.performCopyTabsUrl(false);"/>
+				<menuitem label="&copyurlsexpert.common.activetabmenulabel;"
+						  accesskey="&copyurlsexpert.common.activetabaccesskey;"
+						  tooltiptext="&copyurlsexpert.common.activetabtooltip;"
+						  oncommand="copyUrlsExpert.performCopyActiveTabUrl();"/>
+				<menuseparator />
+				<menuitem label="&copyurlsexpert.common.opentabsmenulabel;"
+						  command="copyurlsexpert-command-opentabs"
+						  class="menuitem-iconic"
+						  accesskey="&copyurlsexpert.common.opentabsaccesskey;" />
+				<menuseparator />
+				<menuitem label="&copyurlsexpert.common.optionsmenulabel;"
+						  accesskey="&copyurlsexpert.common.optionsaccesskey;"
+						  tooltiptext="&copyurlsexpert.common.optionstooltip;"
+						  oncommand="copyUrlsExpert.showOptionsWindow();"
+						  class="menuitem-iconic" />
+			</menupopup>
+		</menu>
+	</menupopup>
+	
+
+	<popup id="contentAreaContextMenu">
+		<menu id="copyurlsexpert-contextmenu-mainmenu" label="&copyurlsexpert.common.menupopuplabel;"
+			  accesskey="&copyurlsexpert.common.menupopupaccesskey;"
+			  class="menuitem-iconic" insertafter="context-copy">
+			<menupopup>
+				<menuitem label="&copyurlsexpert.common.selurlsmenulabel;"
+						  accesskey="&copyurlsexpert.common.selurlsaccesskey;"
+						  oncommand="copyUrlsExpert.performCopySelectedUrls('a', copyUrlsExpert.getEntryFromLink);" />
+				<menuitem label="&copyurlsexpert.common.selimgsmenulabel;"
+						  accesskey="&copyurlsexpert.common.selimgsaccesskey;"
+						  oncommand="copyUrlsExpert.performCopySelectedUrls('img', copyUrlsExpert.getEntryFromImage);" />				
+			</menupopup>
+		</menu>
+	</popup>
+
+	<script type="application/x-javascript" src="chrome://copy-urls-expert/content/copyurlsexpert.js"></script>
+	
+</overlay>

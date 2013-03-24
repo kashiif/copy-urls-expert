@@ -1,0 +1,28 @@
+﻿<!ENTITY copyurlsexpert.options.windowtitle	"Options de Copy Urls Expert">
+<!ENTITY copyurlsexpert.common.menupopuplabel	"Copy Urls Expert">
+<!ENTITY copyurlsexpert.common.menupopupaccesskey	"U">
+
+<!ENTITY copyurlsexpert.common.activewinmenulabel	"Onglets de la fenêtre active">
+<!ENTITY copyurlsexpert.common.activewinaccesskey	"T">
+<!ENTITY copyurlsexpert.common.activewintooltip	"Copier les liens de tous les onglets de la fenêtre active">
+
+<!ENTITY copyurlsexpert.common.allwinmenulabel	"Onglets de toutes les fenêtres">
+<!ENTITY copyurlsexpert.common.allwinaccesskey	"A">
+<!ENTITY copyurlsexpert.common.allwintooltip	"Copier les liens de tous les onglets de toutes les fenêtres ouvertes">
+
+<!ENTITY copyurlsexpert.common.activetabmenulabel	"Onglet actif uniquement">
+<!ENTITY copyurlsexpert.common.activetabaccesskey	"">
+<!ENTITY copyurlsexpert.common.activetabtooltip	"Copier les liens de l'onglet actif uniquement">
+
+<!ENTITY copyurlsexpert.common.opentabsmenulabel	"Ouvrir les url à partir du presse-papiers">
+<!ENTITY copyurlsexpert.common.opentabsaccesskey	"p">
+<!ENTITY copyurlsexpert.common.opentabstooltip	"Ouvrir tous les liens situés dans le presse-papiers">
+
+<!ENTITY copyurlsexpert.common.optionsmenulabel	"Options">
+<!ENTITY copyurlsexpert.common.optionsaccesskey	"O">
+<!ENTITY copyurlsexpert.common.optionstooltip	"Afficher les options de Copy Urls Expert">
+
+<!ENTITY copyurlsexpert.common.selurlsmenulabel	"Liens sélectionnés">
+<!ENTITY copyurlsexpert.common.selurlsaccesskey	"U">
+<!ENTITY copyurlsexpert.common.selimgsmenulabel	"Images sélectionnées">
+<!ENTITY copyurlsexpert.common.selimgsaccesskey	"I">

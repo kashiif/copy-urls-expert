@@ -1,0 +1,85 @@
+﻿<!--
+
+The text in this file does not appear anywhere in the addon. This will be used on extension's localized page
+
+Following are the available locales on MDN:
+
+Afrikaans · af
+عربي · ar
+Български · bg
+català · ca
+Čeština · cs
+Dansk · da
+Deutsch · de
+Ελληνικά · el
+Español · es
+Euskara · eu
+فارسی · fa
+suomi · fi
+Français · fr
+Gaeilge (Éire) · ga-ie
+עברית · he
+magyar · hu
+Bahasa Indonesia · id
+Italiano · it
+日本語 · ja
+한국어 · ko
+Монгол · mn
+Nederlands · nl
+Polski · pl
+Português (do Brasil) · pt-br
+Português (Europeu) · pt-pt
+română · ro
+Русский · ru
+slovenčina · sk
+Slovenščina · sl
+Shqip · sq
+Svenska · sv-se
+Українська · uk
+Tiếng Việt · vi
+中文 (简体) · zh-cn
+正體中文 (繁體) · zh-tw
+
+-->
+
+
+<!--
+
+<strong>Overview</strong>
+
+Copy Urls Expert comes in handy when you want to copy a bunch of urls. It provides you a few possibilities:
+<ol>
+ <li> Copy urls of all tabs in every opened window.
+ <li> Copy urls of all tabs only in the current window.
+ <li> Copy urls of all links in the selection.
+ <li> Copy urls of all images in the selection.
+</ol>
+
+You can also open multiple links at once by using 'Open Tabs' menu.
+
+To access these functions, find 'Copy Urls Expert' menu at following places:
+<ul>
+<li> Menubar -&gt; Edit Menu
+<li> Firefox AppMenu -&gt; Edit Menu
+<li> Tab Context Menu
+<li> Selection Context Menu
+<li> Copy Urls Expert Toolbar button (You will have to add button manually. <a href="https://support.mozilla.org/en-US/kb/customize-firefox-controls-buttons-and-toolbars#w_how-do-i-customize-or-rearrange-toolbar-items">How to add button</a>?)
+</ul>
+<strong>Customization</strong>
+
+The format in which links are copied to clipboard is highly customizable. See the extension's options dialog. Following parameters allow you to customize each url:
+
+$url - Actual link e.g. http://google.com/
+$title - Title of the tab e.g. Google
+$n - New Line.
+$index - Serial number of link.
+$date - Today's date
+
+Remember that by default urls are not placed on new lines so $n must be used anyways.
+
+<strong>Bugs, Support</strong>
+
+<em>Feedback is highly appreciated. Feel free to provide your suggestions, feedback and report bugs at
+http://www.kashiif.com/firefox-extensions/copy-urls-expert/copy-urls-expert-feedback/
+</em>
+-->
