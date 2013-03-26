@@ -1,0 +1,36 @@
+{
+  "name": "copy-urls-expert",
+  "title": "Demo  - Kashif Iqbal Khan",
+  "description": "",
+  "version": "0.1.0",
+  "homepage": "",
+  "author": {
+    "name": "Kashif Iqbal Khan",
+    "email": "kashiif@gmail.com",
+    "url": "www.kashiif.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "bugs": {
+    "url": ""
+  },
+  "licenses": [
+    {
+      "type": "none",
+      "url": "/blob/master/LICENSE-none"
+    }
+  ],
+  "dependencies": {
+    "jquery": "1.8.2"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "grunt-contrib-copy": ">=0.4.0",
+    "grunt-htmlrefs": "~0.3.0",
+	"grunt-contrib-uglify": ">=0.4.0",
+	"grunt-contrib-cssmin": ">=0.4.0",
+	"grunt-hashres": "~0.3.1"	
+  }
+}
