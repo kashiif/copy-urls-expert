@@ -22,12 +22,12 @@
       "url": "/blob/master/LICENSE-none"
     }
   ],
-  "dependencies": {
-  },
+  "dependencies": {},
   "keywords": [],
   "devDependencies": {
     "grunt-contrib-copy": ">=0.4.0",
     "grunt-string-replace": "~0.2.3",
-    "grunt-contrib-compress": "~0.4.6"
+    "grunt-contrib-compress": "~0.4.6",
+    "grunt-bump": "0.0.2"
   }
 }

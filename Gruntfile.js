@@ -1,13 +1,7 @@
 module.exports = function(grunt) {
 	
-  var stars = '******************************',
-	pkg = grunt.file.readJSON('package.json'),
-	banner  = '/*!' + stars 
-			+ '\n* Author: '+ pkg.author.name 
-			+ '\n* Email: ' + pkg.author.email 
-			+ '\n* URL: ' + pkg.author.url 
-			+ '\n* <%= grunt.template.today("yyyy-mm-dd") %>\n*' + stars + '*/\n',
-	distdir = 'dist/' + pkg.name + '-' + pkg.version + '/';
+  var pkg = grunt.file.readJSON('package.json'),
+	  distdir = 'dist/' + pkg.name + '-' + pkg.version + '/';
 	 
   // Project configuration.
   grunt.initConfig({
@@ -54,16 +48,13 @@ module.exports = function(grunt) {
   
   grunt.loadNpmTasks('grunt-contrib-compress');
 
-	// Load the plugin that provides the "uglify" task.
-  grunt.loadNpmTasks('grunt-contrib-uglify');
+  // Load the plugin that provides the "uglify" task.
+  //grunt.loadNpmTasks('grunt-contrib-uglify');
   
   // $: grunt bump
   grunt.loadNpmTasks('grunt-bump');
 
   // Default task(s).
-  grunt.registerTask('default', ['copy:prod', 'string-replace', 'compress']); //, 'htmlrefs', 'uglify', 'cssmin', 'hashres:prod']);
+  grunt.registerTask('default', ['copy:prod', 'string-replace', 'compress']);
   
-  // when final delivery, package sources of app.js and app.css as well
-  grunt.registerTask('final', ['copy', 'htmlrefs', 'uglify', 'cssmin', 'hashres:prod']);
-
 };
