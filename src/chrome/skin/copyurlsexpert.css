@@ -1,7 +1,3 @@
 #copyurlsexpert-toolbar-btnmain {
   list-style-image: url(chrome://copy-urls-expert/skin/cue-icon16.png);
 }
-
-#navigator-toolbox[iconsize=large][mode=icons] #copyurlsexpert-toolbar-btnmain {
-  list-style-image: url(chrome://copy-urls-expert/skin/cue-icon24.png);
-}
