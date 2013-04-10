@@ -208,12 +208,14 @@ var copyUrlsExpert = {
 			var tabHistory = aBrowsers[i].sessionHistory;
 			
 			// Check each tab of this tabbrowser instance
-			var numTabs = tabbrowser.browsers.length;			
+			var numTabs = tabbrowser.browsers.length,
+				tabContainer = tabbrowser.tabContainer;
 			
 			for (var index = 0; index < numTabs; index++) { 
-				var targetTab = tabbrowser.getBrowserAtIndex(index);
+				var targetBrwsr = tabbrowser.getBrowserAtIndex(index),
+					targetTab = tabContainer.getItemAtIndex(index)
 
-				var auxTemp = this._getEntryForTab(targetTab);
+				var auxTemp = this._getEntryForTab(targetBrwsr, targetTab);
 				entries.push(auxTemp);
 			}
 		}
@@ -221,10 +223,14 @@ var copyUrlsExpert = {
 		return entries;		
 	},
 
-	_getEntryForTab: function(targetTab) {
-		var url = targetTab.currentURI.spec;
+	_getEntryForTab: function(brwsr, tab) {
+		var url = brwsr.currentURI.spec;
 		
-		var title = targetTab.contentTitle;
+		var title = brwsr.contentTitle;
+		
+		if (!title && tab) {
+			title = tab.label;
+		}
 
 		var auxTemp = new copyUrlsExpert._UrlEntry(title,url);
 		return auxTemp;
