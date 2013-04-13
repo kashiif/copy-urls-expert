@@ -444,6 +444,9 @@ var copyUrlsExpert = {
 			case 'copyurlsexpert-toolbar-btnactivewin':
 				copyUrlsExpert.performCopyTabsUrl(true);
 				break;
+			case 'copyurlsexpert-toolbar-btnactivetabgroup':
+				copyUrlsExpert.performCopyTabsUrl(true, true);
+				break;
 			case 'copyurlsexpert-toolbar-btnactivetab':
 				copyUrlsExpert.performCopyActiveTabUrl();
 				break;
