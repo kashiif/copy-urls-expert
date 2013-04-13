@@ -6,6 +6,7 @@ var copyUrlsExpert = {
 	SORT_BY_TITLE: 'title',
 	TBB_ACTION_ACTIVE_WIN: 'active-win',
 	TBB_ACTION_ACTIVE_TAB: 'active-tab',
+	TBB_ACTION_ACTIVE_TABGROUP: 'active-tabgroup',
 	TBB_ACTION_ALL_WIN: 'all-win',
 	TBB_ACTION_OPEN_TABS: 'open-tabs',
 	LINE_FEED:'\r\n',
@@ -198,7 +199,7 @@ var copyUrlsExpert = {
 	   this.tab=tab;
 	},
 	
-	_getEntriesFromTabs: function(aBrowsers) {
+	_getEntriesFromTabs: function(aBrowsers, filterHidden) {
 		var title = '';
 		var url = '';
 		var entries = [];
@@ -215,6 +216,8 @@ var copyUrlsExpert = {
 				var targetBrwsr = tabbrowser.getBrowserAtIndex(index),
 					targetTab = tabContainer.getItemAtIndex(index)
 
+				if (filterHidden && targetTab.hidden) continue;
+				
 				var auxTemp = this._getEntryForTab(targetBrwsr, targetTab);
 				entries.push(auxTemp);
 			}
@@ -366,7 +369,7 @@ var copyUrlsExpert = {
 		copyUrlsExpert._copyEntriesToClipBoard(entries, copyUrlsExpert._prefService);
 	},
 
-	performCopyTabsUrl: function(onlyActiveWindow) {
+	_getBrowsers: function(onlyActiveWindow) {
 		var aBrowsers = new Array();       
 		
 		var winMediator = Components.classes['@mozilla.org/appshell/window-mediator;1'].getService(Components.interfaces.nsIWindowMediator);
@@ -381,7 +384,13 @@ var copyUrlsExpert = {
 			}
 		}
 		
-		var entries = copyUrlsExpert._getEntriesFromTabs(aBrowsers);
+		return aBrowsers;
+	},
+	
+	performCopyTabsUrl: function(onlyActiveWindow, filterHidden) {
+		var aBrowsers = copyUrlsExpert._getBrowsers(onlyActiveWindow);
+		
+		var entries = copyUrlsExpert._getEntriesFromTabs(aBrowsers, filterHidden);
 		
 		copyUrlsExpert._copyEntriesToClipBoard(entries, copyUrlsExpert._prefService);
 					
@@ -417,6 +426,9 @@ var copyUrlsExpert = {
 				switch(copyUrlsExpert._prefService.getCharPref('toolbaraction')) {
 					case copyUrlsExpert.TBB_ACTION_ACTIVE_WIN:
 						copyUrlsExpert.performCopyTabsUrl(true);
+						break;
+					case copyUrlsExpert.TBB_ACTION_ACTIVE_TABGROUP:
+						copyUrlsExpert.performCopyTabsUrl(true, true);
 						break;
 					case copyUrlsExpert.TBB_ACTION_ACTIVE_TAB:
 						copyUrlsExpert.performCopyActiveTabUrl();

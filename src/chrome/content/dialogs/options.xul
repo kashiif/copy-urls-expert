@@ -43,6 +43,7 @@
 				<menupopup>
 					<menuitem label="&copyurlsexpert.common.activewinmenulabel;" value="active-win"/>
 					<menuitem label="&copyurlsexpert.common.allwinmenulabel;" value="all-win"/>
+					<menuitem label="&copyurlsexpert.common.activetabgroupmenulabel;" value="active-tabgroup"/>
 					<menuitem label="&copyurlsexpert.common.activetabmenulabel;" value="active-tab"/>
 					<menuitem label="&copyurlsexpert.common.opentabsmenulabel;" value="open-tabs"/>
 				</menupopup>

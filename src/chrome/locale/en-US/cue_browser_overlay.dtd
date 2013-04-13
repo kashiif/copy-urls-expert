@@ -8,7 +8,12 @@
 
 <!ENTITY copyurlsexpert.common.allwinmenulabel	"Tabs In All Windows">
 <!ENTITY copyurlsexpert.common.allwinaccesskey	"A">
-<!ENTITY copyurlsexpert.common.allwintooltip	"Copy Urls of All Tabs in All Window">
+<!ENTITY copyurlsexpert.common.allwintooltip	"Copy Urls of All Tabs in All Windows">
+
+<!ENTITY copyurlsexpert.common.activetabgroupmenulabel	"Tabs In This Tab Group">
+<!ENTITY copyurlsexpert.common.activetabgroupaccesskey	"">
+<!ENTITY copyurlsexpert.common.activetabgrouptooltip	"Copy Urls of All Tabs in Active Tab Group">
+
 
 <!ENTITY copyurlsexpert.common.activetabmenulabel	"Active Tab">
 <!ENTITY copyurlsexpert.common.activetabaccesskey	"">

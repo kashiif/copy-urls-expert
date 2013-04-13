@@ -19,6 +19,7 @@
 
 <!ENTITY copyurlsexpert.options.lbltoolbaraction	"Toolbar Button Default Action">
 <!ENTITY copyurlsexpert.common.activewinmenulabel	"This Window">
+<!ENTITY copyurlsexpert.common.activetabgroupmenulabel	"This Tab Group">
 <!ENTITY copyurlsexpert.common.activetabmenulabel	"This Tab">
 <!ENTITY copyurlsexpert.common.allwinmenulabel	"All Windows">
 <!ENTITY copyurlsexpert.common.opentabsmenulabel	"Open Urls From Clipboard">

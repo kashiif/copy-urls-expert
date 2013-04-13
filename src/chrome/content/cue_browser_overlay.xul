@@ -22,6 +22,8 @@
 					<menuitem label="&copyurlsexpert.common.allwinmenulabel;"
 							  accesskey="&copyurlsexpert.common.allwinaccesskey;"
 							  oncommand="copyUrlsExpert.performCopyTabsUrl(false);" />
+					<menuitem label="&copyurlsexpert.common.activetabgroupmenulabel;"
+							  oncommand="copyUrlsExpert.performCopyTabsUrl(true, true);"/>
 					<menuitem label="&copyurlsexpert.common.activetabmenulabel;"
 							  oncommand="copyUrlsExpert.performCopyActiveTabUrl();"/>
 					<menuseparator />
@@ -52,6 +54,10 @@
 						  label="&copyurlsexpert.common.allwinmenulabel;"
 						  accesskey="&copyurlsexpert.common.allwinaccesskey;"
 						  tooltiptext="&copyurlsexpert.common.allwintooltip;" />
+				<menuitem id="copyurlsexpert-toolbar-btnactivetabgroup" 
+						  label="&copyurlsexpert.common.activetabgroupmenulabel;"
+						  accesskey="&copyurlsexpert.common.activetabgroupaccesskey;"
+						  tooltiptext="&copyurlsexpert.common.activetabgrouptooltip;" />
 				<menuitem id="copyurlsexpert-toolbar-btnactivetab"
 						  label="&copyurlsexpert.common.activetabmenulabel;"
 						  accesskey="&copyurlsexpert.common.activetabaccesskey;"
