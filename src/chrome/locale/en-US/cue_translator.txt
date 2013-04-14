@@ -1,0 +1,5 @@
+{
+  name:	"Undisclosed",    // Translator's name / handle / nick. This among email & url will be put into install.rdf.
+  email:	"Undisclosed",  // Translator's email
+  url:	"Undisclosed"
+}

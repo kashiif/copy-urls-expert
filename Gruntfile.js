@@ -26,7 +26,7 @@ module.exports = function(grunt) {
 		},
 		babelzilla: {
 			files: [
-				{expand: true, cwd: 'src/', src : ['**/*.dtd', '**/*.properties'],  dest: distdir },
+				{expand: true, cwd: 'src/', src : ['**/*.dtd', '**/*.properties', '**/cue_translator.txt'],  dest: distdir },
 			]
 		},
 	},
