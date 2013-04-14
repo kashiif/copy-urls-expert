@@ -7,13 +7,26 @@ module.exports = function(grunt) {
   grunt.initConfig({
 	pkg: pkg,
 	
+	clean: {
+		prod: ['dist']
+	},
+	
 	// Copy things to a distdir dir, and only change things in the temp dir
 	copy: {
-		prod: {
+		common: {
 			files: [
 				{expand: true, cwd: 'src/', src : ['chrome.manifest' ],  dest: distdir },
 				{expand: true, cwd: 'src/', src : ['**/*.css','**/*.js','**/*.jsm', '**/*.xul', '**/*.png','**/*.jpg'],  dest: distdir },
+			]
+		},
+		prod: {
+			files: [
 				{expand: true, cwd: 'src/', src : ['**/*.dtd', '!**/*_amo_*.dtd', '**/*.properties'],  dest: distdir },
+			]
+		},
+		babelzilla: {
+			files: [
+				{expand: true, cwd: 'src/', src : ['**/*.dtd', '**/*.properties'],  dest: distdir },
 			]
 		},
 	},
@@ -24,10 +37,6 @@ module.exports = function(grunt) {
 		dest: distdir + 'install.rdf',
 		options: {
 		  replacements: [
-		  {
-			pattern: /\<em\:version\>.+\<\/em\:version\>/g,
-			replacement: "<em:version>" + pkg.version + "</em:version>"
-		  },
 		  {
 			pattern: /\<em\:creator\>.+\<\/em\:creator\>/g,
 			replacement: "<em:creator>" + pkg.author.name + "</em:creator>"
@@ -42,6 +51,18 @@ module.exports = function(grunt) {
 		  }
 		  ]
 		}
+	  },
+	
+	  all_files: {
+		options: {
+		  replacements: [{
+			pattern: /__version__/g,
+			replacement: pkg.version
+		  }]
+		},
+		files: [
+			{expand: true, cwd: distdir, src : ['**/*.*', '!**/*.png', '!**/*.jpg', '!**/*.jpeg', '!**/*.gif' ], dest: distdir },
+		]
 	  }
 	},
 	
@@ -56,6 +77,8 @@ module.exports = function(grunt) {
 	}
   });
 
+  grunt.loadNpmTasks('grunt-contrib-clean');
+
   grunt.loadNpmTasks('grunt-contrib-copy');
 
   grunt.loadNpmTasks('grunt-string-replace');
@@ -69,6 +92,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-bump');
 
   // Default task(s).
-  grunt.registerTask('default', ['copy:prod', 'string-replace', 'compress']);
+  grunt.registerTask('default', ['clean', 'copy:common', 'copy:prod', 'string-replace', 'compress']);
+  grunt.registerTask('babelzilla', ['clean', 'copy:common', 'copy:babelzilla', 'string-replace', 'compress']);
   
 };
