@@ -20,6 +20,10 @@
 						  accesskey="&copyurlsexpert.common.allwinaccesskey;"
 						  tooltiptext="&copyurlsexpert.common.allwintooltip;"
 						  oncommand="copyUrlsExpert.performCopyTabsUrl(false);"/>
+				<menuitem label="&copyurlsexpert.common.activetabgroupmenulabel;"
+						  accesskey="&copyurlsexpert.common.activetabgroupaccesskey;"
+						  tooltiptext="&copyurlsexpert.common.activetabgrouptooltip;"
+						  oncommand="copyUrlsExpert.performCopyTabsUrl(true, true);"/>
 				<menuitem label="&copyurlsexpert.common.activetabmenulabel;"
 						  accesskey="&copyurlsexpert.common.activetabaccesskey;"
 						  tooltiptext="&copyurlsexpert.common.activetabtooltip;"
