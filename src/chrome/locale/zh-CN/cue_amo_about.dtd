@@ -40,9 +40,8 @@ Tiếng Việt · vi
 中文 (简体) · zh-cn
 正體中文 (繁體) · zh-tw
 
+
 -->
-
-
 <!--
 
 <strong>概述</strong>
@@ -79,7 +78,6 @@ $date - 今天的日期。
 
 <strong>错误和支持</strong>
 
-<em>我们期待您的反馈。请提出建议、反馈或者报告错误到
-http://www.kashiif.com/firefox-extensions/copy-urls-expert/copy-urls-expert-feedback/
-</em>
+请到 <a href="https://github.com/kashiif/copy-urls-expert/issues">GitHub Issue Tracker</a> 反馈 BUG。
+
 -->

@@ -1,30 +1,25 @@
-<!ENTITY copyurlsexpert.options.windowtitle	"Copy Urls Expert 选项">
-<!ENTITY copyurlsexpert.options.btacceptlabel	"保存">
-<!ENTITY copyurlsexpert.options.btacceptaccesskey	"S">
-
-<!ENTITY copyurlsexpert.options.generaltab	"一般">
-<!ENTITY copyurlsexpert.options.formattab	"格式">
-<!ENTITY copyurlsexpert.options.helptab	"帮助">
-
-<!ENTITY copyurlsexpert.options.lblsortby	"排序方式">
-<!ENTITY copyurlsexpert.options.itmsortbytab	"标签顺序">
-<!ENTITY copyurlsexpert.options.itmsortbydomain	"域">
-<!ENTITY copyurlsexpert.options.itmsortbytitle	"标题">
-
+<!ENTITY copyurlsexpert.options.windowtitle "Copy Urls Expert 选项">
+<!ENTITY copyurlsexpert.options.btacceptlabel "保存">
+<!ENTITY copyurlsexpert.options.btacceptaccesskey "S">
+<!ENTITY copyurlsexpert.options.generaltab "一般">
+<!ENTITY copyurlsexpert.options.formattab "格式">
+<!ENTITY copyurlsexpert.options.helptab "帮助">
+<!ENTITY copyurlsexpert.options.lblsortby "排序方式">
+<!ENTITY copyurlsexpert.options.itmsortbytab "标签顺序">
+<!ENTITY copyurlsexpert.options.itmsortbydomain "域">
+<!ENTITY copyurlsexpert.options.itmsortbytitle "标题">
 <!ENTITY copyurlsexpert.options.formattablabelsize "5">
-<!ENTITY copyurlsexpert.options.lblname	"名称">
-<!ENTITY copyurlsexpert.options.lblmarkup	"标记">
-<!ENTITY copyurlsexpert.options.lblprefix	"前缀">
-<!ENTITY copyurlsexpert.options.lblpostfix	"后缀">
-
-<!ENTITY copyurlsexpert.options.lbltoolbaraction	"工具栏按钮默认动作">
-<!ENTITY copyurlsexpert.common.activewinmenulabel	"此窗口">
-<!ENTITY copyurlsexpert.common.activetabmenulabel	"此标签">
-<!ENTITY copyurlsexpert.common.allwinmenulabel	"所有窗口">
-<!ENTITY copyurlsexpert.common.opentabsmenulabel	"从剪贴板打开 URL">
-<!ENTITY copyurlsexpert.common.optionsmenulabel	"选项">
-
-
+<!ENTITY copyurlsexpert.options.lblname "名称">
+<!ENTITY copyurlsexpert.options.lblmarkup "标记">
+<!ENTITY copyurlsexpert.options.lblprefix "前缀">
+<!ENTITY copyurlsexpert.options.lblpostfix "后缀">
+<!ENTITY copyurlsexpert.options.lbltoolbaraction "工具栏按钮默认动作">
+<!ENTITY copyurlsexpert.common.activewinmenulabel "此窗口">
+<!ENTITY copyurlsexpert.common.activetabgroupmenulabel "此标签页组">
+<!ENTITY copyurlsexpert.common.activetabmenulabel "此标签">
+<!ENTITY copyurlsexpert.common.allwinmenulabel "所有窗口">
+<!ENTITY copyurlsexpert.common.opentabsmenulabel "从剪贴板打开 URL">
+<!ENTITY copyurlsexpert.common.optionsmenulabel "选项">
 <!ENTITY copyurlsexpert.options.btnaddnew "新建">
 <!ENTITY copyurlsexpert.options.btnupdate "更新">
 <!ENTITY copyurlsexpert.options.btnsave "保存">
@@ -32,9 +27,7 @@
 <!ENTITY copyurlsexpert.options.btnedit "编辑">
 <!ENTITY copyurlsexpert.options.btndefault "保存为默认">
 <!ENTITY copyurlsexpert.options.btndelete "删除">
-
 <!ENTITY copyurlsexpert.options.lblhelphint "查看帮助标签学习如何自定义剪贴板文本格式。">
-
 <!ENTITY copyurlsexpert.options.lblhelphint2 "可以自定义复制到剪贴板的文本。">
 <!ENTITY copyurlsexpert.options.lblhelphint3 "文本内容可以由三部分组成：">
 <!ENTITY copyurlsexpert.options.lblprefixheading "前缀">
@@ -44,7 +37,6 @@
 <!ENTITY copyurlsexpert.options.lblpostfixheading "后缀">
 <!ENTITY copyurlsexpert.options.lblpostfixdesc "出现在 URL 列表后的文本。(可选)">
 <!ENTITY copyurlsexpert.options.lblvariablesheading "标记变量">
-
 <!ENTITY copyurlsexpert.options.lbltagurl "链接/URL 本身，例如 http://www.google.com">
 <!ENTITY copyurlsexpert.options.lbltagtitle "页面或者图像的标题。">
 <!ENTITY copyurlsexpert.options.lbltagnewline "换行符。注意 URL 后不会自动换行，必须使用 $n 换行。">

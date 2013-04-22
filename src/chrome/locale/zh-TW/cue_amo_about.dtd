@@ -1,0 +1,85 @@
+<!--
+
+The text in this file does not appear anywhere in the addon. This will be used on extension's localized page
+
+Following are the available locales on MDN:
+
+Afrikaans · af
+عربي · ar
+Български · bg
+català · ca
+Čeština · cs
+Dansk · da
+Deutsch · de
+Ελληνικά · el
+Español · es
+Euskara · eu
+فارسی · fa
+suomi · fi
+Français · fr
+Gaeilge (Éire) · ga-ie
+עברית · he
+magyar · hu
+Bahasa Indonesia · id
+Italiano · it
+日本語 · ja
+한국어 · ko
+Монгол · mn
+Nederlands · nl
+Polski · pl
+Português (do Brasil) · pt-br
+Português (Europeu) · pt-pt
+română · ro
+Русский · ru
+slovenčina · sk
+Slovenščina · sl
+Shqip · sq
+Svenska · sv-se
+Українська · uk
+Tiếng Việt · vi
+中文 (简体) · zh-cn
+正體中文 (繁體) · zh-tw
+
+
+
+-->
+<!--
+
+<strong>功能總覽</strong>
+
+當您需要複製一堆網址時，Copy Urls Expert 會是個好幫手。這個套件提供了幾種可能：
+<ol>
+ <li> 複製所有開啟中視窗內所有分頁的網址。
+ <li> 只複製當前視窗內所有分頁的網址。
+ <li> 複製選取範圍內所有鏈結的網址。
+ <li> 複製選取範圍內所有圖片的網址。
+</ol>
+
+您還可以利用選單的「開啟分頁」功能一次開啟多個鏈結。
+
+若要使用這個功能，首先要從下列任一位置進入「Copy Urls Expert」選單：
+<ul>
+<li> 選單列 -&gt; 編輯選單
+<li> Firefox 應用程式選單（AppMenu） -&gt; 編輯選單
+<li> 分頁的快顯功能表
+<li> 選取區域的快顯功能表
+<li> Copy Urls Expert 工具列按鈕（這個按鈕必須手動新增到工具列上。<a href="https://support.mozilla.org/zh-TW/kb/how-do-i-customize-toolbars#w_ieeaniiuegiceinuaeug">如何增加按鈕</a>?)
+</ul>
+<strong>自訂格式</strong>
+
+鏈結複製到剪貼簿時的格式具有高度自訂性，用法請參見本擴充套件的選項對話框。以下是您在自訂各個網址時可用的參數：
+
+$url - 實際鏈結，例如 http://google.com/
+$title - 分頁標題，例如 e.g. Google
+$n - 新起一行
+$index - 鏈結的流水號
+$date - 當天的日期
+
+別忘了各網址間原本不會自動分行，所以無論如何都得加個 $n。
+
+<strong>Bug、技術支援</strong>
+
+請利用 <a href="https://github.com/kashiif/copy-urls-expert/issues">GitHub Issue Tracker</a> 來回報 BUG。
+
+
+-->

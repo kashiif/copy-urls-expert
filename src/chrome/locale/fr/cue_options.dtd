@@ -1,0 +1,45 @@
+<!ENTITY copyurlsexpert.options.windowtitle "Options de Copy Urls Expert">
+<!ENTITY copyurlsexpert.options.btacceptlabel "Enregistrer">
+<!ENTITY copyurlsexpert.options.btacceptaccesskey "E">
+<!ENTITY copyurlsexpert.options.generaltab "Générales">
+<!ENTITY copyurlsexpert.options.formattab "Format">
+<!ENTITY copyurlsexpert.options.helptab "Aide">
+<!ENTITY copyurlsexpert.options.lblsortby "Trier par">
+<!ENTITY copyurlsexpert.options.itmsortbytab "Onglet">
+<!ENTITY copyurlsexpert.options.itmsortbydomain "Domaine">
+<!ENTITY copyurlsexpert.options.itmsortbytitle "Titre">
+<!ENTITY copyurlsexpert.options.formattablabelsize "5">
+<!ENTITY copyurlsexpert.options.lblname "Nom">
+<!ENTITY copyurlsexpert.options.lblmarkup "Marqueur">
+<!ENTITY copyurlsexpert.options.lblprefix "Préfixe">
+<!ENTITY copyurlsexpert.options.lblpostfix "Suffixe">
+<!ENTITY copyurlsexpert.options.lbltoolbaraction "Action par défaut du bouton">
+<!ENTITY copyurlsexpert.common.activewinmenulabel "Cette fenêtre">
+<!ENTITY copyurlsexpert.common.activetabgroupmenulabel "Ce groupe d'onglets">
+<!ENTITY copyurlsexpert.common.activetabmenulabel "Cet onglet">
+<!ENTITY copyurlsexpert.common.allwinmenulabel "Toutes les fenêtres">
+<!ENTITY copyurlsexpert.common.opentabsmenulabel "Ouvrir les url à partir du presse-papiers">
+<!ENTITY copyurlsexpert.common.optionsmenulabel "Options">
+<!ENTITY copyurlsexpert.options.btnaddnew "Nouveau">
+<!ENTITY copyurlsexpert.options.btnupdate "Mettre à jour">
+<!ENTITY copyurlsexpert.options.btnsave "Enregistrer">
+<!ENTITY copyurlsexpert.options.btncancelsave "Annuler">
+<!ENTITY copyurlsexpert.options.btnedit "Éditer">
+<!ENTITY copyurlsexpert.options.btndefault "Définir par défaut">
+<!ENTITY copyurlsexpert.options.btndelete "Supprimer">
+<!ENTITY copyurlsexpert.options.lblhelphint "Voir l'onglet d'aide pour comprendre comment personnaliser le texte contenu dans le presse-papiers.">
+<!ENTITY copyurlsexpert.options.lblhelphint2 "Il est possible de personnaliser le texte copié dans le presse-papiers.">
+<!ENTITY copyurlsexpert.options.lblhelphint3 "Trois parties de contenu peuvent être définies : ">
+<!ENTITY copyurlsexpert.options.lblprefixheading "Préfixe">
+<!ENTITY copyurlsexpert.options.lblprefixdesc "Ce texte s'affichera avant la liste des adresse (facultatif).">
+<!ENTITY copyurlsexpert.options.lbllinkslistheading "Liste d'adresses">
+<!ENTITY copyurlsexpert.options.lbllinkslistdesc "Ceci est le texte qui s'affichera pour chaque url. Valeur par défaut : $url$n.">
+<!ENTITY copyurlsexpert.options.lblpostfixheading "Suffixe">
+<!ENTITY copyurlsexpert.options.lblpostfixdesc "C'est le tetxe qui s'affichera après la liste d'adresses (facultatif).">
+<!ENTITY copyurlsexpert.options.lblvariablesheading "Variables de balisage">
+<!ENTITY copyurlsexpert.options.lbltagurl "Le lien/url. Ex. : http://www.google.fr">
+<!ENTITY copyurlsexpert.options.lbltagtitle "Titre de la page ou de l'image.">
+<!ENTITY copyurlsexpert.options.lbltagnewline "Retour à la ligne. Les url ne sont pas affichées les unes en-dessous des autres, il faut donc ajouter $n pour avoir une url par ligne.">
+<!ENTITY copyurlsexpert.options.lbltagindex "Numéro d'ordre de l'url courante dans la liste d'adresses.">
+<!ENTITY copyurlsexpert.options.lbltagdate "Date d'aujourd'hui">
+<!ENTITY copyurlsexpert.options.lbltagtime "Horaire courant au format Unix">
