@@ -26,7 +26,6 @@ _FormatPattern.prototype.toString= function() {
 		/*4*/	this.postfix.replace(pipeRegex, ESCAPED_SEPARATOR)
 			].join(SEPARATOR); 
 
-		Components.utils.reportError('_FormatPattern.toString Called : ' + v);
 		return v;
 		};
 

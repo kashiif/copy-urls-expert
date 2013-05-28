@@ -537,7 +537,6 @@ var copyUrlsExpert = {
 		var webNav = aBrowsers[aBrowsers.length-1].webNavigation;
 		if (webNav.currentURI.spec == 'about:blank') {
 			// yes it is empty
-			Components.utils.reportError('loading: ' + urls[0]);
 			_g.loadURI(urls[0]);
 			start++;
 		}
