@@ -1,4 +1,4 @@
-﻿<!ENTITY copyurlsexpert.options.windowtitle "Copy Urls Expert 옵션">
+<!ENTITY copyurlsexpert.options.windowtitle "Copy Urls Expert 옵션">
 <!ENTITY copyurlsexpert.options.btacceptlabel "저장">
 <!ENTITY copyurlsexpert.options.btacceptaccesskey "S">
 <!ENTITY copyurlsexpert.options.generaltab "일반">
@@ -15,6 +15,7 @@
 <!ENTITY copyurlsexpert.options.lblpostfix "접미어">
 <!ENTITY copyurlsexpert.options.lbltoolbaraction "툴바 버튼 기본 작업">
 <!ENTITY copyurlsexpert.common.activewinmenulabel "이 창">
+<!ENTITY copyurlsexpert.common.activetabgroupmenulabel "This Tab Group">
 <!ENTITY copyurlsexpert.common.activetabmenulabel "This Tab">
 <!ENTITY copyurlsexpert.common.allwinmenulabel "모든 창들">
 <!ENTITY copyurlsexpert.common.opentabsmenulabel "탭들 열기">

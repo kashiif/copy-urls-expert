@@ -1,4 +1,4 @@
-﻿<!ENTITY copyurlsexpert.options.windowtitle "Copy Urls Expert 옵션">
+<!ENTITY copyurlsexpert.options.windowtitle "Copy Urls Expert 옵션">
 <!ENTITY copyurlsexpert.common.menupopuplabel "Copy Urls Expert">
 <!ENTITY copyurlsexpert.common.menupopupaccesskey "U">
 <!ENTITY copyurlsexpert.common.activewinmenulabel "이 창의 탭들">
@@ -7,6 +7,9 @@
 <!ENTITY copyurlsexpert.common.allwinmenulabel "모든 창들의 탭들">
 <!ENTITY copyurlsexpert.common.allwinaccesskey "A">
 <!ENTITY copyurlsexpert.common.allwintooltip "모든 창들의 모든 탭들의 주소를 복사합니다">
+<!ENTITY copyurlsexpert.common.activetabgroupmenulabel "Tabs In This Tab Group">
+<!ENTITY copyurlsexpert.common.activetabgroupaccesskey "">
+<!ENTITY copyurlsexpert.common.activetabgrouptooltip "Copy Urls of All Tabs in Active Tab Group">
 <!ENTITY copyurlsexpert.common.activetabmenulabel "Active Tab">
 <!ENTITY copyurlsexpert.common.activetabaccesskey "">
 <!ENTITY copyurlsexpert.common.activetabtooltip "Copy Url of Active Tab">

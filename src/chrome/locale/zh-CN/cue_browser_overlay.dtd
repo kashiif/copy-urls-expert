@@ -8,8 +8,10 @@
 <!ENTITY copyurlsexpert.common.allwinaccesskey "A">
 <!ENTITY copyurlsexpert.common.allwintooltip "复制所有窗口中标签的 URL">
 <!ENTITY copyurlsexpert.common.activetabgroupmenulabel "此标签页组中的标签">
+<!ENTITY copyurlsexpert.common.activetabgroupaccesskey "">
 <!ENTITY copyurlsexpert.common.activetabgrouptooltip "复制活动标签页组中所有标签的 URL">
 <!ENTITY copyurlsexpert.common.activetabmenulabel "活动标签">
+<!ENTITY copyurlsexpert.common.activetabaccesskey "">
 <!ENTITY copyurlsexpert.common.activetabtooltip "复制活动标签的 URL">
 <!ENTITY copyurlsexpert.common.opentabsmenulabel "从剪贴板打开标签">
 <!ENTITY copyurlsexpert.common.opentabsaccesskey "p">
