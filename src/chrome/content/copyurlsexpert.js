@@ -527,7 +527,7 @@ var copyUrlsExpert = {
 			urls.push(newUrl);			
 		}
 
-		if (!urls.length) return;
+		if (!urls.length) return true;
 
 		var _g = this._gBrowser();
 
