@@ -1,0 +1,45 @@
+<!ENTITY copyurlsexpert.options.windowtitle "Innstillingar for �Copy Urls Expert�">
+<!ENTITY copyurlsexpert.options.btacceptlabel "Lagra">
+<!ENTITY copyurlsexpert.options.btacceptaccesskey "L">
+<!ENTITY copyurlsexpert.options.generaltab "Generelt">
+<!ENTITY copyurlsexpert.options.formattab "Format">
+<!ENTITY copyurlsexpert.options.helptab "Hjelp">
+<!ENTITY copyurlsexpert.options.lblsortby "Sorter etter">
+<!ENTITY copyurlsexpert.options.itmsortbytab "Fanefølgje">
+<!ENTITY copyurlsexpert.options.itmsortbydomain "Domene">
+<!ENTITY copyurlsexpert.options.itmsortbytitle "Tittel">
+<!ENTITY copyurlsexpert.options.formattablabelsize "5">
+<!ENTITY copyurlsexpert.options.lblname "Namn">
+<!ENTITY copyurlsexpert.options.lblmarkup "Oppmerking">
+<!ENTITY copyurlsexpert.options.lblprefix "Topptekst">
+<!ENTITY copyurlsexpert.options.lblpostfix "Botntekst">
+<!ENTITY copyurlsexpert.options.lbltoolbaraction "Standardhandling for verktøylinjeknapp">
+<!ENTITY copyurlsexpert.common.activewinmenulabel "Dette vindauget">
+<!ENTITY copyurlsexpert.common.activetabgroupmenulabel "Denne fanegruppa">
+<!ENTITY copyurlsexpert.common.activetabmenulabel "Denne fanen">
+<!ENTITY copyurlsexpert.common.allwinmenulabel "Alle vindauge">
+<!ENTITY copyurlsexpert.common.opentabsmenulabel "Opna URL-ar frå utklippstavla">
+<!ENTITY copyurlsexpert.common.optionsmenulabel "Innstillingar">
+<!ENTITY copyurlsexpert.options.btnaddnew "Ny">
+<!ENTITY copyurlsexpert.options.btnupdate "Oppdater">
+<!ENTITY copyurlsexpert.options.btnsave "Lagra">
+<!ENTITY copyurlsexpert.options.btncancelsave "Forkast">
+<!ENTITY copyurlsexpert.options.btnedit "Endra">
+<!ENTITY copyurlsexpert.options.btndefault "Set som standard">
+<!ENTITY copyurlsexpert.options.btndelete "Slett">
+<!ENTITY copyurlsexpert.options.lblhelphint "Sjå Hjelp-fanen for å læra korleis du kan endra teksta som blir kopiert til utklippstavla.">
+<!ENTITY copyurlsexpert.options.lblhelphint2 "Det er mogleg å endra korleis teksta blir kopiert til utklippstavla.">
+<!ENTITY copyurlsexpert.options.lblhelphint3 "Det finst tre moglege innhaldstyper:">
+<!ENTITY copyurlsexpert.options.lblprefixheading "Topptekst">
+<!ENTITY copyurlsexpert.options.lblprefixdesc "Dette er teksta som kjem før lista med adresser (valfritt).">
+<!ENTITY copyurlsexpert.options.lbllinkslistheading "Lista med adresser">
+<!ENTITY copyurlsexpert.options.lbllinkslistdesc "Dette er teksta som kjem for kvar nettadresse. Standardverdien er $url$n.">
+<!ENTITY copyurlsexpert.options.lblpostfixheading "Botntekst">
+<!ENTITY copyurlsexpert.options.lblpostfixdesc "Dette er teksta som kjem etter lista med adresser (valfritt).">
+<!ENTITY copyurlsexpert.options.lblvariablesheading "Oppmerkingsvariablar">
+<!ENTITY copyurlsexpert.options.lbltagurl "Sjølve nettadressa, t.d. https://www.google.no">
+<!ENTITY copyurlsexpert.options.lbltagtitle "Tittelen på sida eller biletet.">
+<!ENTITY copyurlsexpert.options.lbltagnewline "Eit linjeskift. Merk at nettadresser ikkje kjem på kvar si linje med mindre $n er gitt.">
+<!ENTITY copyurlsexpert.options.lbltagindex "Nummeret på denne adressa i lista av adresser.">
+<!ENTITY copyurlsexpert.options.lbltagdate "Dags dato">
+<!ENTITY copyurlsexpert.options.lbltagtime "Tidspunktet i UNIX-format">
