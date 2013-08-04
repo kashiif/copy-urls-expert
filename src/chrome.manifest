@@ -10,6 +10,7 @@ locale	copy-urls-expert 	de	chrome/locale/de/
 locale	copy-urls-expert 	zh-CN	chrome/locale/zh-CN/
 locale	copy-urls-expert 	zh-TW	chrome/locale/zh-TW/
 locale	copy-urls-expert 	fr	chrome/locale/fr/
+locale	copy-urls-expert 	nn-NO	chrome/locale/nn-NO/
 
 overlay	chrome://browser/content/browser.xul	chrome://copy-urls-expert/content/cue_browser_overlay.xul
 overlay chrome://browser/content/browser.xul    chrome://copy-urls-expert/content/cue_ff_overlay.xul

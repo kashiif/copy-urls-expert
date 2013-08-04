@@ -8,8 +8,10 @@
 <!ENTITY copyurlsexpert.common.allwinaccesskey "A">
 <!ENTITY copyurlsexpert.common.allwintooltip "複製所有視窗內所有分頁的網址">
 <!ENTITY copyurlsexpert.common.activetabgroupmenulabel "此分頁群組的分頁">
+<!ENTITY copyurlsexpert.common.activetabgroupaccesskey "">
 <!ENTITY copyurlsexpert.common.activetabgrouptooltip "複製使用中分頁群組內所有分頁的網址">
 <!ENTITY copyurlsexpert.common.activetabmenulabel "此分頁">
+<!ENTITY copyurlsexpert.common.activetabaccesskey "">
 <!ENTITY copyurlsexpert.common.activetabtooltip "複製使用中分頁的網址">
 <!ENTITY copyurlsexpert.common.opentabsmenulabel "開啟剪貼簿中的網址">
 <!ENTITY copyurlsexpert.common.opentabsaccesskey "p">

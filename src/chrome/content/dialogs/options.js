@@ -229,14 +229,14 @@ copyUrlsExpert.options = {
 		var name = t.value;
 		if (name.trim().length == 0) {
 			alert('Name cannot be empty.'); // TODO: localize it
-			return null;
+			return;
 		}
 				
 		t = document.getElementById('copyurlsexpert-txtmarkup');
 		var pattern = t.value;
 		if (pattern.trim().length == 0) {
 			alert('Markup cannot be empty.'); // TODO: localize it
-			return null;
+			return;
 		}
 		
 		var tree = copyUrlsExpert.options.gUriTree;

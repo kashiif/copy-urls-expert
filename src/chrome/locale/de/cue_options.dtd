@@ -15,6 +15,7 @@
 <!ENTITY copyurlsexpert.options.lblpostfix "Text danach">
 <!ENTITY copyurlsexpert.options.lbltoolbaraction "Standardaktion der Symbolleistenschaltfläche">
 <!ENTITY copyurlsexpert.common.activewinmenulabel "Adressen der Tabs des aktiven Fensters kopieren">
+<!ENTITY copyurlsexpert.common.activetabgroupmenulabel "This Tab Group">
 <!ENTITY copyurlsexpert.common.activetabmenulabel "Adresse des aktiven Tabs kopieren">
 <!ENTITY copyurlsexpert.common.allwinmenulabel "Adressen der Tabs aller Fenstern kopieren">
 <!ENTITY copyurlsexpert.common.opentabsmenulabel "Adressen aus Zwischenablage öffnen">
