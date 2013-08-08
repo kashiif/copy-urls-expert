@@ -9,7 +9,7 @@
         id="copyurlsexpert-options-window"
         title="&copyurlsexpert.options.windowtitle;"
         width= "600"
-        height= "600"
+        height= "630"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >	  
   <prefpane flex="1" id="copyurlsexpert-generaloptionstabpanel" label="&copyurlsexpert.options.generaltab;" image="chrome://copy-urls-expert/skin/general.png">
 	<preferences>
@@ -148,29 +148,37 @@
 		  </columns>
 		  <rows>
 		  	<row>
-				<textbox readonly="true" value="$url"/>
-				<label class="helplabel">&copyurlsexpert.options.lbltagurl;</label>
-			</row>
+          <textbox readonly="true" value="$url"/>
+          <label class="helplabel">&copyurlsexpert.options.lbltagurl;</label>
+        </row>
+        <row>
+          <textbox readonly="true" value="$title"/>
+          <label class="helplabel">&copyurlsexpert.options.lbltagtitle;</label>
+        </row>
+        <row>
+          <textbox readonly="true" value="$n"/>
+          <label class="helplabel">&copyurlsexpert.options.lbltagnewline;</label>
+        </row>
+        <row>
+          <textbox readonly="true" value="$t"/>
+          <label class="helplabel">&copyurlsexpert.options.lbltagtab;</label>
+        </row>
 		  	<row>
-				<textbox readonly="true" value="$title"/>
-				<label class="helplabel">&copyurlsexpert.options.lbltagtitle;</label>
-			</row>
+          <textbox readonly="true" value="$index"/>
+          <label class="helplabel">&copyurlsexpert.options.lbltagindex;</label>
+        </row>
 		  	<row>
-				<textbox readonly="true" value="$n"/>
-				<label class="helplabel">&copyurlsexpert.options.lbltagnewline;</label>
-			</row>
+          <textbox readonly="true" value="$date"/>
+          <label class="helplabel">&copyurlsexpert.options.lbltagdate;</label>
+        </row>
 		  	<row>
-				<textbox readonly="true" value="$index"/>
-				<label class="helplabel">&copyurlsexpert.options.lbltagindex;</label>
-			</row>
+          <textbox readonly="true" value="$date(format-string)"/>
+          <label class="helplabel">&copyurlsexpert.options.lbltagfdate;</label>
+        </row>
 		  	<row>
-				<textbox readonly="true" value="$date"/>
-				<label class="helplabel">&copyurlsexpert.options.lbltagdate;</label>
-			</row>
-		  	<row>
-				<textbox readonly="true" value="$time"/>
-				<label class="helplabel">&copyurlsexpert.options.lbltagtime;</label>
-			</row>
+          <textbox readonly="true" value="$time"/>
+          <label class="helplabel">&copyurlsexpert.options.lbltagtime;</label>
+        </row>
 		  </rows>
 		 </grid>
   	  </vbox>

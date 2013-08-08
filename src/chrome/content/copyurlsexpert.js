@@ -323,6 +323,29 @@ var copyUrlsExpert = {
 		}
 	},
 
+  // dateUtils.format()
+  formatDate: function(d, f) {
+    // make a single digit two digit by prefixing 0
+    function t(n) n<10? "0"+n:n;
+    
+    var h = d.getHours(), 
+        m = d.getMinutes(),
+        s = d.getSeconds();
+  
+    var strDate = f.replace(/YYYY/g, d.getFullYear())
+             .replace(/mm/g, t(d.getMonth()))
+             .replace(/dd/g, t(d.getDate()))
+             .replace(/HH/g, t(h))  // 24-hour clock
+             .replace(/hh/g, t(h>12?h-12:h))
+             .replace(/h/gi, h)
+             .replace(/MM/g, t(m))
+             .replace(/M/g, m)
+             .replace(/SS/g, t(s))
+             .replace(/S/g, s);
+             
+    return strDate;
+  },
+
 	_transform: function(fmtPattern, entries) {
 		var returnValue = '';
 
@@ -342,10 +365,16 @@ var copyUrlsExpert = {
 		}
 		
 		returnValue = fmtPattern.prefix + returnValue + fmtPattern.postfix;
-		
+
+    // http://stackoverflow.com/questions/1234712/javascript-replace-with-reference-to-matched-group
+		returnValue = returnValue.replace(/\$date\((.+?)\)/g, function(match, grp1){
+                        return copyUrlsExpert.formatDate(d, grp1);
+                      });
+
 		returnValue = returnValue.replace(/\$date/gi, strDate);
 		returnValue = returnValue.replace(/\$time/gi, strTime);
 		returnValue = returnValue.replace(/\$n/gi, copyUrlsExpert.LINE_FEED);
+		returnValue = returnValue.replace(/\$t/gi, '\t');
 
 		return returnValue;
 	},

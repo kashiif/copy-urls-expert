@@ -49,6 +49,8 @@
 <!ENTITY copyurlsexpert.options.lbltagurl "The link/url itself e.g. http://www.google.com">
 <!ENTITY copyurlsexpert.options.lbltagtitle "Title of the page or image.">
 <!ENTITY copyurlsexpert.options.lbltagnewline "A new line charcater. Note that urls are not placed on new lines so $n must be used anyways.">
+<!ENTITY copyurlsexpert.options.lbltagtab "A tab charcater.">
 <!ENTITY copyurlsexpert.options.lbltagindex "Serial number of current url in the list of urls.">
 <!ENTITY copyurlsexpert.options.lbltagdate "Today's date">
+<!ENTITY copyurlsexpert.options.lbltagfdate "Current date time formatted as per the string between parenthesis. You can use YY, YYYY, mm, m, dd, d, HH, hh, h, M, MM, S and SS to represent different components of date and time.">
 <!ENTITY copyurlsexpert.options.lbltagtime "Current time in unix format">
