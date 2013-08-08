@@ -1,3 +1,9 @@
+/**************************************
+* Author: Kashif Iqbal Khan
+* Email: kashiif@gmail.com
+* Copyright (c) 2013 Kashif Iqbal Khan
+**************************************/
+
 module.exports = function(grunt) {
 	
   var pkg = grunt.file.readJSON('package.json'),

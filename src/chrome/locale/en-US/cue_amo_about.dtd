@@ -51,6 +51,7 @@ Copy Urls Expert comes in handy when you want to copy a bunch of urls. It provid
 <ol>
  <li> Copy urls of all tabs in every opened window.
  <li> Copy urls of all tabs only in the current window.
+ <li> Copy urls of all tabs in the current tab group.
  <li> Copy urls of all links in the selection.
  <li> Copy urls of all images in the selection.
 </ol>
@@ -72,8 +73,20 @@ The format in which links are copied to clipboard is highly customizable. See th
 $url - Actual link e.g. http://google.com/
 $title - Title of the tab e.g. Google
 $n - New Line.
+$t - Tab character.
 $index - Serial number of link.
 $date - Today's date
+$date(format_string) - Today's date/time is the format specified by format string:
+             YYYY - four digit year
+             mm - two digit month
+             dd - day of the month
+             HH - hour in 24-hour format
+             hh - two digit hour
+             h  - hour
+             MM - two digit minute
+             M  - minute
+             SS - two digit second
+             S  - second
 
 Remember that by default urls are not placed on new lines so $n must be used anyways.
 

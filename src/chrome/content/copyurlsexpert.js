@@ -333,6 +333,7 @@ var copyUrlsExpert = {
         s = d.getSeconds();
   
     var strDate = f.replace(/YYYY/g, d.getFullYear())
+             .replace(/YY/g, d.getFullYear().toString().substr(2))
              .replace(/mm/g, t(d.getMonth()))
              .replace(/dd/g, t(d.getDate()))
              .replace(/HH/g, t(h))  // 24-hour clock
