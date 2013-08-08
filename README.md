@@ -14,7 +14,7 @@ Run the following in the repository root directory to install all the required g
 
 ```
 npm install
-;2```
+```
 
 This step is required only once.
 
