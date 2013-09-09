@@ -70,13 +70,13 @@ module.exports = function(grunt) {
 	  all_files: { /* Task to replace tokens in all files */
       options: {
         replacements: [{
+          pattern: /___version___/g,
+          replacement: pkg.version
+        },
+        {
           pattern: /__version__/g,
           replacement: versionForFileSystem
-        },
-          {
-            pattern: /___version___/g,
-            replacement: pkg.version
-          }]
+        }]
       },
       files: [
         {expand: true, cwd: tempDir, src : ["**/*.*", "!**/*.png", "!**/*.jpg", "!**/*.jpeg", "!**/*.gif" ], dest: tempDir }
