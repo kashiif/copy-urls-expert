@@ -1,104 +1,123 @@
+"use strict";
+
 /**************************************
 * Author: Kashif Iqbal Khan
 * Email: kashiif@gmail.com
+* License: MIT
 * Copyright (c) 2013 Kashif Iqbal Khan
 **************************************/
 
 module.exports = function(grunt) {
-	
-  var pkg = grunt.file.readJSON('package.json'),
-	  distdir = 'dist/' + pkg.name + '-' + pkg.version + '/';
-	 
+
+  var path  = require("path");
+
+  var pkg = grunt.file.readJSON("package.json"),
+      srcDir = "src/",  // Path of directory where source code resides
+      distdir = "dist/",
+      tempDir = distdir + "temp/",
+      versionForFileSystem = pkg.version.replace(/\./g, "-");
+
   // Project configuration.
   grunt.initConfig({
 	pkg: pkg,
 	
 	clean: {
-		prod: ['dist']
+		prod: [tempDir, distdir]
 	},
 	
-	// Copy things to a distdir dir, and only change things in the temp dir
+	// Copy files to tempDir, and only change things in there
 	copy: {
 		common: {
 			files: [
-				{expand: true, cwd: 'src/', src : ['chrome.manifest' ],  dest: distdir },
-				{expand: true, cwd: 'src/', src : ['**/*.css','**/*.js','**/*.jsm', '**/*.xul', '**/*.png','**/*.jpg'],  dest: distdir },
+				{expand: true, cwd: srcDir, src : ["chrome.manifest" ],  dest: tempDir },
+				{expand: true, cwd: srcDir, src : ["**/*.css","**/*.js","**/*.jsm", "**/*.xul", "**/*.png","**/*.jpg"],  dest: tempDir }
 			]
 		},
 		prod: {
 			files: [
-				{expand: true, cwd: 'src/', src : ['**/*.dtd', '!**/*_amo_*.dtd', '**/*.properties'],  dest: distdir },
+				{expand: true, cwd: srcDir, src : ["**/*.dtd", "**/*.properties", "!**/*_amo_*.dtd"],  dest: tempDir }
 			]
 		},
 		babelzilla: {
 			files: [
-				{expand: true, cwd: 'src/', src : ['**/*.dtd', '**/*.properties', '**/cue_translator.txt'],  dest: distdir },
+				{expand: true, cwd: srcDir, src : ["**/*.dtd", "**/*.properties", "**/cue_translator.txt"],  dest: tempDir }
 			]
-		},
+		}
 	},
 	
 	"string-replace": {
-	  install_rdf: {
-		src: 'src/install.rdf',
-		dest: distdir + 'install.rdf',
-		options: {
-		  replacements: [
-		  {
-			pattern: /\<em\:creator\>.+\<\/em\:creator\>/g,
-			replacement: "<em:creator>" + pkg.author.name + "</em:creator>"
-		  },
-		  {
-			pattern: /\<em\:homepageURL\>.*\<\/em\:homepageURL\>/g,
-			replacement: "<em:homepageURL>" + pkg.homepage + "</em:homepageURL>"
-		  },		  
-		  {
-			pattern: /\<em\:description\>.*\<\/em\:description\>/g,
-			replacement: "<em:description>" + pkg.description + "</em:description>"
-		  }
-		  ]
-		}
+	  install_rdf: { /* Task to replace tokens in install.rdf */
+      options: {
+        replacements: [
+          {
+            pattern: /\<em\:creator\>.+\<\/em\:creator\>/g,
+            replacement: "<em:creator>" + pkg.author.name + "</em:creator>"
+          },
+          {
+            pattern: /\<em\:homepageURL\>.*\<\/em\:homepageURL\>/g,
+            replacement: "<em:homepageURL>" + pkg.homepage + "</em:homepageURL>"
+          },		  
+          {
+            pattern: /\<em\:description\>.*\<\/em\:description\>/g,
+            replacement: "<em:description>" + pkg.description + "</em:description>"
+          }
+        ]
+      },
+      src: srcDir + "install.rdf",
+      dest: tempDir + "install.rdf"
 	  },
 	
-	  all_files: {
-		options: {
-		  replacements: [{
-			pattern: /__version__/g,
-			replacement: pkg.version
-		  }]
-		},
-		files: [
-			{expand: true, cwd: distdir, src : ['**/*.*', '!**/*.png', '!**/*.jpg', '!**/*.jpeg', '!**/*.gif' ], dest: distdir },
-		]
+	  all_files: { /* Task to replace tokens in all files */
+      options: {
+        replacements: [{
+          pattern: /__version__/g,
+          replacement: versionForFileSystem
+        },
+          {
+            pattern: /___version___/g,
+            replacement: pkg.version
+          }]
+      },
+      files: [
+        {expand: true, cwd: tempDir, src : ["**/*.*", "!**/*.png", "!**/*.jpg", "!**/*.jpeg", "!**/*.gif" ], dest: tempDir }
+      ]
 	  }
 	},
 	
 	compress: { 
 		prod: { 
 			options: {
-			  archive: 'dist/<%=pkg.name%>-<%=pkg.version%>.xpi',
-			  mode: 'zip'
+			  archive: distdir + pkg.name + "-" + pkg.version + ".xpi",
+			  mode: "zip"
 			},
-			files: [ { expand: true, cwd: distdir, src: '**/**' }]
+			files: [ { expand: true, cwd: tempDir, src: "**/**" }]
 		} 
 	}
   });
 
-  grunt.loadNpmTasks('grunt-contrib-clean');
-
-  grunt.loadNpmTasks('grunt-contrib-copy');
-
-  grunt.loadNpmTasks('grunt-string-replace');
-  
-  grunt.loadNpmTasks('grunt-contrib-compress');
-
-  // Load the plugin that provides the "uglify" task.
-  //grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks("grunt-contrib-clean");
+  grunt.loadNpmTasks("grunt-contrib-copy");
+  grunt.loadNpmTasks("grunt-string-replace");
+  grunt.loadNpmTasks("grunt-contrib-compress");
   
   // $: grunt bump
-  grunt.loadNpmTasks('grunt-bump');
+  grunt.loadNpmTasks("grunt-bump");
+
+
+  grunt.registerTask("renameVersionDir", "renames the __version__ directory", function() {
+      var fs    = require("fs");
+
+      var oldName = path.resolve(path.join(tempDir, "__version__")),
+            newName = path.resolve(path.join(tempDir, versionForFileSystem));
+ 
+      if (fs.existsSync(oldName)) {
+        fs.renameSync(oldName, newName);
+      }
+
+    });
 
   // Default task(s).
-  grunt.registerTask('default', ['clean', 'copy:common', 'copy:prod', 'string-replace', 'compress']);
-  grunt.registerTask('babelzilla', ['clean', 'copy:common', 'copy:babelzilla', 'string-replace', 'compress']);
+  grunt.registerTask("default", ["clean", "copy:common", "copy:prod", "string-replace", "renameVersionDir", "compress"]);
+  grunt.registerTask("babelzilla", ["clean", "copy:common", "copy:babelzilla", "string-replace", "renameVersionDir", "compress"]);
   
 };
