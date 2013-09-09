@@ -134,8 +134,8 @@ var copyUrlsExpert = {
 	},
 
 	_handleStartup: function() {
-		var oldVersion = '__version__';
-		var currVersion = '__version__';
+		var oldVersion = '___version___';
+		var currVersion = '___version___';
 		
 		try {
 			oldVersion = this._prefService.getCharPref('version');
