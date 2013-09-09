@@ -15,7 +15,7 @@ module.exports = function(grunt) {
       srcDir = "src/",  // Path of directory where source code resides
       distdir = "dist/",
       tempDir = distdir + "temp/",
-      versionForFileSystem = pgk.version.replace(/\./g, "-");
+      versionForFileSystem = pkg.version.replace(/\./g, "-");
 
   // Project configuration.
   grunt.initConfig({
@@ -107,12 +107,13 @@ module.exports = function(grunt) {
   grunt.registerTask("renameVersionDir", "renames the __version__ directory", function() {
       var fs    = require("fs");
 
-      var oldName = path.resolve(tempDir, "__version__"),
-            newName = path.resolve(tempDir, versionForFileSystem);
-            
-        if (path.exists(oldName)) {
-          fs.renameSync(oldName, newName);
-        }
+      var oldName = path.resolve(path.join(tempDir, "__version__")),
+            newName = path.resolve(path.join(tempDir, versionForFileSystem));
+ 
+      if (fs.existsSync(oldName)) {
+        fs.renameSync(oldName, newName);
+      }
+
     });
 
   // Default task(s).
