@@ -25,6 +25,7 @@
 <!ENTITY copyurlsexpert.common.opentabsmenulabel	"Open Urls From Clipboard">
 <!ENTITY copyurlsexpert.common.optionsmenulabel	"Options">
 
+<!ENTITY copyurlsexpert.options.filterduplicates	"Filter duplicates when copying to and opening from clipboard">
 
 <!ENTITY copyurlsexpert.options.btnaddnew "New">
 <!ENTITY copyurlsexpert.options.btnupdate "Update">

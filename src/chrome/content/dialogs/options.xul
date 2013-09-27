@@ -16,6 +16,7 @@
       <preference id="sortby.pref"         name="extensions.copyurlsexpert.sortby" type="string" />
       <preference id="copyhistory.pref" name="extensions.copyurlsexpert.copyhistory" type="bool" />
       <preference id="toolbaraction.pref"  name="extensions.copyurlsexpert.toolbaraction" type="string" />
+      <preference id="filterduplicates.pref"  name="extensions.copyurlsexpert.filterduplicates" type="bool" />
     </preferences>
   
     <groupbox flex="1">
@@ -51,6 +52,12 @@
 		  	</row>
 		  </rows>
 		 </grid>
+    
+    <separator/>
+     
+		<checkbox id="copyurlsexpert-filterduplicates"	preference="filterduplicates.pref" label="&copyurlsexpert.options.filterduplicates;" />
+     
+     
 	  </vbox>
     </groupbox>
   </prefpane>
