@@ -248,7 +248,7 @@ var copyUrlsExpert = {
 	_getEntryForTab: function(brwsr, tab) {
 		var url = brwsr.currentURI.spec;
 		
-    var useContentTitle = true;
+    var useContentTitle = this._prefService.getBoolPref("usecontenttitle");
 
 		var title = useContentTitle && brwsr.contentTitle? brwsr.contentTitle : tab.label;
 
