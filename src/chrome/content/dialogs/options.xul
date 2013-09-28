@@ -17,6 +17,7 @@
       <preference id="copyhistory.pref" name="extensions.copyurlsexpert.copyhistory" type="bool" />
       <preference id="toolbaraction.pref"  name="extensions.copyurlsexpert.toolbaraction" type="string" />
       <preference id="filterduplicates.pref"  name="extensions.copyurlsexpert.filterduplicates" type="bool" />
+      <preference id="usecontenttitle.pref"  name="extensions.copyurlsexpert.usecontenttitle" type="bool" />
     </preferences>
   
     <groupbox flex="1">
@@ -57,6 +58,10 @@
      
 		<checkbox id="copyurlsexpert-filterduplicates"	preference="filterduplicates.pref" label="&copyurlsexpert.options.filterduplicates;" />
      
+    <separator/>
+     
+		<checkbox id="copyurlsexpert-usecontenttitle"	preference="usecontenttitle.pref" label="&copyurlsexpert.options.usecontenttitle;" />
+		<label>&copyurlsexpert.options.usecontenttitle2;</label>
      
 	  </vbox>
     </groupbox>

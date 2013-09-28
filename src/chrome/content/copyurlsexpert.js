@@ -199,11 +199,25 @@ var copyUrlsExpert = {
 	   this.tab=tab;
 	},
 	
+  _isDuplicate: function(entries, url) {
+    url = url.toLowerCase();
+		for(var i = 0; i < entries.length; i++) {
+      var entryUrl = entries[i];
+      if (entryUrl.toLowerCase() == url) {
+        return true;
+      }
+    }
+    return false;
+  },
+  
 	_getEntriesFromTabs: function(aBrowsers, filterHidden) {
-		var title = '';
-		var url = '';
-		var entries = [];
+		var title = '',
+        url = '',
+        urls = [],
+        entries = [];
 
+    var filterDuplicates = this._prefService.getBoolPref('filterduplicates');
+    
 		for(var i = 0; i < aBrowsers.length; i++) {
 			var tabbrowser = aBrowsers[i].gBrowser;
 			var tabHistory = aBrowsers[i].sessionHistory;
@@ -217,9 +231,14 @@ var copyUrlsExpert = {
 					targetTab = tabContainer.getItemAtIndex(index)
 
 				if (filterHidden && targetTab.hidden) continue;
+        
+        if (filterDuplicates && this._isDuplicate(urls, targetBrwsr.currentURI.spec)) {
+          continue;
+        }
 				
 				var auxTemp = this._getEntryForTab(targetBrwsr, targetTab);
 				entries.push(auxTemp);
+        urls.push(auxTemp.url);
 			}
 		}
 		
@@ -229,20 +248,18 @@ var copyUrlsExpert = {
 	_getEntryForTab: function(brwsr, tab) {
 		var url = brwsr.currentURI.spec;
 		
-		var title = brwsr.contentTitle;
-		
-		if (!title && tab) {
-			title = tab.label;
-		}
+    var useContentTitle = true;
 
-		var auxTemp = new copyUrlsExpert._UrlEntry(title,url);
-		return auxTemp;
+		var title = useContentTitle && brwsr.contentTitle? brwsr.contentTitle : tab.label;
+
+		var entry = new copyUrlsExpert._UrlEntry(title,url);
+		return entry;
 	},
 	
 	/*
 	Returs a list of entries objects
 	@param: tagName - Name of tag to process e.g. a, img
-	@param: entryExtractor - pointer to a function that accpets two arguments item and selection
+	@param: entryExtractor - pointer to a function that accepts two arguments item and selection
 	*/
 	_getEntriesFromSelection: function(tagName, entryExtractor) {
 		var entries = [];
@@ -394,7 +411,7 @@ var copyUrlsExpert = {
 	performCopyActiveTabUrl: function() {
 		var _g = this._gBrowser();
 
-		var entries = [copyUrlsExpert._getEntryForTab(_g.selectedBrowser)];
+		var entries = [copyUrlsExpert._getEntryForTab(_g.selectedBrowser, _g.selectedTab)];
 	
 		copyUrlsExpert._copyEntriesToClipBoard(entries, copyUrlsExpert._prefService);
 	},
@@ -545,16 +562,21 @@ var copyUrlsExpert = {
 	This function is called from Open Tabs Dialog
 	*/
 	openTabs: function () {
-		var sUrl = this._getClipboardText();
-
-		// the following regex is extracting urls from any text
-		var myRe=/((https?):\/\/((?:(?:(?:(?:(?:[a-zA-Z0-9][-a-zA-Z0-9]*)?[a-zA-Z0-9])[.])*(?:[a-zA-Z][-a-zA-Z0-9]*[a-zA-Z0-9]|[a-zA-Z])[.]?)|(?:[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+)))(?::((?:[0-9]*)))?(\/(((?:(?:(?:(?:[a-zA-Z0-9\-_.!~*'():@&=+$,^#]+|(?:%[a-fA-F0-9][a-fA-F0-9]))*)(?:;(?:(?:[a-zA-Z0-9\-_.!~*'():@&=+$,^#]+|(?:%[a-fA-F0-9][a-fA-F0-9]))*))*)(?:\/(?:(?:(?:[a-zA-Z0-9\-_.!~*'():@&=+$,^#]+|(?:%[a-fA-F0-9][a-fA-F0-9]))*)(?:;(?:(?:[a-zA-Z0-9\-_.!~*'():@&=+$,^#]+|(?:%[a-fA-F0-9][a-fA-F0-9]))*))*))*))(?:[?]((?:(?:[;\/?:@&=+$,^#a-zA-Z0-9\-_.!~*'()]+|(?:%[a-fA-F0-9][a-fA-F0-9]))*)))?))?)/ig;
-		var myArray = null;
-
-		var urls  = [];
+		var sUrl = this._getClipboardText(),
+      // the following regex is extracting urls from any text
+      myRe=/((https?):\/\/((?:(?:(?:(?:(?:[a-zA-Z0-9][-a-zA-Z0-9]*)?[a-zA-Z0-9])[.])*(?:[a-zA-Z][-a-zA-Z0-9]*[a-zA-Z0-9]|[a-zA-Z])[.]?)|(?:[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+)))(?::((?:[0-9]*)))?(\/(((?:(?:(?:(?:[a-zA-Z0-9\-_.!~*'():@&=+$,^#]+|(?:%[a-fA-F0-9][a-fA-F0-9]))*)(?:;(?:(?:[a-zA-Z0-9\-_.!~*'():@&=+$,^#]+|(?:%[a-fA-F0-9][a-fA-F0-9]))*))*)(?:\/(?:(?:(?:[a-zA-Z0-9\-_.!~*'():@&=+$,^#]+|(?:%[a-fA-F0-9][a-fA-F0-9]))*)(?:;(?:(?:[a-zA-Z0-9\-_.!~*'():@&=+$,^#]+|(?:%[a-fA-F0-9][a-fA-F0-9]))*))*))*))(?:[?]((?:(?:[;\/?:@&=+$,^#a-zA-Z0-9\-_.!~*'()]+|(?:%[a-fA-F0-9][a-fA-F0-9]))*)))?))?)/ig,
+      myArray = null,
+      urls  = [],
+      filterDuplicates = this._prefService.getBoolPref('filterduplicates');
+      
 		while ((myArray = myRe.exec(sUrl))) {
 			var newUrl = String(myArray[0]);
-			urls.push(newUrl);			
+      
+      if (filterDuplicates && this._isDuplicate(urls, newUrl)) {
+        continue;
+      }
+        
+			urls.push(newUrl);
 		}
 
 		if (!urls.length) return true;
