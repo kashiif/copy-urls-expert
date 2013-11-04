@@ -262,20 +262,27 @@ var copyUrlsExpert = {
 	@param: entryExtractor - pointer to a function that accepts two arguments item and selection
 	*/
 	_getEntriesFromSelection: function(tagName, entryExtractor) {
-		var entries = [];
 
 		// get the content document
-		var focusedWindow = document.commandDispatcher.focusedWindow;
-		var focusedDoc = document.commandDispatcher.focusedWindow.document;
-		
-		var sel = focusedWindow.getSelection();
-		var items = focusedDoc.getElementsByTagName(tagName);
+		var cd = document.commandDispatcher,
+        focusedWindow = cd.focusedWindow,
+        focusedDoc = focusedWindow.document,
+        filterDuplicates = this._prefService.getBoolPref('filterduplicates');
+
+		var entries = [],
+        sel = focusedWindow.getSelection(),
+        items = focusedDoc.getElementsByTagName(tagName);
 		
 		for (var i=0;i < items.length;i++) {
 			var item = items[i];
 			var entry = entryExtractor(item, sel);
 			
 			if (entry) {
+      
+        if (filterDuplicates && this._isDuplicate(urls, entry.url)) {
+          continue;
+        }
+      
 				entries.push(entry);
 			}
 			else if (entries.length) {
