@@ -37,12 +37,6 @@
 <!ENTITY copyurlsexpert.options.lblctrlkey	"Ctrl">
 <!ENTITY copyurlsexpert.options.lblshiftkey	"Shift">
 
-<!ENTITY copyurlsexpert.options.lbltoolbarbuttonkey	"Toolbar button">
-<!ENTITY copyurlsexpert.options.lblactivewinkey	"This Window">
-<!ENTITY copyurlsexpert.options.lblactivegroupkey	"This Tab Group">
-<!ENTITY copyurlsexpert.options.lblactivetabkey	"This Tab">
-<!ENTITY copyurlsexpert.options.lblallwinkey	"All Windows">
-
 
 <!-- Format Tab -->
 
