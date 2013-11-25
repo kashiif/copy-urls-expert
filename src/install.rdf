@@ -25,7 +25,7 @@
                 <!-- Firefox -->
                 <em:minVersion>3.6</em:minVersion>
                 <!-- File IO API being used requires Gecko version 1.9.2 -->
-                <em:maxVersion>27.0a2</em:maxVersion>
+                <em:maxVersion>28.0</em:maxVersion>
             </Description>
         </em:targetApplication>
 
@@ -35,7 +35,7 @@
                 <!-- SeaMonkey -->
                 <em:minVersion>2.1</em:minVersion>
                 <!-- File IO API being used requires Gecko version 1.9.2 -->
-                <em:maxVersion>2.24</em:maxVersion>
+                <em:maxVersion>2.25</em:maxVersion>
             </Description>
 
         </em:targetApplication>
