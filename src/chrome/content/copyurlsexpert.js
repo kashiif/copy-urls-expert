@@ -144,20 +144,9 @@ var copyUrlsExpert = {
 		
 		if (oldVersion != currVersion) {
 			this._prefService.setCharPref('version', currVersion);
-			try {
-				setTimeout(function() { copyUrlsExpert._welcome(currVersion); },100);
-			}
-			catch(e) {}
 		}
 	},
 	
-	_welcome: function(version) {
-		try {
-			var url = 'http://www.kashiif.com/firefox-extensions/copy-urls-expert/copy-urls-expert-welcome/?v='+version;
-			openUILinkIn( url, 'tab');
-		} 
-		catch(e) {}
-	},	
 	
 	_getPrefService: function() {
 		var prefService = null;
