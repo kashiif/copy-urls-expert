@@ -135,16 +135,6 @@
     </groupbox>
 
   </prefpane>
-
-  <prefpane flex="1" id="copyurlsexpert-keysetupbpanel" label="&copyurlsexpert.options.shortcuts;" image="chrome://copy-urls-expert/skin/format.png">
-    <groupbox flex="1">
-      <vbox flex="1">
-		
-      </vbox>
-    </groupbox>
-
-  </prefpane>
-  
   
   <prefpane flex="1"  id="copyurlsexpert-helppanel" label="&copyurlsexpert.options.helptab;" image="chrome://copy-urls-expert/skin/help.png">
     <groupbox flex="1">
