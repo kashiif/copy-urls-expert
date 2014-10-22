@@ -411,6 +411,15 @@ var copyUrlsExpert = {
 	
 		copyUrlsExpert._copyEntriesToClipBoard(entries, copyUrlsExpert._prefService);
 	},
+	
+	performCopyTabUnderMouseUrl: function() {
+		var _g = this._gBrowser();
+
+		var entries = [copyUrlsExpert._getEntryForTab(_g.getBrowserForTab(_g.mContextTab))];
+	
+		copyUrlsExpert._copyEntriesToClipBoard(entries, copyUrlsExpert._prefService);
+	},
+
 
 	_getBrowsers: function(onlyActiveWindow) {
 		var aBrowsers = new Array();       
