@@ -25,7 +25,7 @@
 					<menuitem label="&copyurlsexpert.common.activetabgroupmenulabel;"
 							  oncommand="copyUrlsExpert.performCopyTabsUrl(true, true);"/>
 					<menuitem label="&copyurlsexpert.common.activetabmenulabel;"
-							  oncommand="copyUrlsExpert.performCopyActiveTabUrl();"/>
+							  oncommand="copyUrlsExpert.performCopyTabUnderMouseUrl();"/>
 					<menuseparator />
 					<menuitem id="copyurlsexpert-toolbar-btnopentabs" 
 							  label="&copyurlsexpert.common.opentabsmenulabel;"
