@@ -259,6 +259,7 @@ var copyUrlsExpert = {
         filterDuplicates = this._prefService.getBoolPref('filterduplicates');
 
 		var entries = [],
+        urls = [],
         sel = focusedWindow.getSelection(),
         items = focusedDoc.getElementsByTagName(tagName);
 		
@@ -267,12 +268,13 @@ var copyUrlsExpert = {
 			var entry = entryExtractor(item, sel);
 			
 			if (entry) {
-      
-        if (filterDuplicates && this._isDuplicate(urls, entry.url)) {
-          continue;
-        }
-      
+
+				if (filterDuplicates && this._isDuplicate(urls, entry.url)) {
+					continue;
+				}
+
 				entries.push(entry);
+				urls.push(entry.url);
 			}
 			else if (entries.length) {
 				// selections must be continuous
@@ -411,6 +413,15 @@ var copyUrlsExpert = {
 	
 		copyUrlsExpert._copyEntriesToClipBoard(entries, copyUrlsExpert._prefService);
 	},
+	
+	performCopyTabUnderMouseUrl: function() {
+		var _g = this._gBrowser();
+
+		var entries = [copyUrlsExpert._getEntryForTab(_g.getBrowserForTab(_g.mContextTab))];
+	
+		copyUrlsExpert._copyEntriesToClipBoard(entries, copyUrlsExpert._prefService);
+	},
+
 
 	_getBrowsers: function(onlyActiveWindow) {
 		var aBrowsers = new Array();       
