@@ -15,9 +15,9 @@
 <!ENTITY copyurlsexpert.common.activetabgrouptooltip	"Copy Urls of All Tabs in Active Tab Group">
 
 
-<!ENTITY copyurlsexpert.common.activetabmenulabel	"Active Tab">
+<!ENTITY copyurlsexpert.common.activetabmenulabel	"Current Tab">
 <!ENTITY copyurlsexpert.common.activetabaccesskey	"">
-<!ENTITY copyurlsexpert.common.activetabtooltip	"Copy Url of Active Tab">
+<!ENTITY copyurlsexpert.common.activetabtooltip	"Copy Url of Current Tab">
 
 <!ENTITY copyurlsexpert.common.opentabsmenulabel	"Open Urls From Clipboard">
 <!ENTITY copyurlsexpert.common.opentabsaccesskey	"p">
@@ -31,3 +31,4 @@
 <!ENTITY copyurlsexpert.common.selurlsaccesskey	"U">
 <!ENTITY copyurlsexpert.common.selimgsmenulabel	"Images In Selection">
 <!ENTITY copyurlsexpert.common.selimgsaccesskey	"I">
+<!ENTITY copyurlsexpert.common.selurlsopenmenulabel "Open All Urls In Selection">

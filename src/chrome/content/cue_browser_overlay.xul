@@ -122,10 +122,13 @@
 			<menupopup>
 				<menuitem label="&copyurlsexpert.common.selurlsmenulabel;"
 						  accesskey="&copyurlsexpert.common.selurlsaccesskey;"
-						  oncommand="copyUrlsExpert.performCopySelectedUrls('a', copyUrlsExpert.getEntryFromLink);" />
+						  oncommand="copyUrlsExpert.performCopyUrlsInSelection();" />
 				<menuitem label="&copyurlsexpert.common.selimgsmenulabel;"
 						  accesskey="&copyurlsexpert.common.selimgsaccesskey;"
-						  oncommand="copyUrlsExpert.performCopySelectedUrls('img', copyUrlsExpert.getEntryFromImage);" />				
+						  oncommand="copyUrlsExpert.performCopyUrlsOfImagesInSelection();" />
+				<menuseparator />
+				<menuitem label="&copyurlsexpert.common.selurlsopenmenulabel;"
+						  oncommand="copyUrlsExpert.performOpenUrlsInSelection();" />
 			</menupopup>
 		</menu>
 	</popup>
