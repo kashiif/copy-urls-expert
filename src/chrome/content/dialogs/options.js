@@ -1,3 +1,10 @@
+/*******************************************
+* Author: Kashif Iqbal Khan
+* Email: kashiif@gmail.com
+* License: MPL 1.1, MIT
+* Copyright (c) 2013-2014 Kashif Iqbal Khan
+********************************************/
+
 'use strict';
 copyUrlsExpert.options = {
 	gUriTree: null,
