@@ -1,11 +1,11 @@
 "use strict";
 
-/**************************************
+/*******************************************
 * Author: Kashif Iqbal Khan
 * Email: kashiif@gmail.com
 * License: MIT
-* Copyright (c) 2013 Kashif Iqbal Khan
-**************************************/
+* Copyright (c) 2013-2014 Kashif Iqbal Khan
+********************************************/
 
 module.exports = function(grunt) {
 
