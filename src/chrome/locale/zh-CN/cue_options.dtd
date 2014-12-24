@@ -2,8 +2,10 @@
 <!ENTITY copyurlsexpert.options.btacceptlabel "保存">
 <!ENTITY copyurlsexpert.options.btacceptaccesskey "S">
 <!ENTITY copyurlsexpert.options.generaltab "一般">
+<!ENTITY copyurlsexpert.options.shortcuts "Shortcuts">
 <!ENTITY copyurlsexpert.options.formattab "格式">
 <!ENTITY copyurlsexpert.options.helptab "帮助">
+<!-- General Tab -->
 <!ENTITY copyurlsexpert.options.lblsortby "排序方式">
 <!ENTITY copyurlsexpert.options.itmsortbytab "标签顺序">
 <!ENTITY copyurlsexpert.options.itmsortbydomain "域">
@@ -20,6 +22,13 @@
 <!ENTITY copyurlsexpert.common.allwinmenulabel "所有窗口">
 <!ENTITY copyurlsexpert.common.opentabsmenulabel "从剪贴板打开 URL">
 <!ENTITY copyurlsexpert.common.optionsmenulabel "选项">
+<!ENTITY copyurlsexpert.options.filterduplicates "Filter duplicates when copying to and opening from clipboard">
+<!ENTITY copyurlsexpert.options.usecontenttitle "When copying urls of tab, use page title for $title">
+<!ENTITY copyurlsexpert.options.usecontenttitle2 "If you uncheck this, $title will always be the tab title. This is to facilitate Tab Mix Plus &quot;Use bookmark name as title&quot; feature.">
+<!-- Shortcuts Tab -->
+<!ENTITY copyurlsexpert.options.lblctrlkey "Ctrl">
+<!ENTITY copyurlsexpert.options.lblshiftkey "Shift">
+<!-- Format Tab -->
 <!ENTITY copyurlsexpert.options.btnaddnew "新建">
 <!ENTITY copyurlsexpert.options.btnupdate "更新">
 <!ENTITY copyurlsexpert.options.btnsave "保存">
@@ -27,6 +36,7 @@
 <!ENTITY copyurlsexpert.options.btnedit "编辑">
 <!ENTITY copyurlsexpert.options.btndefault "保存为默认">
 <!ENTITY copyurlsexpert.options.btndelete "删除">
+<!-- Help Tab -->
 <!ENTITY copyurlsexpert.options.lblhelphint "查看帮助标签学习如何自定义剪贴板文本格式。">
 <!ENTITY copyurlsexpert.options.lblhelphint2 "可以自定义复制到剪贴板的文本。">
 <!ENTITY copyurlsexpert.options.lblhelphint3 "文本内容可以由三部分组成：">
@@ -40,6 +50,8 @@
 <!ENTITY copyurlsexpert.options.lbltagurl "链接/URL 本身，例如 http://www.google.com">
 <!ENTITY copyurlsexpert.options.lbltagtitle "页面或者图像的标题。">
 <!ENTITY copyurlsexpert.options.lbltagnewline "换行符。注意 URL 后不会自动换行，必须使用 $n 换行。">
+<!ENTITY copyurlsexpert.options.lbltagtab "A tab charcater.">
 <!ENTITY copyurlsexpert.options.lbltagindex "当前 URL 在 URL 列表中的序号。">
 <!ENTITY copyurlsexpert.options.lbltagdate "今天的日期">
+<!ENTITY copyurlsexpert.options.lbltagfdate "Current date time formatted as per the string between parenthesis. You can use YY, YYYY, mm, m, dd, d, HH, hh, h, M, MM, S and SS to represent different components of date and time.">
 <!ENTITY copyurlsexpert.options.lbltagtime "当前时间 unix 格式">

@@ -2,8 +2,10 @@
 <!ENTITY copyurlsexpert.options.btacceptlabel "Enregistrer">
 <!ENTITY copyurlsexpert.options.btacceptaccesskey "E">
 <!ENTITY copyurlsexpert.options.generaltab "Générales">
+<!ENTITY copyurlsexpert.options.shortcuts "Raccourcis">
 <!ENTITY copyurlsexpert.options.formattab "Format">
 <!ENTITY copyurlsexpert.options.helptab "Aide">
+<!-- General Tab -->
 <!ENTITY copyurlsexpert.options.lblsortby "Trier par">
 <!ENTITY copyurlsexpert.options.itmsortbytab "Onglet">
 <!ENTITY copyurlsexpert.options.itmsortbydomain "Domaine">
@@ -18,8 +20,15 @@
 <!ENTITY copyurlsexpert.common.activetabgroupmenulabel "Ce groupe d'onglets">
 <!ENTITY copyurlsexpert.common.activetabmenulabel "Cet onglet">
 <!ENTITY copyurlsexpert.common.allwinmenulabel "Toutes les fenêtres">
-<!ENTITY copyurlsexpert.common.opentabsmenulabel "Ouvrir les url à partir du presse-papiers">
+<!ENTITY copyurlsexpert.common.opentabsmenulabel "Ouvrir les Urls à partir du presse-papiers">
 <!ENTITY copyurlsexpert.common.optionsmenulabel "Options">
+<!ENTITY copyurlsexpert.options.filterduplicates "Filtrer les doublons lors de la copie vers ou l'ouverture à partir du presse-papiers">
+<!ENTITY copyurlsexpert.options.usecontenttitle "Lors de la copie d'urls d'onglet, utiliser le titre de la page pour $titre">
+<!ENTITY copyurlsexpert.options.usecontenttitle2 "Si vous décochez cette option, $titre sera toujours le titre de l'onglet. Cela permet de faciliter la fonctionnalité « Utiliser le nom de marque-page comme titre » de Tab Mix Plus.">
+<!-- Shortcuts Tab -->
+<!ENTITY copyurlsexpert.options.lblctrlkey "Ctrl">
+<!ENTITY copyurlsexpert.options.lblshiftkey "Maj">
+<!-- Format Tab -->
 <!ENTITY copyurlsexpert.options.btnaddnew "Nouveau">
 <!ENTITY copyurlsexpert.options.btnupdate "Mettre à jour">
 <!ENTITY copyurlsexpert.options.btnsave "Enregistrer">
@@ -27,19 +36,22 @@
 <!ENTITY copyurlsexpert.options.btnedit "Éditer">
 <!ENTITY copyurlsexpert.options.btndefault "Définir par défaut">
 <!ENTITY copyurlsexpert.options.btndelete "Supprimer">
+<!-- Help Tab -->
 <!ENTITY copyurlsexpert.options.lblhelphint "Voir l'onglet d'aide pour comprendre comment personnaliser le texte contenu dans le presse-papiers.">
 <!ENTITY copyurlsexpert.options.lblhelphint2 "Il est possible de personnaliser le texte copié dans le presse-papiers.">
-<!ENTITY copyurlsexpert.options.lblhelphint3 "Trois parties de contenu peuvent être définies : ">
+<!ENTITY copyurlsexpert.options.lblhelphint3 "Trois ajouts peuvent être définis :">
 <!ENTITY copyurlsexpert.options.lblprefixheading "Préfixe">
-<!ENTITY copyurlsexpert.options.lblprefixdesc "Ce texte s'affichera avant la liste des adresse (facultatif).">
-<!ENTITY copyurlsexpert.options.lbllinkslistheading "Liste d'adresses">
-<!ENTITY copyurlsexpert.options.lbllinkslistdesc "Ceci est le texte qui s'affichera pour chaque url. Valeur par défaut : $url$n.">
+<!ENTITY copyurlsexpert.options.lblprefixdesc "Ce texte s'affichera avant la liste des Urls (facultatif).">
+<!ENTITY copyurlsexpert.options.lbllinkslistheading "Liste d'Urls">
+<!ENTITY copyurlsexpert.options.lbllinkslistdesc "Ceci est le texte qui s'affichera pour chaque Url. Valeur par défaut : $url$n.">
 <!ENTITY copyurlsexpert.options.lblpostfixheading "Suffixe">
-<!ENTITY copyurlsexpert.options.lblpostfixdesc "C'est le tetxe qui s'affichera après la liste d'adresses (facultatif).">
+<!ENTITY copyurlsexpert.options.lblpostfixdesc "C'est le texte qui s'affichera après la liste d'Urls (facultatif).">
 <!ENTITY copyurlsexpert.options.lblvariablesheading "Variables de balisage">
 <!ENTITY copyurlsexpert.options.lbltagurl "Le lien/url. Ex. : http://www.google.fr">
 <!ENTITY copyurlsexpert.options.lbltagtitle "Titre de la page ou de l'image.">
-<!ENTITY copyurlsexpert.options.lbltagnewline "Retour à la ligne. Les url ne sont pas affichées les unes en-dessous des autres, il faut donc ajouter $n pour avoir une url par ligne.">
-<!ENTITY copyurlsexpert.options.lbltagindex "Numéro d'ordre de l'url courante dans la liste d'adresses.">
+<!ENTITY copyurlsexpert.options.lbltagnewline "Retour à la ligne. Les urls ne sont pas affichées les unes en-dessous des autres, il faut donc ajouter $n pour avoir une url par ligne.">
+<!ENTITY copyurlsexpert.options.lbltagtab "un caractère de tabulation.">
+<!ENTITY copyurlsexpert.options.lbltagindex "Numéro d'ordre de l'url courante dans la liste d'urls.">
 <!ENTITY copyurlsexpert.options.lbltagdate "Date d'aujourd'hui">
+<!ENTITY copyurlsexpert.options.lbltagfdate "Date et horaire courants formatés en utilisant la chaîne de caractères entre parenthèses. Vous pouvez utiliser les combinaisons YY, YYYY, mm, m, dd, d, HH, hh, h, M, MM, S et SS pour représenter la date et l'horaire.">
 <!ENTITY copyurlsexpert.options.lbltagtime "Horaire courant au format Unix">

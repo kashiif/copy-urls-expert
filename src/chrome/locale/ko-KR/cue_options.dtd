@@ -2,8 +2,10 @@
 <!ENTITY copyurlsexpert.options.btacceptlabel "저장">
 <!ENTITY copyurlsexpert.options.btacceptaccesskey "S">
 <!ENTITY copyurlsexpert.options.generaltab "일반">
+<!ENTITY copyurlsexpert.options.shortcuts "Shortcuts">
 <!ENTITY copyurlsexpert.options.formattab "형식">
 <!ENTITY copyurlsexpert.options.helptab "Help">
+<!-- General Tab -->
 <!ENTITY copyurlsexpert.options.lblsortby "정렬">
 <!ENTITY copyurlsexpert.options.itmsortbytab "원래 탭 순서대로">
 <!ENTITY copyurlsexpert.options.itmsortbydomain "도메인">
@@ -20,6 +22,13 @@
 <!ENTITY copyurlsexpert.common.allwinmenulabel "모든 창들">
 <!ENTITY copyurlsexpert.common.opentabsmenulabel "탭들 열기">
 <!ENTITY copyurlsexpert.common.optionsmenulabel "옵션...">
+<!ENTITY copyurlsexpert.options.filterduplicates "Filter duplicates when copying to and opening from clipboard">
+<!ENTITY copyurlsexpert.options.usecontenttitle "When copying urls of tab, use page title for $title">
+<!ENTITY copyurlsexpert.options.usecontenttitle2 "If you uncheck this, $title will always be the tab title. This is to facilitate Tab Mix Plus &quot;Use bookmark name as title&quot; feature.">
+<!-- Shortcuts Tab -->
+<!ENTITY copyurlsexpert.options.lblctrlkey "Ctrl">
+<!ENTITY copyurlsexpert.options.lblshiftkey "Shift">
+<!-- Format Tab -->
 <!ENTITY copyurlsexpert.options.btnaddnew "새로 만들기">
 <!ENTITY copyurlsexpert.options.btnupdate "업데이트">
 <!ENTITY copyurlsexpert.options.btnsave "저장">
@@ -27,6 +36,7 @@
 <!ENTITY copyurlsexpert.options.btnedit "편집">
 <!ENTITY copyurlsexpert.options.btndefault "기본값으로 설정">
 <!ENTITY copyurlsexpert.options.btndelete "삭제">
+<!-- Help Tab -->
 <!ENTITY copyurlsexpert.options.lblhelphint "See Help Tab to understand how the text for clipboard can be customized.">
 <!ENTITY copyurlsexpert.options.lblhelphint2 "It is possible to customize the text which is copied to clipboard.">
 <!ENTITY copyurlsexpert.options.lblhelphint3 "Three pieces of content are possible: .">
@@ -40,6 +50,8 @@
 <!ENTITY copyurlsexpert.options.lbltagurl "The link/url itself e.g. http://www.google.com">
 <!ENTITY copyurlsexpert.options.lbltagtitle "Title of the page or image.">
 <!ENTITY copyurlsexpert.options.lbltagnewline "A new line charcater. Note that urls are not placed on new lines so $n must be used anyways.">
+<!ENTITY copyurlsexpert.options.lbltagtab "A tab charcater.">
 <!ENTITY copyurlsexpert.options.lbltagindex "Serial number of current url in the list of urls.">
 <!ENTITY copyurlsexpert.options.lbltagdate "Today's date">
+<!ENTITY copyurlsexpert.options.lbltagfdate "Current date time formatted as per the string between parenthesis. You can use YY, YYYY, mm, m, dd, d, HH, hh, h, M, MM, S and SS to represent different components of date and time.">
 <!ENTITY copyurlsexpert.options.lbltagtime "Current time in unix format">

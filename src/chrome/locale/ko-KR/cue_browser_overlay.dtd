@@ -23,3 +23,4 @@
 <!ENTITY copyurlsexpert.common.selurlsaccesskey "U">
 <!ENTITY copyurlsexpert.common.selimgsmenulabel "선택한 부분의 이미지들 주소 복사">
 <!ENTITY copyurlsexpert.common.selimgsaccesskey "I">
+<!ENTITY copyurlsexpert.common.selurlsopenmenulabel "Open All Urls In Selection">

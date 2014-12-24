@@ -2,8 +2,10 @@
 <!ENTITY copyurlsexpert.options.btacceptlabel "Speichern">
 <!ENTITY copyurlsexpert.options.btacceptaccesskey "S">
 <!ENTITY copyurlsexpert.options.generaltab "Allgemein">
+<!ENTITY copyurlsexpert.options.shortcuts "Tastenkombinationen">
 <!ENTITY copyurlsexpert.options.formattab "Formatierung">
 <!ENTITY copyurlsexpert.options.helptab "Hilfe">
+<!-- General Tab -->
 <!ENTITY copyurlsexpert.options.lblsortby "Sortieren nach">
 <!ENTITY copyurlsexpert.options.itmsortbytab "Tab-Reihenfolge">
 <!ENTITY copyurlsexpert.options.itmsortbydomain "Domain">
@@ -20,6 +22,13 @@
 <!ENTITY copyurlsexpert.common.allwinmenulabel "Adressen der Tabs aller Fenstern kopieren">
 <!ENTITY copyurlsexpert.common.opentabsmenulabel "Adressen aus Zwischenablage öffnen">
 <!ENTITY copyurlsexpert.common.optionsmenulabel "Einstellungen öffnen">
+<!ENTITY copyurlsexpert.options.filterduplicates "Doppelte Adressen beim Kopieren in bzw. Öffnen aus der Zwischenablage entfernen">
+<!ENTITY copyurlsexpert.options.usecontenttitle "Beim Kopieren der Adressen von Tabs den Seitentitel für $title verwenden">
+<!ENTITY copyurlsexpert.options.usecontenttitle2 "Das Deaktivieren dieser Einstellung führt zur steten Verwendung des Tabtitels als $title. Dies dient zur Unterstützung der &quot;Tab Mix Plus&quot;-Funktion &quot;Namen der Lesezeichen als Tabtitel verwenden&quot;.">
+<!-- Shortcuts Tab -->
+<!ENTITY copyurlsexpert.options.lblctrlkey "Strg">
+<!ENTITY copyurlsexpert.options.lblshiftkey "Umschalt">
+<!-- Format Tab -->
 <!ENTITY copyurlsexpert.options.btnaddnew "Neu">
 <!ENTITY copyurlsexpert.options.btnupdate "Aktualisieren">
 <!ENTITY copyurlsexpert.options.btnsave "Speichern">
@@ -27,6 +36,7 @@
 <!ENTITY copyurlsexpert.options.btnedit "Bearbeiten">
 <!ENTITY copyurlsexpert.options.btndefault "Als Standard setzen">
 <!ENTITY copyurlsexpert.options.btndelete "Löschen">
+<!-- Help Tab -->
 <!ENTITY copyurlsexpert.options.lblhelphint "Die Möglichkeiten der Benutzeranpassung, wie der Text in der Zwischenablage formatiert sein soll, werden im Tab &quot;Hilfe&quot; erklärt.">
 <!ENTITY copyurlsexpert.options.lblhelphint2 "Es ist möglich, den in die Zwischenablage zu kopierenden Text zu formatieren.">
 <!ENTITY copyurlsexpert.options.lblhelphint3 "Der Inhalt kann aus bis zu drei Teilen bestehen:">
@@ -40,6 +50,8 @@
 <!ENTITY copyurlsexpert.options.lbltagurl "Die (Link-)Adresse selbst, z.B. http://www.google.com">
 <!ENTITY copyurlsexpert.options.lbltagtitle "Titel der Seite oder der Grafik">
 <!ENTITY copyurlsexpert.options.lbltagnewline "Zeilenumbruch. Adressen werden nicht automatisch in neue Zeilen geschrieben, deshalb muss $n immer benutzt werden.">
+<!ENTITY copyurlsexpert.options.lbltagtab "Tabulatorzeichen">
 <!ENTITY copyurlsexpert.options.lbltagindex "Fortlaufende Nummerierung für die jeweils aktuelle Adresse in der Adressliste">
 <!ENTITY copyurlsexpert.options.lbltagdate "Heutiges Datum">
+<!ENTITY copyurlsexpert.options.lbltagfdate "Das aktuelle Datum mit der Formatierung entsprechened der Regeln in den Klammern. Es können YY, YYYY, mm, m, dd, d, HH, hh, h, M, MM, S und SS zur Darstellung der verschiedenen Komponenten von Datum und Zeit verwendet werden.">
 <!ENTITY copyurlsexpert.options.lbltagtime "Aktuelle Zeit im Unix-Format">

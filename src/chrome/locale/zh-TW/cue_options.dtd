@@ -2,8 +2,10 @@
 <!ENTITY copyurlsexpert.options.btacceptlabel "儲存">
 <!ENTITY copyurlsexpert.options.btacceptaccesskey "S">
 <!ENTITY copyurlsexpert.options.generaltab "一般設定">
+<!ENTITY copyurlsexpert.options.shortcuts "捷徑">
 <!ENTITY copyurlsexpert.options.formattab "格式">
 <!ENTITY copyurlsexpert.options.helptab "說明">
+<!-- General Tab -->
 <!ENTITY copyurlsexpert.options.lblsortby "排序依據">
 <!ENTITY copyurlsexpert.options.itmsortbytab "分頁順序">
 <!ENTITY copyurlsexpert.options.itmsortbydomain "網域">
@@ -20,6 +22,13 @@
 <!ENTITY copyurlsexpert.common.allwinmenulabel "所有視窗">
 <!ENTITY copyurlsexpert.common.opentabsmenulabel "開啟剪貼簿中的網址">
 <!ENTITY copyurlsexpert.common.optionsmenulabel "選項">
+<!ENTITY copyurlsexpert.options.filterduplicates "複製到剪貼簿或從剪貼簿開啟時濾掉重複的內容">
+<!ENTITY copyurlsexpert.options.usecontenttitle "複製分頁位址時，$title 指定為頁面標題">
+<!ENTITY copyurlsexpert.options.usecontenttitle2 "若取消勾選，$title 就會指定為分頁標題；此設定是為了配合 Tab Mix Plus 套件的&quot;使用書籤名稱做為分頁標題&quot;功能。">
+<!-- Shortcuts Tab -->
+<!ENTITY copyurlsexpert.options.lblctrlkey "Ctrl">
+<!ENTITY copyurlsexpert.options.lblshiftkey "Shift">
+<!-- Format Tab -->
 <!ENTITY copyurlsexpert.options.btnaddnew "新增">
 <!ENTITY copyurlsexpert.options.btnupdate "更新">
 <!ENTITY copyurlsexpert.options.btnsave "儲存">
@@ -27,19 +36,22 @@
 <!ENTITY copyurlsexpert.options.btnedit "編輯">
 <!ENTITY copyurlsexpert.options.btndefault "指定為預設">
 <!ENTITY copyurlsexpert.options.btndelete "刪除">
+<!-- Help Tab -->
 <!ENTITY copyurlsexpert.options.lblhelphint "請參見「說明」分頁以了解如何自訂存入剪貼簿的文字。">
 <!ENTITY copyurlsexpert.options.lblhelphint2 "要複製到剪貼簿的文字資料是可以自訂的。">
 <!ENTITY copyurlsexpert.options.lblhelphint3 "可用內容有三類:">
 <!ENTITY copyurlsexpert.options.lblprefixheading "前綴">
-<!ENTITY copyurlsexpert.options.lblprefixdesc "附加到網址清單之前的文字。（選用）">
+<!ENTITY copyurlsexpert.options.lblprefixdesc "附加到網址清單之前的文字。（非必要）">
 <!ENTITY copyurlsexpert.options.lbllinkslistheading "網址清單">
-<!ENTITY copyurlsexpert.options.lbllinkslistdesc "所有網址都會顯示為此格式，預設值為 $url$n 。">
+<!ENTITY copyurlsexpert.options.lbllinkslistdesc "所有網址都會顯示為此格式，預設值為 $url$n。">
 <!ENTITY copyurlsexpert.options.lblpostfixheading "後綴">
-<!ENTITY copyurlsexpert.options.lblpostfixdesc "附加到網址清單之後的文字。（選用）">
+<!ENTITY copyurlsexpert.options.lblpostfixdesc "附加到網址清單之後的文字。（非必要）">
 <!ENTITY copyurlsexpert.options.lblvariablesheading "標記變數">
 <!ENTITY copyurlsexpert.options.lbltagurl "鏈結/網址本體，例如 http://www.google.com">
 <!ENTITY copyurlsexpert.options.lbltagtitle "網頁或圖片的標題">
-<!ENTITY copyurlsexpert.options.lbltagnewline "換行字元。請注意，網址間不會自動換行，所以一定要配 $n 。">
-<!ENTITY copyurlsexpert.options.lbltagindex "網址在整個清單內的序號。">
-<!ENTITY copyurlsexpert.options.lbltagdate "今天的日期。">
-<!ENTITY copyurlsexpert.options.lbltagtime "UNIX 格式的目前時間">
+<!ENTITY copyurlsexpert.options.lbltagnewline "換行字元。請注意，網址間不會自動換行，所以一定要配 $n">
+<!ENTITY copyurlsexpert.options.lbltagtab "定位字元（tab）">
+<!ENTITY copyurlsexpert.options.lbltagindex "網址在整個清單內的序號">
+<!ENTITY copyurlsexpert.options.lbltagdate "今天的日期">
+<!ENTITY copyurlsexpert.options.lbltagfdate "當前日期與時間，格式由括弧內字串指定。可利用 YY、YYYY、mm、m、dd、d、HH、hh、h、M、MM、S、SS 組合各種日期時間">
+<!ENTITY copyurlsexpert.options.lbltagtime "當前時間，以UNIX 格式表示">

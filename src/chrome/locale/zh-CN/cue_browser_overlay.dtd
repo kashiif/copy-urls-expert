@@ -23,3 +23,4 @@
 <!ENTITY copyurlsexpert.common.selurlsaccesskey "U">
 <!ENTITY copyurlsexpert.common.selimgsmenulabel "选中的图像">
 <!ENTITY copyurlsexpert.common.selimgsaccesskey "I">
+<!ENTITY copyurlsexpert.common.selurlsopenmenulabel "Open All Urls In Selection">
