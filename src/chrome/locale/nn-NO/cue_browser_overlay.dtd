@@ -1,4 +1,4 @@
-<!ENTITY copyurlsexpert.options.windowtitle "Innstillingar for «Copy Urls Expert»">
+<!ENTITY copyurlsexpert.options.windowtitle "Innstillingar for Copy Urls Expert">
 <!ENTITY copyurlsexpert.common.menupopuplabel "Kopier nettadresser">
 <!ENTITY copyurlsexpert.common.menupopupaccesskey "U">
 <!ENTITY copyurlsexpert.common.activewinmenulabel "Faner i dette vindauget">
@@ -18,8 +18,9 @@
 <!ENTITY copyurlsexpert.common.opentabstooltip "Opna alle adressene i utklippstavla">
 <!ENTITY copyurlsexpert.common.optionsmenulabel "Innstillingar">
 <!ENTITY copyurlsexpert.common.optionsaccesskey "I">
-<!ENTITY copyurlsexpert.common.optionstooltip "Vis innstillingane til «Copy Urls Expert»">
+<!ENTITY copyurlsexpert.common.optionstooltip "Vis innstillingane til Copy Urls Expert">
 <!ENTITY copyurlsexpert.common.selurlsmenulabel "Adresser i utval">
 <!ENTITY copyurlsexpert.common.selurlsaccesskey "A">
 <!ENTITY copyurlsexpert.common.selimgsmenulabel "Bilete i utval">
 <!ENTITY copyurlsexpert.common.selimgsaccesskey "B">
+<!ENTITY copyurlsexpert.common.selurlsopenmenulabel "Opna alle adresser i utvalet">

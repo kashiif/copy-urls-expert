@@ -1,3 +1,10 @@
+/*******************************************
+* Author: Kashif Iqbal Khan
+* Email: kashiif@gmail.com
+* License: MPL 1.1, MIT
+* Copyright (c) 2013-2014 Kashif Iqbal Khan
+********************************************/
+
 'use strict';
 var copyUrlsExpert = {
 	_prefService: null,
@@ -280,7 +287,7 @@ var copyUrlsExpert = {
 				// selections must be continuous
 				break;
 			}
-		}		
+		}	
 		return entries;		
 	},
 	
@@ -450,11 +457,31 @@ var copyUrlsExpert = {
 					
 	},
 	
-	performCopySelectedUrls : function(tagName, entryExtractor) {
-		var entries = copyUrlsExpert._getEntriesFromSelection(tagName, entryExtractor);
-		copyUrlsExpert._copyEntriesToClipBoard(entries, copyUrlsExpert._prefService);
+	performOpenUrlsInSelection: function() {
+		var entries = copyUrlsExpert._getEntriesFromSelection('a', copyUrlsExpert.getEntryFromLink);
+
+		var urls = new Array(entries.length);
+
+		for (var i=0 ; i<urls.length ; i++) {
+			urls[i] = entries[i].url;
+		}
+
+		copyUrlsExpert._openAllUrls(urls);
+	},
+
+	performCopyUrlsInSelection: function() {
+		copyUrlsExpert._performCopyUrlsInSelection('a', copyUrlsExpert.getEntryFromLink);
 	},
 	
+	performCopyUrlsOfImagesInSelection: function() {
+		copyUrlsExpert._performCopyUrlsInSelection('img', copyUrlsExpert.getEntryFromImage);
+	},
+
+	_performCopyUrlsInSelection: function(tagName, entryExtractor) {
+		var entries = this._getEntriesFromSelection(tagName, entryExtractor);
+		copyUrlsExpert._copyEntriesToClipBoard(entries, copyUrlsExpert._prefService);
+	},
+
 	onContentContextMenuShowing: function(evt) {
 		if (evt.target.id == 'contentAreaContextMenu')
 		{
@@ -566,7 +593,7 @@ var copyUrlsExpert = {
 	},
 
 	/**
-	This function is called from Open Tabs Dialog
+	This function is called for 'Open Tabs from Clipboard' 
 	*/
 	openTabs: function () {
 		var sUrl = this._getClipboardText(),
@@ -586,6 +613,10 @@ var copyUrlsExpert = {
 			urls.push(newUrl);
 		}
 
+		return copyUrlsExpert._openAllUrls(urls);
+	},
+
+	_openAllUrls: function (urls) {
 		if (!urls.length) return true;
 
 		var _g = this._gBrowser();

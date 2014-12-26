@@ -1,9 +1,11 @@
-<!ENTITY copyurlsexpert.options.windowtitle "Innstillingar for �Copy Urls Expert�">
+<!ENTITY copyurlsexpert.options.windowtitle "Innstillingar for �Copy Urls Expert�">
 <!ENTITY copyurlsexpert.options.btacceptlabel "Lagra">
 <!ENTITY copyurlsexpert.options.btacceptaccesskey "L">
 <!ENTITY copyurlsexpert.options.generaltab "Generelt">
+<!ENTITY copyurlsexpert.options.shortcuts "Snarvegar">
 <!ENTITY copyurlsexpert.options.formattab "Format">
 <!ENTITY copyurlsexpert.options.helptab "Hjelp">
+<!-- General Tab -->
 <!ENTITY copyurlsexpert.options.lblsortby "Sorter etter">
 <!ENTITY copyurlsexpert.options.itmsortbytab "Fanefølgje">
 <!ENTITY copyurlsexpert.options.itmsortbydomain "Domene">
@@ -20,6 +22,13 @@
 <!ENTITY copyurlsexpert.common.allwinmenulabel "Alle vindauge">
 <!ENTITY copyurlsexpert.common.opentabsmenulabel "Opna URL-ar frå utklippstavla">
 <!ENTITY copyurlsexpert.common.optionsmenulabel "Innstillingar">
+<!ENTITY copyurlsexpert.options.filterduplicates "Fjern dublettar ved kopiering eller opning frå utklippstavla">
+<!ENTITY copyurlsexpert.options.usecontenttitle "Bruk sidetittel for $title ved kopiering av faneadresser">
+<!ENTITY copyurlsexpert.options.usecontenttitle2 "Viss du ikkje huker av dette, vil $title alltid vera fanetittelen. Dette er nyttig viss du bruker Tab Mix Plus-funksjonen &quot;Bruk bokmerkenamn som tittel&quot;.">
+<!-- Shortcuts Tab -->
+<!ENTITY copyurlsexpert.options.lblctrlkey "Kontroll">
+<!ENTITY copyurlsexpert.options.lblshiftkey "Skift">
+<!-- Format Tab -->
 <!ENTITY copyurlsexpert.options.btnaddnew "Ny">
 <!ENTITY copyurlsexpert.options.btnupdate "Oppdater">
 <!ENTITY copyurlsexpert.options.btnsave "Lagra">
@@ -27,6 +36,7 @@
 <!ENTITY copyurlsexpert.options.btnedit "Endra">
 <!ENTITY copyurlsexpert.options.btndefault "Set som standard">
 <!ENTITY copyurlsexpert.options.btndelete "Slett">
+<!-- Help Tab -->
 <!ENTITY copyurlsexpert.options.lblhelphint "Sjå Hjelp-fanen for å læra korleis du kan endra teksta som blir kopiert til utklippstavla.">
 <!ENTITY copyurlsexpert.options.lblhelphint2 "Det er mogleg å endra korleis teksta blir kopiert til utklippstavla.">
 <!ENTITY copyurlsexpert.options.lblhelphint3 "Det finst tre moglege innhaldstyper:">
@@ -40,6 +50,8 @@
 <!ENTITY copyurlsexpert.options.lbltagurl "Sjølve nettadressa, t.d. https://www.google.no">
 <!ENTITY copyurlsexpert.options.lbltagtitle "Tittelen på sida eller biletet.">
 <!ENTITY copyurlsexpert.options.lbltagnewline "Eit linjeskift. Merk at nettadresser ikkje kjem på kvar si linje med mindre $n er gitt.">
+<!ENTITY copyurlsexpert.options.lbltagtab "Tab-teikn.">
 <!ENTITY copyurlsexpert.options.lbltagindex "Nummeret på denne adressa i lista av adresser.">
 <!ENTITY copyurlsexpert.options.lbltagdate "Dags dato">
+<!ENTITY copyurlsexpert.options.lbltagfdate "Tid/dato formatert som strengen mellom parentesar. Du kan bruka YY, YYYY, mm, m, dd, d, HH, hh, h, M, MMM, S og SS for å representera dei ulike delene av dato og tid.">
 <!ENTITY copyurlsexpert.options.lbltagtime "Tidspunktet i UNIX-format">

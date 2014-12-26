@@ -2,7 +2,7 @@
   "name": "copy-urls-expert",
   "title": "Copy Urls Expert",
   "description": "Provides options to &quot;Copy Urls of All Opened Tabs&quot;, &quot;Copy Urls of All Links in Text Selection&quot; and &quot;Copy Urls of All Images in Selection&quot;",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "homepage": "http://www.kashiif.com/firefox-extensions/copy-urls-expert/",
   "author": {
     "name": "Kashif Iqbal Khan",
