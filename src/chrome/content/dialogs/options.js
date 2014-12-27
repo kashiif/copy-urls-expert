@@ -6,6 +6,10 @@
 ********************************************/
 
 'use strict';
+
+(function(globalContext) {
+
+
 copyUrlsExpert.options = {
 	gUriTree: null,
 	init: function() {
@@ -28,7 +32,7 @@ copyUrlsExpert.options = {
 	},
 
 	loadModelIntoTree: function() {
-		var tree = copyUrlsExpert.options.gUriTree;
+		var tree = this.gUriTree;
 		
 		var templatesOriginal = Application.storage.get(copyUrlsExpert.FUEL_KEY_ALL_PATTERNS, '');
 
@@ -50,7 +54,7 @@ copyUrlsExpert.options = {
 		for (var i=0 ; i<templates.length; i++) {
 			var t = templates[i];
 			var isDefault = (t.id == defaultId);
-			copyUrlsExpert.options._appendRowForTemplate(tree, t, isDefault);
+			this._appendRowForTemplate(tree, t, isDefault);
 			
 			if (isDefault) {
 				tree.cueDefTemplateIndex = i;
@@ -77,9 +81,9 @@ copyUrlsExpert.options = {
 		treeChildren.appendChild(treeItem);
 
 		var index = tree.view.rowCount-1;
-		copyUrlsExpert.options._loadTemplateIntoTreeRow(tree, index, template);
+		this._loadTemplateIntoTreeRow(tree, index, template);
 
-		copyUrlsExpert.options._updateTreeRowProperties(treeRow, isDefault);
+		this._updateTreeRowProperties(treeRow, isDefault);
 
 		return index;
 	},	
@@ -115,6 +119,7 @@ copyUrlsExpert.options = {
 	},
 	
 	_loadTemplateIntoTreeRow: function(tree, index, selectedTemplate) {
+		// TODO: Optimize
 		tree.view.setCellText(index, tree.columns.getNamedColumn('copyurlsexpert-colid'), selectedTemplate.id);
 		tree.view.setCellText(index, tree.columns.getNamedColumn('copyurlsexpert-colname'), selectedTemplate.name);
 		tree.view.setCellText(index, tree.columns.getNamedColumn('copyurlsexpert-colmarkup'), selectedTemplate.pattern);
@@ -176,7 +181,7 @@ copyUrlsExpert.options = {
 	_loadEmptyTemplate: function() {
 		var selectedTemplate = new copyUrlsExpert._FormatPattern('','','');
 		
-		copyUrlsExpert.options._loadTemplate(selectedTemplate);
+		this._loadTemplate(selectedTemplate);
 		return selectedTemplate;
 	},
 	
@@ -358,20 +363,29 @@ copyUrlsExpert.options = {
 	},
 	
 	onLoad: function(evt) {
-		window.removeEventListener('load', copyUrlsExpert.options.onLoad);
-		window.addEventListener('unload', copyUrlsExpert.options.onUnload, false);
-		copyUrlsExpert.options.init();
+
+		window.removeEventListener('load', onLoadHandler);
+		window.addEventListener('unload', onUnloadHandler, false);
+
+		Components.utils.import('resource://copy-urls-expert/modifiers.jsm');
+
+		this.init();
 	},
 
 	onUnload: function(evt) {
-		window.removeEventListener('unload', copyUrlsExpert.options.onUnload);
-		copyUrlsExpert.options.gUriTree = null;
+		window.removeEventListener('unload', onUnloadHandler);
+		this.gUriTree = null;
 	},
 }
+
+var onLoadHandler = copyUrlsExpert.options.onLoad.bind(copyUrlsExpert.options),
+		onUnloadHandler = copyUrlsExpert.options.onUnload.bind(copyUrlsExpert.options);
 
 window.addEventListener
 (
   'load', 
-  copyUrlsExpert.options.onLoad,
+	onLoadHandler,
   false
 );
+
+}) (this);
