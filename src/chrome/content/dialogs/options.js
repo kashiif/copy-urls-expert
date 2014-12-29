@@ -13,6 +13,10 @@
 copyUrlsExpert.options = {
 	gUriTree: null,
 	init: function() {
+
+		Components.utils.import('resource://copy-urls-expert/keyboardshortcut.jsm');
+		Components.utils.import('resource://copy-urls-expert/modifiers.jsm');
+
 		this.gUriTree = document.getElementById('copyurlsexpert-treeformats');
 		this.gShortcutsTree = document.getElementById('copyurlsexpert-treeshortcutkeys');
 
@@ -20,7 +24,7 @@ copyUrlsExpert.options = {
 		this.gShortcutsTree.addEventListener('keyup', this._onShortcutsTree_KeyDownOrUp);
 
 		this.loadModelIntoTree();
-		this.loadShortcuts();
+		this.loadShortcutsIntoTree();
 	},
 	
 	loadModelIntoTree: function() {
@@ -58,19 +62,26 @@ copyUrlsExpert.options = {
 
 	},
 	
-	loadShortcuts: function() {
-		let shortcutStr = copyUrlsExpert._getPrefService().getCharPref('shortcuts'),
-				shortcutDesc = {};
+	loadShortcutsIntoTree: function() {
+		let shortcutDesc = copyUrlsExpert.getCustomShortcuts();
 
-		if (shortcutStr) {
-			let temp = JSON.parse(shortcutStr);
+		let tree = this.gShortcutsTree,
+				treeView = tree.view,
+				colCommandId = tree.columns.getFirstColumn(),
+				colShortcut = tree.columns.getNamedColumn('copyurlsexpert-colshortcutkey');
 
-			for (let prop in temp) {
-				//shortcutDesc[prop] = new KeyboardShortcut(temp[prop]);
+		for(let row=0 ; row<tree.view.rowCount; row++) {
+
+			let commandId = treeView.getCellValue(row, colCommandId);
+
+			if (shortcutDesc.hasOwnProperty(commandId)) {
+				let shortcut = shortcutDesc[commandId];
+	    	treeView.setCellText(row, colShortcut, shortcut.toUIString());
 			}
-		}	
+		}
 
-		this.gShortcutsTree.cueShortcuts = shortcutDesc;
+		tree.cueShortcuts = shortcutDesc;
+
 	},
 
 	_onShortcutsTree_KeyDownOrUp: function(event) {
@@ -413,7 +424,7 @@ copyUrlsExpert.options = {
 		tree.cueTemplates = null;
 
 		tree = copyUrlsExpert.options.gShortcutsTree;
-		copyUrlsExpert.updateShortcuts(tree.cueShortcuts);
+		copyUrlsExpert.updateCustomShortcuts(tree.cueShortcuts);
 		tree.cueShortcuts = null;
 
 		document.documentElement.acceptDialog();
@@ -425,10 +436,7 @@ copyUrlsExpert.options = {
 		window.removeEventListener('load', onLoadHandler);
 		window.addEventListener('unload', onUnloadHandler, false);
 
-		Components.utils.import('resource://copy-urls-expert/keyboardshortcut.jsm');
-		Components.utils.import('resource://copy-urls-expert/modifiers.jsm');
-
-		this.init();
+		window.setTimeout(function() { copyUrlsExpert.options.init(); }, 60 );
 	},
 
 	onUnload: function(evt) {

@@ -75,8 +75,10 @@ KeyboardShortcut.prototype.isComplete = function () {
   return !!(this.key || this.keycode);
 }
 
-KeyboardShortcut.fromJSONString = function (str) {
-  let data = JSON.parse(str);
+KeyboardShortcut.fromPOJO = function (data) {
+
+  data.modifiers = new Modifiers(data.modifiers);
+
   return new KeyboardShortcut(data);
 }
 

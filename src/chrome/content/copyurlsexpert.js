@@ -35,21 +35,13 @@ var copyUrlsExpert = {
 	init: function() {
 		this._prefService = this._getPrefService();
 		this._handleStartup();
-	
-		var platformStr =  Components.classes['@mozilla.org/network/protocol;1?name=http'].getService(Components.interfaces.nsIHttpProtocolHandler).oscpu.toLowerCase();
 
-		if (platformStr.indexOf('win') != -1) {
-		  this.LINE_FEED = '\r\n';
-		}
-		else if (platformStr.indexOf('mac') != -1) {
-		  this.LINE_FEED = '\r';
-		}
-		else if (platformStr.indexOf('unix') != -1
-					|| platformStr.indexOf('linux') != -1
-					|| platformStr.indexOf('sun') != -1) {
-		  this.LINE_FEED = '\n';
-		}
+		Components.utils.import('resource://copy-urls-expert/keyboardshortcut.jsm');
+		Components.utils.import('resource://copy-urls-expert/modifiers.jsm');
 
+		this._loadCustomShortcuts(this.getCustomShortcuts());	
+
+		this._setupLineFeedChar();
 		Components.utils.import('resource://copy-urls-expert/cue-classes.jsm', copyUrlsExpert);
 					
 		this._AsynHandler.prototype.handleFetch = function(inputStream, status) {
@@ -130,7 +122,39 @@ var copyUrlsExpert = {
 			this._readTemplates();
 		}
 	},
+
+	_setupLineFeedChar: function() {
+		var platformStr =  Components.classes['@mozilla.org/network/protocol;1?name=http'].getService(Components.interfaces.nsIHttpProtocolHandler).oscpu.toLowerCase();
+
+		if (platformStr.indexOf('win') != -1) {
+		  this.LINE_FEED = '\r\n';
+		}
+		else if (platformStr.indexOf('mac') != -1) {
+		  this.LINE_FEED = '\r';
+		}
+		else if (platformStr.indexOf('unix') != -1
+					|| platformStr.indexOf('linux') != -1
+					|| platformStr.indexOf('sun') != -1) {
+		  this.LINE_FEED = '\n';
+		}
+	},
 	
+	getCustomShortcuts: function() {
+		let shortcutStr = this._prefService.getCharPref('shortcuts'),
+				shortcutDesc = {};
+
+		if (shortcutStr) {
+			let allShortcuts = JSON.parse(shortcutStr);
+
+			for (let commandId in allShortcuts) {
+					let shortcutJson = allShortcuts[commandId]
+					shortcutDesc[commandId] = KeyboardShortcut.fromPOJO(shortcutJson);
+			}
+		}
+
+		return shortcutDesc;
+	},
+
 	handleUnload: function(evt) {
 		var cm = document.getElementById('contentAreaContextMenu');
 		if (cm != null)	{
@@ -657,9 +681,13 @@ var copyUrlsExpert = {
 	  					.getService(Components.interfaces.nsIWindowMediator);
 	},
 
-	updateShortcuts: function(shortcutDesc) {
-
+	updateCustomShortcuts: function(shortcutDesc) {
 		this._prefService.setCharPref('shortcuts', JSON.stringify(shortcutDesc));
+		this._loadCustomShortcuts(shortcutDesc);
+
+	},
+
+	_loadCustomShortcuts: function(shortcutDesc) {
 
 	  let wm = this._getWindowMediator();
 
@@ -674,14 +702,18 @@ var copyUrlsExpert = {
 
 	_updateShortcutsForDocument: function(document, shortcutDesc){
 
+		// Add keyset to XUL document for all the defined shortcuts
+
 		let CUE_KEYSET_ID = 'copyUrlsExpert-keyset',
 				keysetParent = document.getElementById('mainKeyset').parentNode,
 				keyset = keysetParent.querySelector('#' + CUE_KEYSET_ID);
 
+		// Remove the old keyset to remove the old key bindings
 		if (keyset != null) {
 			keyset.remove();
 		}
 
+		// Create a new keyset for new shortcuts defined
 		keyset = document.createElement('keyset');
 		keyset.setAttribute('id', CUE_KEYSET_ID);
 
