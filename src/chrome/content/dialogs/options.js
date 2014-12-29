@@ -14,23 +14,15 @@ copyUrlsExpert.options = {
 	gUriTree: null,
 	init: function() {
 		this.gUriTree = document.getElementById('copyurlsexpert-treeformats');
+		this.gShortcutsTree = document.getElementById('copyurlsexpert-treeshortcutkeys');
+
+		this.gShortcutsTree.addEventListener('keydown', this._onShortcutsTree_KeyDownOrUp);
+		this.gShortcutsTree.addEventListener('keyup', this._onShortcutsTree_KeyDownOrUp);
+
 		this.loadModelIntoTree();
+		this.loadShortcuts();
 	},
 	
-	_getPrefService: function() {
-		var prefService = null;
-		try {
-			prefService = gPrefService;
-		}
-		catch(err) {
-			// gPrefService not available in SeaMonkey
-			prefService = Components.classes['@mozilla.org/preferences-service;1'].getService(Components.interfaces.nsIPrefService);
-		}
-		
-		prefService = prefService.getBranch('extensions.copyurlsexpert.');
-		return prefService;
-	},
-
 	loadModelIntoTree: function() {
 		var tree = this.gUriTree;
 		
@@ -66,6 +58,66 @@ copyUrlsExpert.options = {
 
 	},
 	
+	loadShortcuts: function() {
+		let shortcutStr = copyUrlsExpert._getPrefService().getCharPref('shortcuts'),
+				shortcutDesc = {};
+
+		if (shortcutStr) {
+			let temp = JSON.parse(shortcutStr);
+
+			for (let prop in temp) {
+				//shortcutDesc[prop] = new KeyboardShortcut(temp[prop]);
+			}
+		}	
+
+		this.gShortcutsTree.cueShortcuts = shortcutDesc;
+	},
+
+	_onShortcutsTree_KeyDownOrUp: function(event) {
+		// evt.target
+		// evt.currentTarget
+		// evt.originalTarget
+
+		if (event.type == 'keydown' && event.repeat) {
+			// event.repeat is supported only in FX28+
+			return;
+		}
+
+		var tree = copyUrlsExpert.options.gShortcutsTree,
+				treeView = tree.view;
+
+    if (!tree.editingColumn) {
+      return;
+    }
+
+    if (event.getModifierState("OS")) {
+    	// do not support Win key in a shortcut
+    	return;
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+
+    let shortcut = KeyboardShortcut.fromEvent(event);
+
+    if (shortcut.isComplete()) {
+
+	    let {editingRow, editingColumn} = tree,
+					propName = treeView.getCellValue(editingRow, tree.columns.getFirstColumn());
+
+      tree.stopEditing(true);
+
+	    treeView.setCellText(editingRow, editingColumn, shortcut.toUIString());
+
+			tree.cueShortcuts[ propName ] = shortcut;
+
+    }
+    else {
+	    tree.inputField.value = shortcut.toUIString();
+    }
+
+	},
+
 	_appendRowForTemplate: function(tree, template, isDefault) {
 		var treeChildren = tree.treeBoxObject.treeBody;
 		var treeItem = document.createElement('treeitem');
@@ -355,9 +407,15 @@ copyUrlsExpert.options = {
 		
 		Application.storage.set(copyUrlsExpert.FUEL_KEY_ALL_PATTERNS, tree.cueTemplates);
 		Application.storage.set(copyUrlsExpert.FUEL_KEY_DEFUALT_PATTERN, defTemplate);
+
 		copyUrlsExpert.updateUrlListFile(defTemplate.id + copyUrlsExpert.LINE_FEED + tree.cueTemplates.join(copyUrlsExpert.LINE_FEED));
 		
 		tree.cueTemplates = null;
+
+		tree = copyUrlsExpert.options.gShortcutsTree;
+		copyUrlsExpert.updateShortcuts(tree.cueShortcuts);
+		tree.cueShortcuts = null;
+
 		document.documentElement.acceptDialog();
 		return true;
 	},
@@ -367,6 +425,7 @@ copyUrlsExpert.options = {
 		window.removeEventListener('load', onLoadHandler);
 		window.addEventListener('unload', onUnloadHandler, false);
 
+		Components.utils.import('resource://copy-urls-expert/keyboardshortcut.jsm');
 		Components.utils.import('resource://copy-urls-expert/modifiers.jsm');
 
 		this.init();
@@ -374,7 +433,13 @@ copyUrlsExpert.options = {
 
 	onUnload: function(evt) {
 		window.removeEventListener('unload', onUnloadHandler);
+
+		this.gShortcutsTree.removeEventListener('keydown', this._onShortcutsTree_KeyDownOrUp);
+		this.gShortcutsTree.removeEventListener('keyup', this._onShortcutsTree_KeyDownOrUp);
+
 		this.gUriTree = null;
+		this.gShortcutsTree = null;
+
 	},
 }
 

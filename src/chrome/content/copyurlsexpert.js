@@ -500,42 +500,24 @@ var copyUrlsExpert = {
 		return sel.isCollapsed;
 	},
 
-	handleToolbarButtonClick: function(evt) {
-	
-		switch (evt.target.id) {
-			case 'copyurlsexpert-toolbar-btnmain':
-				switch(copyUrlsExpert._prefService.getCharPref('toolbaraction')) {
-					case copyUrlsExpert.TBB_ACTION_ACTIVE_WIN:
-						copyUrlsExpert.performCopyTabsUrl(true);
-						break;
-					case copyUrlsExpert.TBB_ACTION_ACTIVE_TABGROUP:
-						copyUrlsExpert.performCopyTabsUrl(true, true);
-						break;
-					case copyUrlsExpert.TBB_ACTION_ACTIVE_TAB:
-						copyUrlsExpert.performCopyActiveTabUrl();
-						break;
-					case copyUrlsExpert.TBB_ACTION_ALL_WIN:
-						copyUrlsExpert.performCopyTabsUrl(false);
-						break;
-					case copyUrlsExpert.TBB_ACTION_OPEN_TABS:
-						document.getElementById('copyurlsexpert-command-opentabs').doCommand();
-						break;
-				}
-				break;
-			case 'copyurlsexpert-toolbar-btnactivewin':
+	performDefaultAction: function() {
+		let action = copyUrlsExpert._prefService.getCharPref('toolbaraction');
+
+		switch(action) {
+			case copyUrlsExpert.TBB_ACTION_ACTIVE_WIN:
 				copyUrlsExpert.performCopyTabsUrl(true);
 				break;
-			case 'copyurlsexpert-toolbar-btnactivetabgroup':
+			case copyUrlsExpert.TBB_ACTION_ACTIVE_TABGROUP:
 				copyUrlsExpert.performCopyTabsUrl(true, true);
 				break;
-			case 'copyurlsexpert-toolbar-btnactivetab':
+			case copyUrlsExpert.TBB_ACTION_ACTIVE_TAB:
 				copyUrlsExpert.performCopyActiveTabUrl();
 				break;
-			case 'copyurlsexpert-toolbar-btnallwin':
+			case copyUrlsExpert.TBB_ACTION_ALL_WIN:
 				copyUrlsExpert.performCopyTabsUrl(false);
 				break;
-			case 'copyurlsexpert-toolbar-btnoptions':
-				copyUrlsExpert.showOptionsWindow();
+			case copyUrlsExpert.TBB_ACTION_OPEN_TABS:
+				document.getElementById('cmd_cue_openTabs').doCommand();
 				break;
 		}
 	},
@@ -670,6 +652,65 @@ var copyUrlsExpert = {
 		Application.storage.set(copyUrlsExpert.FUEL_KEY_DEFUALT_PATTERN, target[index]);
 	},
 	
+	_getWindowMediator: function() {
+	  return Components.classes['@mozilla.org/appshell/window-mediator;1']
+	  					.getService(Components.interfaces.nsIWindowMediator);
+	},
+
+	updateShortcuts: function(shortcutDesc) {
+
+		this._prefService.setCharPref('shortcuts', JSON.stringify(shortcutDesc));
+
+	  let wm = this._getWindowMediator();
+
+	  // Get the list of browser windows already open
+	  let windows = wm.getEnumerator('navigator:browser');
+	  while (windows.hasMoreElements()) {
+	    let domWindow = windows.getNext().QueryInterface(Components.interfaces.nsIDOMWindow);
+
+	    this._updateShortcutsForDocument(domWindow.document, shortcutDesc);
+	  }
+	},
+
+	_updateShortcutsForDocument: function(document, shortcutDesc){
+
+		let CUE_KEYSET_ID = 'copyUrlsExpert-keyset',
+				keysetParent = document.getElementById('mainKeyset').parentNode,
+				keyset = keysetParent.querySelector('#' + CUE_KEYSET_ID);
+
+		if (keyset != null) {
+			keyset.remove();
+		}
+
+		keyset = document.createElement('keyset');
+		keyset.setAttribute('id', CUE_KEYSET_ID);
+
+		for (let commandId in shortcutDesc) {
+			let keyElemId = 'key-' + commandId,
+					targetKey = null,
+					shortcut = shortcutDesc[commandId];
+
+			if (!shortcut) {
+				// shortcut is not defined
+				continue;
+			}
+
+			targetKey = document.createElement('key');
+			targetKey.setAttribute('id', keyElemId);
+			targetKey.setAttribute('command', commandId);
+			targetKey.setAttribute('key', shortcut.getKeyName());					
+
+			if (shortcut.modifiers) {
+				targetKey.setAttribute('modifiers', shortcut.modifiers.toXulModifiersString());					
+			}
+
+			keyset.appendChild(targetKey);
+		}
+
+		keysetParent.appendChild(keyset);
+
+	},
+
 	updateUrlListFile: function(theContent) {
 		// Write to prefs 
 		// get profile directory  

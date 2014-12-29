@@ -136,6 +136,81 @@
 
   </prefpane>
   
+  <prefpane flex="1" id="copyurlsexpert-shortcutkeyspanel" label="&copyurlsexpert.options.shortcutkeystab;" image="chrome://copy-urls-expert/skin/format.png">
+    <groupbox flex="1">
+      <vbox flex="1">
+
+        <tree id="copyurlsexpert-treeshortcutkeys" 
+               hidecolumnpicker="true" rows="6" seltype="single" editable="true">
+
+          <treecols orient="horizontal">
+            <treecol hidden="true" id="copyurlsexpert-colcommandid" />
+            <treecol persist="width" flex="2" id="copyurlsexpert-colaction" label="&copyurlsexpert.options.colshortcutkeyaction;"  />
+            <splitter class="tree-splitter" />
+            <treecol persist="width" flex="1" id="copyurlsexpert-colshortcutkey" label="&copyurlsexpert.options.colshortcutkey;" editable="false" />
+            <splitter class="tree-splitter" />
+          </treecols>
+
+          <treechildren>
+
+            <treeitem>
+              <treerow>
+                <treecell value="cmd_cue_copyActiveWinTabsUrls" />
+                <treecell label="&copyurlsexpert.common.activewinmenulabel;" />
+                <treecell label="" />
+              </treerow>
+            </treeitem>
+
+            <treeitem>
+              <treerow>
+                <treecell value="cmd_cue_copyAllWinTabsUrls" />
+                <treecell label="&copyurlsexpert.common.allwinmenulabel;" />
+                <treecell label="" />
+              </treerow>
+            </treeitem>
+
+            <treeitem>
+              <treerow>
+                <treecell value="cmd_cue_copyActiveGroupTabUrls" />
+                <treecell label="&copyurlsexpert.common.activetabgroupmenulabel;" />
+                <treecell label="" />
+              </treerow>
+            </treeitem>
+
+            <treeitem>
+              <treerow>
+                <treecell value="cmd_cue_copyCurrentTabUrl" />
+                <treecell label="&copyurlsexpert.common.activetabmenulabel;" />
+                <treecell label="" />
+              </treerow>
+            </treeitem>
+            
+            <treeitem>
+              <treerow>
+                <treecell value="cmd_cue_openTabs" />
+                <treecell label="&copyurlsexpert.common.opentabsmenulabel;" />
+                <treecell label="" />
+              </treerow>
+            </treeitem>
+
+            <treeitem>
+              <treerow>
+                <treecell value="cmd_cue_openOptions" />
+                <treecell label="&copyurlsexpert.common.optionsmenulabel;" />
+                <treecell label="" />
+              </treerow>
+            </treeitem>
+
+          </treechildren>
+
+        </tree>
+
+      </vbox>
+    </groupbox>
+
+  </prefpane>
+
+
   <prefpane flex="1"  id="copyurlsexpert-helppanel" label="&copyurlsexpert.options.helptab;" image="chrome://copy-urls-expert/skin/help.png">
     <groupbox flex="1">
   	  <vbox flex="1">
@@ -193,7 +268,8 @@
         </row>
 		  </rows>
 		 </grid>
-  	  </vbox>
+	  </vbox>
+
 	</groupbox>
   </prefpane>        
 
