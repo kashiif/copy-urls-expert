@@ -39,7 +39,7 @@ var copyUrlsExpert = {
 		Components.utils.import('resource://copy-urls-expert/keyboardshortcut.jsm');
 		Components.utils.import('resource://copy-urls-expert/modifiers.jsm');
 
-		this._loadCustomShortcuts(this.getCustomShortcuts());	
+		this._updateShortcutsForDocument(document, this.getCustomShortcuts());	
 
 		this._setupLineFeedChar();
 		Components.utils.import('resource://copy-urls-expert/cue-classes.jsm', copyUrlsExpert);
@@ -730,7 +730,7 @@ var copyUrlsExpert = {
 			targetKey = document.createElement('key');
 			targetKey.setAttribute('id', keyElemId);
 			targetKey.setAttribute('command', commandId);
-			targetKey.setAttribute('key', shortcut.getKeyName());					
+			targetKey.setAttribute('key', shortcut.getKeyName());
 
 			if (shortcut.modifiers) {
 				targetKey.setAttribute('modifiers', shortcut.modifiers.toXulModifiersString());					
