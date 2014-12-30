@@ -50,6 +50,8 @@
 <!ENTITY copyurlsexpert.options.colshortcutkeyaction "Action">
 <!ENTITY copyurlsexpert.options.colshortcutkey "Assigned shortcut key">
 
+<!ENTITY copyurlsexpert.options.resetshortcut "Reset selected shortcut">
+
 <!ENTITY copyurlsexpert.options.lblctrlkey  "Ctrl">
 <!ENTITY copyurlsexpert.options.lblshiftkey "Shift">
 

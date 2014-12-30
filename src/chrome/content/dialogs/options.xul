@@ -67,6 +67,7 @@
 	  </vbox>
     </groupbox>
   </prefpane>
+
   <prefpane flex="1" id="copyurlsexpert-formattabpanel" label="&copyurlsexpert.options.formattab;" image="chrome://copy-urls-expert/skin/format.png">
     <groupbox flex="1">
       <vbox flex="1">
@@ -125,9 +126,15 @@
           <treechildren/>
         </tree>
         <hbox>
-          <button id="copyurlsexpert-btnedit" label="&copyurlsexpert.options.btnedit;"  size="15" onclick="copyUrlsExpert.options.onEditTemplateButtonClicked(this)"/>
-          <button id="copyurlsexpert-btndefault" label="&copyurlsexpert.options.btndefault;"  size="15" onclick="copyUrlsExpert.options.onSetAsDefaultButtonClicked(this)"/>
-          <button id="copyurlsexpert-btndelete" label="&copyurlsexpert.options.btndelete;"  size="15" onclick="copyUrlsExpert.options.onDelTemplateButtonClicked(this)"/>
+          <button id="copyurlsexpert-btnedit" label="&copyurlsexpert.options.btnedit;"
+                  disabled="true" size="15"
+                  onclick="copyUrlsExpert.options.onEditTemplateButtonClicked(this)"/>
+          <button id="copyurlsexpert-btndefault" label="&copyurlsexpert.options.btndefault;" 
+                  disabled="true" size="15" 
+                  onclick="copyUrlsExpert.options.onSetAsDefaultButtonClicked(this)"/>
+          <button id="copyurlsexpert-btndelete" label="&copyurlsexpert.options.btndelete;"
+                  disabled="true" size="15" 
+                  onclick="copyUrlsExpert.options.onDelTemplateButtonClicked(this)"/>
         </hbox>
         <vbox>
           <label>&copyurlsexpert.options.lblhelphint;</label>
@@ -205,6 +212,14 @@
           </treechildren>
 
         </tree>
+        <hbox>
+
+          <button id="copyurlsexpert-reset-shortcut" label="&copyurlsexpert.options.resetshortcut;"
+                  size="15" disabled="true"/>
+
+        </hbox>
+
+
 
       </vbox>
     </groupbox>

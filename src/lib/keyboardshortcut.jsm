@@ -87,11 +87,14 @@ KeyboardShortcut.prototype.getKeyConfig = function () {
      VK_DIVIDE: '/'
   }
 
+  let keyName = this.keycode.replace(/^VK_/, "");
+
   if (symbols.hasOwnProperty(this.keycode)) {
     config.keytext = symbols[this.keycode];
+    config.keycode = this.keycode;
   }
   else {
-    config.keytext = this.keycode.replace(/^VK_/, "");
+    config.keytext = keyName;
 
     let domKeys = Components.interfaces.nsIDOMKeyEvent,
         key = domKeys["DOM_" + this.keycode];

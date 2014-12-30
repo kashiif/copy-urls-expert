@@ -12,16 +12,24 @@
 
 copyUrlsExpert.options = {
 	gUriTree: null,
+	gShortcutsTree: null,
+
 	init: function() {
 
 		Components.utils.import('resource://copy-urls-expert/keyboardshortcut.jsm');
 		Components.utils.import('resource://copy-urls-expert/modifiers.jsm');
 
 		this.gUriTree = document.getElementById('copyurlsexpert-treeformats');
-		this.gShortcutsTree = document.getElementById('copyurlsexpert-treeshortcutkeys');
+		this.gUriTree.addEventListener('select', this._onUriTreeSelect, false);
 
-		this.gShortcutsTree.addEventListener('keydown', this._onShortcutsTree_KeyDownOrUp);
-		this.gShortcutsTree.addEventListener('keyup', this._onShortcutsTree_KeyDownOrUp);
+		this.gShortcutsTree = document.getElementById('copyurlsexpert-treeshortcutkeys');
+		this.gShortcutsTree.addEventListener('keydown', this._onShortcutsTreeKeyDownOrUp);
+		this.gShortcutsTree.addEventListener('keyup', this._onShortcutsTreeKeyDownOrUp);
+		this.gShortcutsTree.addEventListener('select', this._onShortcutsTreeSelect, false);
+
+		this.btnResetShortcut = document.getElementById('copyurlsexpert-reset-shortcut');
+		this.btnResetShortcut.addEventListener('click', this._onResetShortcutButtonClicked);
+
 
 		this.loadModelIntoTree();
 		this.loadShortcutsIntoTree();
@@ -84,10 +92,7 @@ copyUrlsExpert.options = {
 
 	},
 
-	_onShortcutsTree_KeyDownOrUp: function(event) {
-		// evt.target
-		// evt.currentTarget
-		// evt.originalTarget
+	_onShortcutsTreeKeyDownOrUp: function(event) {
 
 		if (event.type == 'keydown' && event.repeat) {
 			// event.repeat is supported only in FX28+
@@ -127,6 +132,30 @@ copyUrlsExpert.options = {
 	    tree.inputField.value = shortcut.toUIString();
     }
 
+	},
+
+	_onUriTreeSelect: function(evt) {
+		var tree = evt.target;
+		copyUrlsExpert.options._toggleNonEditingButtons(tree.currentIndex < 0);
+	},
+
+	_onShortcutsTreeSelect: function(evt) {
+		var tree = evt.target;
+		copyUrlsExpert.options.btnResetShortcut.setAttribute('disabled', tree.currentIndex < 0);
+	},
+
+	_onResetShortcutButtonClicked: function(evt) {
+		var tree = copyUrlsExpert.options.gShortcutsTree;
+
+		if (tree.editingColumn) {
+			tree.stopEditing(false);
+		}
+
+		var propName = tree.view.getCellValue(tree.currentIndex, tree.columns.getFirstColumn());
+
+		tree.view.setCellText(tree.currentIndex, tree.columns.getNamedColumn('copyurlsexpert-colshortcutkey'), '');
+
+		delete tree.cueShortcuts[ propName ];
 	},
 
 	_appendRowForTemplate: function(tree, template, isDefault) {
@@ -214,6 +243,9 @@ copyUrlsExpert.options = {
 		btn = document.getElementById('copyurlsexpert-btnUpdate');
 		btn.disabled = btn.hidden = false;
 
+		btn = document.getElementById('copyurlsexpert-btnedit');
+		btn.disabled = true;
+
 		copyUrlsExpert.options._toggleNonEditingButtons(true);
 	},
 	
@@ -237,7 +269,7 @@ copyUrlsExpert.options = {
 	},
 	
 	onCancelSaveTemplateButtonClicked: function() {
-		copyUrlsExpert.options._toggleNonEditingButtons(false);
+		copyUrlsExpert.options._toggleNonEditingButtons(copyUrlsExpert.options.gUriTree.currentIndex < 0);
 		copyUrlsExpert.options._disableEditInputs();
 	},
 	
@@ -267,7 +299,7 @@ copyUrlsExpert.options = {
 	},
 	
 	_toggleNonEditingButtons: function(isDisabled) {
-		var btns = ['btndefault', 'btndelete'];
+		var btns = ['btnedit', 'btndefault', 'btndelete'];
 
 		for (var i=0 ; i<btns.length ; i++) {
 			var t = document.getElementById('copyurlsexpert-' + btns[i]);
@@ -442,12 +474,18 @@ copyUrlsExpert.options = {
 	onUnload: function(evt) {
 		window.removeEventListener('unload', onUnloadHandler);
 
-		this.gShortcutsTree.removeEventListener('keydown', this._onShortcutsTree_KeyDownOrUp);
-		this.gShortcutsTree.removeEventListener('keyup', this._onShortcutsTree_KeyDownOrUp);
+		this.gUriTree.removeEventListener('select', this._onUriTreeSelect, false);
+
+		this.gShortcutsTree.removeEventListener('keydown', this._onShortcutsTreeKeyDownOrUp);
+		this.gShortcutsTree.removeEventListener('keyup', this._onShortcutsTreeKeyDownOrUp);
+		this.gShortcutsTree.removeEventListener('select', this._onShortcutsTreeSelect, false);
+
+		this.btnResetShortcut.removeEventListener('click', this._onResetShortcutButtonClicked);
+
 
 		this.gUriTree = null;
 		this.gShortcutsTree = null;
-
+		this.btnResetShortcut = null;
 	},
 }
 
