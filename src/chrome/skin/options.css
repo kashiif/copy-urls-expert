@@ -32,9 +32,12 @@ grid > rows > row {
 	letter-spacing: 0.1em;
 }
 
-#copyurlsexpert-optionsbottompanel hbox {
-	padding-right: 0.3em;
-	padding-bottom: 0.3em;
+.prefWindow-dlgbuttons {
+	padding: 0;
+}
+
+#copyurlsexpert-optionsbottompanel {
+	padding: 0 8px 8px 8px;
 }
 
 .helplabel {

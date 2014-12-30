@@ -10,6 +10,7 @@
         title="&copyurlsexpert.options.windowtitle;"
         width= "600"
         height= "630"
+        xmlns:html="http://www.w3.org/1999/xhtml"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >	  
   <prefpane flex="1" id="copyurlsexpert-generaloptionstabpanel" label="&copyurlsexpert.options.generaltab;" image="chrome://copy-urls-expert/skin/general.png">
     <preferences>
@@ -273,11 +274,20 @@
 	</groupbox>
   </prefpane>        
 
-  <vbox flex="1" id="copyurlsexpert-optionsbottompanel">
-	<hbox align="right" flex="1">
-	  <button id="copyurlsexpert-btnaccept" label="&copyurlsexpert.options.btacceptlabel;" onclick="return copyUrlsExpert.options.onDialogAccept();"/>
-    </hbox>
-  </vbox>
+  <hbox flex="1" id="copyurlsexpert-optionsbottompanel">
+	  <vbox align="left" flex="3">
+      <html:a href="https://addons.mozilla.org/firefox/addon/copy-urls-expert/about"
+              alt="Click here to send me your contribution through mozilla's contributon page"
+              target="_new"
+              style="color:#0000ff;"
+              >
+        Gift the developer a cup of coffee (via Paypal)
+      </html:a>
+    </vbox>
+    <vbox align="right" flex="1">
+	   <button id="copyurlsexpert-btnaccept" label="&copyurlsexpert.options.btacceptlabel;" onclick="return copyUrlsExpert.options.onDialogAccept();"/>
+    </vbox>
+  </hbox>
 
 
   <script type="application/x-javascript" src="chrome://copy-urls-expert/content/copyurlsexpert.js" />
