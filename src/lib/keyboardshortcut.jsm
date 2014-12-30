@@ -14,7 +14,6 @@ var EXPORTED_SYMBOLS = ['KeyboardShortcut'];
 Components.utils.import('resource://copy-urls-expert/modifiers.jsm');
 
 function KeyboardShortcut(data) {
-  this.key = data.key;
   this.keycode = data.keycode;
   this.modifiers = data.modifiers;
 }
@@ -29,7 +28,6 @@ KeyboardShortcut.prototype.equals = function (obj) {
 
 KeyboardShortcut.prototype.toString = function () {
   let data = {
-      key: this.key,
       keycode: this.keycode,
       modifiers: this.modifiers
     };
@@ -45,39 +43,77 @@ KeyboardShortcut.prototype.toUIString = function () {
   let parts = [];
 
   if (this.modifiers) {
-    parts.push(this.modifiers.toString() + "+");
+    let m = this.modifiers.toString();
+
+    if (m.length > 0) {
+      parts.push(m);
+    }
+
   }
 
-  if (this.key) {
-    parts.push(String.fromCharCode(this.key));
+  let keyConfig = this.getKeyConfig();
+  if (keyConfig) {
+    parts.push(keyConfig.keytext);
   }
 
-  let keyName = this.getKeyName();
-  if (keyName) {
-    parts.push(keyName);
-  }
-
-  return this._toStringCache = parts.join("");
+  return this._toStringCache = parts.join("+");
 }
 
-KeyboardShortcut.prototype.getKeyName = function () {
-  if (this.keycode) {
-    let keyName = this.keycode.replace(/^VK_/, "");
-    keyName = keyName[0] + keyName.substr(1).toLowerCase();
-    keyName = keyName.replace(/_[a-z]/i, str => str[1].toUpperCase());
-    return keyName;
+KeyboardShortcut.prototype.getKeyConfig = function () {
+  var config = {
+      keytext: ""
+    };
+
+  if (!this.keycode) {
+    return config;
   }
 
-  return "";
+  let symbols = {
+     VK_SEMICOLON: ';',
+     VK_EQUALS: '=',
+     VK_COMMA: ',',
+     VK_PERIOD: '.',
+     VK_SLASH: '/',
+     VK_BACK_QUOTE: '`',
+     VK_OPEN_BRACKET: '[',
+     VK_BACK_SLASH: '\\',
+     VK_CLOSE_BRACKET: ']',
+     VK_QUOTE: '\'',
+
+     /* Numpad */
+     VK_MULTIPLY: '*',
+     VK_ADD: '+',
+     VK_SUBTRACT: '-',
+     VK_DIVIDE: '/'
+  }
+
+  if (symbols.hasOwnProperty(this.keycode)) {
+    config.keytext = symbols[this.keycode];
+  }
+  else {
+    config.keytext = this.keycode.replace(/^VK_/, "");
+
+    let domKeys = Components.interfaces.nsIDOMKeyEvent,
+        key = domKeys["DOM_" + this.keycode];
+
+
+    if (key >= domKeys.DOM_VK_F1 && key <= domKeys.DOM_VK_F24) {
+      // function keys should be handled through <key keycode="VK_FXX">
+      config.keycode = this.keycode;
+    }
+
+  }
+
+  return config;
 }
 
 KeyboardShortcut.prototype.isComplete = function () {
-  return !!(this.key || this.keycode);
+  return !!(this.keycode);
 }
 
 KeyboardShortcut.fromPOJO = function (data) {
 
-  data.modifiers = new Modifiers(data.modifiers);
+  data.modifiers = new Modifiers(data.modifiers || {modifiers: []});
 
   return new KeyboardShortcut(data);
 }

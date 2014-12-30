@@ -705,8 +705,17 @@ var copyUrlsExpert = {
 		// Add keyset to XUL document for all the defined shortcuts
 
 		let CUE_KEYSET_ID = 'copyUrlsExpert-keyset',
-				keysetParent = document.getElementById('mainKeyset').parentNode,
-				keyset = keysetParent.querySelector('#' + CUE_KEYSET_ID);
+				keysetParent = document.getElementById('mainKeyset');
+
+		if (keysetParent == null) {
+			// loaded in a non-browser window
+			return;
+		}
+		else {
+			keysetParent = keysetParent.parentNode;
+		}
+
+		let keyset = keysetParent.querySelector('#' + CUE_KEYSET_ID);
 
 		// Remove the old keyset to remove the old key bindings
 		if (keyset != null) {
@@ -730,7 +739,16 @@ var copyUrlsExpert = {
 			targetKey = document.createElement('key');
 			targetKey.setAttribute('id', keyElemId);
 			targetKey.setAttribute('command', commandId);
-			targetKey.setAttribute('key', shortcut.getKeyName());
+
+			var shortcutKeyConfig = shortcut.getKeyConfig();
+
+			if (shortcutKeyConfig.hasOwnProperty('keycode')) {
+				targetKey.setAttribute('keycode', shortcutKeyConfig.keycode);
+				targetKey.setAttribute('keytext', shortcutKeyConfig.keytext);
+			}
+			else {
+				targetKey.setAttribute('key', shortcutKeyConfig.keytext);
+			}
 
 			if (shortcut.modifiers) {
 				targetKey.setAttribute('modifiers', shortcut.modifiers.toXulModifiersString());					

@@ -144,10 +144,10 @@
                hidecolumnpicker="true" rows="6" seltype="single" editable="true">
 
           <treecols orient="horizontal">
-            <treecol hidden="true" id="copyurlsexpert-colcommandid" />
-            <treecol persist="width" flex="2" id="copyurlsexpert-colaction" label="&copyurlsexpert.options.colshortcutkeyaction;"  />
+            <treecol editable="false" hidden="true" id="copyurlsexpert-colcommandid" />
+            <treecol editable="false" persist="width" flex="2" id="copyurlsexpert-colaction" label="&copyurlsexpert.options.colshortcutkeyaction;"  />
             <splitter class="tree-splitter" />
-            <treecol persist="width" flex="1" id="copyurlsexpert-colshortcutkey" label="&copyurlsexpert.options.colshortcutkey;" editable="false" />
+            <treecol persist="width" flex="1" id="copyurlsexpert-colshortcutkey" label="&copyurlsexpert.options.colshortcutkey;" editable="true" />
             <splitter class="tree-splitter" />
           </treecols>
 
