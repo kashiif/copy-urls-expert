@@ -448,7 +448,8 @@ var copyUrlsExpert = {
 	performCopyTabUnderMouseUrl: function() {
 		var _g = this._gBrowser();
 
-		var entries = [copyUrlsExpert._getEntryForTab(_g.getBrowserForTab(_g.mContextTab))];
+		var contextTab = _g.mContextTab || _g.selectedTab;
+		var entries = [copyUrlsExpert._getEntryForTab(_g.getBrowserForTab(contextTab), contextTab)];
 	
 		copyUrlsExpert._copyEntriesToClipBoard(entries, copyUrlsExpert._prefService);
 	},
