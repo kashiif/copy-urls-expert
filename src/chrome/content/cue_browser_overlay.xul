@@ -60,6 +60,22 @@
 
 	</commandset>
 	
+	<!-- temp code for keycode and modifiers testing -->
+	<!--
+	<keyset id="mainKeyset">
+		<key oncommand="window.alert('SLASH')" 
+				 id="cue-cmd-1"
+				 keycode="VK_SLASH"
+				 modifiers="accel"
+					/>
+		<key oncommand="window.alert('PERIOD')" 
+				 id="cue-cmd-2"
+				 keycode="VK_PERIOD"
+				 modifiers="accel"
+					/>
+	</keyset>
+	-->
+
 	<!-- Tab Context Menu -->
 	<popupset id="mainPopupSet">
 		<menupopup id="tabContextMenu" >
