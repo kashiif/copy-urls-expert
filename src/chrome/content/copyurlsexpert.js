@@ -352,12 +352,16 @@ var copyUrlsExpert = {
     
     var h = d.getHours(), 
         m = d.getMinutes(),
-        s = d.getSeconds();
-  
+        s = d.getSeconds(),
+        month = d.getMonth() + 1, // Months are 0-based index;
+  			dt = d.getDate();
+
     var strDate = f.replace(/YYYY/g, d.getFullYear())
              .replace(/YY/g, d.getFullYear().toString().substr(2))
-             .replace(/mm/g, t(d.getMonth()))
-             .replace(/dd/g, t(d.getDate()))
+             .replace(/mm/g, t(month))
+             .replace(/m/g, month)
+             .replace(/dd/g, t(dt))
+             .replace(/d/g, dt)
              .replace(/HH/g, t(h))  // 24-hour clock
              .replace(/hh/g, t(h>12?h-12:h))
              .replace(/h/gi, h)
