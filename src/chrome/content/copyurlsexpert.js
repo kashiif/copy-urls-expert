@@ -104,10 +104,9 @@ var copyUrlsExpert = {
 				}
 			}
 
-			Application.storage.set(copyUrlsExpert.FUEL_KEY_ALL_PATTERNS, target);
-			Application.storage.set(copyUrlsExpert.FUEL_KEY_DEFUALT_PATTERN, target[index]);
+			copyUrlsExpert._updateFuelAppData(target, index);
 
-			};
+		};
 			
 		this._AsynHandler.prototype.handleUpdate =  function(status) {  
 			if (!Components.isSuccessCode(status)) {  
@@ -321,7 +320,7 @@ var copyUrlsExpert = {
 		return entry;
 	},	
 	
-	_copyEntriesToClipBoard: function(entries,oPrefs) {
+	_copyEntriesToClipBoard: function(entries,oPrefs, patternToUse) {
 
 		switch(oPrefs.getCharPref('sortby')) {
 			case copyUrlsExpert.SORT_BY_TITLE:
@@ -332,8 +331,8 @@ var copyUrlsExpert = {
 				break;
 		}
 		
-		var defUrlPattern = Application.storage.get(copyUrlsExpert.FUEL_KEY_DEFUALT_PATTERN, '');
-		var str = copyUrlsExpert._transform(defUrlPattern, entries);
+		patternToUse = patternToUse || Application.storage.get(copyUrlsExpert.FUEL_KEY_DEFUALT_PATTERN, '');
+		var str = copyUrlsExpert._transform(patternToUse, entries);
 
 		//alert(str);
 		if(str != null && str.length > 0) {
@@ -414,12 +413,12 @@ var copyUrlsExpert = {
 		return _g;
 	},
 
-	performCopyActiveTabUrl: function() {
+	performCopyActiveTabUrl: function(templateToUse) {
 		var _g = this._gBrowser();
 
 		var entries = [copyUrlsExpert._getEntryForTab(_g.selectedBrowser, _g.selectedTab)];
 	
-		copyUrlsExpert._copyEntriesToClipBoard(entries, copyUrlsExpert._prefService);
+		copyUrlsExpert._copyEntriesToClipBoard(entries, copyUrlsExpert._prefService, templateToUse);
 	},
 	
 	performCopyTabUnderMouseUrl: function() {
@@ -450,11 +449,16 @@ var copyUrlsExpert = {
 	},
 	
 	performCopyTabsUrl: function(onlyActiveWindow, filterHidden) {
+		this.performCopyTabsUrlWithTemplate(onlyActiveWindow, filterHidden, null);
+	},
+
+	performCopyTabsUrlWithTemplate: function(onlyActiveWindow, filterHidden, templateToUse) {
+		// This function must be called awith all three arguments
 		var aBrowsers = copyUrlsExpert._getBrowsers(onlyActiveWindow);
 		
 		var entries = copyUrlsExpert._getEntriesFromTabs(aBrowsers, filterHidden);
 		
-		copyUrlsExpert._copyEntriesToClipBoard(entries, copyUrlsExpert._prefService);
+		copyUrlsExpert._copyEntriesToClipBoard(entries, copyUrlsExpert._prefService, templateToUse);
 					
 	},
 	
@@ -667,8 +671,12 @@ var copyUrlsExpert = {
 		this.updateUrlListFile(defaultContent);
 		
 		// Do not wait for file write and update model		
+		this._updateFuelAppData(target, index);
+	},
+
+	_updateFuelAppData: function(target, defaultIndex) {
 		Application.storage.set(copyUrlsExpert.FUEL_KEY_ALL_PATTERNS, target);
-		Application.storage.set(copyUrlsExpert.FUEL_KEY_DEFUALT_PATTERN, target[index]);
+		Application.storage.set(copyUrlsExpert.FUEL_KEY_DEFUALT_PATTERN, target[defaultIndex]);
 	},
 	
 	updateUrlListFile: function(theContent) {

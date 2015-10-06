@@ -348,8 +348,7 @@ copyUrlsExpert.options = {
 		var tree = copyUrlsExpert.options.gUriTree;
 		var defTemplate = tree.cueTemplates[tree.cueDefTemplateIndex];
 		
-		Application.storage.set(copyUrlsExpert.FUEL_KEY_ALL_PATTERNS, tree.cueTemplates);
-		Application.storage.set(copyUrlsExpert.FUEL_KEY_DEFUALT_PATTERN, defTemplate);
+		copyUrlsExpert._updateFuelAppData(tree.cueTemplates, tree.cueDefTemplateIndex);
 		copyUrlsExpert.updateUrlListFile(defTemplate.id + copyUrlsExpert.LINE_FEED + tree.cueTemplates.join(copyUrlsExpert.LINE_FEED));
 		
 		tree.cueTemplates = null;
