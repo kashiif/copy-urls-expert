@@ -30,7 +30,7 @@
 
 <!ENTITY copyurlsexpert.options.filterduplicates	"Filter duplicates when copying to and opening from clipboard">
 <!ENTITY copyurlsexpert.options.usecontenttitle	"When copying urls of tab, use page title for $title">
-<!ENTITY copyurlsexpert.options.usecontenttitle2	"If you uncheck this, $title will always be the tab title. This is to facilitate Tab Mix Plus &quot;Use bookmark name as title&quot; feature.">
+<!ENTITY copyurlsexpert.options.usecontenttitle2	"If you uncheck this, $title will be the same text as in tab title. If you use any extension that changes tab title based on some configuration and you need the same title in copied text then you should uncheck this option.">
 
 <!-- Shortcuts Tab -->
 
