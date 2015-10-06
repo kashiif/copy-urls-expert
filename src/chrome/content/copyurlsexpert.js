@@ -274,6 +274,7 @@ var copyUrlsExpert = {
 			var item = items[i];
 			var entry = entryExtractor(item, sel);
 			
+				// ignore if the <item> is not in selection
 			if (entry) {
 
 				if (filterDuplicates && this._isDuplicate(urls, entry.url)) {
@@ -282,10 +283,6 @@ var copyUrlsExpert = {
 
 				entries.push(entry);
 				urls.push(entry.url);
-			}
-			else if (entries.length) {
-				// selections must be continuous
-				break;
 			}
 		}	
 		return entries;		
