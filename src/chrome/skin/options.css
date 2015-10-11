@@ -43,3 +43,12 @@ grid > rows > row {
 .helplabel {
 	vertical-align: text-bottom;
 }
+
+#copyurlsexpert-treeshortcutkeys {
+	margin-top: 10px;
+	margin-bottom: 10px;	
+}
+
+.cue-shortcut-warn {
+		padding-bottom: 5px;		
+}

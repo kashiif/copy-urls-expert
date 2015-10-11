@@ -46,7 +46,16 @@
 
 <!-- Shortcut Keys Tab -->
 
+
 <!ENTITY copyurlsexpert.options.shortcutkeystab "Shortcut Keys">
+
+<!ENTITY copyurlsexpert.options.lblshortcutdesc "Double click on the cell in front on any action and then press the shortcut key combination.">
+
+<!ENTITY copyurlsexpert.options.shortcutwarn1 "Important">
+<!ENTITY copyurlsexpert.options.shortcutwarn2 "This feature is experimental and may not work as expected on every firefox version and on every platform (e.g. Mac/Linux).">
+<!ENTITY copyurlsexpert.options.shortcutwarn3 "This feautre was tested on windows for Firefox 40+.">
+
+
 <!ENTITY copyurlsexpert.options.colshortcutkeyaction "Action">
 <!ENTITY copyurlsexpert.options.colshortcutkey "Assigned shortcut key">
 
