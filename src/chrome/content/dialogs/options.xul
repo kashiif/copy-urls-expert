@@ -144,16 +144,17 @@
 
   </prefpane>
   
-  <prefpane flex="1" id="copyurlsexpert-shortcutkeyspanel" label="&copyurlsexpert.options.shortcutkeystab;" image="chrome://copy-urls-expert/skin/format.png">
+  <prefpane flex="1" id="copyurlsexpert-shortcutkeyspanel" label="&copyurlsexpert.options.shortcutkeystab;" image="chrome://copy-urls-expert/skin/keyboard.png">
     <groupbox flex="1">
-      <vbox flex="1">
+      <vbox>
+        <label class="cue-shortcut-warn">&copyurlsexpert.options.lblshortcutdesc;</label>
 
         <tree id="copyurlsexpert-treeshortcutkeys" 
                hidecolumnpicker="true" rows="6" seltype="single" editable="true">
 
           <treecols orient="horizontal">
             <treecol editable="false" hidden="true" id="copyurlsexpert-colcommandid" />
-            <treecol editable="false" persist="width" flex="2" id="copyurlsexpert-colaction" label="&copyurlsexpert.options.colshortcutkeyaction;"  />
+            <treecol editable="true" persist="width" flex="2" id="copyurlsexpert-colaction" label="&copyurlsexpert.options.colshortcutkeyaction;"  />
             <splitter class="tree-splitter" />
             <treecol persist="width" flex="1" id="copyurlsexpert-colshortcutkey" label="&copyurlsexpert.options.colshortcutkey;" editable="true" />
             <splitter class="tree-splitter" />
@@ -164,7 +165,7 @@
             <treeitem>
               <treerow>
                 <treecell value="cmd_cue_copyActiveWinTabsUrls" />
-                <treecell label="&copyurlsexpert.common.activewinmenulabel;" />
+                <treecell label="&copyurlsexpert.common.activewinmenulabel;" editable="false"/>
                 <treecell label="" />
               </treerow>
             </treeitem>
@@ -172,7 +173,7 @@
             <treeitem>
               <treerow>
                 <treecell value="cmd_cue_copyAllWinTabsUrls" />
-                <treecell label="&copyurlsexpert.common.allwinmenulabel;" />
+                <treecell label="&copyurlsexpert.common.allwinmenulabel;" editable="false"/>
                 <treecell label="" />
               </treerow>
             </treeitem>
@@ -180,7 +181,7 @@
             <treeitem>
               <treerow>
                 <treecell value="cmd_cue_copyActiveGroupTabUrls" />
-                <treecell label="&copyurlsexpert.common.activetabgroupmenulabel;" />
+                <treecell label="&copyurlsexpert.common.activetabgroupmenulabel;" editable="false"/>
                 <treecell label="" />
               </treerow>
             </treeitem>
@@ -188,7 +189,7 @@
             <treeitem>
               <treerow>
                 <treecell value="cmd_cue_copyCurrentTabUrl" />
-                <treecell label="&copyurlsexpert.common.activetabmenulabel;" />
+                <treecell label="&copyurlsexpert.common.activetabmenulabel;" editable="false"/>
                 <treecell label="" />
               </treerow>
             </treeitem>
@@ -196,7 +197,7 @@
             <treeitem>
               <treerow>
                 <treecell value="cmd_cue_openTabs" />
-                <treecell label="&copyurlsexpert.common.opentabsmenulabel;" />
+                <treecell label="&copyurlsexpert.common.opentabsmenulabel;" editable="false"/>
                 <treecell label="" />
               </treerow>
             </treeitem>
@@ -204,7 +205,7 @@
             <treeitem>
               <treerow>
                 <treecell value="cmd_cue_openOptions" />
-                <treecell label="&copyurlsexpert.common.optionsmenulabel;" />
+                <treecell label="&copyurlsexpert.common.optionsmenulabel;" editable="false"/>
                 <treecell label="" />
               </treerow>
             </treeitem>
@@ -222,6 +223,11 @@
 
 
       </vbox>
+      <vbox>
+        <label style="font-weight:bold;" class="cue-shortcut-warn">&copyurlsexpert.options.shortcutwarn1;</label>
+        <label class="cue-shortcut-warn">&copyurlsexpert.options.shortcutwarn2;</label>
+        <label class="cue-shortcut-warn">&copyurlsexpert.options.shortcutwarn3;</label>
+      </vbox>  
     </groupbox>
 
   </prefpane>
