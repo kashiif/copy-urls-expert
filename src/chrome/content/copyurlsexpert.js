@@ -2,7 +2,7 @@
 * Author: Kashif Iqbal Khan
 * Email: kashiif@gmail.com
 * License: MPL 1.1, MIT
-* Copyright (c) 2013-2014 Kashif Iqbal Khan
+* Copyright (c) 2013-2015 Kashif Iqbal Khan
 ********************************************/
 
 'use strict';
@@ -39,7 +39,13 @@ var copyUrlsExpert = {
 		Components.utils.import('resource://copy-urls-expert/keyboardshortcut.jsm');
 		Components.utils.import('resource://copy-urls-expert/modifiers.jsm');
 
-		this._updateShortcutsForDocument(document, this.getCustomShortcuts());	
+		try {
+			this._updateShortcutsForDocument(document, this.getCustomShortcuts());	
+		}
+		catch(ex) { 
+			//ignore any exception in new feature and let the init complete 
+			Components.utils.reportError(ex);
+		}
 
 		this._setupLineFeedChar();
 		Components.utils.import('resource://copy-urls-expert/cue-classes.jsm', copyUrlsExpert);
@@ -139,20 +145,25 @@ var copyUrlsExpert = {
 		}
 	},
 	
+	/**
+	* Returns a Map of shortcut keys. Map key is action id, value is a json object
+	*/
 	getCustomShortcuts: function() {
 		let shortcutStr = this._prefService.getCharPref('shortcuts'),
-				shortcutDesc = {};
+				shortcutMap = {};
 
 		if (shortcutStr) {
+			// convert pref string to JSON
 			let allShortcuts = JSON.parse(shortcutStr);
 
+			// Populate shortcutMap object
 			for (let commandId in allShortcuts) {
 					let shortcutJson = allShortcuts[commandId]
-					shortcutDesc[commandId] = KeyboardShortcut.fromPOJO(shortcutJson);
+					shortcutMap[commandId] = KeyboardShortcut.fromPOJO(shortcutJson);
 			}
 		}
 
-		return shortcutDesc;
+		return shortcutMap;
 	},
 
 	handleUnload: function(evt) {
@@ -682,13 +693,13 @@ var copyUrlsExpert = {
 	  					.getService(Components.interfaces.nsIWindowMediator);
 	},
 
-	updateCustomShortcuts: function(shortcutDesc) {
-		this._prefService.setCharPref('shortcuts', JSON.stringify(shortcutDesc));
-		this._loadCustomShortcuts(shortcutDesc);
+	updateCustomShortcuts: function(shortcutsMap) {
+		this._prefService.setCharPref('shortcuts', JSON.stringify(shortcutsMap));
+		this._loadCustomShortcuts(shortcutsMap);
 
 	},
 
-	_loadCustomShortcuts: function(shortcutDesc) {
+	_loadCustomShortcuts: function(shortcutsMap) {
 
 	  let wm = this._getWindowMediator();
 
@@ -697,11 +708,11 @@ var copyUrlsExpert = {
 	  while (windows.hasMoreElements()) {
 	    let domWindow = windows.getNext().QueryInterface(Components.interfaces.nsIDOMWindow);
 
-	    this._updateShortcutsForDocument(domWindow.document, shortcutDesc);
+	    this._updateShortcutsForDocument(domWindow.document, shortcutsMap);
 	  }
 	},
 
-	_updateShortcutsForDocument: function(document, shortcutDesc){
+	_updateShortcutsForDocument: function(document, shortcutsMap){
 
 		// Add keyset to XUL document for all the defined shortcuts
 
@@ -727,10 +738,10 @@ var copyUrlsExpert = {
 		keyset = document.createElement('keyset');
 		keyset.setAttribute('id', CUE_KEYSET_ID);
 
-		for (let commandId in shortcutDesc) {
+		for (let commandId in shortcutsMap) {
 			let keyElemId = 'key-' + commandId,
 					targetKey = null,
-					shortcut = shortcutDesc[commandId];
+					shortcut = shortcutsMap[commandId];
 
 			if (!shortcut) {
 				// shortcut is not defined
