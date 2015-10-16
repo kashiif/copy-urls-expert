@@ -1,10 +1,4 @@
-Most Important. Copy current tab menu in tab context menu
-
-
-
 4. Copy Urls Of Current Tab Set
-4a. Customized date
-
 
 1. Allow to open tabs in new window
 3. Allow Escaped $
