@@ -10,6 +10,7 @@
         title="&copyurlsexpert.options.windowtitle;"
         width= "600"
         height= "630"
+        xmlns:html="http://www.w3.org/1999/xhtml"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >	  
   <prefpane flex="1" id="copyurlsexpert-generaloptionstabpanel" label="&copyurlsexpert.options.generaltab;" image="chrome://copy-urls-expert/skin/general.png">
     <preferences>
@@ -66,6 +67,7 @@
 	  </vbox>
     </groupbox>
   </prefpane>
+
   <prefpane flex="1" id="copyurlsexpert-formattabpanel" label="&copyurlsexpert.options.formattab;" image="chrome://copy-urls-expert/skin/format.png">
     <groupbox flex="1">
       <vbox flex="1">
@@ -124,9 +126,15 @@
           <treechildren/>
         </tree>
         <hbox>
-          <button id="copyurlsexpert-btnedit" label="&copyurlsexpert.options.btnedit;"  size="15" onclick="copyUrlsExpert.options.onEditTemplateButtonClicked(this)"/>
-          <button id="copyurlsexpert-btndefault" label="&copyurlsexpert.options.btndefault;"  size="15" onclick="copyUrlsExpert.options.onSetAsDefaultButtonClicked(this)"/>
-          <button id="copyurlsexpert-btndelete" label="&copyurlsexpert.options.btndelete;"  size="15" onclick="copyUrlsExpert.options.onDelTemplateButtonClicked(this)"/>
+          <button id="copyurlsexpert-btnedit" label="&copyurlsexpert.options.btnedit;"
+                  disabled="true" size="15"
+                  onclick="copyUrlsExpert.options.onEditTemplateButtonClicked(this)"/>
+          <button id="copyurlsexpert-btndefault" label="&copyurlsexpert.options.btndefault;" 
+                  disabled="true" size="15" 
+                  onclick="copyUrlsExpert.options.onSetAsDefaultButtonClicked(this)"/>
+          <button id="copyurlsexpert-btndelete" label="&copyurlsexpert.options.btndelete;"
+                  disabled="true" size="15" 
+                  onclick="copyUrlsExpert.options.onDelTemplateButtonClicked(this)"/>
         </hbox>
         <vbox>
           <label>&copyurlsexpert.options.lblhelphint;</label>
@@ -136,6 +144,103 @@
 
   </prefpane>
   
+  <prefpane flex="1" id="copyurlsexpert-shortcutkeyspanel" label="&copyurlsexpert.options.shortcutkeystab;" image="chrome://copy-urls-expert/skin/keyboard.png">
+    <groupbox flex="1">
+      <vbox>
+        <label class="cue-shortcut-warn">&copyurlsexpert.options.lblshortcutdesc;</label>
+
+        <tree id="copyurlsexpert-treeshortcutkeys" 
+               hidecolumnpicker="true" rows="6" seltype="single" editable="true">
+
+          <treecols orient="horizontal">
+            <treecol editable="false" hidden="true" id="copyurlsexpert-colcommandid" />
+            <treecol editable="true" persist="width" flex="2" id="copyurlsexpert-colaction" label="&copyurlsexpert.options.colshortcutkeyaction;"  />
+            <splitter class="tree-splitter" />
+            <treecol persist="width" flex="1" id="copyurlsexpert-colshortcutkey" label="&copyurlsexpert.options.colshortcutkey;" editable="true" />
+            <splitter class="tree-splitter" />
+            <treecol persist="width" flex="3" id="copyurlsexpert-colshortcutmessage" label="&copyurlsexpert.options.colshortcutmessage;" editable="false" />
+            <splitter class="tree-splitter" />
+          </treecols>
+
+          <treechildren>
+
+            <treeitem>
+              <treerow>
+                <treecell value="cmd_cue_copyActiveWinTabsUrls" />
+                <treecell label="&copyurlsexpert.common.activewinmenulabel;" editable="false"/>
+                <treecell label="" />
+                <treecell label="" properties="cue-shortcut-msg" editable="false" />
+              </treerow>
+            </treeitem>
+
+            <treeitem>
+              <treerow>
+                <treecell value="cmd_cue_copyAllWinTabsUrls" />
+                <treecell label="&copyurlsexpert.common.allwinmenulabel;" editable="false"/>
+                <treecell label="" />
+                <treecell label="" properties="cue-shortcut-msg" editable="false" />
+              </treerow>
+            </treeitem>
+
+            <treeitem>
+              <treerow>
+                <treecell value="cmd_cue_copyActiveGroupTabUrls" />
+                <treecell label="&copyurlsexpert.common.activetabgroupmenulabel;" editable="false"/>
+                <treecell label="" />
+                <treecell label="" properties="cue-shortcut-msg" editable="false" />
+              </treerow>
+            </treeitem>
+
+            <treeitem>
+              <treerow>
+                <treecell value="cmd_cue_copyCurrentTabUrl" />
+                <treecell label="&copyurlsexpert.common.activetabmenulabel;" editable="false"/>
+                <treecell label="" />
+                <treecell label="" properties="cue-shortcut-msg" editable="false" />
+              </treerow>
+            </treeitem>
+            
+            <treeitem>
+              <treerow>
+                <treecell value="cmd_cue_openTabs" />
+                <treecell label="&copyurlsexpert.common.opentabsmenulabel;" editable="false"/>
+                <treecell label="" />
+                <treecell label="" properties="cue-shortcut-msg" editable="false" />
+              </treerow>
+            </treeitem>
+
+            <treeitem>
+              <treerow>
+                <treecell value="cmd_cue_openOptions" />
+                <treecell label="&copyurlsexpert.common.optionsmenulabel;" editable="false"/>
+                <treecell label="" />
+                <treecell label="" properties="cue-shortcut-msg" editable="false" />
+              </treerow>
+            </treeitem>
+
+          </treechildren>
+
+        </tree>
+        <hbox>
+
+          <button id="copyurlsexpert-reset-shortcut" label="&copyurlsexpert.options.resetshortcut;"
+                  size="15" disabled="true"/>
+
+        </hbox>
+
+
+
+      </vbox>
+      <vbox>
+        <label style="font-weight:bold;" class="cue-shortcut-warn">&copyurlsexpert.options.shortcutwarn1;</label>
+        <label class="cue-shortcut-warn">&copyurlsexpert.options.shortcutwarn2;</label>
+        <label class="cue-shortcut-warn">&copyurlsexpert.options.shortcutwarn3;</label>
+      </vbox>  
+    </groupbox>
+
+  </prefpane>
+
+
   <prefpane flex="1"  id="copyurlsexpert-helppanel" label="&copyurlsexpert.options.helptab;" image="chrome://copy-urls-expert/skin/help.png">
     <groupbox flex="1">
   	  <vbox flex="1">
@@ -193,15 +298,25 @@
         </row>
 		  </rows>
 		 </grid>
-  	  </vbox>
+	  </vbox>
+
 	</groupbox>
   </prefpane>        
 
-  <vbox flex="1" id="copyurlsexpert-optionsbottompanel">
-	<hbox align="right" flex="1">
-	  <button id="copyurlsexpert-btnaccept" label="&copyurlsexpert.options.btacceptlabel;" onclick="return copyUrlsExpert.options.onDialogAccept();"/>
-    </hbox>
-  </vbox>
+  <hbox flex="1" id="copyurlsexpert-optionsbottompanel">
+	  <vbox align="left" flex="3">
+      <html:a href="https://addons.mozilla.org/firefox/addon/copy-urls-expert/about"
+              alt="Click here to send me your contribution through mozilla's contributon page"
+              target="_new"
+              style="color:#0000ff;"
+              >
+        Gift the developer a cup of coffee (via Paypal)
+      </html:a>
+    </vbox>
+    <vbox align="right" flex="1">
+	   <button id="copyurlsexpert-btnaccept" label="&copyurlsexpert.options.btacceptlabel;" onclick="return copyUrlsExpert.options.onDialogAccept();"/>
+    </vbox>
+  </hbox>
 
 
   <script type="application/x-javascript" src="chrome://copy-urls-expert/content/copyurlsexpert.js" />

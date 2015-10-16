@@ -2,7 +2,7 @@
 * Author: Kashif Iqbal Khan
 * Email: kashiif@gmail.com
 * License: MPL 1.1, MIT
-* Copyright (c) 2013-2014 Kashif Iqbal Khan
+* Copyright (c) 2013-2015 Kashif Iqbal Khan
 ********************************************/
 
 'use strict';
@@ -35,21 +35,19 @@ var copyUrlsExpert = {
 	init: function() {
 		this._prefService = this._getPrefService();
 		this._handleStartup();
-	
-		var platformStr =  Components.classes['@mozilla.org/network/protocol;1?name=http'].getService(Components.interfaces.nsIHttpProtocolHandler).oscpu.toLowerCase();
 
-		if (platformStr.indexOf('win') != -1) {
-		  this.LINE_FEED = '\r\n';
+		Components.utils.import('resource://copy-urls-expert/keyboardshortcut.jsm');
+		Components.utils.import('resource://copy-urls-expert/modifiers.jsm');
+
+		try {
+			this._updateShortcutsForDocument(document, this.getCustomShortcuts());	
 		}
-		else if (platformStr.indexOf('mac') != -1) {
-		  this.LINE_FEED = '\r';
-		}
-		else if (platformStr.indexOf('unix') != -1
-					|| platformStr.indexOf('linux') != -1
-					|| platformStr.indexOf('sun') != -1) {
-		  this.LINE_FEED = '\n';
+		catch(ex) { 
+			//ignore any exception in new feature and let the init complete 
+			Components.utils.reportError(ex);
 		}
 
+		this._setupLineFeedChar();
 		Components.utils.import('resource://copy-urls-expert/cue-classes.jsm', copyUrlsExpert);
 					
 		this._AsynHandler.prototype.handleFetch = function(inputStream, status) {
@@ -129,7 +127,44 @@ var copyUrlsExpert = {
 			this._readTemplates();
 		}
 	},
+
+	_setupLineFeedChar: function() {
+		var platformStr =  Components.classes['@mozilla.org/network/protocol;1?name=http'].getService(Components.interfaces.nsIHttpProtocolHandler).oscpu.toLowerCase();
+
+		if (platformStr.indexOf('win') != -1) {
+		  this.LINE_FEED = '\r\n';
+		}
+		else if (platformStr.indexOf('mac') != -1) {
+		  this.LINE_FEED = '\r';
+		}
+		else if (platformStr.indexOf('unix') != -1
+					|| platformStr.indexOf('linux') != -1
+					|| platformStr.indexOf('sun') != -1) {
+		  this.LINE_FEED = '\n';
+		}
+	},
 	
+	/**
+	* Returns a Map of shortcut keys. Map key is action id, value is a json object
+	*/
+	getCustomShortcuts: function() {
+		let shortcutStr = this._prefService.getCharPref('shortcuts'),
+				shortcutMap = {};
+
+		if (shortcutStr) {
+			// convert pref string to JSON
+			let allShortcuts = JSON.parse(shortcutStr);
+
+			// Populate shortcutMap object
+			for (let commandId in allShortcuts) {
+					let shortcutJson = allShortcuts[commandId]
+					shortcutMap[commandId] = KeyboardShortcut.fromPOJO(shortcutJson);
+			}
+		}
+
+		return shortcutMap;
+	},
+
 	handleUnload: function(evt) {
 		var cm = document.getElementById('contentAreaContextMenu');
 		if (cm != null)	{
@@ -424,7 +459,8 @@ var copyUrlsExpert = {
 	performCopyTabUnderMouseUrl: function() {
 		var _g = this._gBrowser();
 
-		var entries = [copyUrlsExpert._getEntryForTab(_g.getBrowserForTab(_g.mContextTab))];
+		var contextTab = _g.mContextTab || _g.selectedTab;
+		var entries = [copyUrlsExpert._getEntryForTab(_g.getBrowserForTab(contextTab), contextTab)];
 	
 		copyUrlsExpert._copyEntriesToClipBoard(entries, copyUrlsExpert._prefService);
 	},
@@ -456,6 +492,8 @@ var copyUrlsExpert = {
 		// This function must be called awith all three arguments
 		var aBrowsers = copyUrlsExpert._getBrowsers(onlyActiveWindow);
 		
+		dump('aBrowsers.length ' + aBrowsers.length);
+
 		var entries = copyUrlsExpert._getEntriesFromTabs(aBrowsers, filterHidden);
 		
 		copyUrlsExpert._copyEntriesToClipBoard(entries, copyUrlsExpert._prefService, templateToUse);
@@ -505,42 +543,24 @@ var copyUrlsExpert = {
 		return sel.isCollapsed;
 	},
 
-	handleToolbarButtonClick: function(evt) {
-	
-		switch (evt.target.id) {
-			case 'copyurlsexpert-toolbar-btnmain':
-				switch(copyUrlsExpert._prefService.getCharPref('toolbaraction')) {
-					case copyUrlsExpert.TBB_ACTION_ACTIVE_WIN:
-						copyUrlsExpert.performCopyTabsUrl(true);
-						break;
-					case copyUrlsExpert.TBB_ACTION_ACTIVE_TABGROUP:
-						copyUrlsExpert.performCopyTabsUrl(true, true);
-						break;
-					case copyUrlsExpert.TBB_ACTION_ACTIVE_TAB:
-						copyUrlsExpert.performCopyActiveTabUrl();
-						break;
-					case copyUrlsExpert.TBB_ACTION_ALL_WIN:
-						copyUrlsExpert.performCopyTabsUrl(false);
-						break;
-					case copyUrlsExpert.TBB_ACTION_OPEN_TABS:
-						document.getElementById('copyurlsexpert-command-opentabs').doCommand();
-						break;
-				}
-				break;
-			case 'copyurlsexpert-toolbar-btnactivewin':
+	performDefaultAction: function() {
+		let action = copyUrlsExpert._prefService.getCharPref('toolbaraction');
+
+		switch(action) {
+			case copyUrlsExpert.TBB_ACTION_ACTIVE_WIN:
 				copyUrlsExpert.performCopyTabsUrl(true);
 				break;
-			case 'copyurlsexpert-toolbar-btnactivetabgroup':
+			case copyUrlsExpert.TBB_ACTION_ACTIVE_TABGROUP:
 				copyUrlsExpert.performCopyTabsUrl(true, true);
 				break;
-			case 'copyurlsexpert-toolbar-btnactivetab':
+			case copyUrlsExpert.TBB_ACTION_ACTIVE_TAB:
 				copyUrlsExpert.performCopyActiveTabUrl();
 				break;
-			case 'copyurlsexpert-toolbar-btnallwin':
+			case copyUrlsExpert.TBB_ACTION_ALL_WIN:
 				copyUrlsExpert.performCopyTabsUrl(false);
 				break;
-			case 'copyurlsexpert-toolbar-btnoptions':
-				copyUrlsExpert.showOptionsWindow();
+			case copyUrlsExpert.TBB_ACTION_OPEN_TABS:
+				document.getElementById('cmd_cue_openTabs').doCommand();
 				break;
 		}
 	},
@@ -679,6 +699,122 @@ var copyUrlsExpert = {
 		Application.storage.set(copyUrlsExpert.FUEL_KEY_DEFUALT_PATTERN, target[defaultIndex]);
 	},
 	
+	_getWindowMediator: function() {
+	  return Components.classes['@mozilla.org/appshell/window-mediator;1']
+	  					.getService(Components.interfaces.nsIWindowMediator);
+	},
+
+	updateCustomShortcuts: function(shortcutsMap) {
+		this._prefService.setCharPref('shortcuts', JSON.stringify(shortcutsMap));
+		this._loadCustomShortcuts(shortcutsMap);
+
+	},
+
+	_loadCustomShortcuts: function(shortcutsMap) {
+
+	  let wm = this._getWindowMediator();
+
+	  // Get the list of browser windows already open
+	  let windows = wm.getEnumerator('navigator:browser');
+	  while (windows.hasMoreElements()) {
+	    let domWindow = windows.getNext().QueryInterface(Components.interfaces.nsIDOMWindow);
+
+	    this._updateShortcutsForDocument(domWindow.document, shortcutsMap);
+	  }
+	},
+
+	_findShortcutExistingAssignment: function(shortcut) {
+		let browserWin = this._getWindowMediator().getMostRecentWindow('navigator:browser')
+
+		let allKeySets = browserWin.document.querySelectorAll('keyset'),
+				allDefinedKeys,
+				shortcutKeyConfig = shortcut.getKeyConfig(),
+				attrForKey = shortcutKeyConfig.hasOwnProperty('keycode') ? 'keytext' : 'key',
+				keyText = shortcutKeyConfig.keytext.toLowerCase();
+
+		for (let i=0 ; i<allKeySets.length ; i++) {
+
+			allDefinedKeys = allKeySets.item(i).querySelectorAll('key');
+
+			for (let j=0 ; j<allDefinedKeys.length ; j++) {
+				let currentKey = allDefinedKeys.item(j);
+
+				if (currentKey.getAttribute(attrForKey).toLowerCase() == keyText) {
+
+					if (shortcut.modifiers.toXulModifiersString() == currentKey.getAttribute('modifiers')) {
+						return currentKey;
+					}
+
+				}
+
+			} // for allDefinedKeys
+		} // for allKeySets
+
+		// No existing assignment found for this shortcut
+		return null;
+	},
+
+	_updateShortcutsForDocument: function(document, shortcutsMap){
+
+		// Add keyset to XUL document for all the defined shortcuts
+
+		let CUE_KEYSET_ID = 'copyUrlsExpert-keyset',
+				keysetParent = document.getElementById('mainKeyset');
+
+		if (keysetParent == null) {
+			// loaded in a non-browser window
+			return;
+		}
+		else {
+			keysetParent = keysetParent.parentNode;
+		}
+
+		let keyset = keysetParent.querySelector('#' + CUE_KEYSET_ID);
+
+		// Remove the old keyset to remove the old key bindings
+		if (keyset != null) {
+			keyset.remove();
+		}
+
+		// Create a new keyset for new shortcuts defined
+		keyset = document.createElement('keyset');
+		keyset.setAttribute('id', CUE_KEYSET_ID);
+
+		for (let commandId in shortcutsMap) {
+			let keyElemId = 'key-' + commandId,
+					targetKey = null,
+					shortcut = shortcutsMap[commandId];
+
+			if (!shortcut) {
+				// shortcut is not defined
+				continue;
+			}
+
+			targetKey = document.createElement('key');
+			targetKey.setAttribute('id', keyElemId);
+			targetKey.setAttribute('command', commandId);
+
+			var shortcutKeyConfig = shortcut.getKeyConfig();
+
+			if (shortcutKeyConfig.hasOwnProperty('keycode')) {
+				targetKey.setAttribute('keycode', shortcutKeyConfig.keycode);
+				targetKey.setAttribute('keytext', shortcutKeyConfig.keytext);
+			}
+			else {
+				targetKey.setAttribute('key', shortcutKeyConfig.keytext);
+			}
+
+			if (shortcut.modifiers) {
+				targetKey.setAttribute('modifiers', shortcut.modifiers.toXulModifiersString());					
+			}
+
+			keyset.appendChild(targetKey);
+		}
+
+		keysetParent.appendChild(keyset);
+
+	},
+
 	updateUrlListFile: function(theContent) {
 		// Write to prefs 
 		// get profile directory  

@@ -12,35 +12,14 @@
 			  accesskey="&copyurlsexpert.common.menupopupaccesskey;" class="menuitem-iconic" 
 			  insertafter="appmenu-editmenu-copy">
 			<menupopup>
-				<menuitem label="&copyurlsexpert.common.activewinmenulabel;"
-						  accesskey="&copyurlsexpert.common.activewinaccesskey;"
-						  tooltiptext="&copyurlsexpert.common.activewintooltip;"
-						  oncommand="copyUrlsExpert.performCopyTabsUrl(true);" />
-				<menuitem label="&copyurlsexpert.common.allwinmenulabel;"
-						  accesskey="&copyurlsexpert.common.allwinaccesskey;"
-						  tooltiptext="&copyurlsexpert.common.allwintooltip;"
-						  oncommand="copyUrlsExpert.performCopyTabsUrl(false);"/>
-				<menuitem label="&copyurlsexpert.common.activetabgroupmenulabel;"
-						  accesskey="&copyurlsexpert.common.activetabgroupaccesskey;"
-						  tooltiptext="&copyurlsexpert.common.activetabgrouptooltip;"
-						  oncommand="copyUrlsExpert.performCopyTabsUrl(true, true);"/>
-				<menuitem label="&copyurlsexpert.common.activetabmenulabel;"
-						  accesskey="&copyurlsexpert.common.activetabaccesskey;"
-						  tooltiptext="&copyurlsexpert.common.activetabtooltip;"
-						  oncommand="copyUrlsExpert.performCopyActiveTabUrl();"/>
-
+				<menuitem class="menuitem-iconic" command="copyurlsexpert:copyCurrentWinTabsUrls" />
+				<menuitem class="menuitem-iconic" command="cmd_cue_copyAllWinTabsUrls"/>
+				<menuitem class="menuitem-iconic" command="copyurlsexpert:copyCurrentGroupTabUrls"/>
+				<menuitem class="menuitem-iconic" command="cmd_cue_copyCurrentTabUrl;"/>
 				<menuseparator />
-				<menuitem label="&copyurlsexpert.common.opentabsmenulabel;"
-						  accesskey="&copyurlsexpert.common.opentabsaccesskey;"
-						  command="copyurlsexpert-command-opentabs"
-						  class="menuitem-iconic"
-						  />
+				<menuitem class="menuitem-iconic" command="cmd_cue_openTabs"/>
 				<menuseparator />
-				<menuitem label="&copyurlsexpert.common.optionsmenulabel;"
-						  accesskey="&copyurlsexpert.common.optionsaccesskey;"
-						  tooltiptext="&copyurlsexpert.common.optionstooltip;"
-						  oncommand="copyUrlsExpert.showOptionsWindow();"
-						  class="menuitem-iconic" />
+				<menuitem class="menuitem-iconic" command="cmd_cue_openOptions"/>
 			</menupopup>
 		</menu>
 	</menupopup>

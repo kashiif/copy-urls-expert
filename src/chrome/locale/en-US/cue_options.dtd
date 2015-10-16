@@ -32,11 +32,6 @@
 <!ENTITY copyurlsexpert.options.usecontenttitle	"When copying urls of tab, use page title for $title">
 <!ENTITY copyurlsexpert.options.usecontenttitle2	"If you uncheck this, $title will be the same text as in tab title. If you use any extension that changes tab title based on some configuration and you need the same title in copied text then you should uncheck this option.">
 
-<!-- Shortcuts Tab -->
-
-<!ENTITY copyurlsexpert.options.lblctrlkey	"Ctrl">
-<!ENTITY copyurlsexpert.options.lblshiftkey	"Shift">
-
 
 <!-- Format Tab -->
 
@@ -47,6 +42,29 @@
 <!ENTITY copyurlsexpert.options.btnedit "Edit">
 <!ENTITY copyurlsexpert.options.btndefault "Set As Default">
 <!ENTITY copyurlsexpert.options.btndelete "Delete">
+
+
+<!-- Shortcut Keys Tab -->
+
+
+<!ENTITY copyurlsexpert.options.shortcutkeystab "Shortcut Keys">
+
+<!ENTITY copyurlsexpert.options.lblshortcutdesc "Double click on the cell in front on any action and then press the shortcut key combination.">
+
+<!ENTITY copyurlsexpert.options.shortcutwarn1 "Important">
+<!ENTITY copyurlsexpert.options.shortcutwarn2 "This feature is experimental and may not work as expected on every firefox version and on every platform (e.g. Mac/Linux).">
+<!ENTITY copyurlsexpert.options.shortcutwarn3 "This feautre was tested on windows for Firefox 40+.">
+
+
+<!ENTITY copyurlsexpert.options.colshortcutkeyaction "Action">
+<!ENTITY copyurlsexpert.options.colshortcutkey "Assigned shortcut key">
+<!ENTITY copyurlsexpert.options.colshortcutmessage "Message">
+
+<!ENTITY copyurlsexpert.options.resetshortcut "Reset selected shortcut">
+
+<!ENTITY copyurlsexpert.options.lblctrlkey  "Ctrl">
+<!ENTITY copyurlsexpert.options.lblshiftkey "Shift">
+
 
 <!-- Help Tab -->
 

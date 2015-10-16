@@ -5,9 +5,77 @@
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	
 	<commandset id="mainCommandSet">
-		<command id="copyurlsexpert-command-opentabs" oncommand="copyUrlsExpert.openTabs();" />
+		<command id="cmd_cue_openTabs" 
+						 label="&copyurlsexpert.common.opentabsmenulabel;"
+						 accesskey="&copyurlsexpert.common.opentabsaccesskey;"
+						 oncommand="copyUrlsExpert.openTabs();" />
+
+		<command id="cmd_cue_copyActiveWinTabsUrls" 
+						 label="&copyurlsexpert.common.activewinmenulabel;"
+					   accesskey="&copyurlsexpert.common.activewinaccesskey;"
+					   tooltiptext="&copyurlsexpert.common.activewintooltip;"
+						 oncommand="copyUrlsExpert.performCopyTabsUrl(true);" />
+
+		<command id="cmd_cue_copyAllWinTabsUrls" 
+						 label="&copyurlsexpert.common.allwinmenulabel;"
+					   accesskey="&copyurlsexpert.common.allwinaccesskey;"
+						 tooltiptext="&copyurlsexpert.common.allwintooltip;"
+						 oncommand="copyUrlsExpert.performCopyTabsUrl(false);" />
+
+		<command id="cmd_cue_copyActiveGroupTabUrls"
+						 label="&copyurlsexpert.common.activetabgroupmenulabel;"
+						 tooltiptext="&copyurlsexpert.common.activetabgrouptooltip;"
+						 oncommand="copyUrlsExpert.performCopyTabsUrl(true, true);" />
+
+		<command id="cmd_cue_copyCurrentTabUrl"
+						 label="&copyurlsexpert.common.activetabmenulabel;"
+						 accesskey="&copyurlsexpert.common.activetabaccesskey;"
+						 tooltiptext="&copyurlsexpert.common.activetabtooltip;"
+						 oncommand="copyUrlsExpert.performCopyTabUnderMouseUrl();" />
+
+		<command id="cmd_cue_openOptions"
+						 label="&copyurlsexpert.common.optionsmenulabel;"
+						 accesskey="&copyurlsexpert.common.optionsaccesskey;"
+						 tooltiptext="&copyurlsexpert.common.optionstooltip;"
+						 oncommand="copyUrlsExpert.showOptionsWindow();" />
+
+
+		<command id="cmd_cue_copyUrlsInSelection"
+						 label="&copyurlsexpert.common.selurlsmenulabel;"
+						 accesskey="&copyurlsexpert.common.selurlsaccesskey;"
+						 oncommand="copyUrlsExpert.performCopyUrlsInSelection();" />
+
+		<command id="cmd_cue_copyUrlsOfImagesInSelection"
+						 label="&copyurlsexpert.common.selimgsmenulabel;"
+						 accesskey="&copyurlsexpert.common.selimgsaccesskey;"
+						 oncommand="copyUrlsExpert.performCopyUrlsOfImagesInSelection();" />
+
+		<command id="cmd_cue_openUrlsInSelection"
+						 label="&copyurlsexpert.common.selurlsopenmenulabel;"
+						 oncommand="copyUrlsExpert.performOpenUrlsInSelection();" />
+
+		<command id="cmd_cue_defaultAction"
+						 oncommand="copyUrlsExpert.performDefaultAction();" />
+
+
 	</commandset>
 	
+	<!-- temp code for keycode and modifiers testing -->
+	<!--
+	<keyset id="mainKeyset">
+		<key oncommand="window.alert('SLASH')" 
+				 id="cue-cmd-1"
+				 keycode="VK_SLASH"
+				 modifiers="accel"
+					/>
+		<key oncommand="window.alert('PERIOD')" 
+				 id="cue-cmd-2"
+				 keycode="VK_PERIOD"
+				 modifiers="accel"
+					/>
+	</keyset>
+	-->
+
 	<!-- Tab Context Menu -->
 	<popupset id="mainPopupSet">
 		<menupopup id="tabContextMenu" >
@@ -16,63 +84,35 @@
 					class="menuitem-iconic" insertafter="copyurlsexpert-tabcontext-separator"
 					accesskey="&copyurlsexpert.common.menupopupaccesskey;">
 				<menupopup>
-					<menuitem label="&copyurlsexpert.common.activewinmenulabel;"
-							  accesskey="&copyurlsexpert.common.activewinaccesskey;"
-							  oncommand="copyUrlsExpert.performCopyTabsUrl(true);"/>
-					<menuitem label="&copyurlsexpert.common.allwinmenulabel;"
-							  accesskey="&copyurlsexpert.common.allwinaccesskey;"
-							  oncommand="copyUrlsExpert.performCopyTabsUrl(false);" />
-					<menuitem label="&copyurlsexpert.common.activetabgroupmenulabel;"
-							  oncommand="copyUrlsExpert.performCopyTabsUrl(true, true);"/>
-					<menuitem label="&copyurlsexpert.common.activetabmenulabel;"
-							  oncommand="copyUrlsExpert.performCopyTabUnderMouseUrl();"/>
+					<menuitem class="menuitem-iconic" command="cmd_cue_copyActiveWinTabsUrls"/>
+					<menuitem class="menuitem-iconic" command="cmd_cue_copyAllWinTabsUrls"/>
+					<menuitem class="menuitem-iconic" command="cmd_cue_copyActiveGroupTabUrls"/>
+					<menuitem class="menuitem-iconic" command="cmd_cue_copyCurrentTabUrl"/>
 					<menuseparator />
-					<menuitem id="copyurlsexpert-toolbar-btnopentabs" 
-							  label="&copyurlsexpert.common.opentabsmenulabel;"
-							  command="copyurlsexpert-command-opentabs"
-							  class="menuitem-iconic"
-							  accesskey="&copyurlsexpert.common.opentabsaccesskey;" />
+					<menuitem class="menuitem-iconic" command="cmd_cue_openTabs"/>
 							  
 				</menupopup>
 			</menu>
 		</menupopup>
 	</popupset>
 
+
 	<!-- Toolbar Icon -->
 	<toolbarpalette id="BrowserToolbarPalette">
 		<toolbarbutton id="copyurlsexpert-toolbar-btnmain" type="menu-button" 
 			label="&copyurlsexpert.common.menupopuplabel;" tooltiptext="&copyurlsexpert.common.menupopuplabel;"
-			oncommand="copyUrlsExpert.handleToolbarButtonClick(event);"
+			command="cmd_cue_defaultAction"
 			class="toolbarbutton-1 chromeclass-toolbar-additional"
 			image1="chrome://copy-urls-expert/skin/cue-icon16.png" >
 			<menupopup>
-				<menuitem id="copyurlsexpert-toolbar-btnactivewin" 
-						  label="&copyurlsexpert.common.activewinmenulabel;"
-						  accesskey="&copyurlsexpert.common.activewinaccesskey;"
-						  tooltiptext="&copyurlsexpert.common.activewintooltip;" />
-				<menuitem id="copyurlsexpert-toolbar-btnallwin" 
-						  label="&copyurlsexpert.common.allwinmenulabel;"
-						  accesskey="&copyurlsexpert.common.allwinaccesskey;"
-						  tooltiptext="&copyurlsexpert.common.allwintooltip;" />
-				<menuitem id="copyurlsexpert-toolbar-btnactivetabgroup" 
-						  label="&copyurlsexpert.common.activetabgroupmenulabel;"
-						  accesskey="&copyurlsexpert.common.activetabgroupaccesskey;"
-						  tooltiptext="&copyurlsexpert.common.activetabgrouptooltip;" />
-				<menuitem id="copyurlsexpert-toolbar-btnactivetab"
-						  label="&copyurlsexpert.common.activetabmenulabel;"
-						  accesskey="&copyurlsexpert.common.activetabaccesskey;"
-						  tooltiptext="&copyurlsexpert.common.activetabtooltip;" />
+				<menuitem class="menuitem-iconic" command="cmd_cue_copyActiveWinTabsUrls"/>
+				<menuitem class="menuitem-iconic" command="cmd_cue_copyAllWinTabsUrls"/>
+				<menuitem class="menuitem-iconic" command="cmd_cue_copyActiveGroupTabUrls"/>
+				<menuitem class="menuitem-iconic" command="cmd_cue_copyCurrentTabUrl"/>
 				<menuseparator />
-				<menuitem id="copyurlsexpert-toolbar-btnopentabs" 
-						  label="&copyurlsexpert.common.opentabsmenulabel;"
-						  command="copyurlsexpert-command-opentabs"
-						  class="menuitem-iconic"
-						  accesskey="&copyurlsexpert.common.opentabsaccesskey;" />
+				<menuitem class="menuitem-iconic" command="cmd_cue_openTabs"/>
 				<menuseparator />
-				<menuitem id="copyurlsexpert-toolbar-btnoptions" 
-						  label="&copyurlsexpert.common.optionsmenulabel;"
-						  accesskey="&copyurlsexpert.common.optionsaccesskey;"
-						  tooltiptext="&copyurlsexpert.common.optionstooltip;" />
+				<menuitem class="menuitem-iconic" command="cmd_cue_openOptions" />
 			</menupopup>
 		</toolbarbutton>
 	</toolbarpalette>
@@ -81,35 +121,17 @@
 	<!-- Edit Menu -->
 	<menupopup id="menu_EditPopup">
 		<menu id="copyurlsexpert-menubar-edit" label="&copyurlsexpert.common.menupopuplabel;" 
-				accesskey="&copyurlsexpert.common.menupopupaccesskey;" class="menuitem-iconic" insertafter="menu_copy">
-			<menupopup >
-				<menuitem label="&copyurlsexpert.common.activewinmenulabel;"
-						  accesskey="&copyurlsexpert.common.activewinaccesskey;"
-						  tooltiptext="&copyurlsexpert.common.activewintooltip;"
-						  oncommand="copyUrlsExpert.performCopyTabsUrl(true);" />
-				<menuitem label="&copyurlsexpert.common.allwinmenulabel;"
-						  accesskey="&copyurlsexpert.common.allwinaccesskey;"
-						  tooltiptext="&copyurlsexpert.common.allwintooltip;"
-						  oncommand="copyUrlsExpert.performCopyTabsUrl(false);"/>
-				<menuitem label="&copyurlsexpert.common.activetabgroupmenulabel;"
-						  accesskey="&copyurlsexpert.common.activetabgroupaccesskey;"
-						  tooltiptext="&copyurlsexpert.common.activetabgrouptooltip;"
-						  oncommand="copyUrlsExpert.performCopyTabsUrl(true, true);"/>
-				<menuitem label="&copyurlsexpert.common.activetabmenulabel;"
-						  accesskey="&copyurlsexpert.common.activetabaccesskey;"
-						  tooltiptext="&copyurlsexpert.common.activetabtooltip;"
-						  oncommand="copyUrlsExpert.performCopyActiveTabUrl();"/>
+				accesskey="&copyurlsexpert.common.menupopupaccesskey;"
+				class="menuitem-iconic" insertafter="menu_copy">
+			<menupopup>
+				<menuitem class="menuitem-iconic" command="cmd_cue_copyActiveWinTabsUrls" />
+				<menuitem class="menuitem-iconic" command="cmd_cue_copyAllWinTabsUrls"/>
+				<menuitem class="menuitem-iconic" command="cmd_cue_copyActiveGroupTabUrls"/>
+				<menuitem class="menuitem-iconic" command="cmd_cue_copyCurrentTabUrl"/>
 				<menuseparator />
-				<menuitem label="&copyurlsexpert.common.opentabsmenulabel;"
-						  command="copyurlsexpert-command-opentabs"
-						  class="menuitem-iconic"
-						  accesskey="&copyurlsexpert.common.opentabsaccesskey;" />
+				<menuitem class="menuitem-iconic" command="cmd_cue_openTabs"/>
 				<menuseparator />
-				<menuitem label="&copyurlsexpert.common.optionsmenulabel;"
-						  accesskey="&copyurlsexpert.common.optionsaccesskey;"
-						  tooltiptext="&copyurlsexpert.common.optionstooltip;"
-						  oncommand="copyUrlsExpert.showOptionsWindow();"
-						  class="menuitem-iconic" />
+				<menuitem class="menuitem-iconic" command="cmd_cue_openOptions"/>
 			</menupopup>
 		</menu>
 	</menupopup>
@@ -120,19 +142,15 @@
 			  accesskey="&copyurlsexpert.common.menupopupaccesskey;"
 			  class="menuitem-iconic" insertafter="context-copy">
 			<menupopup>
-				<menuitem label="&copyurlsexpert.common.selurlsmenulabel;"
-						  accesskey="&copyurlsexpert.common.selurlsaccesskey;"
-						  oncommand="copyUrlsExpert.performCopyUrlsInSelection();" />
-				<menuitem label="&copyurlsexpert.common.selimgsmenulabel;"
-						  accesskey="&copyurlsexpert.common.selimgsaccesskey;"
-						  oncommand="copyUrlsExpert.performCopyUrlsOfImagesInSelection();" />
+				<menuitem command="cmd_cue_copyUrlsInSelection" />
+				<menuitem command="cmd_cue_copyUrlsOfImagesInSelection" />
 				<menuseparator />
-				<menuitem label="&copyurlsexpert.common.selurlsopenmenulabel;"
-						  oncommand="copyUrlsExpert.performOpenUrlsInSelection();" />
+				<menuitem command="cmd_cue_openUrlsInSelection" />
 			</menupopup>
 		</menu>
 	</popup>
 
-	<script type="application/x-javascript" src="chrome://copy-urls-expert/content/copyurlsexpert.js"></script>
+	<script type="application/x-javascript" src="chrome://copy-urls-expert/content/copyurlsexpert.js">
+	</script>
 	
 </overlay>
