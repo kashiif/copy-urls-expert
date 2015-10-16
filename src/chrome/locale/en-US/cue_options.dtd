@@ -58,6 +58,7 @@
 
 <!ENTITY copyurlsexpert.options.colshortcutkeyaction "Action">
 <!ENTITY copyurlsexpert.options.colshortcutkey "Assigned shortcut key">
+<!ENTITY copyurlsexpert.options.colshortcutmessage "Message">
 
 <!ENTITY copyurlsexpert.options.resetshortcut "Reset selected shortcut">
 

@@ -94,19 +94,21 @@ copyUrlsExpert.options = {
 
 	_onShortcutsTreeKeyDownOrUp: function(event) {
 
+		var tree, treeView;
+
 		if (event.type == 'keydown' && event.repeat) {
 			// event.repeat is supported only in FX28+
 			return;
 		}
 
-		var tree = copyUrlsExpert.options.gShortcutsTree,
-				treeView = tree.view;
+		tree = copyUrlsExpert.options.gShortcutsTree;
+		treeView = tree.view;
 
     if (!tree.editingColumn) {
       return;
     }
 
-    if (event.getModifierState("OS")) {
+    if (event.getModifierState('OS')) {
     	// do not support Win key in a shortcut
     	return;
     }
@@ -119,13 +121,28 @@ copyUrlsExpert.options = {
     if (shortcut.isComplete()) {
 
 	    let {editingRow, editingColumn} = tree,
-					propName = treeView.getCellValue(editingRow, tree.columns.getFirstColumn());
+					propName,
+					colMessage = tree.columns.getNamedColumn('copyurlsexpert-colshortcutmessage');
 
-      tree.stopEditing(true);
+			// check if shortcut is unique
+			let existingKey = copyUrlsExpert._findShortcutExistingAssignment(shortcut);
+			if (existingKey) {
+	      tree.inputField.value = ''; 
+				treeView.setCellText(editingRow, 
+						colMessage, 
+						shortcut.toUIString() + ' has already been used for ' + existingKey.getAttribute('id'));
 
-	    treeView.setCellText(editingRow, editingColumn, shortcut.toUIString());
+			}
+			else {
+	      tree.stopEditing(true); // Exit edit mode and accept the new value
+				treeView.setCellText(editingRow, colMessage, '');
 
-			tree.cueShortcuts[ propName ] = shortcut;
+		    treeView.setCellText(editingRow, editingColumn, shortcut.toUIString());
+
+				propName = treeView.getCellValue(editingRow, tree.columns.getFirstColumn())
+				tree.cueShortcuts[ propName ] = shortcut;
+
+			}
 
     }
     else {

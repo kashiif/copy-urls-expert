@@ -485,8 +485,11 @@ var copyUrlsExpert = {
 	},
 	
 	performCopyTabsUrl: function(onlyActiveWindow, filterHidden) {
+
 		var aBrowsers = copyUrlsExpert._getBrowsers(onlyActiveWindow);
 		
+		dump('aBrowsers.length ' + aBrowsers.length);
+
 		var entries = copyUrlsExpert._getEntriesFromTabs(aBrowsers, filterHidden);
 		
 		copyUrlsExpert._copyEntriesToClipBoard(entries, copyUrlsExpert._prefService);
@@ -710,6 +713,37 @@ var copyUrlsExpert = {
 
 	    this._updateShortcutsForDocument(domWindow.document, shortcutsMap);
 	  }
+	},
+
+	_findShortcutExistingAssignment: function(shortcut) {
+		let browserWin = this._getWindowMediator().getMostRecentWindow('navigator:browser')
+
+		let allKeySets = browserWin.document.querySelectorAll('keyset'),
+				allDefinedKeys,
+				shortcutKeyConfig = shortcut.getKeyConfig(),
+				attrForKey = shortcutKeyConfig.hasOwnProperty('keycode') ? 'keytext' : 'key',
+				keyText = shortcutKeyConfig.keytext.toLowerCase();
+
+		for (let i=0 ; i<allKeySets.length ; i++) {
+
+			allDefinedKeys = allKeySets.item(i).querySelectorAll('key');
+
+			for (let j=0 ; j<allDefinedKeys.length ; j++) {
+				let currentKey = allDefinedKeys.item(j);
+
+				if (currentKey.getAttribute(attrForKey).toLowerCase() == keyText) {
+
+					if (shortcut.modifiers.toXulModifiersString() == currentKey.getAttribute('modifiers')) {
+						return currentKey;
+					}
+
+				}
+
+			} // for allDefinedKeys
+		} // for allKeySets
+
+		// No existing assignment found for this shortcut
+		return null;
 	},
 
 	_updateShortcutsForDocument: function(document, shortcutsMap){

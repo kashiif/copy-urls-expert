@@ -49,6 +49,11 @@ grid > rows > row {
 	margin-bottom: 10px;	
 }
 
+#copyurlsexpert-treeshortcutkeys treechildren::-moz-tree-cell-text(cue-shortcut-msg) {
+	color: red;
+}
+
+
 .cue-shortcut-warn {
 		padding-bottom: 5px;		
 }
