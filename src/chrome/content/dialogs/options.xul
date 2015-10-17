@@ -202,6 +202,24 @@
             
             <treeitem>
               <treerow>
+                <treecell value="cmd_cue_copyUrlsInSelection" />
+                <treecell label="&copyurlsexpert.common.selurlsmenulabel;" editable="false"/>
+                <treecell label="" />
+                <treecell label="" properties="cue-shortcut-msg" editable="false" />
+              </treerow>
+            </treeitem>
+
+            <treeitem>
+              <treerow>
+                <treecell value="cmd_cue_copyUrlsOfImagesInSelection" />
+                <treecell label="&copyurlsexpert.common.selimgsmenulabel;" editable="false"/>
+                <treecell label="" />
+                <treecell label="" properties="cue-shortcut-msg" editable="false" />
+              </treerow>
+            </treeitem>
+
+            <treeitem>
+              <treerow>
                 <treecell value="cmd_cue_openTabs" />
                 <treecell label="&copyurlsexpert.common.opentabsmenulabel;" editable="false"/>
                 <treecell label="" />

@@ -25,8 +25,11 @@
 <!ENTITY copyurlsexpert.common.activetabgroupmenulabel	"This Tab Group">
 <!ENTITY copyurlsexpert.common.activetabmenulabel	"This Tab">
 <!ENTITY copyurlsexpert.common.allwinmenulabel	"All Windows">
+<!ENTITY copyurlsexpert.common.selurlsmenulabel "Urls In Selection">
+<!ENTITY copyurlsexpert.common.selimgsmenulabel "Images In Selection">
 <!ENTITY copyurlsexpert.common.opentabsmenulabel	"Open Urls From Clipboard">
 <!ENTITY copyurlsexpert.common.optionsmenulabel	"Options">
+
 
 <!ENTITY copyurlsexpert.options.filterduplicates	"Filter duplicates when copying to and opening from clipboard">
 <!ENTITY copyurlsexpert.options.usecontenttitle	"When copying urls of tab, use page title for $title">
