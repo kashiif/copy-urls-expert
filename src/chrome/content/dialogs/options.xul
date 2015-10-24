@@ -150,7 +150,7 @@
         <label class="cue-shortcut-warn">&copyurlsexpert.options.lblshortcutdesc;</label>
 
         <tree id="copyurlsexpert-treeshortcutkeys" 
-               hidecolumnpicker="true" rows="6" seltype="single" editable="true">
+               hidecolumnpicker="true" rows="8" seltype="single" editable="true">
 
           <treecols orient="horizontal">
             <treecol editable="false" hidden="true" id="copyurlsexpert-colcommandid" />

@@ -2,7 +2,7 @@
   "name": "copy-urls-expert",
   "title": "Copy Urls Expert",
   "description": "Provides options to &quot;Copy Urls of All Opened Tabs&quot;, &quot;Copy Urls of All Links in Text Selection&quot; and &quot;Copy Urls of All Images in Selection&quot;",
-  "version": "2.3.1",
+  "version": "2.4.0",
   "homepage": "http://www.kashiif.com/firefox-extensions/copy-urls-expert/",
   "author": {
     "name": "Kashif Iqbal Khan",
@@ -26,10 +26,10 @@
   "keywords": [],
   "devDependencies": {
     "grunt": "0.4.1",
-    "grunt-contrib-copy": ">=0.4.0",
-    "grunt-string-replace": "~0.2.3",
-    "grunt-contrib-compress": "0.4.1",
     "grunt-bump": "0.0.2",
-    "grunt-contrib-clean": "~0.4.0"
+    "grunt-contrib-clean": "^0.4.1",
+    "grunt-contrib-compress": "^0.4.10",
+    "grunt-contrib-copy": "^0.8.1",
+    "grunt-string-replace": "^0.2.8"
   }
 }
