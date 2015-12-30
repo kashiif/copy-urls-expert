@@ -5,6 +5,7 @@ treechildren::-moz-tree-cell-text(defaultFormat) {
 #copyurlsexpert-treeformats {
 	margin-top:0.6em;
 	margin-bottom:0.6em;
+	max-height: 310px;
 }
 
 #copyurlsexpert-treeformats>treecols {
@@ -14,7 +15,7 @@ treechildren::-moz-tree-cell-text(defaultFormat) {
 
 /* prefpane do not resize correctly on MacOS for auto height of content */
 prefpane > groupbox {
-	height: 550px;
+	height: 590px;
 }
 
 prefpane > groupbox > vbox {
@@ -42,7 +43,7 @@ grid > rows > row {
 }
 
 #copyurlsexpert-optionsbottompanel {
-	padding: 0 8px 8px 8px;
+	padding: 0 0.6em 0.6em 1.3em;
 }
 
 .helplabel {
