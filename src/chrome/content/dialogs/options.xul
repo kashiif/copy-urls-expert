@@ -321,6 +321,7 @@
 	</groupbox>
   </prefpane>        
 
+
   <hbox flex="1" id="copyurlsexpert-optionsbottompanel">
 	  <vbox align="left" flex="3">
       <html:a href="https://addons.mozilla.org/firefox/addon/copy-urls-expert/about"
