@@ -130,7 +130,7 @@ copyUrlsExpert.options = {
 	      tree.inputField.value = ''; 
 				treeView.setCellText(editingRow, 
 						colMessage, 
-						shortcut.toUIString() + ' has already been used for ' + existingKey.getAttribute('id'));
+						shortcut.toUIString() + ' already assigned to ' + existingKey.getAttribute('id'));
 
 			}
 			else {
