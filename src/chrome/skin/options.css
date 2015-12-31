@@ -15,7 +15,8 @@ treechildren::-moz-tree-cell-text(defaultFormat) {
 
 /* prefpane do not resize correctly on MacOS for auto height of content */
 prefpane > groupbox {
-	height: 590px;
+	height: auto;
+	overflow: auto;
 }
 
 prefpane > groupbox > vbox {
