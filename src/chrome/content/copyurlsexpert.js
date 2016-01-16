@@ -639,7 +639,9 @@ var copyUrlsExpert = {
 	_openAllUrls: function (urls) {
 		if (!urls.length) return true;
 
-		var _g = this._gBrowser();
+		var _g = this._gBrowser(),
+				prefs = copyUrlsExpert._prefService,
+				urlOpener = null;
 
 		var aBrowsers = _g.browsers;
 
@@ -651,9 +653,17 @@ var copyUrlsExpert = {
 			start++;
 		}
 		
-		var delayStep = copyUrlsExpert._prefService.getIntPref('opentabdelaystepinmillisecs');
+		var delayStep = prefs.getIntPref('opentabdelaystepinmillisecs');
+
+		if (prefs.getBoolPref('openlinksinwindows')) {
+			urlOpener = function(url) {window.open(url);};
+		}
+		else {
+			urlOpener = function(url) {_g.addTab(url);};
+		}
+
 		for (; start<urls.length; start++) {
-			window.setTimeout( function(u) {_g.addTab(u);}, delayStep*start, urls[start]);
+			window.setTimeout( urlOpener, delayStep*start, urls[start]);
 		}
 
 		return true;		
