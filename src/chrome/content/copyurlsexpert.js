@@ -641,17 +641,11 @@ var copyUrlsExpert = {
 
 		var _g = this._gBrowser(),
 				prefs = copyUrlsExpert._prefService,
-				urlOpener = null;
+				urlOpener = null, webNav;
 
 		var aBrowsers = _g.browsers;
 
 		var start = 0;
-		var webNav = aBrowsers[aBrowsers.length-1].webNavigation;
-		if (webNav.currentURI.spec == 'about:blank') {
-			// yes it is empty
-			_g.loadURI(urls[0]);
-			start++;
-		}
 		
 		var delayStep = prefs.getIntPref('opentabdelaystepinmillisecs');
 
@@ -659,6 +653,13 @@ var copyUrlsExpert = {
 			urlOpener = function(url) {window.open(url);};
 		}
 		else {
+			webNav = aBrowsers[aBrowsers.length-1].webNavigation;
+
+			if (webNav.currentURI.spec == 'about:blank') {
+				// yes it is empty
+				_g.loadURI(urls[0]);
+				start++;
+			}
 			urlOpener = function(url) {_g.addTab(url);};
 		}
 
