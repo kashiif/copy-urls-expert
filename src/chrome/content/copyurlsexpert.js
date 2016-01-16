@@ -294,15 +294,12 @@ var copyUrlsExpert = {
 	_getEntriesFromSelection: function(tagName, entryExtractor) {
 
 		// get the content document
-		var cd = document.commandDispatcher,
-        focusedWindow = cd.focusedWindow,
-        focusedDoc = focusedWindow.document,
-        filterDuplicates = this._prefService.getBoolPref('filterduplicates');
+		var filterDuplicates = this._prefService.getBoolPref('filterduplicates');
 
 		var entries = [],
         urls = [],
-        sel = focusedWindow.getSelection(),
-        items = focusedDoc.getElementsByTagName(tagName);
+        sel = content.getSelection(),
+        items = content.document.getElementsByTagName(tagName);
 		
 		for (var i=0;i < items.length;i++) {
 			var item = items[i];
@@ -528,19 +525,17 @@ var copyUrlsExpert = {
 	onContentContextMenuShowing: function(evt) {
 		if (evt.target.id == 'contentAreaContextMenu')
 		{
-			var f = copyUrlsExpert._isEmptySelection();
-
 			var mnuItm = document.getElementById('copyurlsexpert-contextmenu-mainmenu');
-			mnuItm.collapsed = f;
+			mnuItm.collapsed = copyUrlsExpert._isEmptySelection();
 		}
 	},
 	
 	_isEmptySelection: function () {
 		// Check if there is some text selected
 
-		var focusedWindow = document.commandDispatcher.focusedWindow;
-		var sel = focusedWindow.getSelection.call(focusedWindow);		
-		return sel.isCollapsed;
+		var sel = content.getSelection();
+
+		return sel & sel.length > 0;
 	},
 
 	performDefaultAction: function() {
@@ -907,7 +902,7 @@ var copyUrlsExpert = {
 		return 0;
 	},
 	
-}
+};
 
 window.addEventListener
 (
