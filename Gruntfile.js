@@ -30,21 +30,31 @@ module.exports = function(grunt) {
 		common: {
 			files: [
 				{expand: true, cwd: srcDir, src : ["chrome.manifest" ],  dest: tempDir },
-				{expand: true, cwd: srcDir, src : ["**/*.css","**/*.js","**/*.jsm", "**/*.xul", "**/*.png","**/*.jpg"],  dest: tempDir }
+				{expand: true, cwd: srcDir, src : ["**/*.css", "**/*.xul", "**/*.png","**/*.jpg"],  dest: tempDir }
 			]
 		},
-		prod: {
-			files: [
-				{expand: true, cwd: srcDir, src : ["**/*.dtd", "**/*.properties", "!**/*_amo_*.dtd"],  dest: tempDir }
-			]
-		},
-		babelzilla: {
-			files: [
-				{expand: true, cwd: srcDir, src : ["**/*.dtd", "**/*.properties", "**/cue_translator.txt"],  dest: tempDir }
-			]
-		}
 	},
 	
+  preprocess: {
+    common: {
+      files: [
+        {expand: true, cwd: srcDir, src : ["**/*.js", "**/*.jsm"],  dest: tempDir }
+      ]
+    },
+
+    prod: {
+      files: [
+        {expand: true, cwd: srcDir, src : ["**/*.dtd", "**/*.properties", "!**/*_amo_*.dtd"],  dest: tempDir }
+      ]
+    },
+    babelzilla: {
+      files: [
+        {expand: true, cwd: srcDir, src : ["**/*.dtd", "**/*.properties", "**/cue_translator.txt"],  dest: tempDir }
+      ]
+    }
+
+  },
+
 	"string-replace": {
 	  install_rdf: { /* Task to replace tokens in install.rdf */
       options: {
@@ -99,6 +109,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-contrib-copy");
   grunt.loadNpmTasks("grunt-string-replace");
   grunt.loadNpmTasks("grunt-contrib-compress");
+  grunt.loadNpmTasks("grunt-preprocess");
   
   // $: grunt bump
   grunt.loadNpmTasks("grunt-bump");
@@ -117,7 +128,7 @@ module.exports = function(grunt) {
     });
 
   // Default task(s).
-  grunt.registerTask("default", ["clean", "copy:common", "copy:prod", "string-replace", "renameVersionDir", "compress"]);
-  grunt.registerTask("babelzilla", ["clean", "copy:common", "copy:babelzilla", "string-replace", "renameVersionDir", "compress"]);
+  grunt.registerTask("default", ["clean", "copy:common", "preprocess:common", "preprocess:prod", "string-replace", "renameVersionDir", "compress"]);
+  grunt.registerTask("babelzilla", ["clean", "copy:common", "preprocess:common", "preprocess:babelzilla", "string-replace", "renameVersionDir", "compress"]);
   
 };
