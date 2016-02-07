@@ -49,7 +49,7 @@ module.exports = function(grunt) {
     },
     babelzilla: {
       files: [
-        {expand: true, cwd: srcDir, src : ["**/*.dtd", "**/*.properties", "**/cue_translator.txt"],  dest: tempDir }
+        {expand: true, cwd: srcDir, src : ["**/*.dtd", "**/*.properties", "**/locale/*/*.txt"],  dest: tempDir }
       ]
     }
 

@@ -5,6 +5,5 @@ The text in this file does not appear anywhere in the addon. This will be used o
 
 <!--
 
-Provides options to 'Copy Urls of All Opened Tabs in Current Window', 'Copy Urls of  Tabs in All Windows', 'Copy Urls of All Links in Selected Text' and 'Copy Urls of All Images in Selection'. Allows to open multiple tabs.
-
+Copy multiple urls (links) to clipboard. Provides options to copy urls of all opened tabs and urls in selected text. You can customize the format of copied urls. You can also open multiple links from clipboard.
 -->
