@@ -2,7 +2,7 @@
 <!ENTITY copyurlsexpert.options.btacceptlabel "儲存">
 <!ENTITY copyurlsexpert.options.btacceptaccesskey "S">
 <!ENTITY copyurlsexpert.options.generaltab "一般設定">
-<!ENTITY copyurlsexpert.options.shortcuts "捷徑">
+<!ENTITY copyurlsexpert.options.shortcutkeystab "快捷鍵">
 <!ENTITY copyurlsexpert.options.formattab "格式">
 <!ENTITY copyurlsexpert.options.helptab "說明">
 <!-- General Tab -->
@@ -20,15 +20,14 @@
 <!ENTITY copyurlsexpert.common.activetabgroupmenulabel "當前分頁群組">
 <!ENTITY copyurlsexpert.common.activetabmenulabel "當前分頁">
 <!ENTITY copyurlsexpert.common.allwinmenulabel "所有視窗">
+<!ENTITY copyurlsexpert.common.selurlsmenulabel "選取範圍內的網址">
+<!ENTITY copyurlsexpert.common.selimgsmenulabel "選取範圍內的圖片">
 <!ENTITY copyurlsexpert.common.opentabsmenulabel "開啟剪貼簿中的網址">
 <!ENTITY copyurlsexpert.common.optionsmenulabel "選項">
 <!ENTITY copyurlsexpert.options.filterduplicates "複製到剪貼簿或從剪貼簿開啟時濾掉重複的內容">
 <!ENTITY copyurlsexpert.options.usecontenttitle "複製分頁位址時，$title 指定為頁面標題">
 <!ENTITY copyurlsexpert.options.usecontenttitle2 "若取消勾選，$title 就會指定為分頁標題；此設定是為了配合 Tab Mix Plus 套件的&quot;使用書籤名稱做為分頁標題&quot;功能。">
 <!-- Shortcuts Tab -->
-<!ENTITY copyurlsexpert.options.lblctrlkey "Ctrl">
-<!ENTITY copyurlsexpert.options.lblshiftkey "Shift">
-<!-- Format Tab -->
 <!ENTITY copyurlsexpert.options.btnaddnew "新增">
 <!ENTITY copyurlsexpert.options.btnupdate "更新">
 <!ENTITY copyurlsexpert.options.btnsave "儲存">
@@ -36,6 +35,17 @@
 <!ENTITY copyurlsexpert.options.btnedit "編輯">
 <!ENTITY copyurlsexpert.options.btndefault "指定為預設">
 <!ENTITY copyurlsexpert.options.btndelete "刪除">
+<!-- Format Tab -->
+<!ENTITY copyurlsexpert.options.lblshortcutdesc "在任一動作後（第二欄）的格子上快點兩下，然後按下要使用的快捷鍵組合">
+<!ENTITY copyurlsexpert.options.shortcutwarn1 "重要">
+<!ENTITY copyurlsexpert.options.shortcutwarn2 "本功能仍在測試中，可能無法在各個版本的 Firefox 或各種作業系統（如 Mac/Linux）都正常運作。">
+<!ENTITY copyurlsexpert.options.shortcutwarn3 "本功能有在 Windows 的 Firefox 40以上版本測試過。">
+<!ENTITY copyurlsexpert.options.colshortcutkeyaction "動作">
+<!ENTITY copyurlsexpert.options.colshortcutkey "登錄的快捷鍵">
+<!ENTITY copyurlsexpert.options.colshortcutmessage "訊息">
+<!ENTITY copyurlsexpert.options.resetshortcut "重設選擇的快捷鍵">
+<!ENTITY copyurlsexpert.options.lblctrlkey "Ctrl">
+<!ENTITY copyurlsexpert.options.lblshiftkey "Shift">
 <!-- Help Tab -->
 <!ENTITY copyurlsexpert.options.lblhelphint "請參見「說明」分頁以了解如何自訂存入剪貼簿的文字。">
 <!ENTITY copyurlsexpert.options.lblhelphint2 "要複製到剪貼簿的文字資料是可以自訂的。">

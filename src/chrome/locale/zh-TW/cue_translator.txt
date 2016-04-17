@@ -1,0 +1,5 @@
+[{
+  name:	"velociraptor",    // Translator's name / handle / nick. This among email & url will be put into install.rdf.
+  email:	"veloci85@gmail.com",  // Translator's email
+  url:	"Undisclosed"
+}]
