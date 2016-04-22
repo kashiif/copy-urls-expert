@@ -17,8 +17,7 @@ var copyUrlsExpert = {
 	TBB_ACTION_ALL_WIN: 'all-win',
 	TBB_ACTION_OPEN_TABS: 'open-tabs',
 	LINE_FEED:'\r\n',
-	FUEL_KEY_DEFUALT_PATTERN: 'extensions.copyurlsexpert.defaulttemplate',
-	FUEL_KEY_ALL_PATTERNS: 'extensions.copyurlsexpert.urltemplates',
+  defaultPattern: null,
 
 	
 	_AsynHandler: function(file, oPrefs) {
@@ -59,52 +58,66 @@ var copyUrlsExpert = {
 
 			// The file data is contained within inputStream.
 			// You can read it into a string with
-			var data = '';
 			var target = [];
 			var index;
-			
-			var converterStream = null;
-			try {
-				//data = NetUtil.readInputStreamToString(inputStream, inputStream.available());
-				
-				converterStream = Components.classes["@mozilla.org/intl/converter-input-stream;1"]  
-								   .createInstance(Components.interfaces.nsIConverterInputStream);  
-				converterStream.init(inputStream, 'UTF-8', 1024, Components.interfaces.nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER);  
 
-				var input = {};
-				// read all "bytes" (not characters) into the input
-				var numChars = converterStream.readString(inputStream.available(), input);  
-				if (numChars != 0) /* EOF */
-					data = input.value;  				
-				
-				index  = copyUrlsExpert._updateModel(data, target);
-			}
-			catch(ex) {
-				Components.utils.reportError('Copy Urls Expert: ' + ex);
-				alert('Copy Urls Expert: Error reading templates list file.\nRestoring to default values.'); // TODO: localize it
-				target = [];
-				index = copyUrlsExpert._setupDefaultModel(target);
-				
-				// attempt to update file
-				var defaultContent = '0' + copyUrlsExpert.LINE_FEED + target.join(copyUrlsExpert.LINE_FEED);
-				copyUrlsExpert._writeDataToFile(defaultContent, this.file, function(inputStream, status) {
-						if (!Components.isSuccessCode(status)) {
-							// Handle error!
-							alert('Copy Urls Expert: Failed to write to templates list file (default values): ' + status); // TODO: localize it
-							return;
-						} });
-				
-			}
-			finally {
-				if (converterStream) {
-					try { converterStream.close(); }
-					catch(ex) { Components.utils.reportError('Copy Urls Expert: Error while closing file - ' + ex); }
-				}
-			}
+      var data = this.read(inputStream, status);
+
+      if (data == null) {
+        alert('Copy Urls Expert: Error reading templates list file.\nRestoring to default values.'); // TODO: localize it
+        target = [];
+        index = copyUrlsExpert._setupDefaultModel(target);
+
+        // attempt to update file
+        var defaultContent = '0' + copyUrlsExpert.LINE_FEED + target.join(copyUrlsExpert.LINE_FEED);
+        copyUrlsExpert._writeDataToFile(defaultContent, this.file, function(inputStream, status) {
+          if (!Components.isSuccessCode(status)) {
+            // Handle error!
+            alert('Copy Urls Expert: Failed to write to templates list file (default values): ' + status); // TODO: localize it
+            return;
+          } });
+
+      }
+      else {
+        index  = copyUrlsExpert._updateModel(data, target);
+      }
 
 			copyUrlsExpert._updateFuelAppData(target, index);
 
 		};
+
+    this._AsynHandler.prototype.read = function(inputStream, status) {
+      var data = '';
+
+      var converterStream = null;
+      try {
+        //data = NetUtil.readInputStreamToString(inputStream, inputStream.available());
+
+        converterStream = Components.classes["@mozilla.org/intl/converter-input-stream;1"]
+            .createInstance(Components.interfaces.nsIConverterInputStream);
+        converterStream.init(inputStream, 'UTF-8', 1024, Components.interfaces.nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER);
+
+        var input = {};
+        // read all "bytes" (not characters) into the input
+        var numChars = converterStream.readString(inputStream.available(), input);
+        if (numChars != 0) /* EOF */
+          data = input.value;
+      }
+      catch(ex) {
+        Components.utils.reportError('Copy Urls Expert: ' + ex);
+        data = null;
+      }
+      finally {
+        if (converterStream) {
+          try { converterStream.close(); }
+          catch(ex) { Components.utils.reportError('Copy Urls Expert: Error while closing file - ' + ex); }
+        }
+      }
+
+      return data;
+
+    };
+
 			
 		this._AsynHandler.prototype.handleUpdate =  function(status) {  
 			if (!Components.isSuccessCode(status)) {  
@@ -363,7 +376,7 @@ var copyUrlsExpert = {
 				break;
 		}
 		
-		patternToUse = patternToUse || Application.storage.get(copyUrlsExpert.FUEL_KEY_DEFUALT_PATTERN, '');
+		patternToUse = patternToUse || copyUrlsExpert.defaultPattern;
 		var str = copyUrlsExpert._transform(patternToUse, entries);
 
 		//alert(str);
@@ -684,7 +697,7 @@ var copyUrlsExpert = {
 						
 			if(file.exists()) {
 				var fetchHandler = new this._AsynHandler(v.file, this._prefService);
-				NetUtil.asyncFetch(v.file, function(inputStream, status) { fetchHandler.handleFetch(inputStream, status); });			
+				NetUtil.asyncFetch(v.file, function(inputStream, status) { fetchHandler.handleFetch(inputStream, status); });
 				return;
 			}
 		}
@@ -701,8 +714,23 @@ var copyUrlsExpert = {
 	},
 
 	_updateFuelAppData: function(target, defaultIndex) {
-		Application.storage.set(copyUrlsExpert.FUEL_KEY_ALL_PATTERNS, target);
-		Application.storage.set(copyUrlsExpert.FUEL_KEY_DEFUALT_PATTERN, target[defaultIndex]);
+    // FUEL DEPRECIATED - update local data of all windows
+
+    const Cc = Components.classes,
+          Ci = Components.interfaces;
+
+    let defaultPattern = target[defaultIndex];
+
+    let wm = Cc['@mozilla.org/appshell/window-mediator;1']
+                       .getService(Ci.nsIWindowMediator);
+
+    // Get the list of browser windows already open
+    let windows = wm.getEnumerator('navigator:browser');
+    while (windows.hasMoreElements()) {
+      let xulWindow = windows.getNext().QueryInterface(Ci.nsIDOMWindow);
+
+      xulWindow.copyUrlsExpert.defaultPattern = defaultPattern;
+    }
 	},
 	
 	_getWindowMediator: function() {
@@ -861,51 +889,69 @@ var copyUrlsExpert = {
 	@returns: int representing the index of default pattern.
 	*/
 	_updateModel: function(data, templates) {
-		var lines = data.split(copyUrlsExpert.LINE_FEED);
-	
-		var defPatternIndex = -1, defId = -1;
-		
-		if (lines.length <2) {
-			return copyUrlsExpert._setupDefaultModel(templates);
-		}
-		
-		try
-		{
-			defId = parseInt(lines[0]);
-		}
-		catch(ex) {
-			// Simply ignore the bad line
-		}
-		
-		for (var i=1, j=0 ; i<lines.length; i++) {
-			var pattern = null;
-			try
-			{
-				pattern = copyUrlsExpert._FormatPattern.parseString(lines[i]);
-			}
-			catch(ex) {
-				// Simply ignore the bad line
-				continue;
-			}
-			templates.push(pattern);
-			
-			if (pattern.id == defId) {
-				defPatternIndex = j;
-			}
-			j++;
-		}
-		
-		if (templates.length == 0) {
-			return copyUrlsExpert._setupDefaultModel(templates);
-		}
-		
-		if (defPatternIndex < 0) {
-			return 0;
-		}
-		
-		return defPatternIndex;
+    var index = this.convertStringToModel(data, templates);
+
+    if (index == -1) {
+      index = copyUrlsExpert._setupDefaultModel(templates);
+    }
+
+    return index;
+
 	},
-	
+
+  /*
+   Fills the 'templates' by parsing the contents of 'data'
+   @param: data - Contents of file.
+   @param: templates - target array object that would be populated.
+   @returns: int representing the index of default pattern. -1 in case of parsing fails
+  */
+  convertStringToModel: function(data, templates){
+    var lines = data.split(copyUrlsExpert.LINE_FEED);
+
+    var defPatternIndex = -1, defId = -1;
+
+    if (lines.length <2) {
+      return -1;
+    }
+
+    try
+    {
+      defId = parseInt(lines[0]);
+    }
+    catch(ex) {
+      // Simply ignore the bad line
+    }
+
+    for (let i=1, j=0 ; i<lines.length; i++) {
+      var pattern = null;
+      try
+      {
+        pattern = copyUrlsExpert._FormatPattern.parseString(lines[i]);
+      }
+      catch(ex) {
+        // Simply ignore the bad line
+        continue;
+      }
+      templates.push(pattern);
+
+      if (pattern.id == defId) {
+        defPatternIndex = j;
+      }
+      j++;
+    }
+
+    if (templates.length == 0) {
+      return -1;
+    }
+
+    if (defPatternIndex < 0) {
+      defPatternIndex = 0;
+    }
+
+    return defPatternIndex;
+
+  },
+
 	_setupDefaultModel: function(templates){
 		templates.push(new this._FormatPattern(0, 'Default','$url$n'));
 		templates.push(new this._FormatPattern(1, 'html','<a href="$url">$title</a>$n'));

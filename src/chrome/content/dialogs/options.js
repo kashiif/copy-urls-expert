@@ -36,34 +36,45 @@ copyUrlsExpert.options = {
 	},
 	
 	loadModelIntoTree: function() {
-		var tree = this.gUriTree;
-		
-		var templatesOriginal = Application.storage.get(copyUrlsExpert.FUEL_KEY_ALL_PATTERNS, '');
+		var templatesPrefName = 'urltemplatesfile';
+		var file = null;
 
-		// Edit a deep-clone of templates
-		var templates = [];
-		for (var i=0 ; i<templatesOriginal.length; i++) {
-			templates.push(templatesOriginal[i].clone());
+		if (copyUrlsExpert._prefService.prefHasUserValue(templatesPrefName))	{
+			var v = copyUrlsExpert._prefService.getComplexValue(templatesPrefName, Components.interfaces.nsIRelativeFilePref);
+			file = v.file;
+
+			if(file.exists()) {
+				var fetchHandler = new copyUrlsExpert._AsynHandler(v.file, copyUrlsExpert._prefService);
+
+				Components.utils.import('resource://gre/modules/NetUtil.jsm');
+
+				NetUtil.asyncFetch(v.file, function(inputStream, status) {
+					var data = fetchHandler.read(inputStream, status),
+							templates = [];
+
+					var index = copyUrlsExpert.convertStringToModel(data, templates);
+					copyUrlsExpert.options.populateTree(templates, templates[index].id);
+
+				});
+			}
 		}
-		
-		var defTemplate = Application.storage.get(copyUrlsExpert.FUEL_KEY_DEFUALT_PATTERN, null);
-		var defaultId = -1;
-		
-		if (defTemplate) {
-			defaultId = defTemplate.id;
-		}
-			
+
+	},
+
+	populateTree: function(templates, defaultId) {
+		var tree = this.gUriTree;
+
 		tree.treeBoxObject.beginUpdateBatch();
-		
+
 		for (var i=0 ; i<templates.length; i++) {
 			var t = templates[i];
 			var isDefault = (t.id == defaultId);
 			this._appendRowForTemplate(tree, t, isDefault);
-			
+
 			if (isDefault) {
 				tree.cueDefTemplateIndex = i;
 			}
-			
+
 		}
 		tree.treeBoxObject.endUpdateBatch();
 		tree.cueTemplates = templates;
