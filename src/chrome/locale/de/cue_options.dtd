@@ -2,7 +2,7 @@
 <!ENTITY copyurlsexpert.options.btacceptlabel "Speichern">
 <!ENTITY copyurlsexpert.options.btacceptaccesskey "S">
 <!ENTITY copyurlsexpert.options.generaltab "Allgemein">
-<!ENTITY copyurlsexpert.options.shortcuts "Tastenkombinationen">
+<!ENTITY copyurlsexpert.options.shortcutkeystab "Shortcut">
 <!ENTITY copyurlsexpert.options.formattab "Formatierung">
 <!ENTITY copyurlsexpert.options.helptab "Hilfe">
 <!-- General Tab -->
@@ -20,15 +20,14 @@
 <!ENTITY copyurlsexpert.common.activetabgroupmenulabel "This Tab Group">
 <!ENTITY copyurlsexpert.common.activetabmenulabel "Adresse des aktiven Tabs kopieren">
 <!ENTITY copyurlsexpert.common.allwinmenulabel "Adressen der Tabs aller Fenstern kopieren">
+<!ENTITY copyurlsexpert.common.selurlsmenulabel "Urls In Selection">
+<!ENTITY copyurlsexpert.common.selimgsmenulabel "Images In Selection">
 <!ENTITY copyurlsexpert.common.opentabsmenulabel "Adressen aus Zwischenablage öffnen">
 <!ENTITY copyurlsexpert.common.optionsmenulabel "Einstellungen öffnen">
 <!ENTITY copyurlsexpert.options.filterduplicates "Doppelte Adressen beim Kopieren in bzw. Öffnen aus der Zwischenablage entfernen">
 <!ENTITY copyurlsexpert.options.usecontenttitle "Beim Kopieren der Adressen von Tabs den Seitentitel für $title verwenden">
 <!ENTITY copyurlsexpert.options.usecontenttitle2 "Das Deaktivieren dieser Einstellung führt zur steten Verwendung des Tabtitels als $title. Dies dient zur Unterstützung der &quot;Tab Mix Plus&quot;-Funktion &quot;Namen der Lesezeichen als Tabtitel verwenden&quot;.">
 <!-- Shortcuts Tab -->
-<!ENTITY copyurlsexpert.options.lblctrlkey "Strg">
-<!ENTITY copyurlsexpert.options.lblshiftkey "Umschalt">
-<!-- Format Tab -->
 <!ENTITY copyurlsexpert.options.btnaddnew "Neu">
 <!ENTITY copyurlsexpert.options.btnupdate "Aktualisieren">
 <!ENTITY copyurlsexpert.options.btnsave "Speichern">
@@ -36,6 +35,17 @@
 <!ENTITY copyurlsexpert.options.btnedit "Bearbeiten">
 <!ENTITY copyurlsexpert.options.btndefault "Als Standard setzen">
 <!ENTITY copyurlsexpert.options.btndelete "Löschen">
+<!-- Format Tab -->
+<!ENTITY copyurlsexpert.options.lblshortcutdesc "Double click on the cell (second column) in front of any action and then press the shortcut key combination.">
+<!ENTITY copyurlsexpert.options.shortcutwarn1 "Important">
+<!ENTITY copyurlsexpert.options.shortcutwarn2 "This feature is experimental and may not work as expected on every firefox version and on every platform (e.g. Mac/Linux).">
+<!ENTITY copyurlsexpert.options.shortcutwarn3 "This feautre was tested on windows for Firefox 40+.">
+<!ENTITY copyurlsexpert.options.colshortcutkeyaction "Action">
+<!ENTITY copyurlsexpert.options.colshortcutkey "Assigned shortcut key">
+<!ENTITY copyurlsexpert.options.colshortcutmessage "Message">
+<!ENTITY copyurlsexpert.options.resetshortcut "Reset selected shortcut">
+<!ENTITY copyurlsexpert.options.lblctrlkey "Strg">
+<!ENTITY copyurlsexpert.options.lblshiftkey "Umschalt">
 <!-- Help Tab -->
 <!ENTITY copyurlsexpert.options.lblhelphint "Die Möglichkeiten der Benutzeranpassung, wie der Text in der Zwischenablage formatiert sein soll, werden im Tab &quot;Hilfe&quot; erklärt.">
 <!ENTITY copyurlsexpert.options.lblhelphint2 "Es ist möglich, den in die Zwischenablage zu kopierenden Text zu formatieren.">
