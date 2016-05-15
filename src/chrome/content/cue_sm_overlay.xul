@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!DOCTYPE overlay SYSTEM "chrome://copy-urls-expert/locale/cue_browser_overlay.dtd">
+<!DOCTYPE overlay SYSTEM "chrome://copy-urls-expert/locale/cue_common.dtd">
 
 <?xml-stylesheet href="chrome://copy-urls-expert/skin/copyurlsexpert-sm.css" type="text/css"?>
 

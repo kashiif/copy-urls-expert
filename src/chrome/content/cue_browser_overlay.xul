@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!DOCTYPE overlay SYSTEM "chrome://copy-urls-expert/locale/cue_browser_overlay.dtd">
+<!DOCTYPE overlay SYSTEM "chrome://copy-urls-expert/locale/cue_common.dtd">
 
 <overlay id="copy-urls-expert-common"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">

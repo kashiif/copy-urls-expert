@@ -1,6 +1,12 @@
 <?xml version="1.0"?>
 
-<!DOCTYPE dialog SYSTEM "chrome://copy-urls-expert/locale/cue_options.dtd">
+<!DOCTYPE dialog [
+
+  <!ENTITY % cueComonDTD SYSTEM "chrome://copy-urls-expert/locale/cue_common.dtd">
+  %cueComonDTD;
+  <!ENTITY % cueOptionsDTD SYSTEM "chrome://copy-urls-expert/locale/cue_options.dtd">
+  %cueOptionsDTD;
+]>
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://copy-urls-expert/skin/options.css" type="text/css"?>
