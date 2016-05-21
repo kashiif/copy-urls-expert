@@ -16,14 +16,6 @@
 <!ENTITY copyurlsexpert.options.lblprefix "前缀">
 <!ENTITY copyurlsexpert.options.lblpostfix "后缀">
 <!ENTITY copyurlsexpert.options.lbltoolbaraction "工具栏按钮默认动作">
-<!ENTITY copyurlsexpert.common.activewinmenulabel "此窗口">
-<!ENTITY copyurlsexpert.common.activetabgroupmenulabel "此标签页组">
-<!ENTITY copyurlsexpert.common.activetabmenulabel "此标签">
-<!ENTITY copyurlsexpert.common.allwinmenulabel "所有窗口">
-<!ENTITY copyurlsexpert.common.selurlsmenulabel "Urls In Selection">
-<!ENTITY copyurlsexpert.common.selimgsmenulabel "Images In Selection">
-<!ENTITY copyurlsexpert.common.opentabsmenulabel "从剪贴板打开 URL">
-<!ENTITY copyurlsexpert.common.optionsmenulabel "选项">
 <!ENTITY copyurlsexpert.options.filterduplicates "Filter duplicates when copying to and opening from clipboard">
 <!ENTITY copyurlsexpert.options.usecontenttitle "When copying urls of tab, use page title for $title">
 <!ENTITY copyurlsexpert.options.usecontenttitle2 "If you uncheck this, $title will always be the tab title. This is to facilitate Tab Mix Plus &quot;Use bookmark name as title&quot; feature.">

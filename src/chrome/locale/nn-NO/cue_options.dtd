@@ -16,14 +16,6 @@
 <!ENTITY copyurlsexpert.options.lblprefix "Topptekst">
 <!ENTITY copyurlsexpert.options.lblpostfix "Botntekst">
 <!ENTITY copyurlsexpert.options.lbltoolbaraction "Standardhandling for verktøylinjeknapp">
-<!ENTITY copyurlsexpert.common.activewinmenulabel "Dette vindauget">
-<!ENTITY copyurlsexpert.common.activetabgroupmenulabel "Denne fanegruppa">
-<!ENTITY copyurlsexpert.common.activetabmenulabel "Denne fanen">
-<!ENTITY copyurlsexpert.common.allwinmenulabel "Alle vindauge">
-<!ENTITY copyurlsexpert.common.selurlsmenulabel "Urls In Selection">
-<!ENTITY copyurlsexpert.common.selimgsmenulabel "Images In Selection">
-<!ENTITY copyurlsexpert.common.opentabsmenulabel "Opna URL-ar frå utklippstavla">
-<!ENTITY copyurlsexpert.common.optionsmenulabel "Innstillingar">
 <!ENTITY copyurlsexpert.options.filterduplicates "Fjern dublettar ved kopiering eller opning frå utklippstavla">
 <!ENTITY copyurlsexpert.options.usecontenttitle "Bruk sidetittel for $title ved kopiering av faneadresser">
 <!ENTITY copyurlsexpert.options.usecontenttitle2 "Viss du ikkje huker av dette, vil $title alltid vera fanetittelen. Dette er nyttig viss du bruker Tab Mix Plus-funksjonen &quot;Bruk bokmerkenamn som tittel&quot;.">

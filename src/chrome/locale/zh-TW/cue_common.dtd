@@ -1,0 +1,33 @@
+<!ENTITY copyurlsexpert.common.menupopuplabel "Copy Urls Expert">
+<!ENTITY copyurlsexpert.common.menupopupaccesskey "U">
+<!ENTITY copyurlsexpert.common.activewinmenulabel "此視窗分頁">
+<!ENTITY copyurlsexpert.common.activewinaccesskey "T">
+<!ENTITY copyurlsexpert.common.activewintooltip "複製使用中視窗內所有分頁的網址">
+<!ENTITY copyurlsexpert.common.allwinmenulabel "所有視窗分頁">
+<!ENTITY copyurlsexpert.common.allwinaccesskey "A">
+<!ENTITY copyurlsexpert.common.allwintooltip "複製所有視窗內所有分頁的網址">
+<!ENTITY copyurlsexpert.common.activetabgroupmenulabel "此分頁群組的分頁">
+<!ENTITY copyurlsexpert.common.activetabgroupaccesskey "G">
+<!ENTITY copyurlsexpert.common.activetabgrouptooltip "複製使用中分頁群組內所有分頁的網址">
+<!ENTITY copyurlsexpert.common.activetabmenulabel "此分頁">
+<!ENTITY copyurlsexpert.common.activetabaccesskey "C">
+<!ENTITY copyurlsexpert.common.activetabtooltip "複製使用中分頁的網址">
+<!ENTITY copyurlsexpert.common.opentabsmenulabel "開啟剪貼簿中的網址">
+<!ENTITY copyurlsexpert.common.opentabsaccesskey "p">
+<!ENTITY copyurlsexpert.common.opentabstooltip "開啟剪貼簿資料中包含的所有網址">
+<!ENTITY copyurlsexpert.common.optionsmenulabel "選項">
+<!ENTITY copyurlsexpert.common.optionsaccesskey "O">
+<!ENTITY copyurlsexpert.common.optionstooltip "顯示 &quot;Copy Urls Expert&quot; 套件選項">
+<!ENTITY copyurlsexpert.common.selurlsmenulabel "選取範圍內的鏈結網址">
+<!ENTITY copyurlsexpert.common.selurlsaccesskey "U">
+<!ENTITY copyurlsexpert.common.selimgsmenulabel "選取範圍內的圖片網址">
+<!ENTITY copyurlsexpert.common.selimgsaccesskey "I">
+<!ENTITY copyurlsexpert.common.selurlsopenmenulabel "開啟選取範圍內的所有網址">
+<!ENTITY copyurlsexpert.common.activewinmenulabel "當前視窗">
+<!ENTITY copyurlsexpert.common.activetabgroupmenulabel "當前分頁群組">
+<!ENTITY copyurlsexpert.common.activetabmenulabel "當前分頁">
+<!ENTITY copyurlsexpert.common.allwinmenulabel "所有視窗">
+<!ENTITY copyurlsexpert.common.selurlsmenulabel "選取範圍內的網址">
+<!ENTITY copyurlsexpert.common.selimgsmenulabel "選取範圍內的圖片">
+<!ENTITY copyurlsexpert.common.opentabsmenulabel "開啟剪貼簿中的網址">
+<!ENTITY copyurlsexpert.common.optionsmenulabel "選項">

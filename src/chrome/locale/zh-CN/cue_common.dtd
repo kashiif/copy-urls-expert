@@ -1,0 +1,33 @@
+<!ENTITY copyurlsexpert.common.menupopuplabel "Copy Urls Expert">
+<!ENTITY copyurlsexpert.common.menupopupaccesskey "U">
+<!ENTITY copyurlsexpert.common.activewinmenulabel "此窗口中的标签">
+<!ENTITY copyurlsexpert.common.activewinaccesskey "T">
+<!ENTITY copyurlsexpert.common.activewintooltip "复制此窗口中标签的 URL">
+<!ENTITY copyurlsexpert.common.allwinmenulabel "所有窗口中的标签">
+<!ENTITY copyurlsexpert.common.allwinaccesskey "A">
+<!ENTITY copyurlsexpert.common.allwintooltip "复制所有窗口中标签的 URL">
+<!ENTITY copyurlsexpert.common.activetabgroupmenulabel "此标签页组中的标签">
+<!ENTITY copyurlsexpert.common.activetabgroupaccesskey "">
+<!ENTITY copyurlsexpert.common.activetabgrouptooltip "复制活动标签页组中所有标签的 URL">
+<!ENTITY copyurlsexpert.common.activetabmenulabel "活动标签">
+<!ENTITY copyurlsexpert.common.activetabaccesskey "">
+<!ENTITY copyurlsexpert.common.activetabtooltip "复制活动标签的 URL">
+<!ENTITY copyurlsexpert.common.opentabsmenulabel "从剪贴板打开标签">
+<!ENTITY copyurlsexpert.common.opentabsaccesskey "p">
+<!ENTITY copyurlsexpert.common.opentabstooltip "打开剪贴板文本中包含的所有 URL">
+<!ENTITY copyurlsexpert.common.optionsmenulabel "选项">
+<!ENTITY copyurlsexpert.common.optionsaccesskey "O">
+<!ENTITY copyurlsexpert.common.optionstooltip "显示 &quot;Copy Urls Expert&quot; 选项">
+<!ENTITY copyurlsexpert.common.selurlsmenulabel "选中的 URL">
+<!ENTITY copyurlsexpert.common.selurlsaccesskey "U">
+<!ENTITY copyurlsexpert.common.selimgsmenulabel "选中的图像">
+<!ENTITY copyurlsexpert.common.selimgsaccesskey "I">
+<!ENTITY copyurlsexpert.common.selurlsopenmenulabel "Open All Urls In Selection">
+<!ENTITY copyurlsexpert.common.activewinmenulabel "此窗口">
+<!ENTITY copyurlsexpert.common.activetabgroupmenulabel "此标签页组">
+<!ENTITY copyurlsexpert.common.activetabmenulabel "此标签">
+<!ENTITY copyurlsexpert.common.allwinmenulabel "所有窗口">
+<!ENTITY copyurlsexpert.common.selurlsmenulabel "Urls In Selection">
+<!ENTITY copyurlsexpert.common.selimgsmenulabel "Images In Selection">
+<!ENTITY copyurlsexpert.common.opentabsmenulabel "从剪贴板打开 URL">
+<!ENTITY copyurlsexpert.common.optionsmenulabel "选项">

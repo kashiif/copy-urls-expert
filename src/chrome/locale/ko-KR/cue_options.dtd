@@ -16,14 +16,6 @@
 <!ENTITY copyurlsexpert.options.lblprefix "접두어">
 <!ENTITY copyurlsexpert.options.lblpostfix "접미어">
 <!ENTITY copyurlsexpert.options.lbltoolbaraction "툴바 버튼 기본 작업">
-<!ENTITY copyurlsexpert.common.activewinmenulabel "이 창">
-<!ENTITY copyurlsexpert.common.activetabgroupmenulabel "This Tab Group">
-<!ENTITY copyurlsexpert.common.activetabmenulabel "This Tab">
-<!ENTITY copyurlsexpert.common.allwinmenulabel "모든 창들">
-<!ENTITY copyurlsexpert.common.selurlsmenulabel "Urls In Selection">
-<!ENTITY copyurlsexpert.common.selimgsmenulabel "Images In Selection">
-<!ENTITY copyurlsexpert.common.opentabsmenulabel "탭들 열기">
-<!ENTITY copyurlsexpert.common.optionsmenulabel "옵션...">
 <!ENTITY copyurlsexpert.options.filterduplicates "Filter duplicates when copying to and opening from clipboard">
 <!ENTITY copyurlsexpert.options.usecontenttitle "When copying urls of tab, use page title for $title">
 <!ENTITY copyurlsexpert.options.usecontenttitle2 "If you uncheck this, $title will always be the tab title. This is to facilitate Tab Mix Plus &quot;Use bookmark name as title&quot; feature.">
