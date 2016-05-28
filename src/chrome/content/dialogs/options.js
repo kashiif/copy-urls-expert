@@ -30,37 +30,13 @@ copyUrlsExpert.options = {
 		this.btnResetShortcut = document.getElementById('copyurlsexpert-reset-shortcut');
 		this.btnResetShortcut.addEventListener('click', this._onResetShortcutButtonClicked);
 
+		copyUrlsExpert.readTemplatesFile(function(result){
+			copyUrlsExpert.options.populateTree(result.templates, result.defaultTemplateId);
+		});
 
-		this.loadModelIntoTree();
 		this.loadShortcutsIntoTree();
 	},
 	
-	loadModelIntoTree: function() {
-		var templatesPrefName = 'urltemplatesfile';
-		var file = null;
-
-		if (copyUrlsExpert._prefService.prefHasUserValue(templatesPrefName))	{
-			var v = copyUrlsExpert._prefService.getComplexValue(templatesPrefName, Components.interfaces.nsIRelativeFilePref);
-			file = v.file;
-
-			if(file.exists()) {
-				var fetchHandler = new copyUrlsExpert._AsynHandler(v.file, copyUrlsExpert._prefService);
-
-				Components.utils.import('resource://gre/modules/NetUtil.jsm');
-
-				NetUtil.asyncFetch(v.file, function(inputStream, status) {
-					var data = fetchHandler.read(inputStream, status),
-							templates = [];
-
-					var index = copyUrlsExpert.convertStringToModel(data, templates);
-					copyUrlsExpert.options.populateTree(templates, templates[index].id);
-
-				});
-			}
-		}
-
-	},
-
 	populateTree: function(templates, defaultId) {
 		var tree = this.gUriTree;
 

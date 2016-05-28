@@ -50,40 +50,6 @@ var copyUrlsExpert = {
 		Components.utils.import('resource://copy-urls-expert/cue-classes.jsm', copyUrlsExpert);
 					
 		this._AsynHandler.prototype.handleFetch = function(inputStream, status) {
-			if (!Components.isSuccessCode(status)) {
-				// Handle error!
-				alert('Copy Urls Expert: Error reading templates list file.\n.' + status); // TODO: localize it
-				return;
-			}
-
-			// The file data is contained within inputStream.
-			// You can read it into a string with
-			var target = [];
-			var index;
-
-      var data = this.read(inputStream, status);
-
-      if (data == null) {
-        alert('Copy Urls Expert: Error reading templates list file.\nRestoring to default values.'); // TODO: localize it
-        target = [];
-        index = copyUrlsExpert._setupDefaultModel(target);
-
-        // attempt to update file
-        var defaultContent = '0' + copyUrlsExpert.LINE_FEED + target.join(copyUrlsExpert.LINE_FEED);
-        copyUrlsExpert._writeDataToFile(defaultContent, this.file, function(inputStream, status) {
-          if (!Components.isSuccessCode(status)) {
-            // Handle error!
-            alert('Copy Urls Expert: Failed to write to templates list file (default values): ' + status); // TODO: localize it
-            return;
-          } });
-
-      }
-      else {
-        index  = copyUrlsExpert._updateModel(data, target);
-      }
-
-			copyUrlsExpert._updateFuelAppData(target, index);
-
 		};
 
     this._AsynHandler.prototype.read = function(inputStream, status) {
@@ -137,7 +103,39 @@ var copyUrlsExpert = {
 		var cm = document.getElementById('contentAreaContextMenu');
 		if (cm != null)	{
 			cm.addEventListener('popupshowing', function (evt) { copyUrlsExpert.onContentContextMenuShowing(evt); }, false);
-			this._readTemplates();
+			this.readTemplatesFile(function(result){
+
+				var target = result.templates;
+				var index = result.defaultTemplateId;
+
+				if (result.errorStatus) {
+
+					if (target == null) {
+
+		        alert('Copy Urls Expert: Error reading templates list file.\nRestoring to default values.'); // TODO: localize it
+		        target = [];
+		        index = copyUrlsExpert._setupDefaultModel(target);
+
+		        // attempt to update file
+		        var defaultContent = '0' + copyUrlsExpert.LINE_FEED + target.join(copyUrlsExpert.LINE_FEED);
+		        copyUrlsExpert._writeDataToFile(defaultContent, this.file, function(inputStream, status) {
+		          if (!Components.isSuccessCode(status)) {
+		            // Handle error!
+		            alert('Copy Urls Expert: Failed to write to templates list file (default values): ' + status); // TODO: localize it
+		            return;
+		          } });
+
+					}
+					else {
+						// Handle error!
+						alert('Copy Urls Expert: Error reading templates list file.\n' + result.errorStatus); // TODO: localize it
+					}
+
+				}
+
+				copyUrlsExpert._updateFuelAppData(target, index);
+				
+			});
 		}
 	},
 
@@ -573,19 +571,31 @@ var copyUrlsExpert = {
 		}
 	},
 	
-	showOptionsWindow: function() {
+  showOptionsWindow: function() {
 		//window.open('chrome://copy-urls-expert/content/dialogs/options.xul', 'copyUrlsExpertOptionsWindow', 'addressbar=no, modal');
 
-         var features = "chrome,titlebar,toolbar,centerscreen";
-         try {
-           var instantApply = Services.prefs.getBoolPref('browser.preferences.instantApply');
-           features += instantApply ? ",dialog=no" : ",modal";
-         } catch (e) {
-           features += ",modal";
-         }
-         openDialog('chrome://copy-urls-expert/content/dialogs/options.xul', '', features);
+    var features = "chrome,titlebar,toolbar,centerscreen";
+    try {
+      var instantApply = Services.prefs.getBoolPref('browser.preferences.instantApply');
+      features += instantApply ? ",dialog=no" : ",modal";
+    }
+    catch (e) {
+      features += ",modal";
+    }
+    openDialog('chrome://copy-urls-expert/content/dialogs/options.xul', '', features);
 	},
 
+  showAdvanceCopyWindow: function() {
+    var features = "chrome,titlebar,toolbar,centerscreen";
+    try {
+      var instantApply = Services.prefs.getBoolPref('browser.preferences.instantApply');
+      features += instantApply ? ",dialog=no" : ",modal";
+    }
+    catch (e) {
+      features += ",modal";
+    }
+    openDialog('chrome://copy-urls-expert/content/dialogs/advance.xul', '', features);
+  },
 
 	_getClipboardText: function() {
 		var clip = Components.classes['@mozilla.org/widget/clipboard;1'].getService(Components.interfaces.nsIClipboard);  
@@ -681,36 +691,66 @@ var copyUrlsExpert = {
 		}
 
 		return true;		
-	},
-	
-	_readTemplates: function() {		
-		var templatesPrefName = 'urltemplatesfile';
+	},	
 
+	readTemplatesFile: function(callback) {
+		var templatesPrefName = 'urltemplatesfile';
 		var file = null;
-		
-		Components.utils.import('resource://gre/modules/NetUtil.jsm'); 	
-		Components.utils.import('resource://gre/modules/FileUtils.jsm'); 
-		
-		if (this._prefService.prefHasUserValue(templatesPrefName))	{
-			var v = this._prefService.getComplexValue(templatesPrefName, Components.interfaces.nsIRelativeFilePref);
+
+		var	result = {
+					errorStatus: null,
+					templates: null,
+					defaultTemplateId: -1,
+				};
+
+		if (copyUrlsExpert._prefService.prefHasUserValue(templatesPrefName))	{
+			var v = copyUrlsExpert._prefService.getComplexValue(templatesPrefName, Components.interfaces.nsIRelativeFilePref);
 			file = v.file;
-						
+
 			if(file.exists()) {
-				var fetchHandler = new this._AsynHandler(v.file, this._prefService);
-				NetUtil.asyncFetch(v.file, function(inputStream, status) { fetchHandler.handleFetch(inputStream, status); });
+				var fetchHandler = new copyUrlsExpert._AsynHandler(file, copyUrlsExpert._prefService);
+
+				Components.utils.import('resource://gre/modules/NetUtil.jsm');
+
+				NetUtil.asyncFetch(file, function(inputStream, status) {
+
+					if (!Components.isSuccessCode(status)) {
+						// Handle error!
+
+						result.errorStatus = status;
+
+						callback(result);
+
+						return;
+					}
+
+					var data = fetchHandler.read(inputStream, status),
+							index;
+
+					if (data == null) {
+						result.errorStatus = 'There was an error reading templates file.'
+					}
+					else {
+						result.templates = [];
+						index = copyUrlsExpert.convertStringToModel(data, result.templates);
+						result.defaultTemplateId = result.templates[index].id;
+					}
+
+					callback(result);
+
+				});
+				
 				return;
 			}
 		}
-		
-		var target = [];
-		var index  = this._setupDefaultModel(target);
 
-		var defaultContent = '0' + copyUrlsExpert.LINE_FEED + target.join(copyUrlsExpert.LINE_FEED);
+		callback(result);
 
-		this.updateUrlListFile(defaultContent);
-		
-		// Do not wait for file write and update model		
-		this._updateFuelAppData(target, index);
+	},
+
+
+	_readTemplates: function() {		
+
 	},
 
 	_updateFuelAppData: function(target, defaultIndex) {
