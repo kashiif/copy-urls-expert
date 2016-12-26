@@ -18,8 +18,8 @@
 <!ENTITY copyurlsexpert.common.activetabaccesskey "">
 <!ENTITY copyurlsexpert.common.activetabtooltip "Copy Url of Current Tab">
 
-<!ENTITY copyurlsexpert.common.advancecopymenulabel "Advance Copy">
-<!ENTITY copyurlsexpert.common.advancecopytooltip "Copy Urls with more options">
+<!ENTITY copyurlsexpert.common.advancedcopymenulabel "Advanced Copy">
+<!ENTITY copyurlsexpert.common.advancedcopytooltip "Copy Urls with more options">
 
 <!ENTITY copyurlsexpert.common.opentabsmenulabel  "Open Urls From Clipboard">
 <!ENTITY copyurlsexpert.common.opentabsaccesskey  "p">
