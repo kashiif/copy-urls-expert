@@ -415,7 +415,7 @@ var copyUrlsExpert;
 				openDialog('chrome://copy-urls-expert/content/dialogs/options.xul', '', features);
 			},
 
-			showAdvanceCopyWindow: function () {
+			showAdvancedCopyWindow: function () {
 				var features = "chrome,titlebar,toolbar,centerscreen";
 				try {
 					var instantApply = Services.prefs.getBoolPref('browser.preferences.instantApply');
@@ -424,7 +424,7 @@ var copyUrlsExpert;
 				catch (e) {
 					features += ",modal";
 				}
-				openDialog('chrome://copy-urls-expert/content/dialogs/advance.xul', '', features);
+				openDialog('chrome://copy-urls-expert/content/dialogs/advanced.xul', '', features);
 			},
 
 			_getClipboardText: function () {

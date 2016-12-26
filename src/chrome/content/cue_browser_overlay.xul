@@ -62,14 +62,14 @@
 		<command id="cmd_cue_defaultAction"
 						 oncommand="copyUrlsExpert.performDefaultAction();" />
 
-		<command id="cmd_cue_advanceCopy"
-						 label="&copyurlsexpert.common.advancecopymenulabel;..."
-						 tooltiptext="&copyurlsexpert.common.advancecopytooltip;"
-						 oncommand="copyUrlsExpert.showAdvanceCopyWindow();" />
+		<command id="cmd_cue_advancedCopy"
+						 label="&copyurlsexpert.common.advancedcopymenulabel;..."
+						 tooltiptext="&copyurlsexpert.common.advancedcopytooltip;"
+						 oncommand="copyUrlsExpert.showAdvancedCopyWindow();" />
 
 		<command id="cmd_cue_advanceCopySelection"
-						 label="&copyurlsexpert.common.advancecopymenulabel;"
-						 tooltiptext="&copyurlsexpert.common.advancecopytooltip;"
+						 label="&copyurlsexpert.common.advancedcopymenulabel;"
+						 tooltiptext="&copyurlsexpert.common.advancedcopytooltip;"
 						 oncommand="copyUrlsExpert.showAdvanceCopyWindowForSelection();" />
 	</commandset>
 	
@@ -102,7 +102,7 @@
 					<menuitem class="menuitem-iconic" command="cmd_cue_copyActiveGroupTabUrls"/>
 					<menuitem class="menuitem-iconic" command="cmd_cue_copyCurrentTabUrl"/>
 					<menuseparator />
-					<menuitem class="menuitem-iconic" command="cmd_cue_advanceCopy"/>
+					<menuitem class="menuitem-iconic" command="cmd_cue_advancedCopy"/>
 					<menuseparator />
 					<menuitem class="menuitem-iconic" command="cmd_cue_openTabs"/>
 							  
@@ -125,7 +125,7 @@
 				<menuitem class="menuitem-iconic" command="cmd_cue_copyActiveGroupTabUrls"/>
 				<menuitem class="menuitem-iconic" command="cmd_cue_copyCurrentTabUrl"/>
 				<menuseparator />
-				<menuitem class="menuitem-iconic" command="cmd_cue_advanceCopy"/>
+				<menuitem class="menuitem-iconic" command="cmd_cue_advancedCopy"/>
 				<menuseparator />
 				<menuitem class="menuitem-iconic" command="cmd_cue_openTabs"/>
 				<menuseparator />
@@ -146,7 +146,7 @@
 				<menuitem class="menuitem-iconic" command="cmd_cue_copyActiveGroupTabUrls"/>
 				<menuitem class="menuitem-iconic" command="cmd_cue_copyCurrentTabUrl"/>
 				<menuseparator />
-				<menuitem class="menuitem-iconic" command="cmd_cue_advanceCopy"/>
+				<menuitem class="menuitem-iconic" command="cmd_cue_advancedCopy"/>
 				<menuseparator />
 				<menuitem class="menuitem-iconic" command="cmd_cue_openTabs"/>
 				<menuseparator />
@@ -164,7 +164,7 @@
 				<menuitem command="cmd_cue_copyUrlsInSelection" />
 				<menuitem command="cmd_cue_copyUrlsOfImagesInSelection" />
 				<menuseparator />
-				<menuitem class="menuitem-iconic" command="cmd_cue_advanceCopy"/>
+				<menuitem class="menuitem-iconic" command="cmd_cue_advancedCopy"/>
 				<menuseparator />
 				<menuitem command="cmd_cue_openUrlsInSelection" />
 			</menupopup>

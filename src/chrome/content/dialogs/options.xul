@@ -54,7 +54,7 @@
 					<menuitem label="&copyurlsexpert.common.activetabgroupmenulabel;" value="active-tabgroup"/>
 					<menuitem label="&copyurlsexpert.common.activetabmenulabel;" value="active-tab"/>
           <menuseparator />
-          <menuitem label="&copyurlsexpert.common.advancecopymenulabel;" value="advance-copy"/>
+          <menuitem label="&copyurlsexpert.common.advancedcopymenulabel;" value="advanced-copy"/>
           <menuseparator />
 					<menuitem label="&copyurlsexpert.common.opentabsmenulabel;" value="open-tabs"/>
           <menuseparator />
@@ -227,8 +227,8 @@
 
             <treeitem>
               <treerow>
-                <treecell value="cmd_cue_advanceCopy" />
-                <treecell label="&copyurlsexpert.common.advancecopymenulabel;" editable="false"/>
+                <treecell value="cmd_cue_advancedCopy" />
+                <treecell label="&copyurlsexpert.common.advancedcopymenulabel;" editable="false"/>
                 <treecell label="" />
                 <treecell label="" properties="cue-shortcut-msg" editable="false" />
               </treerow>
