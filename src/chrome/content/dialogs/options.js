@@ -2,7 +2,7 @@
 * Author: Kashif Iqbal Khan
 * Email: kashiif@gmail.com
 * License: MPL 1.1, MIT
-* Copyright (c) 2013-2015 Kashif Iqbal Khan
+* Copyright (c) 2013-2016 Kashif Iqbal Khan
 ********************************************/
 
 'use strict';
@@ -10,42 +10,80 @@
 (function(globalContext) {
 
 
-copyUrlsExpert.options = {
-	gUriTree: null,
-	gShortcutsTree: null,
+	function _appendRowForTemplate(tree, template, isDefault) {
+		var treeChildren = tree.treeBoxObject.treeBody;
+		var treeItem = document.createElement('treeitem');
+		var treeRow = document.createElement('treerow');
 
-	init: function() {
 
-		Components.utils.import('resource://copy-urls-expert/keyboardshortcut.jsm');
-		Components.utils.import('resource://copy-urls-expert/modifiers.jsm');
+		for (var i=0 ; i<tree.columns.length; i++) {
+			var treeCell = document.createElement('treecell');
+			treeRow.appendChild(treeCell);
+		}
 
-		this.gUriTree = document.getElementById('copyurlsexpert-treeformats');
-		this.gUriTree.addEventListener('select', this._onUriTreeSelect, false);
+		treeItem.appendChild(treeRow);
+		treeChildren.appendChild(treeItem);
 
-		this.gShortcutsTree = document.getElementById('copyurlsexpert-treeshortcutkeys');
-		this.gShortcutsTree.addEventListener('keydown', this._onShortcutsTreeKeyDownOrUp);
-		this.gShortcutsTree.addEventListener('keyup', this._onShortcutsTreeKeyDownOrUp);
-		this.gShortcutsTree.addEventListener('select', this._onShortcutsTreeSelect, false);
+		var index = tree.view.rowCount-1;
+		_loadTemplateIntoTreeRow(tree, index, template);
 
-		this.btnResetShortcut = document.getElementById('copyurlsexpert-reset-shortcut');
-		this.btnResetShortcut.addEventListener('click', this._onResetShortcutButtonClicked);
+		_updateTreeRowProperties(treeRow, isDefault);
 
-		copyUrlsExpert.readTemplatesFile(function(result){
-			copyUrlsExpert.options.populateTree(result.templates, result.defaultTemplateId);
-		});
+		return index;
+	}
 
-		this.loadShortcutsIntoTree();
-	},
-	
-	populateTree: function(templates, defaultId) {
-		var tree = this.gUriTree;
+	function _updateTreeRowProperties(treeRow, isDefault) {
 
+		var cells = treeRow.getElementsByTagName('treecell');
+
+		for (var i=0 ; i<cells.length; i++) {
+			var cell = cells[i];
+			var v = cell.getAttribute('properties');
+			if (v) {
+				if (isDefault) {
+					v+= ',defaultFormat';
+				}
+				else {
+					v = v.split(',');
+					var found = v.indexOf('defaultFormat');
+					if (found >= 0) {
+						v.splice(found, 1);
+					}
+					v = v.join(',');
+				}
+				cell.setAttribute('properties', v);
+			}
+			else {
+				if (isDefault) {
+					cell.setAttribute('properties', 'defaultFormat');
+				}
+			}
+		}
+		// alert(attr + ' ' + isDefault);
+	}
+
+	function _getTreeRowAtIndex(tree, index) {
+		var treeItem = tree.view.getItemAtIndex(index);
+
+		return treeItem.getElementsByTagName('treerow')[0];
+	}
+
+	function _loadTemplateIntoTreeRow(tree, index, selectedTemplate) {
+		// TODO: Optimize
+		tree.view.setCellText(index, tree.columns.getNamedColumn('copyurlsexpert-colid'), selectedTemplate.id);
+		tree.view.setCellText(index, tree.columns.getNamedColumn('copyurlsexpert-colname'), selectedTemplate.name);
+		tree.view.setCellText(index, tree.columns.getNamedColumn('copyurlsexpert-colmarkup'), selectedTemplate.pattern);
+		tree.view.setCellText(index, tree.columns.getNamedColumn('copyurlsexpert-colprefix'), selectedTemplate.prefix);
+		tree.view.setCellText(index, tree.columns.getNamedColumn('copyurlsexpert-colpostfix'), selectedTemplate.postfix);
+	}
+
+	function populateTree(tree, templates, defaultId) {
 		tree.treeBoxObject.beginUpdateBatch();
 
 		for (var i=0 ; i<templates.length; i++) {
 			var t = templates[i];
 			var isDefault = (t.id == defaultId);
-			this._appendRowForTemplate(tree, t, isDefault);
+			_appendRowForTemplate(tree, t, isDefault);
 
 			if (isDefault) {
 				tree.cueDefTemplateIndex = i;
@@ -55,10 +93,61 @@ copyUrlsExpert.options = {
 		tree.treeBoxObject.endUpdateBatch();
 		tree.cueTemplates = templates;
 
+	}
+
+	function addClickHandler(id, handler){
+		document.getElementById(id).addEventListener('click', handler);
+	}
+
+	function removeClickHandler(id, handler){
+		document.getElementById(id).removeEventListener('click', handler);
+	}
+
+var copyUrlsExpertOptions = {
+	gUriTree: null,
+	gShortcutsTree: null,
+
+	init: function() {
+
+		Components.utils.import('resource://copy-urls-expert/keyboardshortcut.jsm');
+		Components.utils.import('resource://copy-urls-expert/modifiers.jsm');
+
+		var gUriTree = document.getElementById('copyurlsexpert-treeformats');
+		gUriTree.addEventListener('select', this._onUriTreeSelect, false);
+		this.gUriTree = gUriTree;
+
+		this.gShortcutsTree = document.getElementById('copyurlsexpert-treeshortcutkeys');
+		this.gShortcutsTree.addEventListener('keydown', this._onShortcutsTreeKeyDownOrUp);
+		this.gShortcutsTree.addEventListener('keyup', this._onShortcutsTreeKeyDownOrUp);
+		this.gShortcutsTree.addEventListener('select', this._onShortcutsTreeSelect, false);
+
+		this.btnResetShortcut = document.getElementById('copyurlsexpert-reset-shortcut');
+		this.btnResetShortcut.addEventListener('click', this._onResetShortcutButtonClicked);
+
+		let commonUtils = {};
+		Components.utils.import('resource://copy-urls-expert/common.jsm', commonUtils);
+
+		commonUtils.readTemplatesFile(function(result){
+			populateTree(gUriTree, result.templates, result.defaultTemplateId);
+		});
+
+		let shortcutDesc = commonUtils.getCustomShortcuts();
+		this.loadShortcutsIntoTree(shortcutDesc);
+
+		addClickHandler('copyurlsexpert-btnAddNew', this.onNewTemplateButtonClicked);
+		addClickHandler('copyurlsexpert-btnCancelSave', this.onCancelSaveTemplateButtonClicked);
+		addClickHandler('copyurlsexpert-btnUpdate', this.onSaveTemplateButtonClicked);
+		addClickHandler('copyurlsexpert-btnSave', this.onSaveTemplateButtonClicked);
+
+		addClickHandler('copyurlsexpert-btnedit', this.onEditTemplateButtonClicked);
+		addClickHandler('copyurlsexpert-btndefault', this.onSetAsDefaultButtonClicked);
+		addClickHandler('copyurlsexpert-btndelete', this.onDelTemplateButtonClicked);
+
+		addClickHandler('copyurlsexpert-btnaccept', this.onDialogAccept);
 	},
 	
-	loadShortcutsIntoTree: function() {
-		let shortcutDesc = copyUrlsExpert.getCustomShortcuts();
+
+	loadShortcutsIntoTree: function(shortcutDesc) {
 
 		let tree = this.gShortcutsTree,
 				treeView = tree.view,
@@ -79,6 +168,39 @@ copyUrlsExpert.options = {
 
 	},
 
+	_findShortcutExistingAssignment: function (shortcut) {
+		let browserWin = Components.classes['@mozilla.org/appshell/window-mediator;1']
+											.getService(Components.interfaces.nsIWindowMediator)
+											.getMostRecentWindow('navigator:browser');
+
+		let allKeySets = browserWin.document.querySelectorAll('keyset'),
+				allDefinedKeys,
+				shortcutKeyConfig = shortcut.getKeyConfig(),
+				attrForKey = shortcutKeyConfig.hasOwnProperty('keycode') ? 'keytext' : 'key',
+				keyText = shortcutKeyConfig.keytext.toLowerCase();
+
+		for (let i = 0; i < allKeySets.length; i++) {
+
+			allDefinedKeys = allKeySets.item(i).querySelectorAll('key');
+
+			for (let j = 0; j < allDefinedKeys.length; j++) {
+				let currentKey = allDefinedKeys.item(j);
+
+				if (currentKey.getAttribute(attrForKey).toLowerCase() == keyText) {
+
+					if (shortcut.modifiers && shortcut.modifiers.toXulModifiersString() == currentKey.getAttribute('modifiers')) {
+						return currentKey;
+					}
+
+				}
+
+			} // for allDefinedKeys
+		} // for allKeySets
+
+		// No existing assignment found for this shortcut
+		return null;
+	},
+
 	_onShortcutsTreeKeyDownOrUp: function(event) {
 
 		var tree, treeView;
@@ -88,7 +210,7 @@ copyUrlsExpert.options = {
 			return;
 		}
 
-		tree = copyUrlsExpert.options.gShortcutsTree;
+		tree = copyUrlsExpertOptions.gShortcutsTree;
 		treeView = tree.view;
 
     if (!tree.editingColumn) {
@@ -112,7 +234,7 @@ copyUrlsExpert.options = {
 					colMessage = tree.columns.getNamedColumn('copyurlsexpert-colshortcutmessage');
 
 			// check if shortcut is unique
-			let existingKey = copyUrlsExpert._findShortcutExistingAssignment(shortcut);
+			let existingKey = copyUrlsExpertOptions._findShortcutExistingAssignment(shortcut);
 			if (existingKey) {
 	      tree.inputField.value = ''; 
 				treeView.setCellText(editingRow, 
@@ -140,16 +262,16 @@ copyUrlsExpert.options = {
 
 	_onUriTreeSelect: function(evt) {
 		var tree = evt.target;
-		copyUrlsExpert.options._toggleNonEditingButtons(tree.currentIndex < 0);
+		copyUrlsExpertOptions._toggleNonEditingButtons(tree.currentIndex < 0);
 	},
 
 	_onShortcutsTreeSelect: function(evt) {
 		var tree = evt.target;
-		copyUrlsExpert.options.btnResetShortcut.setAttribute('disabled', tree.currentIndex < 0);
+		copyUrlsExpertOptions.btnResetShortcut.setAttribute('disabled', tree.currentIndex < 0);
 	},
 
 	_onResetShortcutButtonClicked: function(evt) {
-		var tree = copyUrlsExpert.options.gShortcutsTree;
+		var tree = copyUrlsExpertOptions.gShortcutsTree;
 
 		if (tree.editingColumn) {
 			tree.stopEditing(false);
@@ -162,69 +284,8 @@ copyUrlsExpert.options = {
 		delete tree.cueShortcuts[ propName ];
 	},
 
-	_appendRowForTemplate: function(tree, template, isDefault) {
-		var treeChildren = tree.treeBoxObject.treeBody;
-		var treeItem = document.createElement('treeitem');
-		var treeRow = document.createElement('treerow');
-		
-		
-		for (var i=0 ; i<tree.columns.length; i++) {
-			var treeCell = document.createElement('treecell');
-			treeRow.appendChild(treeCell);
-		}
-		
-		treeItem.appendChild(treeRow);
-		treeChildren.appendChild(treeItem);
-
-		var index = tree.view.rowCount-1;
-		this._loadTemplateIntoTreeRow(tree, index, template);
-
-		this._updateTreeRowProperties(treeRow, isDefault);
-
-		return index;
-	},	
-	
-	_updateTreeRowProperties: function(treeRow, isDefault) {
-	
-		var cells = treeRow.getElementsByTagName('treecell');
-		
-		for (var i=0 ; i<cells.length; i++) {
-			var cell = cells[i];
-			var v = cell.getAttribute('properties');
-			if (v) {
-				if (isDefault) {
-					v+= ',defaultFormat';
-				}
-				else {
-					v = v.split(',');
-					var found = v.indexOf('defaultFormat');
-					if (found >= 0) {
-						v.splice(found, 1);
-					}
-					v = v.join(',');
-				}
-				cell.setAttribute('properties', v);
-			}
-			else {
-				if (isDefault) {
-					cell.setAttribute('properties', 'defaultFormat');
-				}
-			}
-		}
-		// alert(attr + ' ' + isDefault);
-	},
-	
-	_loadTemplateIntoTreeRow: function(tree, index, selectedTemplate) {
-		// TODO: Optimize
-		tree.view.setCellText(index, tree.columns.getNamedColumn('copyurlsexpert-colid'), selectedTemplate.id);
-		tree.view.setCellText(index, tree.columns.getNamedColumn('copyurlsexpert-colname'), selectedTemplate.name);
-		tree.view.setCellText(index, tree.columns.getNamedColumn('copyurlsexpert-colmarkup'), selectedTemplate.pattern);
-		tree.view.setCellText(index, tree.columns.getNamedColumn('copyurlsexpert-colprefix'), selectedTemplate.prefix);
-		tree.view.setCellText(index, tree.columns.getNamedColumn('copyurlsexpert-colpostfix'), selectedTemplate.postfix);
-	},
-	
 	onEditTemplateButtonClicked: function(target) {
-		var tree = copyUrlsExpert.options.gUriTree;
+		var tree = copyUrlsExpertOptions.gUriTree;
 		
 		if (tree.currentIndex < 0) {
 			alert('Select an item.'); // TODO: localize it
@@ -233,7 +294,7 @@ copyUrlsExpert.options = {
 		
 		var selectedTemplate = tree.cueTemplates[tree.currentIndex];
 		document.getElementById('copyurlsexpert-lblSelIndex').value = tree.currentIndex;
-		copyUrlsExpert.options._loadTemplate(selectedTemplate);
+		copyUrlsExpertOptions._loadTemplate(selectedTemplate);
 		
 		var btn = document.getElementById('copyurlsexpert-btnAddNew'); 
 		btn.disabled = true;
@@ -250,11 +311,11 @@ copyUrlsExpert.options = {
 		btn = document.getElementById('copyurlsexpert-btnedit');
 		btn.disabled = true;
 
-		copyUrlsExpert.options._toggleNonEditingButtons(true);
+		copyUrlsExpertOptions._toggleNonEditingButtons(true);
 	},
 	
-	onNewTemplateButtonClicked: function(target) {
-		copyUrlsExpert.options._loadEmptyTemplate();
+	onNewTemplateButtonClicked: function() {
+		copyUrlsExpertOptions._loadEmptyTemplate();
 		
 		document.getElementById('copyurlsexpert-lblSelIndex').value = -1;
 		
@@ -268,13 +329,13 @@ copyUrlsExpert.options = {
 		btn = document.getElementById('copyurlsexpert-btnUpdate');
 		btn.disabled = btn.hidden = true;
 		
-		copyUrlsExpert.options._toggleNonEditingButtons(true);
+		copyUrlsExpertOptions._toggleNonEditingButtons(true);
 		
 	},
 	
 	onCancelSaveTemplateButtonClicked: function() {
-		copyUrlsExpert.options._toggleNonEditingButtons(copyUrlsExpert.options.gUriTree.currentIndex < 0);
-		copyUrlsExpert.options._disableEditInputs();
+		copyUrlsExpertOptions._toggleNonEditingButtons(copyUrlsExpertOptions.gUriTree.currentIndex < 0);
+		copyUrlsExpertOptions._disableEditInputs();
 	},
 	
 	_loadEmptyTemplate: function() {
@@ -350,7 +411,7 @@ copyUrlsExpert.options = {
 			return;
 		}
 		
-		var tree = copyUrlsExpert.options.gUriTree;
+		var tree = copyUrlsExpertOptions.gUriTree;
 		var selectedTemplate = null;
 		
 		var selIndex = parseInt(document.getElementById('copyurlsexpert-lblSelIndex').value);
@@ -381,39 +442,39 @@ copyUrlsExpert.options = {
 		if (selIndex < 0) { // add new
 			
 			tree.treeBoxObject.beginUpdateBatch();
-			selIndex = copyUrlsExpert.options._appendRowForTemplate(tree, selectedTemplate);
+			selIndex = _appendRowForTemplate(tree, selectedTemplate);
 			tree.treeBoxObject.endUpdateBatch();
 		}
 		else {
-			copyUrlsExpert.options._loadTemplateIntoTreeRow(tree, selIndex, selectedTemplate);
+			_loadTemplateIntoTreeRow(tree, selIndex, selectedTemplate);
 		}
 		
 		tree.view.selection.select(selIndex);
 		
-		copyUrlsExpert.options._disableEditInputs();
-		copyUrlsExpert.options._toggleNonEditingButtons(false);
+		copyUrlsExpertOptions._disableEditInputs();
+		copyUrlsExpertOptions._toggleNonEditingButtons(false);
 	},
 	
 	onSetAsDefaultButtonClicked: function(target) {
-		var tree = copyUrlsExpert.options.gUriTree;
+		var tree = copyUrlsExpertOptions.gUriTree;
 		if (tree.currentIndex < 0) {
 			alert('Select an item.'); // TODO: localize it
 			return;
 		}
 
 		// remove the default style from old row
-		var treeRow = copyUrlsExpert.options._getTreeRowAtIndex(tree, tree.cueDefTemplateIndex);
-		copyUrlsExpert.options._updateTreeRowProperties(treeRow, false);
+		var treeRow = _getTreeRowAtIndex(tree, tree.cueDefTemplateIndex);
+		_updateTreeRowProperties(treeRow, false);
 
 		// apply the default style to new row
-		treeRow = copyUrlsExpert.options._getTreeRowAtIndex(tree, tree.currentIndex);
-		copyUrlsExpert.options._updateTreeRowProperties(treeRow, true);
+		treeRow = _getTreeRowAtIndex(tree, tree.currentIndex);
+		_updateTreeRowProperties(treeRow, true);
 		
 		tree.cueDefTemplateIndex = tree.currentIndex;
 	},
 	
 	onDelTemplateButtonClicked: function(target) {
-		var tree = copyUrlsExpert.options.gUriTree;
+		var tree = copyUrlsExpertOptions.gUriTree;
 		var index = tree.currentIndex;
 		if (index < 0) {
 			alert('Select an item.'); // TODO: localize it
@@ -442,14 +503,8 @@ copyUrlsExpert.options = {
 		tree.view.selection.select(index);
 	},
 	
-	_getTreeRowAtIndex: function(tree, index) {
-		var treeItem = tree.view.getItemAtIndex(index);
-		
-		return treeItem.getElementsByTagName('treerow')[0];
-	},
-	
 	onDialogAccept: function() {
-		var tree = copyUrlsExpert.options.gUriTree;
+		var tree = copyUrlsExpertOptions.gUriTree;
 		var defTemplate = tree.cueTemplates[tree.cueDefTemplateIndex];
 		
 		copyUrlsExpert._updateFuelAppData(tree.cueTemplates, tree.cueDefTemplateIndex);
@@ -458,7 +513,7 @@ copyUrlsExpert.options = {
 		
 		tree.cueTemplates = null;
 
-		tree = copyUrlsExpert.options.gShortcutsTree;
+		tree = copyUrlsExpertOptions.gShortcutsTree;
 		copyUrlsExpert.updateCustomShortcuts(tree.cueShortcuts);
 		tree.cueShortcuts = null;
 
@@ -471,7 +526,7 @@ copyUrlsExpert.options = {
 		window.removeEventListener('load', onLoadHandler);
 		window.addEventListener('unload', onUnloadHandler, false);
 
-		window.setTimeout(function() { copyUrlsExpert.options.init(); }, 60 );
+		window.setTimeout(function() { copyUrlsExpertOptions.init(); }, 60 );
 	},
 
 	onUnload: function(evt) {
@@ -489,17 +544,23 @@ copyUrlsExpert.options = {
 		this.gUriTree = null;
 		this.gShortcutsTree = null;
 		this.btnResetShortcut = null;
-	},
-}
 
-var onLoadHandler = copyUrlsExpert.options.onLoad.bind(copyUrlsExpert.options),
-		onUnloadHandler = copyUrlsExpert.options.onUnload.bind(copyUrlsExpert.options);
+		removeClickHandler('copyurlsexpert-btnAddNew', this.onNewTemplateButtonClicked);
+		removeClickHandler('copyurlsexpert-btnCancelSave', this.onCancelSaveTemplateButtonClicked);
+		removeClickHandler('copyurlsexpert-btnUpdate', this.onSaveTemplateButtonClicked);
+		removeClickHandler('copyurlsexpert-btnSave', this.onSaveTemplateButtonClicked);
 
-window.addEventListener
-(
-  'load', 
-	onLoadHandler,
-  false
-);
+		removeClickHandler('copyurlsexpert-btnedit', this.onEditTemplateButtonClicked);
+		removeClickHandler('copyurlsexpert-btndefault', this.onSetAsDefaultButtonClicked);
+		removeClickHandler('copyurlsexpert-btndelete', this.onDelTemplateButtonClicked);
 
-}) (this);
+		removeClickHandler('copyurlsexpert-btnaccept', this.onDialogAccept);
+	}
+};
+
+var onLoadHandler = copyUrlsExpertOptions.onLoad.bind(copyUrlsExpertOptions),
+		onUnloadHandler = copyUrlsExpertOptions.onUnload.bind(copyUrlsExpertOptions);
+
+window.addEventListener('load', onLoadHandler, false);
+
+})(this);

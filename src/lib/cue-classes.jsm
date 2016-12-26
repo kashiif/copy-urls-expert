@@ -1,5 +1,11 @@
+/*******************************************
+* Author: Kashif Iqbal Khan
+* Email: kashiif@gmail.com
+* License: MPL 1.1, MIT
+* Copyright (c) 2013-2016 Kashif Iqbal Khan
+********************************************/
 
-var EXPORTED_SYMBOLS = ['_FormatPattern'];
+var EXPORTED_SYMBOLS = ['_FormatPattern', '_AsynHandler'];
 
 var SEPARATOR = '|';
 var ESCAPED_SEPARATOR = '\\|';
@@ -46,7 +52,7 @@ _FormatPattern.parseString = function(theString) {
     						.split(/[^\\]\|/);
     
 
-    var escapedPipeRegex = /\\\|/g;
+	var escapedPipeRegex = /\\\|/g;
 	
 	var pattern = new _FormatPattern(parseInt(elements[0]), 
 										elements[1],
@@ -57,6 +63,61 @@ _FormatPattern.parseString = function(theString) {
 	pattern.postfix = elements[4].replace(escapedPipeRegex, SEPARATOR);
 
 	return pattern;
-	
 
-	};
+};
+
+function _AsynHandler(file, oPrefs) {
+	this.file = file;
+	this.oPrefs = oPrefs;
+}
+
+_AsynHandler.prototype.read = function (inputStream, status) {
+	var data = '';
+
+	var converterStream = null;
+	try {
+		//data = NetUtil.readInputStreamToString(inputStream, inputStream.available());
+
+		converterStream = Components.classes["@mozilla.org/intl/converter-input-stream;1"]
+				.createInstance(Components.interfaces.nsIConverterInputStream);
+		converterStream.init(inputStream, 'UTF-8', 1024, Components.interfaces.nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER);
+
+		var input = {};
+		// read all "bytes" (not characters) into the input
+		var numChars = converterStream.readString(inputStream.available(), input);
+		if (numChars != 0) /* EOF */
+			data = input.value;
+	}
+	catch (ex) {
+		Components.utils.reportError('Copy Urls Expert: ' + ex);
+		data = null;
+	}
+	finally {
+		if (converterStream) {
+			try {
+				converterStream.close();
+			}
+			catch (ex) {
+				Components.utils.reportError('Copy Urls Expert: Error while closing file - ' + ex);
+			}
+		}
+	}
+
+	return data;
+
+};
+
+_AsynHandler.prototype.handleUpdate = function (status) {
+	if (!Components.isSuccessCode(status)) {
+		// Handle error!
+		alert('Copy Urls Expert: Failed to update file templates list file: ' + status);
+		return;
+	}
+
+	// Data has been written to the file.
+	// First update the preferences to store the path of file
+	var relFile = Components.classes['@mozilla.org/pref-relativefile;1'].createInstance(Components.interfaces.nsIRelativeFilePref);
+	relFile.relativeToKey = 'ProfD'; // or any other string listed above
+	relFile.file = this.file;             // |file| is nsILocalFile
+	this.oPrefs.setComplexValue('urltemplatesfile', Components.interfaces.nsIRelativeFilePref, relFile);
+};

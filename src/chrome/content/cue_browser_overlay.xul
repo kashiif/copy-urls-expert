@@ -1,5 +1,10 @@
 <?xml version="1.0"?>
-<!DOCTYPE overlay SYSTEM "chrome://copy-urls-expert/locale/cue_common.dtd">
+<!DOCTYPE overlay [
+
+  <!ENTITY % cueComonDTD SYSTEM "chrome://copy-urls-expert/locale/cue_common.dtd">
+  %cueComonDTD;
+
+]>
 
 <overlay id="copy-urls-expert-common"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
@@ -57,7 +62,15 @@
 		<command id="cmd_cue_defaultAction"
 						 oncommand="copyUrlsExpert.performDefaultAction();" />
 
+		<command id="cmd_cue_advanceCopy"
+						 label="&copyurlsexpert.common.advancecopymenulabel;..."
+						 tooltiptext="&copyurlsexpert.common.advancecopytooltip;"
+						 oncommand="copyUrlsExpert.showAdvanceCopyWindow();" />
 
+		<command id="cmd_cue_advanceCopySelection"
+						 label="&copyurlsexpert.common.advancecopymenulabel;"
+						 tooltiptext="&copyurlsexpert.common.advancecopytooltip;"
+						 oncommand="copyUrlsExpert.showAdvanceCopyWindowForSelection();" />
 	</commandset>
 	
 	<!-- temp code for keycode and modifiers testing -->
@@ -89,6 +102,8 @@
 					<menuitem class="menuitem-iconic" command="cmd_cue_copyActiveGroupTabUrls"/>
 					<menuitem class="menuitem-iconic" command="cmd_cue_copyCurrentTabUrl"/>
 					<menuseparator />
+					<menuitem class="menuitem-iconic" command="cmd_cue_advanceCopy"/>
+					<menuseparator />
 					<menuitem class="menuitem-iconic" command="cmd_cue_openTabs"/>
 							  
 				</menupopup>
@@ -110,6 +125,8 @@
 				<menuitem class="menuitem-iconic" command="cmd_cue_copyActiveGroupTabUrls"/>
 				<menuitem class="menuitem-iconic" command="cmd_cue_copyCurrentTabUrl"/>
 				<menuseparator />
+				<menuitem class="menuitem-iconic" command="cmd_cue_advanceCopy"/>
+				<menuseparator />
 				<menuitem class="menuitem-iconic" command="cmd_cue_openTabs"/>
 				<menuseparator />
 				<menuitem class="menuitem-iconic" command="cmd_cue_openOptions" />
@@ -129,6 +146,8 @@
 				<menuitem class="menuitem-iconic" command="cmd_cue_copyActiveGroupTabUrls"/>
 				<menuitem class="menuitem-iconic" command="cmd_cue_copyCurrentTabUrl"/>
 				<menuseparator />
+				<menuitem class="menuitem-iconic" command="cmd_cue_advanceCopy"/>
+				<menuseparator />
 				<menuitem class="menuitem-iconic" command="cmd_cue_openTabs"/>
 				<menuseparator />
 				<menuitem class="menuitem-iconic" command="cmd_cue_openOptions"/>
@@ -145,12 +164,13 @@
 				<menuitem command="cmd_cue_copyUrlsInSelection" />
 				<menuitem command="cmd_cue_copyUrlsOfImagesInSelection" />
 				<menuseparator />
+				<menuitem class="menuitem-iconic" command="cmd_cue_advanceCopy"/>
+				<menuseparator />
 				<menuitem command="cmd_cue_openUrlsInSelection" />
 			</menupopup>
 		</menu>
 	</popup>
 
-	<script type="application/x-javascript" src="chrome://copy-urls-expert/content/copyurlsexpert.js">
-	</script>
+	<script type="application/x-javascript" src="chrome://copy-urls-expert/content/copyurlsexpert.js"></script>
 	
 </overlay>

@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE dialog [
+
+  <!ENTITY % cueComonDTD SYSTEM "chrome://copy-urls-expert/locale/cue_common.dtd">
+  %cueComonDTD;
+  <!ENTITY % cueAdvanceCopyDTD SYSTEM "chrome://copy-urls-expert/locale/cue_advance_copy.dtd">
+  %cueAdvanceCopyDTD;
+
+]>
+
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<dialog id="copyurlsexpert-advance-copy-window"
+        title="&copyurlsexpert.advancecopy.windowtitle;"
+        buttons="accept,cancel"
+        buttonlabelaccept="Copy To Clipborad"
+        buttonaccesskeyaccept="C"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >	  
+  
+  <groupbox flex="1">
+    <vbox flex="1">
+      
+      <grid>
+        <columns>
+          <column/>
+          <column flex="1"/>
+        </columns>
+        <rows>
+          <row>
+            <label value="&copyurlsexpert.advancecopy.lblselecttemplate;" 
+                   control="copyurlsexpert-ddltemplate"/>
+            <menulist id="copyurlsexpert-ddltemplate">
+              <menupopup type="menu">
+              </menupopup>
+            </menulist>
+          </row>
+
+          <row>
+            <label value="&copyurlsexpert.common.lblsortby;" 
+                   control="copyurlsexpert-ddlsortorder"/>
+            <menulist id="copyurlsexpert-ddlsortorder">
+              <menupopup type="menu">
+                <menuitem label="&copyurlsexpert.common.itmsortbytab;" value="default"/>
+                <menuitem label="&copyurlsexpert.common.itmsortbydomain;" value="domain"/>
+                <menuitem label="&copyurlsexpert.common.itmsortbytitle;" value="title"/>
+              </menupopup>
+            </menulist>
+          </row>
+
+          <row>
+            <label value="&copyurlsexpert.advancecopy.lblsource;"
+                   control="copyurlsexpert-ddlsource"/>
+            <menulist id="copyurlsexpert-ddlsource">
+              <menupopup type="menu">
+                <menuitem label="&copyurlsexpert.common.activewinmenulabel;" value="active-win"/>
+                <menuitem label="&copyurlsexpert.common.allwinmenulabel;" value="all-win"/>
+                <menuitem label="&copyurlsexpert.common.activetabgroupmenulabel;" value="active-tabgroup"/>
+                <menuitem label="&copyurlsexpert.common.activetabmenulabel;" value="active-tab"/>
+                <menuseparator/>
+                <menuitem label="&copyurlsexpert.common.selurlsmenulabel;" value="selection-links"/>
+                <menuitem label="&copyurlsexpert.common.selimgsmenulabel;" value="selection-images"/>
+              </menupopup>
+            </menulist>
+          </row>
+
+        </rows>
+
+       </grid>
+
+       <checkbox id="copyurlsexpert-filterduplicates" label="&copyurlsexpert.common.filterduplicates;" />
+
+    </vbox>
+  </groupbox>
+
+  <script type="application/x-javascript" src="chrome://copy-urls-expert/content/copyurlsexpert.js" />
+  <script type="application/x-javascript" src="chrome://copy-urls-expert/content/dialogs/advance.js" />
+
+</dialog>

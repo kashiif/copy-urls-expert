@@ -53,7 +53,12 @@
 					<menuitem label="&copyurlsexpert.common.allwinmenulabel;" value="all-win"/>
 					<menuitem label="&copyurlsexpert.common.activetabgroupmenulabel;" value="active-tabgroup"/>
 					<menuitem label="&copyurlsexpert.common.activetabmenulabel;" value="active-tab"/>
+          <menuseparator />
+          <menuitem label="&copyurlsexpert.common.advancecopymenulabel;" value="advance-copy"/>
+          <menuseparator />
 					<menuitem label="&copyurlsexpert.common.opentabsmenulabel;" value="open-tabs"/>
+          <menuseparator />
+          <menuitem label="&copyurlsexpert.common.optionsmenulabel;" value="options"/>
 				</menupopup>
 			</menulist>
 		  	</row>
@@ -62,7 +67,7 @@
     
     <separator/>
      
-		<checkbox id="copyurlsexpert-filterduplicates"	preference="filterduplicates.pref" label="&copyurlsexpert.options.filterduplicates;" />
+		<checkbox id="copyurlsexpert-filterduplicates"	preference="filterduplicates.pref" label="&copyurlsexpert.common.filterduplicates;" />
      
     <separator/>
      
@@ -107,12 +112,12 @@
         
         <hbox align="center">
           <hbox align="left" flex="2">
-            <button id="copyurlsexpert-btnAddNew" label="&copyurlsexpert.options.btnaddnew;" size="15" onclick="copyUrlsExpert.options.onNewTemplateButtonClicked()"/>
+            <button id="copyurlsexpert-btnAddNew" label="&copyurlsexpert.options.btnaddnew;" size="15" />
           </hbox>
           <hbox align="right" flex="2">
-            <button id="copyurlsexpert-btnCancelSave" label="&copyurlsexpert.options.btncancelsave;" disabled="true" onclick="copyUrlsExpert.options.onCancelSaveTemplateButtonClicked()"/>
-            <button id="copyurlsexpert-btnUpdate" label="&copyurlsexpert.options.btnupdate;" hidden="true" onclick="copyUrlsExpert.options.onSaveTemplateButtonClicked()"/>
-            <button id="copyurlsexpert-btnSave" label="&copyurlsexpert.options.btnsave;" disabled="true" onclick="copyUrlsExpert.options.onSaveTemplateButtonClicked()"/>
+            <button id="copyurlsexpert-btnCancelSave" label="&copyurlsexpert.options.btncancelsave;" disabled="true" />
+            <button id="copyurlsexpert-btnUpdate" label="&copyurlsexpert.options.btnupdate;" hidden="true" />
+            <button id="copyurlsexpert-btnSave" label="&copyurlsexpert.options.btnsave;" disabled="true" />
           </hbox>
         </hbox>
         
@@ -132,14 +137,11 @@
         </tree>
         <hbox>
           <button id="copyurlsexpert-btnedit" label="&copyurlsexpert.options.btnedit;"
-                  disabled="true" size="15"
-                  onclick="copyUrlsExpert.options.onEditTemplateButtonClicked(this)"/>
+                  disabled="true" size="15" />
           <button id="copyurlsexpert-btndefault" label="&copyurlsexpert.options.btndefault;" 
-                  disabled="true" size="15" 
-                  onclick="copyUrlsExpert.options.onSetAsDefaultButtonClicked(this)"/>
+                  disabled="true" size="15" />
           <button id="copyurlsexpert-btndelete" label="&copyurlsexpert.options.btndelete;"
-                  disabled="true" size="15" 
-                  onclick="copyUrlsExpert.options.onDelTemplateButtonClicked(this)"/>
+                  disabled="true" size="15" />
         </hbox>
         <vbox>
           <label>&copyurlsexpert.options.lblhelphint;</label>
@@ -152,10 +154,10 @@
   <prefpane flex="1" id="copyurlsexpert-shortcutkeyspanel" label="&copyurlsexpert.options.shortcutkeystab;" image="chrome://copy-urls-expert/skin/keyboard.png">
     <groupbox flex="1">
       <vbox>
-        <label class="cue-shortcut-warn">&copyurlsexpert.options.lblshortcutdesc;</label>
+        <label>&copyurlsexpert.options.lblshortcutdesc;</label>
 
         <tree id="copyurlsexpert-treeshortcutkeys" 
-               hidecolumnpicker="true" rows="8" seltype="single" editable="true">
+               hidecolumnpicker="true" rows="9" seltype="single" editable="true">
 
           <treecols orient="horizontal">
             <treecol editable="false" hidden="true" id="copyurlsexpert-colcommandid" />
@@ -218,6 +220,15 @@
               <treerow>
                 <treecell value="cmd_cue_copyUrlsOfImagesInSelection" />
                 <treecell label="&copyurlsexpert.common.selimgsmenulabel;" editable="false"/>
+                <treecell label="" />
+                <treecell label="" properties="cue-shortcut-msg" editable="false" />
+              </treerow>
+            </treeitem>
+
+            <treeitem>
+              <treerow>
+                <treecell value="cmd_cue_advanceCopy" />
+                <treecell label="&copyurlsexpert.common.advancecopymenulabel;" editable="false"/>
                 <treecell label="" />
                 <treecell label="" properties="cue-shortcut-msg" editable="false" />
               </treerow>
@@ -338,7 +349,7 @@
       </html:a>
     </vbox>
     <vbox align="right" flex="1">
-	   <button id="copyurlsexpert-btnaccept" label="&copyurlsexpert.options.btacceptlabel;" onclick="return copyUrlsExpert.options.onDialogAccept();"/>
+	   <button id="copyurlsexpert-btnaccept" label="&copyurlsexpert.options.btacceptlabel;" />
     </vbox>
   </hbox>
 
