@@ -152,6 +152,7 @@ var copyUrlsExpertOptions = {
 		let tree = this.gShortcutsTree,
 				treeView = tree.view,
 				colCommandId = tree.columns.getFirstColumn(),
+				colMessage = tree.columns.getNamedColumn('copyurlsexpert-colshortcutmessage'),
 				colShortcut = tree.columns.getNamedColumn('copyurlsexpert-colshortcutkey');
 
 		for(let row=0 ; row<tree.view.rowCount; row++) {
@@ -160,6 +161,16 @@ var copyUrlsExpertOptions = {
 
 			if (shortcutDesc.hasOwnProperty(commandId)) {
 				let shortcut = shortcutDesc[commandId];
+
+				// check if shortcut is unique
+				let existingKey = copyUrlsExpertOptions._findShortcutExistingAssignment(shortcut);
+				if (existingKey) {
+					treeView.setCellText(row,
+							colMessage, 
+							shortcut.toUIString() + ' already assigned to ' + existingKey.getAttribute('id'));
+
+				}
+
 	    	treeView.setCellText(row, colShortcut, shortcut.toUIString());
 			}
 		}
@@ -185,6 +196,10 @@ var copyUrlsExpertOptions = {
 
 			for (let j = 0; j < allDefinedKeys.length; j++) {
 				let currentKey = allDefinedKeys.item(j);
+
+				if (currentKey.getAttribute('disabled') === 'true') {
+					continue;
+				}
 
 				if (currentKey.getAttribute(attrForKey).toLowerCase() == keyText) {
 
