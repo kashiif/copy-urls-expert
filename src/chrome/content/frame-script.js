@@ -15,14 +15,17 @@
   Components.utils.import('resource://copy-urls-expert/selection-worker.jsm');
 
 
-  function handleGetElementsInSelection(args) {
+  function handleGetElementsInSelection(messageData) {
+    let args = messageData.args;
+
     let entries = CUESelectionWorker(content.document)
                   .getEntriesFromSelection(args.tagName, args.filterDuplicates);
 
     let message = {
       request: {
         command: 'get-elements-in-selection',
-        args: args
+        args: args,
+        pipe: messageData.pipe
       },
 
       response: {
@@ -40,7 +43,7 @@
 
       switch(message.data.command) {
         case 'get-elements-in-selection':
-          handleGetElementsInSelection(message.data.args);
+          handleGetElementsInSelection(message.data);
           break;
 
       }

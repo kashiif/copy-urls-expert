@@ -33,10 +33,14 @@ var documentHandler = {
    @param: entryExtractor - pointer to a function that accepts two arguments item and selection
    */
   extractAndCopyUrlsFromSelection: function (options) {
+    return this.getEntriesFromSelection(options);
+  },
+
+  getEntriesFromSelection: function() {
 
     let entries = [],
         urls = [],
-        chromeWindow = this._getChromeWin(),
+        chromeWindow = this.getMostRecentWindow(),
         sel = chromeWindow.content.getSelection(),
         items = chromeWindow.content.document.getElementsByTagName(tagName);
 
@@ -56,7 +60,8 @@ var documentHandler = {
       }
     }
     return entries;
-  },
+
+  }
 
   uninit: function() {
 

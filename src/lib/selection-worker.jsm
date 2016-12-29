@@ -95,7 +95,6 @@ function CUESelectionWorker(doc) {
       }
     }
 
-    //Components.utils.reportError('entries ' + entries);
     return entries;
   };
 

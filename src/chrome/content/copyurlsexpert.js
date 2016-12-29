@@ -39,6 +39,7 @@ var copyUrlsExpert;
 				this._prefService = this.getPrefService();
 				this._handleStartup();
 
+				Cu.import('resource://copy-urls-expert/chrome-utils.jsm', this);
 				Cu.import('resource://copy-urls-expert/copy-task.jsm', this);
 				Cu.import('resource://copy-urls-expert/keyboardshortcut.jsm');
 				Cu.import('resource://copy-urls-expert/modifiers.jsm');
@@ -49,6 +50,7 @@ var copyUrlsExpert;
 					resourceUrl = 'resource://copy-urls-expert/document-handler-modern.jsm';
 				}
 
+				//Components.utils.reportError('document-handler: ' + resourceUrl.substr(resourceUrl.lastIndexOf('/') + 1));
 				Cu.import(resourceUrl, this);
 
 				this.documentHandler.init({
@@ -182,57 +184,9 @@ var copyUrlsExpert;
 				return entry;
 			},
 
-			// getEntryFromLink: function (link, sel) {
-			// 	var entry = null;
-			// 	// skip named anchors
-			// 	if (link.href && sel.containsNode(link, true)) {
-			// 		var title = link.title;
-			// 		if (title == '') {
-			// 			title = link.text.trim();
-			// 		}
-			// 		entry = this.getUrlEntry(title, link.href);
-			// 	}
-			// 	return entry;
-			// },
-
-			// getEntryFromImage: function (image, sel) {
-			// 	var entry = null;
-			// 	// skip named anchors
-			// 	if (sel.containsNode(image, true)) {
-			// 		var title = image.title;
-			// 		if (title == '') {
-			// 			title = image.name;
-			// 		}
-			// 		if (title == '') {
-			// 			title = image.alt;
-			// 		}
-
-			// 		entry = this.getUrlEntry(title, image.src);
-			// 	}
-			// 	return entry;
-			// },
-
-			_getChromeWin: function () {
-				return this._getWindowMediator().getMostRecentWindow('navigator:browser');
-			},
-
-			_gBrowser: function () {
-				var _g = null;
-
-				let chromeWindow = this._getChromeWin();
-
-				if (typeof(chromeWindow.gBrowser) == 'undefined') {
-					// gBrowser is not available in Seamonkey
-					_g = chromeWindow.document.getElementById('content');
-				} else {
-					_g = chromeWindow.gBrowser;
-				}
-				return _g;
-			},
-
 			performCopyActiveTabUrl: function (opts) {
 				opts = opts || {};
-				opts.contextTab = this._gBrowser().selectedTab;
+				opts.contextTab = this.getGBrowser().selectedTab;
 
 				this._performCopyOfSingleTabUrl(opts);
 			},
@@ -240,7 +194,7 @@ var copyUrlsExpert;
 			performCopyTabUnderMouseUrl: function (opts) {
 				opts = opts || {};
 
-				let _g = this._gBrowser();
+				let _g = this.getGBrowser();
 				opts.contextTab = _g.mContextTab || _g.selectedTab;
 
 				this._performCopyOfSingleTabUrl(opts);
@@ -251,7 +205,7 @@ var copyUrlsExpert;
 				let templateToUse = opts.template || this.defaultPattern;
 				let sortBy = opts.sortBy || this._prefService.getCharPref('sortby');
 
-				var entries = [this._getEntryForTab(this._gBrowser().getBrowserForTab(opts.contextTab), opts.contextTab)];
+				var entries = [this._getEntryForTab(this.getGBrowser().getBrowserForTab(opts.contextTab), opts.contextTab)];
 				this.copyEntriesToClipBoard(entries, sortBy, templateToUse);
 			},
 
@@ -290,6 +244,7 @@ var copyUrlsExpert;
 					template: this.defaultPattern
 				};
 
+				// override default options with the opts
 				for (let prop in opts) {
 					if (opts.hasOwnProperty(prop)) {
 						options[prop] = opts[prop];
@@ -305,23 +260,16 @@ var copyUrlsExpert;
 			},
 
 			performOpenUrlsInSelection: function () {
-				var filterDuplicates = this._prefService.getBoolPref('filterduplicates');
-				var entries = copyUrlsExpert._getEntriesFromSelection('a', copyUrlsExpert.getEntryFromLink, filterDuplicates);
-
-				var urls = new Array(entries.length);
-
-				for (var i = 0; i < urls.length; i++) {
-					urls[i] = entries[i].url;
-				}
-
-				copyUrlsExpert._openAllUrls(urls);
+				copyUrlsExpert.documentHandler.openUrlsInSelection({
+					filterDuplicates: this._prefService.getBoolPref('filterduplicates')
+				});
 			},
 
 			performCopyUrlsInSelection: function (opts) {
 				opts = opts || {};
 
 				opts.tagName = 'a';
-				copyUrlsExpert._performCopyUrlsInSelection(copyUrlsExpert.getEntryFromLink, opts);
+				copyUrlsExpert._performCopyUrlsInSelection(opts);
 			},
 
 			performCopyUrlsOfImagesInSelection: function (opts) {
@@ -329,10 +277,10 @@ var copyUrlsExpert;
 
 				opts.tagName = 'img';
 
-				copyUrlsExpert._performCopyUrlsInSelection(copyUrlsExpert.getEntryFromImage, opts);
+				copyUrlsExpert._performCopyUrlsInSelection(opts);
 			},
 
-			_performCopyUrlsInSelection: function (entryExtractor, opts) {
+			_performCopyUrlsInSelection: function (opts) {
 
 				let options = {
 					filterDuplicates: this._prefService.getBoolPref('filterduplicates'),
@@ -431,7 +379,7 @@ var copyUrlsExpert;
 				var clip = Components.classes['@mozilla.org/widget/clipboard;1'].getService(Components.interfaces.nsIClipboard);
 				if (!clip) return null;
 
-				var trans = createTransferable(window);
+				var trans = copyUrlsExpert.createTransferable(window);
 
 				clip.getData(trans, clip.kGlobalClipboard);
 
@@ -469,45 +417,11 @@ var copyUrlsExpert;
 					urls.push(newUrl);
 				}
 
-				return copyUrlsExpert._openAllUrls(urls);
-			},
-
-			_openAllUrls: function (urls) {
-				if (!urls.length) return true;
-
-				var _g = this._gBrowser(),
-						prefs = copyUrlsExpert._prefService,
-						urlOpener = null, webNav;
-
-				var aBrowsers = _g.browsers;
-
-				var start = 0;
-
-				var delayStep = prefs.getIntPref('opentabdelaystepinmillisecs');
-
-				if (prefs.getBoolPref('openlinksinwindows')) {
-					urlOpener = function (url) {
-						window.open(url);
-					};
-				}
-				else {
-					webNav = aBrowsers[aBrowsers.length - 1].webNavigation;
-
-					if (webNav.currentURI.spec == 'about:blank') {
-						// yes it is empty
-						_g.loadURI(urls[0]);
-						start++;
-					}
-					urlOpener = function (url) {
-						_g.addTab(url);
-					};
+				if (typeof this.openAllUrls === 'undefined') {
+					Cu.import('resource://copy-urls-expert/open-urls-task.jsm', this);
 				}
 
-				for (; start < urls.length; start++) {
-					window.setTimeout(urlOpener, delayStep * start, urls[start]);
-				}
-
-				return true;
+				return this.openAllUrls(urls);
 			},
 
 
@@ -519,7 +433,7 @@ var copyUrlsExpert;
 
 				let defaultPattern = target[defaultIndex];
 
-				let wm = this._getWindowMediator();
+				let wm = this.getWindowMediator();
 
 				// Get the list of browser windows already open
 				let windows = wm.getEnumerator('navigator:browser');
@@ -530,11 +444,6 @@ var copyUrlsExpert;
 				}
 			},
 
-			_getWindowMediator: function () {
-				return Components.classes['@mozilla.org/appshell/window-mediator;1']
-						.getService(Components.interfaces.nsIWindowMediator);
-			},
-
 			updateCustomShortcuts: function (shortcutsMap) {
 				this._prefService.setCharPref('shortcuts', JSON.stringify(shortcutsMap));
 				this._loadCustomShortcuts(shortcutsMap);
@@ -543,7 +452,7 @@ var copyUrlsExpert;
 
 			_loadCustomShortcuts: function (shortcutsMap) {
 
-				let wm = this._getWindowMediator();
+				let wm = this.getWindowMediator();
 
 				// Get the list of browser windows already open
 				let windows = wm.getEnumerator('navigator:browser');
