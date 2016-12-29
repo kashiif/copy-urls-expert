@@ -18,6 +18,7 @@ var copyUrlsExpert;
 			TBB_ACTION_ACTIVE_TABGROUP: 'active-tabgroup',
 			TBB_ACTION_ALL_WIN: 'all-win',
 			TBB_ACTION_OPEN_TABS: 'open-tabs',
+			TBB_ACTION_ADVANCED_COPY: 'advanced-copy',
 			TBB_ACTION_SELECTION_LINKS: 'selection-links',
 			TBB_ACTION_SELECTION_IMAGES: 'selection-images',
 
@@ -343,6 +344,10 @@ var copyUrlsExpert;
 						this.performCopyUrlsOfImagesInSelection(options);
 						break;
 
+					case this.TBB_ACTION_ADVANCED_COPY:
+						this.showAdvancedCopyWindow();
+						break;
+						
 					case this.TBB_ACTION_OPEN_TABS:
 						document.getElementById('cmd_cue_openTabs').doCommand();
 						break;
