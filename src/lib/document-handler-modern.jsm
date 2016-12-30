@@ -57,7 +57,7 @@ var documentHandler = {
     let mm = args.messageManager;
     mm.loadFrameScript('chrome://copy-urls-expert/content/frame-script.js', true);
     mm.addMessageListener(MSG_RECEIVE_ID, _handleMessageFromFrameScript);
-	},
+  },
 
   _sendMessageToFrameScript: function(msgPayload) {
     let gBrwsr = getGBrowser();
@@ -95,9 +95,9 @@ var documentHandler = {
 
   },
 
-	uninit: function(args) {
+  uninit: function(args) {
     let mm = args.messageManager;
     mm.removeMessageListener(MSG_RECEIVE_ID, _handleMessageFromFrameScript);
-	}
+  }
 
 };
