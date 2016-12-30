@@ -163,7 +163,7 @@ var copyUrlsExpertOptions = {
 				let shortcut = shortcutDesc[commandId];
 
 				// check if shortcut is unique
-				let existingKey = copyUrlsExpertOptions._findShortcutExistingAssignment(shortcut);
+				let existingKey = copyUrlsExpertOptions._findShortcutExistingAssignment(shortcut, commandId);
 				if (existingKey) {
 					treeView.setCellText(row,
 							colMessage, 
@@ -179,7 +179,7 @@ var copyUrlsExpertOptions = {
 
 	},
 
-	_findShortcutExistingAssignment: function (shortcut) {
+	_findShortcutExistingAssignment: function (shortcut, commandToIgnore) {
 		let browserWin = Components.classes['@mozilla.org/appshell/window-mediator;1']
 											.getService(Components.interfaces.nsIWindowMediator)
 											.getMostRecentWindow('navigator:browser');
@@ -204,7 +204,10 @@ var copyUrlsExpertOptions = {
 				if (currentKey.getAttribute(attrForKey).toLowerCase() == keyText) {
 
 					if (shortcut.modifiers && shortcut.modifiers.toXulModifiersString() == currentKey.getAttribute('modifiers')) {
-						return currentKey;
+
+						if (!commandToIgnore || currentKey.getAttribute('command') != commandToIgnore) {
+							return currentKey;
+						}
 					}
 
 				}
