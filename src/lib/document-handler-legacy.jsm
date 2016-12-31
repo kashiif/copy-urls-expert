@@ -61,7 +61,7 @@ var documentHandler = {
     }
     return entries;
 
-  }
+  },
 
   uninit: function() {
 

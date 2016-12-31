@@ -16,7 +16,7 @@ var copyUrlsExpert;
    * toolbar, if it is not already present in the document.
    *
    * Source: https://developer.mozilla.org/en-US/Add-ons/Code_snippets/Toolbar
-   * 
+   *
    * @param {string} toolbarId The ID of the toolbar to install to.
    * @param {string} id The ID of the button to install.
    * @param {string} afterId The ID of the element to insert after. @optional
@@ -49,6 +49,17 @@ var copyUrlsExpert;
     catch(ex) {
       Components.utils.reportError(ex);
     }
+  }
+
+  function _isDuplicate(entries, url) {
+    url = url.toLowerCase();
+    for (var i = 0; i < entries.length; i++) {
+      var entryUrl = entries[i];
+      if (entryUrl.toLowerCase() == url) {
+        return true;
+      }
+    }
+    return false;
   }
 
   function setupMainRef() {
@@ -179,18 +190,7 @@ var copyUrlsExpert;
         };
       },
 
-      _isDuplicate: function (entries, url) {
-        url = url.toLowerCase();
-        for (var i = 0; i < entries.length; i++) {
-          var entryUrl = entries[i];
-          if (entryUrl.toLowerCase() == url) {
-            return true;
-          }
-        }
-        return false;
-      },
-
-      _getEntriesFromTabs: function (aBrowsers, filterHidden, filterDuplicates) {
+      _getEntriesFromTabs: function (aBrowsers, filterHidden, filterDuplicates, filterPinnedTabs) {
         var title = '',
             url = '',
             urls = [],
@@ -210,7 +210,9 @@ var copyUrlsExpert;
 
             if (filterHidden && targetTab.hidden) continue;
 
-            if (filterDuplicates && this._isDuplicate(urls, targetBrwsr.currentURI.spec)) {
+            if (filterPinnedTabs && targetTab.pinned) continue;
+
+            if (filterDuplicates && _isDuplicate(urls, targetBrwsr.currentURI.spec)) {
               continue;
             }
 
@@ -262,7 +264,7 @@ var copyUrlsExpert;
       _getBrowsers: function (onlyActiveWindow) {
         var aBrowsers = [];
 
-        var winMediator = Components.classes['@mozilla.org/appshell/window-mediator;1'].getService(Components.interfaces.nsIWindowMediator);
+        var winMediator = copyUrlsExpert.getWindowMediator();
         if (onlyActiveWindow) {
           aBrowsers.push(winMediator.getMostRecentWindow('navigator:browser'));
         }
@@ -290,6 +292,7 @@ var copyUrlsExpert;
           onlyActiveWindow: true,
           filterHidden: false,
           filterDuplicates: this._prefService.getBoolPref('filterduplicates'),
+          filterPinnedTabs: this._prefService.getBoolPref('excludepinnedtabs'),
           sortBy: this._prefService.getCharPref('sortby'),
           template: this.defaultPattern
         };
@@ -304,7 +307,7 @@ var copyUrlsExpert;
         // This function must be called awith all three arguments
         var aBrowsers = this._getBrowsers(options.onlyActiveWindow);
 
-        var entries = this._getEntriesFromTabs(aBrowsers, options.filterHidden, options.filterDuplicates);
+        var entries = this._getEntriesFromTabs(aBrowsers, options.filterHidden, options.filterDuplicates, options.filterPinnedTabs);
 
         this.copyEntriesToClipBoard(entries, options.sortBy, options.template);
       },
@@ -464,7 +467,7 @@ var copyUrlsExpert;
         while ((myArray = myRe.exec(sUrl))) {
           var newUrl = String(myArray[0]);
 
-          if (filterDuplicates && this._isDuplicate(urls, newUrl)) {
+          if (filterDuplicates && _isDuplicate(urls, newUrl)) {
             continue;
           }
 

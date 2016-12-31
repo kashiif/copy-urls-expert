@@ -22,6 +22,7 @@
 
 <!ENTITY copyurlsexpert.options.lbltoolbaraction	"Toolbar Button Default Action">
 
+<!ENTITY copyurlsexpert.options.excludepinnedtabs	"Exclude pinned tabs when copying urls of tabs">
 <!ENTITY copyurlsexpert.options.usecontenttitle	"When copying urls of tab, use page title for $title">
 <!ENTITY copyurlsexpert.options.usecontenttitle2	"If you uncheck this, $title will be the same text as in tab title. If you use any extension that changes tab title based on some configuration and you need the same title in copied text then you should uncheck this option.">
 

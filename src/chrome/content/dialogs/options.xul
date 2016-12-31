@@ -24,6 +24,7 @@
       <preference id="toolbaraction.pref"  name="extensions.copyurlsexpert.toolbaraction" type="string" />
       <preference id="filterduplicates.pref"  name="extensions.copyurlsexpert.filterduplicates" type="bool" />
       <preference id="usecontenttitle.pref"  name="extensions.copyurlsexpert.usecontenttitle" type="bool" />
+      <preference id="excludepinnedtabs.pref"  name="extensions.copyurlsexpert.excludepinnedtabs" type="bool" />
     </preferences>
   
     <groupbox flex="1">
@@ -64,13 +65,14 @@
 		  	</row>
 		  </rows>
 		 </grid>
-    
-    <separator/>
-     
+
+        <separator/>
+        <checkbox id="copyurlsexpert-excludepinnedtabs"	preference="excludepinnedtabs.pref" label="&copyurlsexpert.options.excludepinnedtabs;" />
+
+        <separator/>
 		<checkbox id="copyurlsexpert-filterduplicates"	preference="filterduplicates.pref" label="&copyurlsexpert.common.filterduplicates;" />
      
-    <separator/>
-     
+        <separator/>
 		<checkbox id="copyurlsexpert-usecontenttitle"	preference="usecontenttitle.pref" label="&copyurlsexpert.options.usecontenttitle;" />
 		<label>&copyurlsexpert.options.usecontenttitle2;</label>
      
