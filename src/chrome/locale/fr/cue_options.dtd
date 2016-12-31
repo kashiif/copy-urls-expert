@@ -16,7 +16,7 @@
 <!ENTITY copyurlsexpert.options.lblprefix "Préfixe">
 <!ENTITY copyurlsexpert.options.lblpostfix "Suffixe">
 <!ENTITY copyurlsexpert.options.lbltoolbaraction "Action par défaut du bouton">
-<!ENTITY copyurlsexpert.options.filterduplicates "Filtrer les doublons lors de la copie vers ou l'ouverture à partir du presse-papiers">
+<!ENTITY copyurlsexpert.options.excludepinnedtabs "Exclude pinned tabs when copying urls of tabs">
 <!ENTITY copyurlsexpert.options.usecontenttitle "Lors de la copie d'urls d'onglet, utiliser le titre de la page pour $titre">
 <!ENTITY copyurlsexpert.options.usecontenttitle2 "Si vous décochez cette option, $titre sera toujours le titre de l'onglet. Cela permet de faciliter la fonctionnalité « Utiliser le nom de marque-page comme titre » de Tab Mix Plus.">
 <!-- Shortcuts Tab -->

@@ -16,7 +16,7 @@
 <!ENTITY copyurlsexpert.options.lblprefix "Topptekst">
 <!ENTITY copyurlsexpert.options.lblpostfix "Botntekst">
 <!ENTITY copyurlsexpert.options.lbltoolbaraction "Standardhandling for verktøylinjeknapp">
-<!ENTITY copyurlsexpert.options.filterduplicates "Fjern dublettar ved kopiering eller opning frå utklippstavla">
+<!ENTITY copyurlsexpert.options.excludepinnedtabs "Exclude pinned tabs when copying urls of tabs">
 <!ENTITY copyurlsexpert.options.usecontenttitle "Bruk sidetittel for $title ved kopiering av faneadresser">
 <!ENTITY copyurlsexpert.options.usecontenttitle2 "Viss du ikkje huker av dette, vil $title alltid vera fanetittelen. Dette er nyttig viss du bruker Tab Mix Plus-funksjonen &quot;Bruk bokmerkenamn som tittel&quot;.">
 <!-- Shortcuts Tab -->

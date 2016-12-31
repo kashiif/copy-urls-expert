@@ -1,33 +1,33 @@
-<!ENTITY copyurlsexpert.options.windowtitle "Copy Urls Expert 옵션">
-<!ENTITY copyurlsexpert.options.btacceptlabel "저장">
+<!ENTITY copyurlsexpert.options.windowtitle "Copy Urls Expert Options">
+<!ENTITY copyurlsexpert.options.btacceptlabel "Salvar">
 <!ENTITY copyurlsexpert.options.btacceptaccesskey "S">
-<!ENTITY copyurlsexpert.options.generaltab "일반">
+<!ENTITY copyurlsexpert.options.generaltab "Geral">
 <!ENTITY copyurlsexpert.options.shortcutkeystab "Shortcut">
-<!ENTITY copyurlsexpert.options.formattab "형식">
-<!ENTITY copyurlsexpert.options.helptab "Help">
+<!ENTITY copyurlsexpert.options.formattab "Formato">
+<!ENTITY copyurlsexpert.options.helptab "Ajuda">
 <!-- General Tab -->
-<!ENTITY copyurlsexpert.options.lblsortby "정렬">
-<!ENTITY copyurlsexpert.options.itmsortbytab "원래 탭 순서대로">
-<!ENTITY copyurlsexpert.options.itmsortbydomain "도메인">
-<!ENTITY copyurlsexpert.options.itmsortbytitle "제목">
+<!ENTITY copyurlsexpert.options.lblsortby "Sort By">
+<!ENTITY copyurlsexpert.options.itmsortbytab "Tab Order">
+<!ENTITY copyurlsexpert.options.itmsortbydomain "Domínio">
+<!ENTITY copyurlsexpert.options.itmsortbytitle "Título">
 <!ENTITY copyurlsexpert.options.formattablabelsize "5">
-<!ENTITY copyurlsexpert.options.lblname "이름">
-<!ENTITY copyurlsexpert.options.lblmarkup "마크업">
-<!ENTITY copyurlsexpert.options.lblprefix "접두어">
-<!ENTITY copyurlsexpert.options.lblpostfix "접미어">
-<!ENTITY copyurlsexpert.options.lbltoolbaraction "툴바 버튼 기본 작업">
+<!ENTITY copyurlsexpert.options.lblname "Nome">
+<!ENTITY copyurlsexpert.options.lblmarkup "Markup">
+<!ENTITY copyurlsexpert.options.lblprefix "Prefix">
+<!ENTITY copyurlsexpert.options.lblpostfix "Postfix">
+<!ENTITY copyurlsexpert.options.lbltoolbaraction "Toolbar Button Default Action">
 <!ENTITY copyurlsexpert.options.excludepinnedtabs "Exclude pinned tabs when copying urls of tabs">
 <!ENTITY copyurlsexpert.options.usecontenttitle "When copying urls of tab, use page title for $title">
-<!ENTITY copyurlsexpert.options.usecontenttitle2 "If you uncheck this, $title will always be the tab title. This is to facilitate Tab Mix Plus &quot;Use bookmark name as title&quot; feature.">
-<!-- Shortcuts Tab -->
-<!ENTITY copyurlsexpert.options.btnaddnew "새로 만들기">
-<!ENTITY copyurlsexpert.options.btnupdate "업데이트">
-<!ENTITY copyurlsexpert.options.btnsave "저장">
-<!ENTITY copyurlsexpert.options.btncancelsave "취소">
-<!ENTITY copyurlsexpert.options.btnedit "편집">
-<!ENTITY copyurlsexpert.options.btndefault "기본값으로 설정">
-<!ENTITY copyurlsexpert.options.btndelete "삭제">
+<!ENTITY copyurlsexpert.options.usecontenttitle2 "If you uncheck this, $title will be the same text as in tab title. If you use any extension that changes tab title based on some configuration and you need the same title in copied text then you should uncheck this option.">
 <!-- Format Tab -->
+<!ENTITY copyurlsexpert.options.btnaddnew "Novo">
+<!ENTITY copyurlsexpert.options.btnupdate "Atualizar">
+<!ENTITY copyurlsexpert.options.btnsave "Salvar">
+<!ENTITY copyurlsexpert.options.btncancelsave "Descartar">
+<!ENTITY copyurlsexpert.options.btnedit "Editar">
+<!ENTITY copyurlsexpert.options.btndefault "Definir como padrão">
+<!ENTITY copyurlsexpert.options.btndelete "Excluir">
+<!-- Shortcut Keys Tab -->
 <!ENTITY copyurlsexpert.options.lblshortcutdesc "Double click on the cell (second column) in front of any action and then press the shortcut key combination.">
 <!ENTITY copyurlsexpert.options.shortcutwarn1 "Important">
 <!ENTITY copyurlsexpert.options.shortcutwarn2 "This feature is experimental and may not work as expected on every firefox version and on every platform (e.g. Mac/Linux).">
@@ -42,9 +42,9 @@
 <!ENTITY copyurlsexpert.options.lblhelphint "See Help Tab to understand how the text for clipboard can be customized.">
 <!ENTITY copyurlsexpert.options.lblhelphint2 "It is possible to customize the text which is copied to clipboard.">
 <!ENTITY copyurlsexpert.options.lblhelphint3 "Three pieces of content are possible: .">
-<!ENTITY copyurlsexpert.options.lblprefixheading "Prefix">
+<!ENTITY copyurlsexpert.options.lblprefixheading "Prefixo">
 <!ENTITY copyurlsexpert.options.lblprefixdesc "This is the text that will appear before the list of Urls. (Optional)">
-<!ENTITY copyurlsexpert.options.lbllinkslistheading "List of Urls">
+<!ENTITY copyurlsexpert.options.lbllinkslistheading "Lista de Urls">
 <!ENTITY copyurlsexpert.options.lbllinkslistdesc "This is the text that will appear for every Url. Default value is $url$n.">
 <!ENTITY copyurlsexpert.options.lblpostfixheading "Postfix">
 <!ENTITY copyurlsexpert.options.lblpostfixdesc "This is the text that will appear after the list of Urls. (Optional)">

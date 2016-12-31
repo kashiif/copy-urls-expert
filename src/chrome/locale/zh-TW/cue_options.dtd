@@ -16,7 +16,7 @@
 <!ENTITY copyurlsexpert.options.lblprefix "前綴">
 <!ENTITY copyurlsexpert.options.lblpostfix "後綴">
 <!ENTITY copyurlsexpert.options.lbltoolbaraction "工具列按鈕預設功能">
-<!ENTITY copyurlsexpert.options.filterduplicates "複製到剪貼簿或從剪貼簿開啟時濾掉重複的內容">
+<!ENTITY copyurlsexpert.options.excludepinnedtabs "Exclude pinned tabs when copying urls of tabs">
 <!ENTITY copyurlsexpert.options.usecontenttitle "複製分頁位址時，$title 指定為頁面標題">
 <!ENTITY copyurlsexpert.options.usecontenttitle2 "若取消勾選，$title 就會指定為分頁標題；此設定是為了配合 Tab Mix Plus 套件的&quot;使用書籤名稱做為分頁標題&quot;功能。">
 <!-- Shortcuts Tab -->
