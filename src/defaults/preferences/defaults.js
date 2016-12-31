@@ -4,6 +4,7 @@ pref('extensions.copyurlsexpert.toolbaraction', 'active-win');
 pref('extensions.copyurlsexpert.filterduplicates', true);
 pref('extensions.copyurlsexpert.usecontenttitle', true);
 pref('extensions.copyurlsexpert.opentabdelaystepinmillisecs', 80);
+pref('extensions.copyurlsexpert.excludepinnedtabs', true);
 pref('extensions.copyurlsexpert.openlinksinwindows', false);
 pref('extensions.copyurlsexpert.version', '');
 pref('extensions.copyurlsexpert.shortcuts', '');

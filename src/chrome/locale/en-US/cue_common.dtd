@@ -18,6 +18,9 @@
 <!ENTITY copyurlsexpert.common.activetabaccesskey "">
 <!ENTITY copyurlsexpert.common.activetabtooltip "Copy Url of Current Tab">
 
+<!ENTITY copyurlsexpert.common.advancedcopymenulabel "Advanced Copy">
+<!ENTITY copyurlsexpert.common.advancedcopytooltip "Copy Urls with more options">
+
 <!ENTITY copyurlsexpert.common.opentabsmenulabel  "Open Urls From Clipboard">
 <!ENTITY copyurlsexpert.common.opentabsaccesskey  "p">
 <!ENTITY copyurlsexpert.common.opentabstooltip  "Open all urls found in clipboard text">
@@ -31,3 +34,10 @@
 <!ENTITY copyurlsexpert.common.selimgsmenulabel "Images In Selection">
 <!ENTITY copyurlsexpert.common.selimgsaccesskey "I">
 <!ENTITY copyurlsexpert.common.selurlsopenmenulabel "Open All Urls In Selection">
+
+<!ENTITY copyurlsexpert.common.lblsortby "Sort By">
+<!ENTITY copyurlsexpert.common.itmsortbytab  "Tab Order">
+<!ENTITY copyurlsexpert.common.itmsortbydomain "Domain">
+<!ENTITY copyurlsexpert.common.itmsortbytitle  "Title">
+
+<!ENTITY copyurlsexpert.common.filterduplicates  "Filter duplicates when copying to and opening from clipboard">
