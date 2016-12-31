@@ -7,6 +7,7 @@
         <em:type>2</em:type>
         <em:name>Copy Urls Expert</em:name>
         <em:version>___version___</em:version>
+        <em:multiprocessCompatible>true</em:multiprocessCompatible>
         <em:creator>__author__</em:creator>
         <em:translator>Young-Cheon Kim (ko-KR)</em:translator>
         <em:translator>Archaeopteryx (de)</em:translator>
