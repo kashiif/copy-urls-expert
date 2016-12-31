@@ -12,12 +12,14 @@
         <em:translator>Archaeopteryx (de)</em:translator>
         <em:translator>whknnn (zh-CN)</em:translator>
         <em:translator>Alain Besancon (fr-FR)</em:translator>
-
+        
+        <em:contributor>Pranay Yadav</em:contributor>
+        
         <em:homepageURL></em:homepageURL>
         <em:description></em:description>
         <em:optionsURL>chrome://copy-urls-expert/content/dialogs/options.xul</em:optionsURL>
-        <em:iconURL>chrome://copy-urls-expert/skin/cue-icon.png</em:iconURL>
-        <em:icon64URL>chrome://copy-urls-expert/skin/cue-icon64.png</em:icon64URL>
+        <em:iconURL>chrome://copy-urls-expert/skin/icons/cue-icon.png</em:iconURL>
+        <em:icon64URL>chrome://copy-urls-expert/skin/icons/cue-icon64.png</em:icon64URL>
 
         <em:targetApplication>
             <Description>
