@@ -1,9 +1,9 @@
 #copyurlsexpert-toolbar-btnmain {
-  list-style-image: url(chrome://copy-urls-expert/skin/cue-icon16.png);
+  list-style-image: url(chrome://copy-urls-expert/skin/icons/cue-icon16.png);
 }
 
 /* Inside customization panel and panel-UI, use a 32x32 image (FF 29+)*/
 .customization-palette #copyurlsexpert-toolbar-btnmain,
 #copyurlsexpert-toolbar-btnmain[cui-areatype=menu-panel] {
-  list-style-image: url(chrome://copy-urls-expert/skin/cue-icon.png);
+  list-style-image: url(chrome://copy-urls-expert/skin/icons/cue-icon.png);
 }

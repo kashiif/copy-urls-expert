@@ -93,8 +93,9 @@
 	<popupset id="mainPopupSet">
 		<menupopup id="tabContextMenu" >
 			<menuseparator id="copyurlsexpert-tabcontext-separator" insertafter="context_reloadTab"/>
-			<menu id="copyurlsexpert-tabcontext-mainmenu" label="&copyurlsexpert.common.menupopuplabel;" 
-					class="menuitem-iconic" insertafter="copyurlsexpert-tabcontext-separator"
+			<menu id="copyurlsexpert-tabcontext-mainmenu" label="&copyurlsexpert.common.menupopuplabel;"
+					image="chrome://copy-urls-expert/skin/icons/cue-icon16.png" 
+					class="menu-iconic" insertafter="copyurlsexpert-tabcontext-separator"
 					accesskey="&copyurlsexpert.common.menupopupaccesskey;">
 				<menupopup>
 					<menuitem class="menuitem-iconic" command="cmd_cue_copyActiveWinTabsUrls"/>
@@ -138,8 +139,9 @@
 	<!-- Edit Menu -->
 	<menupopup id="menu_EditPopup">
 		<menu id="copyurlsexpert-menubar-edit" label="&copyurlsexpert.common.menupopuplabel;" 
+				image="chrome://copy-urls-expert/skin/icons/cue-icon16.png" 
 				accesskey="&copyurlsexpert.common.menupopupaccesskey;"
-				class="menuitem-iconic" insertafter="menu_copy">
+				class="menu-iconic" insertafter="menu_copy">
 			<menupopup>
 				<menuitem class="menuitem-iconic" command="cmd_cue_copyActiveWinTabsUrls" />
 				<menuitem class="menuitem-iconic" command="cmd_cue_copyAllWinTabsUrls"/>
@@ -158,8 +160,9 @@
 
 	<popup id="contentAreaContextMenu">
 		<menu id="copyurlsexpert-contextmenu-mainmenu" label="&copyurlsexpert.common.menupopuplabel;"
+				image="chrome://copy-urls-expert/skin/icons/cue-icon16.png" 
 			  accesskey="&copyurlsexpert.common.menupopupaccesskey;"
-			  class="menuitem-iconic" insertafter="context-copy">
+			  class="menu-iconic" insertafter="context-copy">
 			<menupopup>
 				<menuitem command="cmd_cue_copyUrlsInSelection" />
 				<menuitem command="cmd_cue_copyUrlsOfImagesInSelection" />

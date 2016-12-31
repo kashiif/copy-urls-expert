@@ -9,7 +9,8 @@
 	<!-- Firefox Application Menu -->
 	<menupopup id="appmenu-editmenu-menupopup">
 		<menu id="copyurlsexpert-appmenu-edit" label="&copyurlsexpert.common.menupopuplabel;" 
-			  accesskey="&copyurlsexpert.common.menupopupaccesskey;" class="menuitem-iconic" 
+				image="chrome://copy-urls-expert/skin/icons/cue-icon16.png" 
+			  accesskey="&copyurlsexpert.common.menupopupaccesskey;" class="menu-iconic" 
 			  insertafter="appmenu-editmenu-copy">
 			<menupopup>
 				<menuitem class="menuitem-iconic" command="copyurlsexpert:copyCurrentWinTabsUrls" />
