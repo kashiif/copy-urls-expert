@@ -24,7 +24,7 @@ KeyboardShortcut.prototype.equals = function (obj) {
   }
 
   return false;
-}
+};
 
 KeyboardShortcut.prototype.toString = function () {
   let data = {
@@ -33,7 +33,7 @@ KeyboardShortcut.prototype.toString = function () {
     };
 
   return JSON.stringify(data);
-}
+};
 
 KeyboardShortcut.prototype.toUIString = function () {
   if (this._toStringCache) {
@@ -57,7 +57,7 @@ KeyboardShortcut.prototype.toUIString = function () {
   }
 
   return this._toStringCache = parts.join("+");
-}
+};
 
 KeyboardShortcut.prototype.getKeyConfig = function () {
   var config = {
@@ -108,18 +108,18 @@ KeyboardShortcut.prototype.getKeyConfig = function () {
   }
 
   return config;
-}
+};
 
 KeyboardShortcut.prototype.isComplete = function () {
   return !!(this.keycode);
-}
+};
 
 KeyboardShortcut.fromPOJO = function (data) {
 
   data.modifiers = new Modifiers(data.modifiers || {modifiers: []});
 
   return new KeyboardShortcut(data);
-}
+};
 
 KeyboardShortcut.fromEvent = function (event) {
   let data = {modifiers: Modifiers.fromEvent(event)};
@@ -135,4 +135,4 @@ KeyboardShortcut.fromEvent = function (event) {
   }
 
   return new KeyboardShortcut(data);
-}
+};

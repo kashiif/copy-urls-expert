@@ -22,7 +22,7 @@
 
 <!ENTITY copyurlsexpert.options.lbltoolbaraction	"Toolbar Button Default Action">
 
-<!ENTITY copyurlsexpert.options.filterduplicates	"Filter duplicates when copying to and opening from clipboard">
+<!ENTITY copyurlsexpert.options.excludepinnedtabs	"Exclude pinned tabs when copying urls of tabs">
 <!ENTITY copyurlsexpert.options.usecontenttitle	"When copying urls of tab, use page title for $title">
 <!ENTITY copyurlsexpert.options.usecontenttitle2	"If you uncheck this, $title will be the same text as in tab title. If you use any extension that changes tab title based on some configuration and you need the same title in copied text then you should uncheck this option.">
 
@@ -44,7 +44,7 @@
 
 <!ENTITY copyurlsexpert.options.shortcutwarn1 "Important">
 <!ENTITY copyurlsexpert.options.shortcutwarn2 "This feature is experimental and may not work as expected on every firefox version and on every platform (e.g. Mac/Linux).">
-<!ENTITY copyurlsexpert.options.shortcutwarn3 "This feautre was tested on windows for Firefox 40+.">
+<!ENTITY copyurlsexpert.options.shortcutwarn3 "This feature was tested on windows for Firefox 40+.">
 
 
 <!ENTITY copyurlsexpert.options.colshortcutkeyaction "Action">
@@ -73,8 +73,8 @@
 
 <!ENTITY copyurlsexpert.options.lbltagurl "The link/url itself e.g. http://www.google.com">
 <!ENTITY copyurlsexpert.options.lbltagtitle "Title of the page or image.">
-<!ENTITY copyurlsexpert.options.lbltagnewline "A new line charcater. Note that urls are not placed on new lines so $n must be used anyways.">
-<!ENTITY copyurlsexpert.options.lbltagtab "A tab charcater.">
+<!ENTITY copyurlsexpert.options.lbltagnewline "A new line character. Note that urls are not placed on new lines so $n must be used anyways.">
+<!ENTITY copyurlsexpert.options.lbltagtab "A tab character.">
 <!ENTITY copyurlsexpert.options.lbltagindex "Serial number of current url in the list of urls.">
 <!ENTITY copyurlsexpert.options.lbltagdate "Today's date">
 <!ENTITY copyurlsexpert.options.lbltagfdate "Current date time formatted as per the string between parenthesis. You can use YY, YYYY, mm, m, dd, d, HH, hh, h, M, MM, S and SS to represent different components of date and time.">

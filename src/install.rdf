@@ -7,6 +7,7 @@
         <em:type>2</em:type>
         <em:name>Copy Urls Expert</em:name>
         <em:version>___version___</em:version>
+        <em:multiprocessCompatible>true</em:multiprocessCompatible>
         <em:creator>__author__</em:creator>
         <em:translator>Young-Cheon Kim (ko-KR)</em:translator>
         <em:translator>Archaeopteryx (de)</em:translator>
@@ -25,7 +26,7 @@
                 <!-- Firefox -->
                 <em:minVersion>3.6</em:minVersion>
                 <!-- File IO API being used requires Gecko version 1.9.2 -->
-                <em:maxVersion>46.0</em:maxVersion>
+                <em:maxVersion>53.*</em:maxVersion>
             </Description>
         </em:targetApplication>
 
@@ -35,7 +36,7 @@
                 <!-- SeaMonkey -->
                 <em:minVersion>2.1</em:minVersion>
                 <!-- File IO API being used requires Gecko version 1.9.2 -->
-                <em:maxVersion>2.42</em:maxVersion>
+                <em:maxVersion>2.51</em:maxVersion>
             </Description>
 
         </em:targetApplication>
