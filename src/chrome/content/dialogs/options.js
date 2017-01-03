@@ -522,8 +522,8 @@ var copyUrlsExpertOptions = {
 	},
 	
 	onDialogAccept: function() {
-		var tree = copyUrlsExpertOptions.gUriTree;
-		var defTemplate = tree.cueTemplates[tree.cueDefTemplateIndex];
+		let tree = copyUrlsExpertOptions.gUriTree;
+		let defTemplate = tree.cueTemplates[tree.cueDefTemplateIndex];
 		
 		copyUrlsExpert._updateFuelAppData(tree.cueTemplates, tree.cueDefTemplateIndex);
 
@@ -535,7 +535,17 @@ var copyUrlsExpertOptions = {
 		copyUrlsExpert.updateCustomShortcuts(tree.cueShortcuts);
 		tree.cueShortcuts = null;
 
-		document.documentElement.acceptDialog();
+        Components.utils.import('resource://gre/modules/Services.jsm');
+
+        let instantApply = Services.prefs.getBoolPref('browser.preferences.instantApply');
+
+        if (instantApply) {
+			window.close();
+		}
+		else {
+            document.documentElement.acceptDialog();
+        }
+
 		return true;
 	},
 	

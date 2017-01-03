@@ -8,14 +8,15 @@ treechildren::-moz-tree-cell-text(defaultFormat) {
 	max-height: 310px;
 }
 
-#copyurlsexpert-treeformats>treecols {
-	border: 0; padding: 0;
+#copyurlsexpert-treeformats > treecols {
+	border: 0;
+	padding: 0;
 	-moz-appearance: none;
 }
 
 /* prefpane do not resize correctly on MacOS for auto height of content */
 prefpane > groupbox {
-	height: auto;
+	/*height: auto;*/
 	overflow: auto;
 }
 
@@ -40,7 +41,9 @@ grid > rows > row {
 }
 
 .prefWindow-dlgbuttons {
-	padding: 0;
+	height: 0;
+	display:none;
+	overflow: hidden;
 }
 
 #copyurlsexpert-optionsbottompanel {

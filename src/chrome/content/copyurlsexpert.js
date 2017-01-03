@@ -7,7 +7,7 @@
 
 
 'use strict';
-var copyUrlsExpert;
+let copyUrlsExpert;
 
 (function() {
 
@@ -27,10 +27,10 @@ var copyUrlsExpert;
         return;
       }
 
-      var toolbar = document.getElementById(toolbarId);
+      let toolbar = document.getElementById(toolbarId);
 
       // If no afterId is given, then append the item to the toolbar
-      var before = null;
+      let before = null;
       if (afterId) {
           let elem = document.getElementById(afterId);
           if (elem /* && elem.parentNode == toolbar */) {
@@ -53,8 +53,8 @@ var copyUrlsExpert;
 
   function _isDuplicate(entries, url) {
     url = url.toLowerCase();
-    for (var i = 0; i < entries.length; i++) {
-      var entryUrl = entries[i];
+    for (let i = 0; i < entries.length; i++) {
+      let entryUrl = entries[i];
       if (entryUrl.toLowerCase() == url) {
         return true;
       }
@@ -122,8 +122,8 @@ var copyUrlsExpert;
 
         this.readTemplatesFile(function (result) {
 
-          var target = result.templates;
-          var index = result.defaultTemplateId;
+          let target = result.templates;
+          let index = result.defaultTemplateId;
 
           if (result.errorStatus) {
 
@@ -134,7 +134,7 @@ var copyUrlsExpert;
               index = copyUrlsExpert._setupDefaultModel(target);
 
               // attempt to update file
-              var defaultContent = '0' + copyUrlsExpert.LINE_FEED + target.join(copyUrlsExpert.LINE_FEED);
+              let defaultContent = '0' + copyUrlsExpert.LINE_FEED + target.join(copyUrlsExpert.LINE_FEED);
               copyUrlsExpert._writeDataToFile(defaultContent, this.file, function (inputStream, status) {
                 if (!Components.isSuccessCode(status)) {
                   // Handle error!
@@ -162,8 +162,8 @@ var copyUrlsExpert;
       },
 
       _handleStartup: function () {
-        var oldVersion = '___version___';
-        var currVersion = '___version___';
+        let oldVersion = '___version___';
+        let currVersion = '___version___';
 
         try {
           oldVersion = this._prefService.getCharPref('version');
@@ -191,21 +191,21 @@ var copyUrlsExpert;
       },
 
       _getEntriesFromTabs: function (aBrowsers, filterHidden, filterDuplicates, filterPinnedTabs) {
-        var title = '',
+        let title = '',
             url = '',
             urls = [],
             entries = [];
 
-        for (var i = 0; i < aBrowsers.length; i++) {
-          var tabbrowser = aBrowsers[i].gBrowser;
-          var tabHistory = aBrowsers[i].sessionHistory;
+        for (let i = 0; i < aBrowsers.length; i++) {
+          let tabbrowser = aBrowsers[i].gBrowser;
+          let tabHistory = aBrowsers[i].sessionHistory;
 
           // Check each tab of this tabbrowser instance
-          var numTabs = tabbrowser.browsers.length,
+          let numTabs = tabbrowser.browsers.length,
               tabContainer = tabbrowser.tabContainer;
 
-          for (var index = 0; index < numTabs; index++) {
-            var targetBrwsr = tabbrowser.getBrowserAtIndex(index),
+          for (let index = 0; index < numTabs; index++) {
+            let targetBrwsr = tabbrowser.getBrowserAtIndex(index),
                 targetTab = tabContainer.getItemAtIndex(index);
 
             if (filterHidden && targetTab.hidden) continue;
@@ -216,7 +216,7 @@ var copyUrlsExpert;
               continue;
             }
 
-            var auxTemp = this._getEntryForTab(targetBrwsr, targetTab);
+            let auxTemp = this._getEntryForTab(targetBrwsr, targetTab);
             entries.push(auxTemp);
             urls.push(auxTemp.url);
           }
@@ -226,13 +226,13 @@ var copyUrlsExpert;
       },
 
       _getEntryForTab: function (brwsr, tab) {
-        var url = brwsr.currentURI.spec;
+        let url = brwsr.currentURI.spec;
 
-        var useContentTitle = this._prefService.getBoolPref("usecontenttitle");
+        let useContentTitle = this._prefService.getBoolPref("usecontenttitle");
 
-        var title = useContentTitle && brwsr.contentTitle ? brwsr.contentTitle : tab.label;
+        let title = useContentTitle && brwsr.contentTitle ? brwsr.contentTitle : tab.label;
 
-        var entry = this.getUrlEntry(title, url);
+        let entry = this.getUrlEntry(title, url);
         return entry;
       },
 
@@ -257,19 +257,19 @@ var copyUrlsExpert;
         let templateToUse = opts.template || this.defaultPattern;
         let sortBy = opts.sortBy || this._prefService.getCharPref('sortby');
 
-        var entries = [this._getEntryForTab(this.getGBrowser().getBrowserForTab(opts.contextTab), opts.contextTab)];
+        let entries = [this._getEntryForTab(this.getGBrowser().getBrowserForTab(opts.contextTab), opts.contextTab)];
         this.copyEntriesToClipBoard(entries, sortBy, templateToUse);
       },
 
       _getBrowsers: function (onlyActiveWindow) {
-        var aBrowsers = [];
+        let aBrowsers = [];
 
-        var winMediator = copyUrlsExpert.getWindowMediator();
+        let winMediator = copyUrlsExpert.getWindowMediator();
         if (onlyActiveWindow) {
           aBrowsers.push(winMediator.getMostRecentWindow('navigator:browser'));
         }
         else {
-          var browserEnumerator = winMediator.getEnumerator('navigator:browser');
+          let browserEnumerator = winMediator.getEnumerator('navigator:browser');
           // Iterate all open windows
           while (browserEnumerator.hasMoreElements()) {
             aBrowsers.push(browserEnumerator.getNext());
@@ -305,9 +305,9 @@ var copyUrlsExpert;
         }
 
         // This function must be called awith all three arguments
-        var aBrowsers = this._getBrowsers(options.onlyActiveWindow);
+        let aBrowsers = this._getBrowsers(options.onlyActiveWindow);
 
-        var entries = this._getEntriesFromTabs(aBrowsers, options.filterHidden, options.filterDuplicates, options.filterPinnedTabs);
+        let entries = this._getEntriesFromTabs(aBrowsers, options.filterHidden, options.filterDuplicates, options.filterPinnedTabs);
 
         this.copyEntriesToClipBoard(entries, options.sortBy, options.template);
       },
@@ -354,7 +354,7 @@ var copyUrlsExpert;
       _isEmptySelection: function () {
         // Check if there is some text selected
 
-        var sel = content.getSelection();
+        let sel = content.getSelection();
 
         return sel & sel.length > 0;
       },
@@ -409,21 +409,21 @@ var copyUrlsExpert;
       showOptionsWindow: function () {
         //window.open('chrome://copy-urls-expert/content/dialogs/options.xul', 'copyUrlsExpertOptionsWindow', 'addressbar=no, modal');
 
-        var features = "chrome,titlebar,toolbar,centerscreen";
+        let features = "chrome,titlebar,toolbar,centerscreen,";
         try {
-          var instantApply = Services.prefs.getBoolPref('browser.preferences.instantApply');
-          features += instantApply ? ",dialog=no" : ",modal";
+          let instantApply = Services.prefs.getBoolPref('browser.preferences.instantApply');
+          features += instantApply ? "dialog=no" : "modal";
         }
         catch (e) {
-          features += ",modal";
+          features += "modal";
         }
         openDialog('chrome://copy-urls-expert/content/dialogs/options.xul', '', features);
       },
 
       showAdvancedCopyWindow: function () {
-        var features = "chrome,titlebar,toolbar,centerscreen";
+        let features = "chrome,titlebar,toolbar,centerscreen";
         try {
-          var instantApply = Services.prefs.getBoolPref('browser.preferences.instantApply');
+          let instantApply = Services.prefs.getBoolPref('browser.preferences.instantApply');
           features += instantApply ? ",dialog=no" : ",modal";
         }
         catch (e) {
@@ -433,15 +433,15 @@ var copyUrlsExpert;
       },
 
       _getClipboardText: function () {
-        var clip = Components.classes['@mozilla.org/widget/clipboard;1'].getService(Components.interfaces.nsIClipboard);
+        let clip = Components.classes['@mozilla.org/widget/clipboard;1'].getService(Components.interfaces.nsIClipboard);
         if (!clip) return null;
 
-        var trans = copyUrlsExpert.createTransferable(window);
+        let trans = copyUrlsExpert.createTransferable(window);
 
         clip.getData(trans, clip.kGlobalClipboard);
 
-        var str = new Object();
-        var strLength = new Object();
+        let str = new Object();
+        let strLength = new Object();
 
         trans.getTransferData("text/unicode", str, strLength);
 
@@ -457,7 +457,7 @@ var copyUrlsExpert;
        This function is called for 'Open Tabs from Clipboard'
        */
       openTabs: function () {
-        var sUrl = this._getClipboardText(),
+        let sUrl = this._getClipboardText(),
         // the following regex is extracting urls from any text
             myRe = /((https?):\/\/((?:(?:(?:(?:(?:[a-zA-Z0-9][-a-zA-Z0-9]*)?[a-zA-Z0-9])[.])*(?:[a-zA-Z][-a-zA-Z0-9]*[a-zA-Z0-9]|[a-zA-Z])[.]?)|(?:[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+)))(?::((?:[0-9]*)))?(\/(((?:(?:(?:(?:[a-zA-Z0-9\-_.!~*'():@&=+$,^#]+|(?:%[a-fA-F0-9][a-fA-F0-9]))*)(?:;(?:(?:[a-zA-Z0-9\-_.!~*'():@&=+$,^#]+|(?:%[a-fA-F0-9][a-fA-F0-9]))*))*)(?:\/(?:(?:(?:[a-zA-Z0-9\-_.!~*'():@&=+$,^#]+|(?:%[a-fA-F0-9][a-fA-F0-9]))*)(?:;(?:(?:[a-zA-Z0-9\-_.!~*'():@&=+$,^#]+|(?:%[a-fA-F0-9][a-fA-F0-9]))*))*))*))(?:[?]((?:(?:[;\/?:@&=+$,^#a-zA-Z0-9\-_.!~*'()]+|(?:%[a-fA-F0-9][a-fA-F0-9]))*)))?))?)/ig,
             myArray = null,
@@ -465,7 +465,7 @@ var copyUrlsExpert;
             filterDuplicates = this._prefService.getBoolPref('filterduplicates');
 
         while ((myArray = myRe.exec(sUrl))) {
-          var newUrl = String(myArray[0]);
+          let newUrl = String(myArray[0]);
 
           if (filterDuplicates && _isDuplicate(urls, newUrl)) {
             continue;
@@ -560,7 +560,7 @@ var copyUrlsExpert;
           targetKey.setAttribute('id', keyElemId);
           targetKey.setAttribute('command', commandId);
 
-          var shortcutKeyConfig = shortcut.getKeyConfig();
+          let shortcutKeyConfig = shortcut.getKeyConfig();
 
           if (shortcutKeyConfig.hasOwnProperty('keycode')) {
             targetKey.setAttribute('keycode', shortcutKeyConfig.keycode);
@@ -584,7 +584,7 @@ var copyUrlsExpert;
       updateUrlListFile: function (theContent) {
         // Write to prefs
         // get profile directory
-        var file = Components.classes['@mozilla.org/file/directory_service;1'].getService(Components.interfaces.nsIProperties).get('ProfD', Components.interfaces.nsIFile);
+        let file = Components.classes['@mozilla.org/file/directory_service;1'].getService(Components.interfaces.nsIProperties).get('ProfD', Components.interfaces.nsIFile);
         file.append('copyurlsexpert');
         if (!file.exists() || !file.isDirectory()) {
           // if it doesn't exist, create
@@ -593,7 +593,7 @@ var copyUrlsExpert;
 
         file.append('urls.templates');
 
-        var updateHandler = new copyUrlsExpert._AsynHandler(file, copyUrlsExpert._prefService);
+        let updateHandler = new copyUrlsExpert._AsynHandler(file, copyUrlsExpert._prefService);
         copyUrlsExpert._writeDataToFile(theContent, file, function (inputStream, status) {
           updateHandler.handleUpdate(inputStream, status);
         });
@@ -606,11 +606,11 @@ var copyUrlsExpert;
         Components.utils.import('resource://gre/modules/FileUtils.jsm');
         // You can also optionally pass a flags parameter here. It defaults to
         // FileUtils.MODE_WRONLY | FileUtils.MODE_CREATE | FileUtils.MODE_TRUNCATE;
-        var ostream = FileUtils.openSafeFileOutputStream(file)
+        let ostream = FileUtils.openSafeFileOutputStream(file)
 
-        var converter = Components.classes['@mozilla.org/intl/scriptableunicodeconverter'].createInstance(Components.interfaces.nsIScriptableUnicodeConverter);
+        let converter = Components.classes['@mozilla.org/intl/scriptableunicodeconverter'].createInstance(Components.interfaces.nsIScriptableUnicodeConverter);
         converter.charset = 'UTF-8';
-        var istream = converter.convertToInputStream(content);
+        let istream = converter.convertToInputStream(content);
 
         // The last argument (the callback) is optional.
         NetUtil.asyncCopy(istream, ostream, fptr);
@@ -623,7 +623,7 @@ var copyUrlsExpert;
        @returns: int representing the index of default pattern.
        */
       _updateModel: function (data, templates) {
-        var index = this.convertStringToModel(data, templates);
+        let index = this.convertStringToModel(data, templates);
 
         if (index == -1) {
           index = copyUrlsExpert._setupDefaultModel(templates);
@@ -654,7 +654,7 @@ var copyUrlsExpert;
       }, false);
 
       // @ifdef DEBUG
-      var consoleSvc = Components.classes["@mozilla.org/consoleservice;1"]
+      let consoleSvc = Components.classes["@mozilla.org/consoleservice;1"]
           .getService(Components.interfaces.nsIConsoleService);
 
       copyUrlsExpert.log = function() {
