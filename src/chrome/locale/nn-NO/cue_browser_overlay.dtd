@@ -1,0 +1,26 @@
+<!ENTITY copyurlsexpert.options.windowtitle "Innstillingar for Copy Urls Expert">
+<!ENTITY copyurlsexpert.common.menupopuplabel "Kopier nettadresser">
+<!ENTITY copyurlsexpert.common.menupopupaccesskey "U">
+<!ENTITY copyurlsexpert.common.activewinmenulabel "Faner i dette vindauget">
+<!ENTITY copyurlsexpert.common.activewinaccesskey "V">
+<!ENTITY copyurlsexpert.common.activewintooltip "Kopier adressene til alle fanene i dette vindauget">
+<!ENTITY copyurlsexpert.common.allwinmenulabel "Faner i alle vindauge">
+<!ENTITY copyurlsexpert.common.allwinaccesskey "A">
+<!ENTITY copyurlsexpert.common.allwintooltip "Kopier adressene til alle fanene i alle vindauge">
+<!ENTITY copyurlsexpert.common.activetabgroupmenulabel "Faner i denne fanegruppa">
+<!ENTITY copyurlsexpert.common.activetabgroupaccesskey "G">
+<!ENTITY copyurlsexpert.common.activetabgrouptooltip "Kopier adressene til alle fanene i denne fanegruppa">
+<!ENTITY copyurlsexpert.common.activetabmenulabel "Denne fana">
+<!ENTITY copyurlsexpert.common.activetabaccesskey "D">
+<!ENTITY copyurlsexpert.common.activetabtooltip "Kopier adressa til denne fana">
+<!ENTITY copyurlsexpert.common.opentabsmenulabel "Opna adresser frå utklippstavla">
+<!ENTITY copyurlsexpert.common.opentabsaccesskey "U">
+<!ENTITY copyurlsexpert.common.opentabstooltip "Opna alle adressene i utklippstavla">
+<!ENTITY copyurlsexpert.common.optionsmenulabel "Innstillingar">
+<!ENTITY copyurlsexpert.common.optionsaccesskey "I">
+<!ENTITY copyurlsexpert.common.optionstooltip "Vis innstillingane til Copy Urls Expert">
+<!ENTITY copyurlsexpert.common.selurlsmenulabel "Adresser i utval">
+<!ENTITY copyurlsexpert.common.selurlsaccesskey "A">
+<!ENTITY copyurlsexpert.common.selimgsmenulabel "Bilete i utval">
+<!ENTITY copyurlsexpert.common.selimgsaccesskey "B">
+<!ENTITY copyurlsexpert.common.selurlsopenmenulabel "Opna alle adresser i utvalet">

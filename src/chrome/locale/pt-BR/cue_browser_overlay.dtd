@@ -1,0 +1,26 @@
+<!ENTITY copyurlsexpert.options.windowtitle "Copy Urls Expert Options">
+<!ENTITY copyurlsexpert.common.menupopuplabel "Copy Urls Expert">
+<!ENTITY copyurlsexpert.common.menupopupaccesskey "U">
+<!ENTITY copyurlsexpert.common.activewinmenulabel "Abas desta janela">
+<!ENTITY copyurlsexpert.common.activewinaccesskey "A">
+<!ENTITY copyurlsexpert.common.activewintooltip "Copie as URLs de todas os Abas desta janela">
+<!ENTITY copyurlsexpert.common.allwinmenulabel "Abas de todas as janelas">
+<!ENTITY copyurlsexpert.common.allwinaccesskey "A">
+<!ENTITY copyurlsexpert.common.allwintooltip "Copie as URLs de todas os Abas de todas as janelas">
+<!ENTITY copyurlsexpert.common.activetabgroupmenulabel "Abas deste grupo de abas">
+<!ENTITY copyurlsexpert.common.activetabgroupaccesskey "">
+<!ENTITY copyurlsexpert.common.activetabgrouptooltip "Copy Urls of All Tabs in Active Tab Group">
+<!ENTITY copyurlsexpert.common.activetabmenulabel "Aba atual">
+<!ENTITY copyurlsexpert.common.activetabaccesskey "">
+<!ENTITY copyurlsexpert.common.activetabtooltip "Copiar a URL da aba atual">
+<!ENTITY copyurlsexpert.common.opentabsmenulabel "Open Urls From Clipboard">
+<!ENTITY copyurlsexpert.common.opentabsaccesskey "p">
+<!ENTITY copyurlsexpert.common.opentabstooltip "Open all urls found in clipboard text">
+<!ENTITY copyurlsexpert.common.optionsmenulabel "Opções">
+<!ENTITY copyurlsexpert.common.optionsaccesskey "O">
+<!ENTITY copyurlsexpert.common.optionstooltip "Show &quot;Copy Urls Expert&quot; Options">
+<!ENTITY copyurlsexpert.common.selurlsmenulabel "Urls In Selection">
+<!ENTITY copyurlsexpert.common.selurlsaccesskey "U">
+<!ENTITY copyurlsexpert.common.selimgsmenulabel "Images In Selection">
+<!ENTITY copyurlsexpert.common.selimgsaccesskey "I">
+<!ENTITY copyurlsexpert.common.selurlsopenmenulabel "Open All Urls In Selection">

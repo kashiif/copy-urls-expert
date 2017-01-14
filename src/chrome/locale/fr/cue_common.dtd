@@ -1,33 +1,32 @@
 <!ENTITY copyurlsexpert.common.menupopuplabel "Copy Urls Expert">
 <!ENTITY copyurlsexpert.common.menupopupaccesskey "U">
-<!ENTITY copyurlsexpert.common.activewinmenulabel "Onglets dans cette fenêtre">
+<!ENTITY copyurlsexpert.common.activewinmenulabel "Cette fenêtre">
 <!ENTITY copyurlsexpert.common.activewinaccesskey "O">
 <!ENTITY copyurlsexpert.common.activewintooltip "Copier les Urls de tous les onglets dans cette fenêtre">
-<!ENTITY copyurlsexpert.common.allwinmenulabel "Onglets dans toutes les fenêtres">
+<!ENTITY copyurlsexpert.common.allwinmenulabel "Toutes les fenêtres">
 <!ENTITY copyurlsexpert.common.allwinaccesskey "t">
 <!ENTITY copyurlsexpert.common.allwintooltip "Copier les Urls de tous les onglets dans toutes les fenêtres">
-<!ENTITY copyurlsexpert.common.activetabgroupmenulabel "Onglets dans ce groupe d'onglet">
+<!ENTITY copyurlsexpert.common.activetabgroupmenulabel "Ce groupe d'onglets">
 <!ENTITY copyurlsexpert.common.activetabgroupaccesskey "g">
 <!ENTITY copyurlsexpert.common.activetabgrouptooltip "Copier les Urls de tous les onglets dans le groupe d'onglets actif">
-<!ENTITY copyurlsexpert.common.activetabmenulabel "Onglet courant">
+<!ENTITY copyurlsexpert.common.activetabmenulabel "Cet onglet">
 <!ENTITY copyurlsexpert.common.activetabaccesskey "a">
 <!ENTITY copyurlsexpert.common.activetabtooltip "Copier l'Url de l'onglet courant">
+<!ENTITY copyurlsexpert.common.advancedcopymenulabel "Advanced Copy">
+<!ENTITY copyurlsexpert.common.advancedcopytooltip "Copy Urls with more options">
 <!ENTITY copyurlsexpert.common.opentabsmenulabel "Ouvrir les Urls à partir du presse-papiers">
 <!ENTITY copyurlsexpert.common.opentabsaccesskey "p">
 <!ENTITY copyurlsexpert.common.opentabstooltip "Ouvrir les Urls trouvées dans le texte contenu dans le presse-papiers">
 <!ENTITY copyurlsexpert.common.optionsmenulabel "Options">
 <!ENTITY copyurlsexpert.common.optionsaccesskey "O">
 <!ENTITY copyurlsexpert.common.optionstooltip "Afficher les options de « Copy Urls Expert »">
-<!ENTITY copyurlsexpert.common.selurlsmenulabel "Urls dans la sélection">
+<!ENTITY copyurlsexpert.common.selurlsmenulabel "Urls In Selection">
 <!ENTITY copyurlsexpert.common.selurlsaccesskey "U">
-<!ENTITY copyurlsexpert.common.selimgsmenulabel "Images dans la sélection">
+<!ENTITY copyurlsexpert.common.selimgsmenulabel "Images In Selection">
 <!ENTITY copyurlsexpert.common.selimgsaccesskey "I">
 <!ENTITY copyurlsexpert.common.selurlsopenmenulabel "Ouvrir toutes les Urls dans la sélection">
-<!ENTITY copyurlsexpert.common.activewinmenulabel "Cette fenêtre">
-<!ENTITY copyurlsexpert.common.activetabgroupmenulabel "Ce groupe d'onglets">
-<!ENTITY copyurlsexpert.common.activetabmenulabel "Cet onglet">
-<!ENTITY copyurlsexpert.common.allwinmenulabel "Toutes les fenêtres">
-<!ENTITY copyurlsexpert.common.selurlsmenulabel "Urls In Selection">
-<!ENTITY copyurlsexpert.common.selimgsmenulabel "Images In Selection">
-<!ENTITY copyurlsexpert.common.opentabsmenulabel "Ouvrir les Urls à partir du presse-papiers">
-<!ENTITY copyurlsexpert.common.optionsmenulabel "Options">
+<!ENTITY copyurlsexpert.common.lblsortby "Sort By">
+<!ENTITY copyurlsexpert.common.itmsortbytab "Tab Order">
+<!ENTITY copyurlsexpert.common.itmsortbydomain "Domain">
+<!ENTITY copyurlsexpert.common.itmsortbytitle "Title">
+<!ENTITY copyurlsexpert.common.filterduplicates "Filter duplicates when copying to and opening from clipboard">

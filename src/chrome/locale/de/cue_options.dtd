@@ -16,7 +16,7 @@
 <!ENTITY copyurlsexpert.options.lblprefix "Text davor">
 <!ENTITY copyurlsexpert.options.lblpostfix "Text danach">
 <!ENTITY copyurlsexpert.options.lbltoolbaraction "Standardaktion der Symbolleistenschaltfläche">
-<!ENTITY copyurlsexpert.options.filterduplicates "Doppelte Adressen beim Kopieren in bzw. Öffnen aus der Zwischenablage entfernen">
+<!ENTITY copyurlsexpert.options.excludepinnedtabs "Exclude pinned tabs when copying urls of tabs">
 <!ENTITY copyurlsexpert.options.usecontenttitle "Beim Kopieren der Adressen von Tabs den Seitentitel für $title verwenden">
 <!ENTITY copyurlsexpert.options.usecontenttitle2 "Das Deaktivieren dieser Einstellung führt zur steten Verwendung des Tabtitels als $title. Dies dient zur Unterstützung der &quot;Tab Mix Plus&quot;-Funktion &quot;Namen der Lesezeichen als Tabtitel verwenden&quot;.">
 <!-- Shortcuts Tab -->
