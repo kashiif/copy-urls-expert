@@ -125,22 +125,20 @@ var copyUrlsExpert;
           var target = result.templates;
           var index = result.defaultTemplateId;
 
-          if (result.errorStatus) {
+          if (target === null) {
 
-            if (target == null) {
+            if (result.errorStatus === null) {
 
-              alert('Copy Urls Expert: Error reading templates list file.\nRestoring to default values.'); // TODO: localize it
+              if (!copyUrlsExpert.isFirstRun) {
+                alert('Copy Urls Expert: templates list file is missing.\nRestoring to default values.'); // TODO: localize it
+              }
+
               target = [];
               index = copyUrlsExpert._setupDefaultModel(target);
 
               // attempt to update file
               var defaultContent = '0' + copyUrlsExpert.LINE_FEED + target.join(copyUrlsExpert.LINE_FEED);
-              copyUrlsExpert._writeDataToFile(defaultContent, this.file, function (inputStream, status) {
-                if (!Components.isSuccessCode(status)) {
-                  // Handle error!
-                  alert('Copy Urls Expert: Failed to write to templates list file (default values): ' + status); // TODO: localize it
-                }
-              });
+              copyUrlsExpert.updateUrlListFile(defaultContent);
 
             }
             else {
@@ -176,6 +174,7 @@ var copyUrlsExpert;
         }
 
         if (oldVersion === '') {
+          this.isFirstRun = true;
           // extension is installed for the first time
           installButton('nav-bar', 'copyurlsexpert-toolbar-btnmain', 'urlbar-container');
           // The "addon-bar" is available since Firefox 4
