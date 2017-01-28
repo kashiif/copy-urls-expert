@@ -7,9 +7,9 @@
 <!ENTITY copyurlsexpert.common.allwinmenulabel "Adressen der Tabs aller Fenster kopieren">
 <!ENTITY copyurlsexpert.common.allwinaccesskey "a">
 <!ENTITY copyurlsexpert.common.allwintooltip "Die Adressen aller Tabs in jedem Fenster kopieren">
-<!ENTITY copyurlsexpert.common.activetabgroupmenulabel "Tabs In This Tab Group">
+<!ENTITY copyurlsexpert.common.activetabgroupmenulabel "Adressen der Tabs in dieser Tabgruppe kopieren">
 <!ENTITY copyurlsexpert.common.activetabgroupaccesskey "">
-<!ENTITY copyurlsexpert.common.activetabgrouptooltip "Copy Urls of All Tabs in Active Tab Group">
+<!ENTITY copyurlsexpert.common.activetabgrouptooltip "Adressen aller Tabs in aktiver Tabgruppe kopieren">
 <!ENTITY copyurlsexpert.common.activetabmenulabel "Adresse des aktiven Tabs kopieren">
 <!ENTITY copyurlsexpert.common.activetabaccesskey "">
 <!ENTITY copyurlsexpert.common.activetabtooltip "Die Adresse des aktiven Tabs kopieren">

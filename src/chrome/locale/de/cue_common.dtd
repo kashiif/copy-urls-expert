@@ -6,27 +6,27 @@
 <!ENTITY copyurlsexpert.common.allwinmenulabel "Adressen der Tabs aller Fenstern kopieren">
 <!ENTITY copyurlsexpert.common.allwinaccesskey "a">
 <!ENTITY copyurlsexpert.common.allwintooltip "Die Adressen aller Tabs in jedem Fenster kopieren">
-<!ENTITY copyurlsexpert.common.activetabgroupmenulabel "This Tab Group">
+<!ENTITY copyurlsexpert.common.activetabgroupmenulabel "Tabs in dieser Tabgruppe">
 <!ENTITY copyurlsexpert.common.activetabgroupaccesskey "">
-<!ENTITY copyurlsexpert.common.activetabgrouptooltip "Copy Urls of All Tabs in Active Tab Group">
+<!ENTITY copyurlsexpert.common.activetabgrouptooltip "Adressen aller Tabs in aktiver Tabgruppe kopieren">
 <!ENTITY copyurlsexpert.common.activetabmenulabel "Adresse des aktiven Tabs kopieren">
 <!ENTITY copyurlsexpert.common.activetabaccesskey "">
 <!ENTITY copyurlsexpert.common.activetabtooltip "Die Adresse des aktiven Tabs kopieren">
-<!ENTITY copyurlsexpert.common.advancedcopymenulabel "Advanced Copy">
-<!ENTITY copyurlsexpert.common.advancedcopytooltip "Copy Urls with more options">
+<!ENTITY copyurlsexpert.common.advancedcopymenulabel "Erweitertes Kopieren">
+<!ENTITY copyurlsexpert.common.advancedcopytooltip "Adressen mit mehr Einstellungsmöglichkeiten kopieren">
 <!ENTITY copyurlsexpert.common.opentabsmenulabel "Adressen aus Zwischenablage öffnen">
 <!ENTITY copyurlsexpert.common.opentabsaccesskey "Z">
 <!ENTITY copyurlsexpert.common.opentabstooltip "Die sich in der Zwischenablage befindenden Adressen öffnen">
 <!ENTITY copyurlsexpert.common.optionsmenulabel "Einstellungen öffnen">
 <!ENTITY copyurlsexpert.common.optionsaccesskey "E">
 <!ENTITY copyurlsexpert.common.optionstooltip "Die Einstellungen von &quot;Copy Urls Expert&quot; anzeigen">
-<!ENTITY copyurlsexpert.common.selurlsmenulabel "Urls In Selection">
-<!ENTITY copyurlsexpert.common.selurlsaccesskey "u">
-<!ENTITY copyurlsexpert.common.selimgsmenulabel "Images In Selection">
+<!ENTITY copyurlsexpert.common.selurlsmenulabel "Adressen in Auswahl">
+<!ENTITY copyurlsexpert.common.selurlsaccesskey "A">
+<!ENTITY copyurlsexpert.common.selimgsmenulabel "Grafiken in Auswahl">
 <!ENTITY copyurlsexpert.common.selimgsaccesskey "G">
 <!ENTITY copyurlsexpert.common.selurlsopenmenulabel "Alle Adressen in Auswahl öffnen">
-<!ENTITY copyurlsexpert.common.lblsortby "Sort By">
-<!ENTITY copyurlsexpert.common.itmsortbytab "Tab Order">
+<!ENTITY copyurlsexpert.common.lblsortby "Sortieren nach">
+<!ENTITY copyurlsexpert.common.itmsortbytab "Tabreihenfolge">
 <!ENTITY copyurlsexpert.common.itmsortbydomain "Domain">
-<!ENTITY copyurlsexpert.common.itmsortbytitle "Title">
-<!ENTITY copyurlsexpert.common.filterduplicates "Filter duplicates when copying to and opening from clipboard">
+<!ENTITY copyurlsexpert.common.itmsortbytitle "Titel">
+<!ENTITY copyurlsexpert.common.filterduplicates "Duplikate beim Kopieren in die und Öffnen aus der Zwischenablage ignorieren">
