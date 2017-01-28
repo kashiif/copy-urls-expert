@@ -237,7 +237,7 @@ var copyUrlsExpert;
 
       performCopyActiveTabUrl: function (opts) {
         opts = opts || {};
-        opts.contextTab = this.getGBrowser().selectedTab;
+        opts.contextTab = opts.contextTab || this.getGBrowser().selectedTab;
 
         this._performCopyOfSingleTabUrl(opts);
       },
@@ -428,7 +428,16 @@ var copyUrlsExpert;
         catch (e) {
           features += ",modal";
         }
-        openDialog('chrome://copy-urls-expert/content/dialogs/advanced.xul', '', features);
+
+        let dialogArgs = {
+          contextTab: null
+        };
+
+        // If the context menu was invoked on a tab other than active tab, Let the dialog know the contextTab
+        let _g = this.getGBrowser();
+        dialogArgs.contextTab = _g.mContextTab;
+
+        openDialog('chrome://copy-urls-expert/content/dialogs/advanced.xul', '', features, dialogArgs);
       },
 
       _getClipboardText: function () {

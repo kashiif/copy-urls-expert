@@ -36,9 +36,12 @@
       }
     }
 
+    let dialogArgs = window.arguments[0];
+
     let options = {
       template: template,
-      sortBy: getSelectedValueOfList('copyurlsexpert-ddlsortorder')
+      sortBy: getSelectedValueOfList('copyurlsexpert-ddlsortorder'),
+      contextTab: dialogArgs.contextTab
     };
 
     copyUrlsExpert._doAction(getSelectedValueOfList('copyurlsexpert-ddlsource'), options);
