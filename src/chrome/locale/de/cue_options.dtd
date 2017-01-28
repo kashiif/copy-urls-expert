@@ -2,7 +2,7 @@
 <!ENTITY copyurlsexpert.options.btacceptlabel "Speichern">
 <!ENTITY copyurlsexpert.options.btacceptaccesskey "S">
 <!ENTITY copyurlsexpert.options.generaltab "Allgemein">
-<!ENTITY copyurlsexpert.options.shortcutkeystab "Shortcut">
+<!ENTITY copyurlsexpert.options.shortcutkeystab "Tastenkombinationen">
 <!ENTITY copyurlsexpert.options.formattab "Formatierung">
 <!ENTITY copyurlsexpert.options.helptab "Hilfe">
 <!-- General Tab -->
@@ -16,7 +16,7 @@
 <!ENTITY copyurlsexpert.options.lblprefix "Text davor">
 <!ENTITY copyurlsexpert.options.lblpostfix "Text danach">
 <!ENTITY copyurlsexpert.options.lbltoolbaraction "Standardaktion der Symbolleistenschaltfläche">
-<!ENTITY copyurlsexpert.options.excludepinnedtabs "Exclude pinned tabs when copying urls of tabs">
+<!ENTITY copyurlsexpert.options.excludepinnedtabs "Angeheftete Tabs beim Kopieren der Adressen auslassen">
 <!ENTITY copyurlsexpert.options.usecontenttitle "Beim Kopieren der Adressen von Tabs den Seitentitel für $title verwenden">
 <!ENTITY copyurlsexpert.options.usecontenttitle2 "Das Deaktivieren dieser Einstellung führt zur steten Verwendung des Tabtitels als $title. Dies dient zur Unterstützung der &quot;Tab Mix Plus&quot;-Funktion &quot;Namen der Lesezeichen als Tabtitel verwenden&quot;.">
 <!-- Shortcuts Tab -->
@@ -28,14 +28,14 @@
 <!ENTITY copyurlsexpert.options.btndefault "Als Standard setzen">
 <!ENTITY copyurlsexpert.options.btndelete "Löschen">
 <!-- Format Tab -->
-<!ENTITY copyurlsexpert.options.lblshortcutdesc "Double click on the cell (second column) in front of any action and then press the shortcut key combination.">
-<!ENTITY copyurlsexpert.options.shortcutwarn1 "Important">
-<!ENTITY copyurlsexpert.options.shortcutwarn2 "This feature is experimental and may not work as expected on every firefox version and on every platform (e.g. Mac/Linux).">
-<!ENTITY copyurlsexpert.options.shortcutwarn3 "This feature was tested on windows for Firefox 40+.">
-<!ENTITY copyurlsexpert.options.colshortcutkeyaction "Action">
-<!ENTITY copyurlsexpert.options.colshortcutkey "Assigned shortcut key">
-<!ENTITY copyurlsexpert.options.colshortcutmessage "Message">
-<!ENTITY copyurlsexpert.options.resetshortcut "Reset selected shortcut">
+<!ENTITY copyurlsexpert.options.lblshortcutdesc "Klicken Sie doppelt auf die Zelle (zweite Spalte) und drücken Sie dann die Tastenkombination.">
+<!ENTITY copyurlsexpert.options.shortcutwarn1 "Wichtig">
+<!ENTITY copyurlsexpert.options.shortcutwarn2 "Diese Funktion befindet sich noch in Entwicklung und funktioniert eventuell nicht wie erwartet mit jeder Firefox-Version oder jedem Betriebssystem (z.B. Mac/Linux).">
+<!ENTITY copyurlsexpert.options.shortcutwarn3 "Diese Funktion wurde auf Windows mit Firefox 40 und neuer getestet.">
+<!ENTITY copyurlsexpert.options.colshortcutkeyaction "Aktion">
+<!ENTITY copyurlsexpert.options.colshortcutkey "Zugewiesene Tastenkombination">
+<!ENTITY copyurlsexpert.options.colshortcutmessage "Mitteilung">
+<!ENTITY copyurlsexpert.options.resetshortcut "Ausgewählte Tastenkombination zurücksetzen">
 <!ENTITY copyurlsexpert.options.lblctrlkey "Strg">
 <!ENTITY copyurlsexpert.options.lblshiftkey "Umschalt">
 <!-- Help Tab -->
