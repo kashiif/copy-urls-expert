@@ -19,9 +19,9 @@ var copyUrlsExpert;
    *
    * @param {string} toolbarId The ID of the toolbar to install to.
    * @param {string} id The ID of the button to install.
-   * @param {string} afterId The ID of the element to insert after. @optional
+   * @param {string} beforeId The ID of the element to insert before. @optional
    */
-  function installButton(toolbarId, id, afterId) {
+  function installButton(toolbarId, id, beforeId) {
     try {
       if (document.getElementById(id)) {
         return;
@@ -29,12 +29,12 @@ var copyUrlsExpert;
 
       var toolbar = document.getElementById(toolbarId);
 
-      // If no afterId is given, then append the item to the toolbar
+      // If no beforeId is given, then append the item to the toolbar
       var before = null;
-      if (afterId) {
-          let elem = document.getElementById(afterId);
+      if (beforeId) {
+          let elem = document.getElementById(beforeId);
           if (elem /* && elem.parentNode == toolbar */) {
-              before = elem.nextElementSibling;
+              before = elem;
           }
       }
 
@@ -176,7 +176,7 @@ var copyUrlsExpert;
         if (oldVersion === '') {
           this.isFirstRun = true;
           // extension is installed for the first time
-          installButton('nav-bar', 'copyurlsexpert-toolbar-btnmain', 'urlbar-container');
+          installButton('nav-bar', 'copyurlsexpert-toolbar-btnmain', 'search-container');
           // The "addon-bar" is available since Firefox 4
           installButton('addon-bar', 'copyurlsexpert-toolbar-btnmain');
         }
